@@ -20,6 +20,7 @@ namespace IMS
 
         bool IsLogOut = false;
         String DBName = String.Empty;
+        public int Login_ID_History = 0;
 
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
@@ -73,7 +74,9 @@ namespace IMS
             {
                 bool b = clsUtility.ShowQuestionMessage("Are you sure, you want to Exit?", clsUtility.strProjectTitle);
                 if (b)
-                {                    
+                {
+                    ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
+                    ObjDAL.UpdateData(DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
                     IsLogOut = true;
                     Application.Exit();
                 }
@@ -86,6 +89,8 @@ namespace IMS
         {
             if (clsUtility.ShowQuestionMessage("Are you sure to Logout?", clsUtility.strProjectTitle))
             {
+                ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
+                ObjDAL.UpdateData(DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
                 frmLogin Obj = new frmLogin();
                 Obj.BringToFront();
                 Obj.Show();

@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CoreApp;
 using System.IO;
@@ -23,6 +25,8 @@ namespace IMS
         byte count = 0;
         bool Isexit = true;
         String DBName = String.Empty;
+        String UserIPAddress = String.Empty;
+        String UserMacAddress = String.Empty;
 
         private bool ValidateLogin(string username, string password)
         {
@@ -95,7 +99,9 @@ namespace IMS
                 if (ValidateLogin(txtUserName.Text, txtPassword.Text))
                 {
                     //InsertBackupConfig();
+                    int a = InsertLoginHistory();
                     frmHome Obj = new frmHome();
+                    Obj.Login_ID_History = a;
                     Obj.BringToFront();
                     this.Close();
                     Obj.ShowDialog();
@@ -135,6 +141,35 @@ namespace IMS
         private void frmLogin_Load(object sender, EventArgs e)
         {
             DBName = ObjDAL.GetCurrentDBName(true);
+        }
+
+        private int InsertLoginHistory()
+        {
+            GetUserIPMacAddress();
+
+            ObjDAL.SetColumnData("Login_ID", SqlDbType.Int, clsUtility.LoginID);
+            ObjDAL.SetColumnData("UserName", SqlDbType.NVarChar, txtUserName.Text.Trim());
+            ObjDAL.SetColumnData("UserIPAddress", SqlDbType.VarChar, UserIPAddress);
+            ObjDAL.SetColumnData("UserMacAddress", SqlDbType.VarChar, UserMacAddress);
+
+            return (ObjDAL.InsertData(DBName + ".dbo.Login_History", true));            
+        }
+
+        private void GetUserIPMacAddress()
+        {
+            IPHostEntry host = Dns.GetHostByName(System.Environment.MachineName);
+            IPAddress ipaddr = host.AddressList[0];
+            UserIPAddress = ipaddr.ToString();
+
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface adapter in nics)
+            {
+                if (UserMacAddress == String.Empty)// only return MAC Address from first card  
+                {
+                    IPInterfaceProperties properties = adapter.GetIPProperties();
+                    UserMacAddress = adapter.GetPhysicalAddress().ToString();
+                }
+            }
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CoreApp;
 
@@ -27,6 +29,7 @@ namespace IMS
 
         private void SplashWindow_Load(object sender, EventArgs e)
         {
+            
             lblversion.Text = lblversion.Text + " " + Application.ProductVersion;
             clsUtility.strProjectTitle = "Inventory Management System";
 
