@@ -24,7 +24,7 @@ namespace IMS
 
         byte count = 0;
         bool Isexit = true;
-        String DBName = String.Empty;
+        //String DBName = String.Empty;
         String UserIPAddress = String.Empty;
         String UserMacAddress = String.Empty;
 
@@ -44,7 +44,7 @@ namespace IMS
             {
                 try
                 {
-                    DataTable dt = ObjDAL.GetDataCol(DBName+".dbo.UserManagement", "ID,UserName,Password,IsAdmin", "UserName='" + txtUserName.Text.Trim() + "' and Password='" + objUtil.Encrypt(txtPassword.Text, true) + "' and isnull(Isblock,0)=0", "ID desc");
+                    DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.UserManagement", "ID,UserName,Password,IsAdmin", "UserName='" + txtUserName.Text.Trim() + "' and Password='" + objUtil.Encrypt(txtPassword.Text, true) + "' and isnull(Isblock,0)=0", "ID desc");
                     //int a = ObjDAL.ExecuteScalarInt("select Count(*) From CyberCafeManagement.dbo.login where UserName='" + txtUserName.Text.Trim() + "' and Password='" + txtPassword.Text.Trim() + "'");                 
                     if (dt != null && dt.Rows.Count > 0)
                     {
@@ -83,11 +83,11 @@ namespace IMS
         }
         private void InsertBackupConfig()
         {
-            int a = ObjDAL.CountRecords(DBName + ".dbo.BackupConfig");
+            int a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.BackupConfig");
             if (a == 0)
             {
                 ObjDAL.SetColumnData("IsAutoBackup", SqlDbType.Bit, 1);
-                ObjDAL.InsertData(DBName + ".dbo.BackupConfig", false);
+                ObjDAL.InsertData(clsUtility.DBName + ".dbo.BackupConfig", false);
                 return;
             }
         }
@@ -140,7 +140,7 @@ namespace IMS
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            DBName = ObjDAL.GetCurrentDBName(true);
+            //DBName = ObjDAL.GetCurrentDBName(true);
         }
 
         private int InsertLoginHistory()
@@ -152,7 +152,7 @@ namespace IMS
             ObjDAL.SetColumnData("UserIPAddress", SqlDbType.VarChar, UserIPAddress);
             ObjDAL.SetColumnData("UserMacAddress", SqlDbType.VarChar, UserMacAddress);
 
-            return (ObjDAL.InsertData(DBName + ".dbo.Login_History", true));            
+            return (ObjDAL.InsertData(clsUtility.DBName + ".dbo.Login_History", true));            
         }
 
         private void GetUserIPMacAddress()

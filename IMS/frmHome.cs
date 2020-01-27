@@ -19,7 +19,7 @@ namespace IMS
         }
 
         bool IsLogOut = false;
-        String DBName = String.Empty;
+        //String DBName = String.Empty;
         public int Login_ID_History = 0;
 
         clsUtility ObjUtil = new clsUtility();
@@ -52,11 +52,11 @@ namespace IMS
         {
             try
             {
-                DBName = ObjDAL.GetCurrentDBName(true);
+                //DBName = ObjDAL.GetCurrentDBName(true);
                 if (clsUtility.LoginID > 0)
                 {
 
-                    object ob = ObjDAL.ExecuteScalar("Select UserName from " + DBName + ".[dbo].[UserManagement] where ID=" + clsUtility.LoginID);
+                    object ob = ObjDAL.ExecuteScalar("Select UserName from " + clsUtility.DBName + ".[dbo].[UserManagement] where ID=" + clsUtility.LoginID);
                     lblLoginName.Text = "Login By : " + ob.ToString();
                 }
                 else
@@ -76,7 +76,7 @@ namespace IMS
                 if (b)
                 {
                     ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
-                    ObjDAL.UpdateData(DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
+                    ObjDAL.UpdateData(clsUtility.DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
                     IsLogOut = true;
                     Application.Exit();
                 }
@@ -90,7 +90,7 @@ namespace IMS
             if (clsUtility.ShowQuestionMessage("Are you sure to Logout?", clsUtility.strProjectTitle))
             {
                 ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
-                ObjDAL.UpdateData(DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
+                ObjDAL.UpdateData(clsUtility.DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
                 frmLogin Obj = new frmLogin();
                 Obj.BringToFront();
                 Obj.Show();

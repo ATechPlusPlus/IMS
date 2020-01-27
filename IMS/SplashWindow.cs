@@ -22,23 +22,20 @@ namespace IMS
         clsUtility ObjUtil = new clsUtility();
 
         String path1 = String.Empty;
-        String DBName = String.Empty;
+        //String DBName = String.Empty;
 
         bool IsPath = false;
         byte i = 0; //for closing Registrationprocess if system datetime is changes
 
         private void SplashWindow_Load(object sender, EventArgs e)
         {
-            
             lblversion.Text = lblversion.Text + " " + Application.ProductVersion;
             clsUtility.strProjectTitle = "Inventory Management System";
 
-            path1 = System.IO.Directory.GetCurrentDirectory();
-
-            if (System.IO.Directory.Exists(path1 + "\\AppConfig") && System.IO.File.Exists(path1 + "\\AppConfig\\ServerConfig.sc"))
+            if (System.IO.Directory.Exists("AppConfig") && System.IO.File.Exists("AppConfig\\ServerConfig.sc"))
             {
                 ObjDAL = new clsConnection_DAL(true);
-                DBName = ObjDAL.GetCurrentDBName(true);
+                clsUtility.DBName = ObjDAL.GetCurrentDBName(true);
                 AddStatusDate();// for adding current datetime if current datetime is greater than previous statusdate's datetime
                 IsPath = true;
             }
@@ -52,7 +49,7 @@ namespace IMS
 
         private void AddStatusDate()
         {
-            DataTable dt = ObjDAL.GetData(DBName+".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "ID");
+            DataTable dt = ObjDAL.GetData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "ID");
             if (dt != null && dt.Rows.Count > 0)
             {
                 DateTime status = Convert.ToDateTime(ObjUtil.Decrypt(dt.Rows[0]["StatusDate"].ToString(), true));
@@ -64,7 +61,7 @@ namespace IMS
                     if (status <= Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd h:mm:ss tt")))
                     {
                         ObjDAL.UpdateColumnData("StatusDate", SqlDbType.VarChar, ObjUtil.Encrypt(DateTime.Now.ToString(), true));
-                        ObjDAL.UpdateData(DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'");
+                        ObjDAL.UpdateData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'");
                     }
                 }
                 if (dt.Rows[0]["SoftKey"] == DBNull.Value)
@@ -84,7 +81,7 @@ namespace IMS
 
         private bool CheckReg()
         {
-            DataTable dt = ObjDAL.GetData(DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "ID");
+            DataTable dt = ObjDAL.GetData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "ID");
             if (dt != null && dt.Rows.Count > 0)
             {
                 if (dt.Rows[0]["IsKeyEnter"] != DBNull.Value && Convert.ToBoolean(dt.Rows[0]["IsKeyEnter"]) == false)
@@ -135,7 +132,7 @@ namespace IMS
                 ObjDAL.SetColumnData("ExpiryDate", SqlDbType.VarChar, ObjUtil.Encrypt(DateTime.Now.AddDays(7).ToString("yyyy/MM/dd"), true));
                 ObjDAL.SetColumnData("IsKeyEnter", SqlDbType.Bit, 0);
 
-                if (ObjDAL.InsertData(DBName + ".dbo.RegistrationDetails", true) > 0)
+                if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.RegistrationDetails", true) > 0)
                 {
                     return false;
                 }
