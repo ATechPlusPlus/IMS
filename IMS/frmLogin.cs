@@ -160,7 +160,7 @@ namespace IMS
         private void GetUserIPMacAddress()
         {
             IPHostEntry host = Dns.GetHostEntry(System.Environment.MachineName);
-            IPAddress ipaddr = host.AddressList[0];
+            IPAddress ipaddr = host.AddressList[1];
             UserIPAddress = ipaddr.ToString();
 
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
