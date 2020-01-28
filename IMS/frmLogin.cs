@@ -149,6 +149,8 @@ namespace IMS
 
             ObjDAL.SetColumnData("Login_ID", SqlDbType.Int, clsUtility.LoginID);
             ObjDAL.SetColumnData("UserName", SqlDbType.NVarChar, txtUserName.Text.Trim());
+            ObjDAL.SetColumnData("PcName", SqlDbType.NVarChar, System.Environment.MachineName);
+            ObjDAL.SetColumnData("MachineUserName", SqlDbType.NVarChar, System.Environment.UserName);
             ObjDAL.SetColumnData("UserIPAddress", SqlDbType.VarChar, UserIPAddress);
             ObjDAL.SetColumnData("UserMacAddress", SqlDbType.VarChar, UserMacAddress);
 
