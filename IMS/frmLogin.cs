@@ -157,7 +157,7 @@ namespace IMS
 
         private void GetUserIPMacAddress()
         {
-            IPHostEntry host = Dns.GetHostByName(System.Environment.MachineName);
+            IPHostEntry host = Dns.GetHostEntry(System.Environment.MachineName);
             IPAddress ipaddr = host.AddressList[0];
             UserIPAddress = ipaddr.ToString();
 
