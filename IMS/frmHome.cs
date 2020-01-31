@@ -81,7 +81,10 @@ namespace IMS
                     Application.Exit();
                 }
                 else
+                {
                     e.Cancel = true;
+                }
+                    
             }
         }
 
