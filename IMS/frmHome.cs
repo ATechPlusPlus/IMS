@@ -90,6 +90,11 @@ namespace IMS
 
         private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            
+        }
+
+        private void picLogOut_Click(object sender, EventArgs e)
+        {
             if (clsUtility.ShowQuestionMessage("Are you sure to Logout?", clsUtility.strProjectTitle))
             {
                 ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
