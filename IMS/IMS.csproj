@@ -97,19 +97,82 @@
     <Compile Include="frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Category_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Category_Master.Designer.cs">
+      <DependentUpon>Category_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\Employee_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Employee_Details.Designer.cs">
+      <DependentUpon>Employee_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\Store_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Store_Master.Designer.cs">
+      <DependentUpon>Store_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\Supplier_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Supplier_Details.Designer.cs">
+      <DependentUpon>Supplier_Details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase\Purchase_Bill_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\Purchase_Bill_Details.Designer.cs">
+      <DependentUpon>Purchase_Bill_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\Purchase_invoice .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\Purchase_invoice .Designer.cs">
+      <DependentUpon>Purchase_invoice .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales_Bill_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales_Bill_Details.Designer.cs">
+      <DependentUpon>Sales_Bill_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales_Invoice .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales_Invoice .Designer.cs">
+      <DependentUpon>Sales_Invoice .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\CurrencyValueSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\CurrencyValueSettings.Designer.cs">
+      <DependentUpon>CurrencyValueSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SplashWindow.designer.cs">
       <DependentUpon>SplashWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="StockManagement\Material_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\Material_Details.Designer.cs">
+      <DependentUpon>Material_Details.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Store_Master.resx">
+      <DependentUpon>Store_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
