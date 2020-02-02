@@ -85,6 +85,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barcode\frmBarCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Barcode\frmBarCode.Designer.cs">
+      <DependentUpon>frmBarCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,12 @@
     </Compile>
     <Compile Include="Settings\CurrencyValueSettings.Designer.cs">
       <DependentUpon>CurrencyValueSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Employee_Commission_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\Employee_Commission_Setting.Designer.cs">
+      <DependentUpon>Employee_Commission_Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="SplashWindow.cs">
       <SubType>Form</SubType>
