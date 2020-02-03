@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CoreApp;
 
 namespace IMS.Purchase
 {
-    public partial class Purchase_invoice : Form
+    public partial class Purchase_Invoice : Form
     {
-        public Purchase_invoice()
+        public Purchase_Invoice()
         {
             InitializeComponent();
         }

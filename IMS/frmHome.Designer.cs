@@ -32,13 +32,23 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.userCreationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mobilePartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.catMaster = new System.Windows.Forms.ToolStripMenuItem();
+            this.CategoryMaster_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.StoreDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.SupplierDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmployeeDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.PurchaseInvoice_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.PurchaseBillDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.hardwarePartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Purchaseitem = new System.Windows.Forms.ToolStripMenuItem();
-            this.purchaseCounterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SalesInvoice_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.SalesBillDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MaterialDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemSoldReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SalesReport_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.otherArtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.CurrencyValueSetting_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,16 +58,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.storeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supplierDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.currencyValueSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -100,49 +100,115 @@
             // mobilePartsToolStripMenuItem
             // 
             this.mobilePartsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.catMaster,
-            this.storeManagerToolStripMenuItem,
-            this.supplierDetailsToolStripMenuItem,
-            this.employeeDetailsToolStripMenuItem});
+            this.CategoryMaster_ToolStrip,
+            this.StoreDetails_ToolStrip,
+            this.SupplierDetails_ToolStrip,
+            this.EmployeeDetails_ToolStrip});
             this.mobilePartsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mobilePartsToolStripMenuItem.Image")));
             this.mobilePartsToolStripMenuItem.Name = "mobilePartsToolStripMenuItem";
             this.mobilePartsToolStripMenuItem.Size = new System.Drawing.Size(86, 36);
             this.mobilePartsToolStripMenuItem.Text = "Masters";
             this.mobilePartsToolStripMenuItem.ToolTipText = "Mobile Parts";
             // 
-            // catMaster
+            // CategoryMaster_ToolStrip
             // 
-            this.catMaster.Name = "catMaster";
-            this.catMaster.Size = new System.Drawing.Size(192, 24);
-            this.catMaster.Text = "Category Master";
+            this.CategoryMaster_ToolStrip.Name = "CategoryMaster_ToolStrip";
+            this.CategoryMaster_ToolStrip.Size = new System.Drawing.Size(192, 24);
+            this.CategoryMaster_ToolStrip.Text = "Category Master";
+            this.CategoryMaster_ToolStrip.Click += new System.EventHandler(this.CategoryMaster_ToolStrip_Click);
+            // 
+            // StoreDetails_ToolStrip
+            // 
+            this.StoreDetails_ToolStrip.Name = "StoreDetails_ToolStrip";
+            this.StoreDetails_ToolStrip.Size = new System.Drawing.Size(192, 24);
+            this.StoreDetails_ToolStrip.Text = "Store/Shop Details";
+            this.StoreDetails_ToolStrip.Click += new System.EventHandler(this.StoreDetails_ToolStrip_Click);
+            // 
+            // SupplierDetails_ToolStrip
+            // 
+            this.SupplierDetails_ToolStrip.Name = "SupplierDetails_ToolStrip";
+            this.SupplierDetails_ToolStrip.Size = new System.Drawing.Size(192, 24);
+            this.SupplierDetails_ToolStrip.Text = "Supplier Details";
+            this.SupplierDetails_ToolStrip.Click += new System.EventHandler(this.SupplierDetails_ToolStrip_Click);
+            // 
+            // EmployeeDetails_ToolStrip
+            // 
+            this.EmployeeDetails_ToolStrip.Name = "EmployeeDetails_ToolStrip";
+            this.EmployeeDetails_ToolStrip.Size = new System.Drawing.Size(192, 24);
+            this.EmployeeDetails_ToolStrip.Text = "Employee Details";
+            this.EmployeeDetails_ToolStrip.Click += new System.EventHandler(this.EmployeeDetails_ToolStrip_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PurchaseInvoice_ToolStrip,
+            this.PurchaseBillDetails_ToolStrip});
+            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(92, 36);
+            this.toolStripMenuItem4.Text = "Purchase";
+            this.toolStripMenuItem4.ToolTipText = "Hardware Parts";
+            // 
+            // PurchaseInvoice_ToolStrip
+            // 
+            this.PurchaseInvoice_ToolStrip.Name = "PurchaseInvoice_ToolStrip";
+            this.PurchaseInvoice_ToolStrip.Size = new System.Drawing.Size(201, 24);
+            this.PurchaseInvoice_ToolStrip.Text = "Purchase Invoice ";
+            this.PurchaseInvoice_ToolStrip.Click += new System.EventHandler(this.PurchaseInvoice_ToolStrip_Click);
+            // 
+            // PurchaseBillDetails_ToolStrip
+            // 
+            this.PurchaseBillDetails_ToolStrip.Name = "PurchaseBillDetails_ToolStrip";
+            this.PurchaseBillDetails_ToolStrip.Size = new System.Drawing.Size(201, 24);
+            this.PurchaseBillDetails_ToolStrip.Text = "Purchase Bill Details";
+            this.PurchaseBillDetails_ToolStrip.Click += new System.EventHandler(this.PurchaseBillDetails_ToolStrip_Click);
             // 
             // hardwarePartsToolStripMenuItem
             // 
             this.hardwarePartsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Purchaseitem,
-            this.purchaseCounterToolStripMenuItem});
+            this.SalesInvoice_ToolStrip,
+            this.SalesBillDetails_ToolStrip});
             this.hardwarePartsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hardwarePartsToolStripMenuItem.Image")));
             this.hardwarePartsToolStripMenuItem.Name = "hardwarePartsToolStripMenuItem";
             this.hardwarePartsToolStripMenuItem.Size = new System.Drawing.Size(69, 36);
             this.hardwarePartsToolStripMenuItem.Text = "Sales";
             this.hardwarePartsToolStripMenuItem.ToolTipText = "Hardware Parts";
             // 
-            // Purchaseitem
+            // SalesInvoice_ToolStrip
             // 
-            this.Purchaseitem.Name = "Purchaseitem";
-            this.Purchaseitem.Size = new System.Drawing.Size(180, 24);
-            this.Purchaseitem.Text = "Sales Invoice ";
+            this.SalesInvoice_ToolStrip.Name = "SalesInvoice_ToolStrip";
+            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesInvoice_ToolStrip.Text = "Sales Invoice ";
+            this.SalesInvoice_ToolStrip.Click += new System.EventHandler(this.SalesInvoice_ToolStrip_Click);
             // 
-            // purchaseCounterToolStripMenuItem
+            // SalesBillDetails_ToolStrip
             // 
-            this.purchaseCounterToolStripMenuItem.Name = "purchaseCounterToolStripMenuItem";
-            this.purchaseCounterToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.purchaseCounterToolStripMenuItem.Text = "Sales Bill Details";
+            this.SalesBillDetails_ToolStrip.Name = "SalesBillDetails_ToolStrip";
+            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesBillDetails_ToolStrip.Text = "Sales Bill Details";
+            this.SalesBillDetails_ToolStrip.Click += new System.EventHandler(this.SalesBillDetails_ToolStrip_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MaterialDetails_ToolStrip});
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(131, 36);
+            this.toolStripMenuItem1.Text = "Stock Manager";
+            this.toolStripMenuItem1.ToolTipText = "Print Invoice";
+            // 
+            // MaterialDetails_ToolStrip
+            // 
+            this.MaterialDetails_ToolStrip.Name = "MaterialDetails_ToolStrip";
+            this.MaterialDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.MaterialDetails_ToolStrip.Text = " Material Details";
+            this.MaterialDetails_ToolStrip.Click += new System.EventHandler(this.MaterialDetails_ToolStrip_Click);
             // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemSoldReportToolStripMenuItem});
+            this.SalesReport_ToolStrip});
             this.reportsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportsToolStripMenuItem.Image")));
             this.reportsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
@@ -150,12 +216,12 @@
             this.reportsToolStripMenuItem.Text = "Reports";
             this.reportsToolStripMenuItem.ToolTipText = "Reports";
             // 
-            // itemSoldReportToolStripMenuItem
+            // SalesReport_ToolStrip
             // 
-            this.itemSoldReportToolStripMenuItem.Name = "itemSoldReportToolStripMenuItem";
-            this.itemSoldReportToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.itemSoldReportToolStripMenuItem.Text = "Sales Report";
-            this.itemSoldReportToolStripMenuItem.ToolTipText = "Monthly Sales Report";
+            this.SalesReport_ToolStrip.Name = "SalesReport_ToolStrip";
+            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesReport_ToolStrip.Text = "Sales Report";
+            this.SalesReport_ToolStrip.ToolTipText = "Monthly Sales Report";
             // 
             // otherArtsToolStripMenuItem
             // 
@@ -166,6 +232,23 @@
             this.otherArtsToolStripMenuItem.Text = " Backup/Restore";
             this.otherArtsToolStripMenuItem.ToolTipText = "Other Parts";
             this.otherArtsToolStripMenuItem.Click += new System.EventHandler(this.otherArtsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CurrencyValueSetting_ToolStrip});
+            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(68, 36);
+            this.toolStripMenuItem2.Text = "Settings";
+            this.toolStripMenuItem2.ToolTipText = "Settings";
+            // 
+            // CurrencyValueSetting_ToolStrip
+            // 
+            this.CurrencyValueSetting_ToolStrip.Name = "CurrencyValueSetting_ToolStrip";
+            this.CurrencyValueSetting_ToolStrip.Size = new System.Drawing.Size(216, 24);
+            this.CurrencyValueSetting_ToolStrip.Text = "Currency Value Setting";
+            this.CurrencyValueSetting_ToolStrip.Click += new System.EventHandler(this.CurrencyValueSetting_ToolStrip_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -261,79 +344,6 @@
             this.label1.Text = "Logout";
             this.label1.Click += new System.EventHandler(this.picLogOut_Click);
             // 
-            // storeManagerToolStripMenuItem
-            // 
-            this.storeManagerToolStripMenuItem.Name = "storeManagerToolStripMenuItem";
-            this.storeManagerToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
-            this.storeManagerToolStripMenuItem.Text = "Store/Shop Details";
-            // 
-            // supplierDetailsToolStripMenuItem
-            // 
-            this.supplierDetailsToolStripMenuItem.Name = "supplierDetailsToolStripMenuItem";
-            this.supplierDetailsToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
-            this.supplierDetailsToolStripMenuItem.Text = "Supplier Details";
-            // 
-            // employeeDetailsToolStripMenuItem
-            // 
-            this.employeeDetailsToolStripMenuItem.Name = "employeeDetailsToolStripMenuItem";
-            this.employeeDetailsToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
-            this.employeeDetailsToolStripMenuItem.Text = "Employee Details";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3});
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(131, 36);
-            this.toolStripMenuItem1.Text = "Stock Manager";
-            this.toolStripMenuItem1.ToolTipText = "Print Invoice";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 24);
-            this.toolStripMenuItem3.Text = " Material Details";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
-            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(92, 36);
-            this.toolStripMenuItem4.Text = "Purchase";
-            this.toolStripMenuItem4.ToolTipText = "Hardware Parts";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(201, 24);
-            this.toolStripMenuItem5.Text = "Purchase Invoice ";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(201, 24);
-            this.toolStripMenuItem6.Text = "Purchase Bill Details";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currencyValueSettingToolStripMenuItem});
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(68, 36);
-            this.toolStripMenuItem2.Text = "Settings";
-            this.toolStripMenuItem2.ToolTipText = "Settings";
-            // 
-            // currencyValueSettingToolStripMenuItem
-            // 
-            this.currencyValueSettingToolStripMenuItem.Name = "currencyValueSettingToolStripMenuItem";
-            this.currencyValueSettingToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
-            this.currencyValueSettingToolStripMenuItem.Text = "Currency Value Setting";
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -373,12 +383,12 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem userCreationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mobilePartsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem catMaster;
+        private System.Windows.Forms.ToolStripMenuItem CategoryMaster_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem hardwarePartsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Purchaseitem;
-        private System.Windows.Forms.ToolStripMenuItem purchaseCounterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SalesInvoice_ToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem SalesBillDetails_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemSoldReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SalesReport_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem otherArtsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
@@ -389,16 +399,16 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox picLogOut;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripMenuItem storeManagerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem supplierDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem employeeDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StoreDetails_ToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem SupplierDetails_ToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem EmployeeDetails_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem MaterialDetails_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem PurchaseInvoice_ToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem PurchaseBillDetails_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem currencyValueSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CurrencyValueSetting_ToolStrip;
     }
 }
 

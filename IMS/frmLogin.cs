@@ -81,24 +81,14 @@ namespace IMS
             }
             return true;
         }
-        private void InsertBackupConfig()
-        {
-            int a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.BackupConfig");
-            if (a == 0)
-            {
-                ObjDAL.SetColumnData("IsAutoBackup", SqlDbType.Bit, 1);
-                ObjDAL.InsertData(clsUtility.DBName + ".dbo.BackupConfig", false);
-                return;
-            }
-        }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             Isexit = false;
             if (ValidateClientSide())
             {
                 if (ValidateLogin(txtUserName.Text, txtPassword.Text))
                 {
-                    //InsertBackupConfig();
                     int a = InsertLoginHistory();
                     frmHome Obj = new frmHome();
                     Obj.Login_ID_History = a;
@@ -116,12 +106,11 @@ namespace IMS
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Isexit = false;
 
             UserManagement.frmForgetPassword Obj = new UserManagement.frmForgetPassword();
-
             Obj.ShowDialog();
             txtUserName.Focus();
         }
@@ -136,11 +125,6 @@ namespace IMS
                 }
                 catch { }
             }
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            //DBName = ObjDAL.GetCurrentDBName(true);
         }
 
         private int InsertLoginHistory()

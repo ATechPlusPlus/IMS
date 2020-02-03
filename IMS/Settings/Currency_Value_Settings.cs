@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CoreApp;
 
 namespace IMS.Settings
 {
-    public partial class CurrencyValueSettings : Form
+    public partial class Currency_Value_Settings : Form
     {
-        public CurrencyValueSettings()
+        public Currency_Value_Settings()
         {
             InitializeComponent();
         }

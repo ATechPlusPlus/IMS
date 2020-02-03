@@ -24,9 +24,9 @@ namespace IMS
 
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
-    
+
         static UserManagement.frmUserManagement ObjUserManag = new UserManagement.frmUserManagement();
-        
+
         private void userCreationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!ObjUserManag.IsHandleCreated)
@@ -84,13 +84,13 @@ namespace IMS
                 {
                     e.Cancel = true;
                 }
-                    
+
             }
         }
 
         private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+
         }
 
         private void picLogOut_Click(object sender, EventArgs e)
@@ -105,6 +105,66 @@ namespace IMS
                 IsLogOut = true;
                 this.Close();
             }
+        }
+
+        private void CategoryMaster_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Masters.Category_Master Obj = new Masters.Category_Master();
+            Obj.Show();
+        }
+
+        private void StoreDetails_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Masters.Store_Master Obj = new Masters.Store_Master();
+            Obj.Show();
+        }
+
+        private void SupplierDetails_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Masters.Supplier_Details Obj = new Masters.Supplier_Details();
+            Obj.Show();
+        }
+
+        private void EmployeeDetails_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Masters.Employee_Details Obj = new Masters.Employee_Details();
+            Obj.Show();
+        }
+
+        private void PurchaseInvoice_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Purchase.Purchase_Invoice Obj = new Purchase.Purchase_Invoice();
+            Obj.Show();
+        }
+
+        private void PurchaseBillDetails_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Purchase.Purchase_Bill_Details Obj = new Purchase.Purchase_Bill_Details();
+            Obj.Show();
+        }
+
+        private void SalesInvoice_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Sales.Sales_Invoice Obj = new Sales.Sales_Invoice();
+            Obj.Show();
+        }
+
+        private void SalesBillDetails_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Sales.Sales_Bill_Details Obj = new Sales.Sales_Bill_Details();
+            Obj.Show();
+        }
+
+        private void MaterialDetails_ToolStrip_Click(object sender, EventArgs e)
+        {
+            StockManagement.Material_Details Obj = new StockManagement.Material_Details();
+            Obj.Show();
+        }
+
+        private void CurrencyValueSetting_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Settings.Currency_Value_Settings Obj = new Settings.Currency_Value_Settings();
+            Obj.Show();
         }
     }
 }
