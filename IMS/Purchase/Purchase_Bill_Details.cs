@@ -16,5 +16,8 @@ namespace IMS.Purchase
         {
             InitializeComponent();
         }
+
+        clsUtility ObjUtil = new clsUtility();
+        clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
     }
 }

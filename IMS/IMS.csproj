@@ -109,6 +109,12 @@
     <Compile Include="Masters\Category_Master.Designer.cs">
       <DependentUpon>Category_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Country_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Country_Master.Designer.cs">
+      <DependentUpon>Country_Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Employee_Details.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Category_Master.resx">
       <DependentUpon>Category_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Country_Master.resx">
+      <DependentUpon>Country_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Employee_Details.resx">
       <DependentUpon>Employee_Details.cs</DependentUpon>

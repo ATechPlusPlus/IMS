@@ -10,9 +10,9 @@ using CoreApp;
 
 namespace IMS.Masters
 {
-    public partial class Category_Master : Form
+    public partial class Country_Master : Form
     {
-        public Category_Master()
+        public Country_Master()
         {
             InitializeComponent();
         }
@@ -26,26 +26,26 @@ namespace IMS.Masters
         Image B_Enter = IMS.Properties.Resources.B_on;
         private void ClearAll()
         {
-            txtCategoryName.Clear();
-            txtCategoryDescription.Clear();
-            txtSearchByCategory.Clear();
+            txtCountryCode.Clear();
+            txtCountryName.Clear();
+            txtSearchByCountry.Clear();
             cmbActiveStatus.SelectedIndex = -1;
 
-            txtCategoryName.Focus();
+            txtCountryCode.Focus();
         }
 
         private bool Validateform()
         {
-            if (ObjUtil.IsControlTextEmpty(txtCategoryName))
+            if (ObjUtil.IsControlTextEmpty(txtCountryCode))
             {
-                clsUtility.ShowInfoMessage("Enter Category Name           ", clsUtility.strProjectTitle);
-                txtCategoryName.Focus();
+                clsUtility.ShowInfoMessage("Enter Country Code           ", clsUtility.strProjectTitle);
+                txtCountryCode.Focus();
                 return false;
             }
-            else if (ObjUtil.IsControlTextEmpty(txtCategoryDescription))
+            else if (ObjUtil.IsControlTextEmpty(txtCountryName))
             {
-                clsUtility.ShowInfoMessage("Enter Category Description            ", clsUtility.strProjectTitle);
-                txtCategoryDescription.Focus();
+                clsUtility.ShowInfoMessage("Enter Country Name            ", clsUtility.strProjectTitle);
+                txtCountryName.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
@@ -62,11 +62,15 @@ namespace IMS.Masters
             int a = 0;
             if (i == 0)
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text.Trim() + "'");
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CountryMaster", "CountryName='" + txtCountryName.Text.Trim() + "'");
+                if (a == 0)
+                {
+                    a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CountryMaster", "CountryCode='" + txtCountryCode.Text + "'");
+                }
             }
             else
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text + "' AND ID !=" + i);
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CountryMaster", "CountryName='" + txtCountryName.Text + "' AND ID !=" + i + "OR CountryCode = '" + txtCountryCode.Text + "'");
             }
             if (a > 0)
             {
@@ -82,7 +86,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "ID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "ID");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "ID,CountryCode,CountryName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "ID");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -99,8 +103,8 @@ namespace IMS.Masters
         {
             ClearAll();
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
-            grpCategory.Enabled = true;
-            txtCategoryName.Focus();
+            grpCountry.Enabled = true;
+            txtCountryCode.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -109,28 +113,28 @@ namespace IMS.Masters
             {
                 if (DuplicateUser(0))
                 {
-                    ObjDAL.SetColumnData("CategoryName", SqlDbType.NVarChar, txtCategoryName.Text.Trim());
-                    ObjDAL.SetColumnData("CategoryDescription", SqlDbType.NVarChar, txtCategoryDescription.Text);
+                    ObjDAL.SetColumnData("CountryCode", SqlDbType.NVarChar, txtCountryCode.Text.Trim());
+                    ObjDAL.SetColumnData("CountryName", SqlDbType.NVarChar, txtCountryName.Text);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                    if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.CategoryMaster", true) > 0)
+                    if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.CountryMaster", true) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        clsUtility.ShowInfoMessage("Category Name : '" + txtCategoryName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Country Name : '" + txtCountryName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Category Name : '" + txtCategoryName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Country Name : '" + txtCountryName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is already exist..", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("'" + txtCountryName.Text + "' Country Name OR Country Code is already exist..", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
-                    txtCategoryName.Focus();
+                    txtCountryName.Focus();
                 }
             }
         }
@@ -138,9 +142,9 @@ namespace IMS.Masters
         private void btnEdit_Click(object sender, EventArgs e)
         {
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
-            grpCategory.Enabled = true;
-            txtCategoryName.Focus();
-            txtCategoryName.SelectionStart = txtCategoryName.MaxLength;
+            grpCountry.Enabled = true;
+            txtCountryCode.Focus();
+            txtCountryCode.SelectionStart = txtCountryCode.MaxLength;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -149,30 +153,30 @@ namespace IMS.Masters
             {
                 if (DuplicateUser(ID))
                 {
-                    ObjDAL.UpdateColumnData("CategoryName", SqlDbType.NVarChar, txtCategoryName.Text.Trim());
-                    ObjDAL.UpdateColumnData("CategoryDescription", SqlDbType.NVarChar, txtCategoryDescription.Text);
+                    ObjDAL.UpdateColumnData("CountryCode", SqlDbType.NVarChar, txtCountryCode.Text.Trim());
+                    ObjDAL.UpdateColumnData("CountryName", SqlDbType.NVarChar, txtCountryName.Text);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CategoryMaster", "ID = " + ID + "") > 0)
+                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CountryMaster", "ID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
-                        clsUtility.ShowInfoMessage("'" + txtCategoryName.Text + "' Category is Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("'" + txtCountryName.Text + "' Country Name is Updated", clsUtility.strProjectTitle);
                         LoadData();
                         ClearAll();
                         ObjDAL.ResetData();
                     }
                     else
                     {
-                        clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is not Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowErrorMessage("'" + txtCountryName.Text + "' Country Name is not Updated", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is already exist..", clsUtility.strProjectTitle);
-                    txtCategoryName.Focus();
+                    clsUtility.ShowErrorMessage("'" + txtCountryName.Text + "' Country Name is already exist..", clsUtility.strProjectTitle);
+                    txtCountryName.Focus();
                     ObjDAL.ResetData();
                 }
             }
@@ -180,19 +184,19 @@ namespace IMS.Masters
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtCategoryName.Text + "' Category ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtCountryName.Text + "' Country ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text.Trim() + "'") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.CountryMaster", "CountryName='" + txtCountryName.Text.Trim() + "'") > 0)
                 {
-                    clsUtility.ShowInfoMessage("'" + txtCategoryName.Text + "' Category is deleted  ", clsUtility.strProjectTitle);
+                    clsUtility.ShowInfoMessage("'" + txtCountryName.Text + "' Country Name is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
                     LoadData();
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is not deleted  ", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("'" + txtCountryName.Text + "' Country Name is not deleted  ", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                 }
             }
@@ -206,16 +210,16 @@ namespace IMS.Masters
                 ClearAll();
                 LoadData();
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
-                grpCategory.Enabled = false;
+                grpCountry.Enabled = false;
             }
         }
 
-        private void txtCategoryName_Enter(object sender, EventArgs e)
+        private void txtCountryCode_Enter(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender);
         }
 
-        private void txtCategoryName_Leave(object sender, EventArgs e)
+        private void txtCountryCode_Leave(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender, Color.White);
         }
@@ -229,28 +233,28 @@ namespace IMS.Masters
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
 
-                    txtCategoryName.Text = dataGridView1.SelectedRows[0].Cells["CategoryName"].Value.ToString();
-                    txtCategoryDescription.Text = dataGridView1.SelectedRows[0].Cells["CategoryDescription"].Value.ToString();
+                    txtCountryCode.Text = dataGridView1.SelectedRows[0].Cells["CountryCode"].Value.ToString();
+                    txtCountryName.Text = dataGridView1.SelectedRows[0].Cells["CountryName"].Value.ToString();
                     cmbActiveStatus.SelectedItem = dataGridView1.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
 
-                    grpCategory.Enabled = false;
-                    txtCategoryName.Focus();
+                    grpCountry.Enabled = false;
+                    txtCountryCode.Focus();
                 }
                 catch { }
             }
         }
 
-        private void txtCategoryName_KeyDown(object sender, KeyEventArgs e)
+        private void txtCountryCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
             {
-                txtCategoryDescription.Focus();
-                txtCategoryDescription.SelectionStart = txtCategoryDescription.MaxLength;
+                txtCountryName.Focus();
+                txtCountryName.SelectionStart = txtCountryName.MaxLength;
                 return;
             }
         }
 
-        private void txtCategoryDescription_KeyDown(object sender, KeyEventArgs e)
+        private void txtCountryName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
             {
@@ -259,13 +263,13 @@ namespace IMS.Masters
             }
             else if (e.KeyCode == Keys.Up)
             {
-                txtCategoryName.Focus();
-                txtCategoryName.SelectionStart = txtCategoryName.MaxLength;
+                txtCountryCode.Focus();
+                txtCountryCode.SelectionStart = txtCountryCode.MaxLength;
                 return;
             }
         }
 
-        private void Category_Master_Load(object sender, EventArgs e)
+        private void Country_Master_Load(object sender, EventArgs e)
         {
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
@@ -294,39 +298,14 @@ namespace IMS.Masters
             btn.BackgroundImage = B_Leave;
         }
 
-        private void rdSearchByCategory_CheckedChanged(object sender, EventArgs e)
+        private void txtSearchByCountry_TextChanged(object sender, EventArgs e)
         {
-            if (rdSearchByCategory.Checked)
-            {
-                txtSearchByCategory.Enabled = true;
-                txtSearchByCategory.Focus();
-            }
-            else
-            {
-                txtSearchByCategory.Enabled = false;
-                txtSearchByCategory.Clear();
-                rdShowAll.Checked = true;
-            }
-        }
-
-        private void rdShowAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdShowAll.Checked)
-            {
-                txtSearchByCategory.Enabled = false;
-                txtSearchByCategory.Clear();
-                LoadData();
-            }
-        }
-
-        private void txtSearchByCategory_TextChanged(object sender, EventArgs e)
-        {
-            if (txtSearchByCategory.Text.Trim().Length == 0)
+            if (txtSearchByCountry.Text.Trim().Length == 0)
             {
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "ID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CategoryName LIKE '%" + txtSearchByCategory.Text + "%'", "ID");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "ID,CountryCode,CountryName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CountryName LIKE '%" + txtSearchByCountry.Text + "%'", "ID");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -334,6 +313,31 @@ namespace IMS.Masters
             else
             {
                 dataGridView1.DataSource = null;
+            }
+        }
+
+        private void rdShowAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdShowAll.Checked)
+            {
+                txtSearchByCountry.Enabled = false;
+                txtSearchByCountry.Clear();
+                LoadData();
+            }
+        }
+
+        private void rdSearchByCountry_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdSearchByCountry.Checked)
+            {
+                txtSearchByCountry.Enabled = true;
+                txtSearchByCountry.Focus();
+            }
+            else
+            {
+                txtSearchByCountry.Enabled = false;
+                txtSearchByCountry.Clear();
+                rdShowAll.Checked = true;
             }
         }
 

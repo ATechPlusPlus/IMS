@@ -321,7 +321,7 @@
             this.txtSearchByCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchByCategory.Location = new System.Drawing.Point(167, 18);
             this.txtSearchByCategory.Name = "txtSearchByCategory";
-            this.txtSearchByCategory.Size = new System.Drawing.Size(236, 25);
+            this.txtSearchByCategory.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByCategory.TabIndex = 5;
             this.txtSearchByCategory.TextChanged += new System.EventHandler(this.txtSearchByCategory_TextChanged);
             this.txtSearchByCategory.Enter += new System.EventHandler(this.txtCategoryName_Enter);

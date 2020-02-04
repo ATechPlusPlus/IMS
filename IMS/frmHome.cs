@@ -166,5 +166,11 @@ namespace IMS
             Settings.Currency_Value_Settings Obj = new Settings.Currency_Value_Settings();
             Obj.Show();
         }
+
+        private void countryMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Country_Master Obj = new Masters.Country_Master();
+            Obj.Show();
+        }
     }
 }

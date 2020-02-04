@@ -58,6 +58,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.countryMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -103,7 +104,8 @@
             this.CategoryMaster_ToolStrip,
             this.StoreDetails_ToolStrip,
             this.SupplierDetails_ToolStrip,
-            this.EmployeeDetails_ToolStrip});
+            this.EmployeeDetails_ToolStrip,
+            this.countryMasterToolStripMenuItem});
             this.mobilePartsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mobilePartsToolStripMenuItem.Image")));
             this.mobilePartsToolStripMenuItem.Name = "mobilePartsToolStripMenuItem";
             this.mobilePartsToolStripMenuItem.Size = new System.Drawing.Size(86, 36);
@@ -177,14 +179,14 @@
             // SalesInvoice_ToolStrip
             // 
             this.SalesInvoice_ToolStrip.Name = "SalesInvoice_ToolStrip";
-            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(178, 24);
             this.SalesInvoice_ToolStrip.Text = "Sales Invoice ";
             this.SalesInvoice_ToolStrip.Click += new System.EventHandler(this.SalesInvoice_ToolStrip_Click);
             // 
             // SalesBillDetails_ToolStrip
             // 
             this.SalesBillDetails_ToolStrip.Name = "SalesBillDetails_ToolStrip";
-            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(178, 24);
             this.SalesBillDetails_ToolStrip.Text = "Sales Bill Details";
             this.SalesBillDetails_ToolStrip.Click += new System.EventHandler(this.SalesBillDetails_ToolStrip_Click);
             // 
@@ -201,7 +203,7 @@
             // MaterialDetails_ToolStrip
             // 
             this.MaterialDetails_ToolStrip.Name = "MaterialDetails_ToolStrip";
-            this.MaterialDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.MaterialDetails_ToolStrip.Size = new System.Drawing.Size(177, 24);
             this.MaterialDetails_ToolStrip.Text = " Material Details";
             this.MaterialDetails_ToolStrip.Click += new System.EventHandler(this.MaterialDetails_ToolStrip_Click);
             // 
@@ -219,7 +221,7 @@
             // SalesReport_ToolStrip
             // 
             this.SalesReport_ToolStrip.Name = "SalesReport_ToolStrip";
-            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(156, 24);
             this.SalesReport_ToolStrip.Text = "Sales Report";
             this.SalesReport_ToolStrip.ToolTipText = "Monthly Sales Report";
             // 
@@ -344,6 +346,13 @@
             this.label1.Text = "Logout";
             this.label1.Click += new System.EventHandler(this.picLogOut_Click);
             // 
+            // countryMasterToolStripMenuItem
+            // 
+            this.countryMasterToolStripMenuItem.Name = "countryMasterToolStripMenuItem";
+            this.countryMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
+            this.countryMasterToolStripMenuItem.Text = "Country Master";
+            this.countryMasterToolStripMenuItem.Click += new System.EventHandler(this.countryMasterToolStripMenuItem_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -409,6 +418,7 @@
         private System.Windows.Forms.ToolStripMenuItem PurchaseBillDetails_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem CurrencyValueSetting_ToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem countryMasterToolStripMenuItem;
     }
 }
 
