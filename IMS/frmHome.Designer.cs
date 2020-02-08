@@ -36,6 +36,7 @@
             this.StoreDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.SupplierDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.EmployeeDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.countryMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseInvoice_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseBillDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.countryMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeCommissionSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -139,6 +140,13 @@
             this.EmployeeDetails_ToolStrip.Size = new System.Drawing.Size(192, 24);
             this.EmployeeDetails_ToolStrip.Text = "Employee Details";
             this.EmployeeDetails_ToolStrip.Click += new System.EventHandler(this.EmployeeDetails_ToolStrip_Click);
+            // 
+            // countryMasterToolStripMenuItem
+            // 
+            this.countryMasterToolStripMenuItem.Name = "countryMasterToolStripMenuItem";
+            this.countryMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
+            this.countryMasterToolStripMenuItem.Text = "Country Master";
+            this.countryMasterToolStripMenuItem.Click += new System.EventHandler(this.countryMasterToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -238,7 +246,8 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CurrencyValueSetting_ToolStrip});
+            this.CurrencyValueSetting_ToolStrip,
+            this.employeeCommissionSettingToolStripMenuItem});
             this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(68, 36);
@@ -248,7 +257,7 @@
             // CurrencyValueSetting_ToolStrip
             // 
             this.CurrencyValueSetting_ToolStrip.Name = "CurrencyValueSetting_ToolStrip";
-            this.CurrencyValueSetting_ToolStrip.Size = new System.Drawing.Size(216, 24);
+            this.CurrencyValueSetting_ToolStrip.Size = new System.Drawing.Size(261, 24);
             this.CurrencyValueSetting_ToolStrip.Text = "Currency Value Setting";
             this.CurrencyValueSetting_ToolStrip.Click += new System.EventHandler(this.CurrencyValueSetting_ToolStrip_Click);
             // 
@@ -346,12 +355,11 @@
             this.label1.Text = "Logout";
             this.label1.Click += new System.EventHandler(this.picLogOut_Click);
             // 
-            // countryMasterToolStripMenuItem
+            // employeeCommissionSettingToolStripMenuItem
             // 
-            this.countryMasterToolStripMenuItem.Name = "countryMasterToolStripMenuItem";
-            this.countryMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
-            this.countryMasterToolStripMenuItem.Text = "Country Master";
-            this.countryMasterToolStripMenuItem.Click += new System.EventHandler(this.countryMasterToolStripMenuItem_Click);
+            this.employeeCommissionSettingToolStripMenuItem.Name = "employeeCommissionSettingToolStripMenuItem";
+            this.employeeCommissionSettingToolStripMenuItem.Size = new System.Drawing.Size(261, 24);
+            this.employeeCommissionSettingToolStripMenuItem.Text = "Employee Commission Setting";
             // 
             // frmHome
             // 
@@ -419,6 +427,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem CurrencyValueSetting_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem countryMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeCommissionSettingToolStripMenuItem;
     }
 }
 
