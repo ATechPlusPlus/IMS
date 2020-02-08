@@ -398,4 +398,10 @@
         pwGgoAAAAAAAAAAAAAAAAAAAAAAAAAAP/9k=
 </value>
   </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>1. This grid view will contain delete button, after adding an item user can click the delete button to delete the item.
+2. If bar code is not working or not there then user can add the product by clicking on add button.
+3. QTY of the product can be editable in the gridview iteself. Default QTY is 1.
+</value>
+  </data>
 </root>
