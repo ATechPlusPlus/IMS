@@ -66,7 +66,7 @@ namespace IMS.Masters
             }
             else
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text + "' AND ID !=" + i);
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text + "' AND CategoryID !=" + i);
             }
             if (a > 0)
             {
@@ -82,7 +82,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "ID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "ID");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "ID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CategoryID");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -154,7 +154,7 @@ namespace IMS.Masters
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CategoryMaster", "ID = " + ID + "") > 0)
+                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
@@ -226,7 +226,7 @@ namespace IMS.Masters
             {
                 try
                 {
-                    ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+                    ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryID"].Value);
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
 
                     txtCategoryName.Text = dataGridView1.SelectedRows[0].Cells["CategoryName"].Value.ToString();
@@ -326,7 +326,7 @@ namespace IMS.Masters
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "ID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CategoryName LIKE '%" + txtSearchByCategory.Text + "%'", "ID");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CategoryName LIKE '%" + txtSearchByCategory.Text + "%'", "CategoryID");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -341,7 +341,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetRowNumber(dataGridView1);
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
-            dataGridView1.Columns["ID"].Visible = false;
+            dataGridView1.Columns["CategoryID"].Visible = false;
         }
     }
 }
