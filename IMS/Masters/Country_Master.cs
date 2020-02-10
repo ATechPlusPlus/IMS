@@ -70,7 +70,7 @@ namespace IMS.Masters
             }
             else
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CountryMaster", "CountryName='" + txtCountryName.Text + "' AND CountryID !=" + i + "OR CountryCode = '" + txtCountryCode.Text + "'");
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CountryMaster", "CountryID !=" + i + " AND (CountryName ='" + txtCountryName.Text + "' OR CountryCode = '" + txtCountryCode.Text + "')");
             }
             if (a > 0)
             {
@@ -86,12 +86,11 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryCode,CountryName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "ID");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryCode,CountryName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CountryName");
 
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
-                lblTotalRecords.Text = "Total Records : " + dt.Rows.Count;
             }
             else
             {
@@ -123,6 +122,7 @@ namespace IMS.Masters
                         clsUtility.ShowInfoMessage("Country Name : '" + txtCountryName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
+                        grpCountry.Enabled = false;
                     }
                     else
                     {
@@ -156,8 +156,8 @@ namespace IMS.Masters
                     ObjDAL.UpdateColumnData("CountryCode", SqlDbType.NVarChar, txtCountryCode.Text.Trim());
                     ObjDAL.UpdateColumnData("CountryName", SqlDbType.NVarChar, txtCountryName.Text);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
-                    ObjDAL.UpdateColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-
+                    ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID);
+                    ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CountryMaster", "CountryID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
@@ -165,6 +165,7 @@ namespace IMS.Masters
                         clsUtility.ShowInfoMessage("'" + txtCountryName.Text + "' Country Name is Updated", clsUtility.strProjectTitle);
                         LoadData();
                         ClearAll();
+                        grpCountry.Enabled = false;
                         ObjDAL.ResetData();
                     }
                     else
@@ -192,6 +193,7 @@ namespace IMS.Masters
                     clsUtility.ShowInfoMessage("'" + txtCountryName.Text + "' Country Name is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
                     LoadData();
+                    grpCountry.Enabled = false;
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
                 }
                 else
@@ -305,7 +307,7 @@ namespace IMS.Masters
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryCode,CountryName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CountryName LIKE '%" + txtSearchByCountry.Text + "%'", "ID");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryCode,CountryName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CountryName LIKE '%" + txtSearchByCountry.Text + "%'", "CountryName");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -346,6 +348,7 @@ namespace IMS.Masters
             ObjUtil.SetRowNumber(dataGridView1);
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["CountryID"].Visible = false;
+            lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
     }
 }

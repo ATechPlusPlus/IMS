@@ -10,13 +10,12 @@ using CoreApp;
 
 namespace IMS.Masters
 {
-    public partial class Category_Master : Form
+    public partial class Brand_Master : Form
     {
-        public Category_Master()
+        public Brand_Master()
         {
             InitializeComponent();
         }
-
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
 
@@ -26,26 +25,32 @@ namespace IMS.Masters
         Image B_Enter = IMS.Properties.Resources.B_on;
         private void ClearAll()
         {
-            txtCategoryName.Clear();
-            txtCategoryDescription.Clear();
-            txtSearchByCategory.Clear();
+            txtBrandName.Clear();
+            cmbCountry.SelectedIndex = -1;
+            cmbSupplier.SelectedIndex = -1;
             cmbActiveStatus.SelectedIndex = -1;
 
-            txtCategoryName.Focus();
+            txtBrandName.Focus();
         }
 
         private bool Validateform()
         {
-            if (ObjUtil.IsControlTextEmpty(txtCategoryName))
+            if (ObjUtil.IsControlTextEmpty(txtBrandName))
             {
-                clsUtility.ShowInfoMessage("Enter Category Name           ", clsUtility.strProjectTitle);
-                txtCategoryName.Focus();
+                clsUtility.ShowInfoMessage("Enter Brand Name           ", clsUtility.strProjectTitle);
+                txtBrandName.Focus();
                 return false;
             }
-            else if (ObjUtil.IsControlTextEmpty(txtCategoryDescription))
+            else if (ObjUtil.IsControlTextEmpty(cmbSupplier))
             {
-                clsUtility.ShowInfoMessage("Enter Category Description            ", clsUtility.strProjectTitle);
-                txtCategoryDescription.Focus();
+                clsUtility.ShowInfoMessage("Select Supplier for " + txtBrandName.Text, clsUtility.strProjectTitle);
+                cmbSupplier.Focus();
+                return false;
+            }
+            else if (ObjUtil.IsControlTextEmpty(cmbCountry))
+            {
+                clsUtility.ShowInfoMessage("Select Country for " + txtBrandName.Text, clsUtility.strProjectTitle);
+                cmbCountry.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
@@ -62,11 +67,11 @@ namespace IMS.Masters
             int a = 0;
             if (i == 0)
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text.Trim() + "'");
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.BrandMaster", "BrandName='" + txtBrandName.Text.Trim() + "'");
             }
             else
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text + "' AND CategoryID !=" + i);
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.BrandMaster", "BrandName='" + txtBrandName.Text + "' AND BrandID !=" + i);
             }
             if (a > 0)
             {
@@ -82,7 +87,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CategoryName");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -94,12 +99,34 @@ namespace IMS.Masters
             }
         }
 
+        private void FillSupplierData()
+        {
+            DataTable dt = null;
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierID,SupplierName", "ISNULL(ActiveStatus,1)=1", "SupplierName ASC");
+            cmbSupplier.DataSource = dt;
+            cmbSupplier.DisplayMember = "SupplierName";
+            cmbSupplier.ValueMember = "SupplierID";
+
+            cmbSupplier.SelectedIndex = -1;
+        }
+
+        private void FillCountryData()
+        {
+            DataTable dt = null;
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryName", "ISNULL(ActiveStatus,1)=1", "CountryName ASC");
+            cmbCountry.DataSource = dt;
+            cmbCountry.DisplayMember = "CountryName";
+            cmbCountry.ValueMember = "CountryID";
+
+            cmbCountry.SelectedIndex = -1;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
-            grpCategory.Enabled = true;
-            txtCategoryName.Focus();
+            grpBrand.Enabled = true;
+            txtBrandName.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -108,29 +135,30 @@ namespace IMS.Masters
             {
                 if (DuplicateUser(0))
                 {
-                    ObjDAL.SetColumnData("CategoryName", SqlDbType.NVarChar, txtCategoryName.Text.Trim());
-                    ObjDAL.SetColumnData("CategoryDescription", SqlDbType.NVarChar, txtCategoryDescription.Text);
+                    ObjDAL.SetColumnData("BrandName", SqlDbType.NVarChar, txtBrandName.Text.Trim());
+                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
+                    ObjDAL.SetColumnData("CountryID", SqlDbType.Bit, cmbCountry.SelectedValue);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                    if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.CategoryMaster", true) > 0)
+                    if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.BrandMaster", true) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        clsUtility.ShowInfoMessage("Category Name : '" + txtCategoryName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Brand Name : '" + txtBrandName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
-                        grpCategory.Enabled = false;
+                        grpBrand.Enabled = false;
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Category Name : '" + txtCategoryName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Brand Name : '" + txtBrandName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is already exist..", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("'" + txtBrandName.Text + "' Brand is already exist..", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
-                    txtCategoryName.Focus();
+                    txtBrandName.Focus();
                 }
             }
         }
@@ -138,43 +166,44 @@ namespace IMS.Masters
         private void btnEdit_Click(object sender, EventArgs e)
         {
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
-            grpCategory.Enabled = true;
-            txtCategoryName.Focus();
-            txtCategoryName.SelectionStart = txtCategoryName.MaxLength;
+            grpBrand.Enabled = true;
+            txtBrandName.Focus();
+            txtBrandName.SelectionStart = txtBrandName.MaxLength;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (Validateform())
             {
-                if (DuplicateUser(ID))
+                if (DuplicateUser(0))
                 {
-                    ObjDAL.UpdateColumnData("CategoryName", SqlDbType.NVarChar, txtCategoryName.Text.Trim());
-                    ObjDAL.UpdateColumnData("CategoryDescription", SqlDbType.NVarChar, txtCategoryDescription.Text);
+                    ObjDAL.UpdateColumnData("BrandName", SqlDbType.NVarChar, txtBrandName.Text.Trim());
+                    ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
+                    ObjDAL.UpdateColumnData("CountryID", SqlDbType.Bit, cmbCountry.SelectedValue);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID = " + ID + "") > 0)
+                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.BrandMaster", "BrandID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
-                        clsUtility.ShowInfoMessage("'" + txtCategoryName.Text + "' Category is Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("'" + txtBrandName.Text + "' Brand is Updated", clsUtility.strProjectTitle);
                         LoadData();
                         ClearAll();
-                        grpCategory.Enabled = false;
+                        grpBrand.Enabled = false;
                         ObjDAL.ResetData();
                     }
                     else
                     {
-                        clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is not Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowErrorMessage("'" + txtBrandName.Text + "' Brand is not Updated", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is already exist..", clsUtility.strProjectTitle);
-                    txtCategoryName.Focus();
+                    clsUtility.ShowErrorMessage("'" + txtBrandName.Text + "' Brand is already exist..", clsUtility.strProjectTitle);
+                    txtBrandName.Focus();
                     ObjDAL.ResetData();
                 }
             }
@@ -182,20 +211,20 @@ namespace IMS.Masters
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtCategoryName.Text + "' Category ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtBrandName.Text + "' Brand ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryName='" + txtCategoryName.Text.Trim() + "'") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.BrandMaster", "BrandName='" + txtBrandName.Text.Trim() + "'") > 0)
                 {
-                    clsUtility.ShowInfoMessage("'" + txtCategoryName.Text + "' Category is deleted  ", clsUtility.strProjectTitle);
+                    clsUtility.ShowInfoMessage("'" + txtBrandName.Text + "' Brand is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
                     LoadData();
-                    grpCategory.Enabled = false;
+                    grpBrand.Enabled = false;
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("'" + txtCategoryName.Text + "' Category is not deleted  ", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("'" + txtBrandName.Text + "' Brand is not deleted  ", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                 }
             }
@@ -209,16 +238,16 @@ namespace IMS.Masters
                 ClearAll();
                 LoadData();
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
-                grpCategory.Enabled = false;
+                grpBrand.Enabled = false;
             }
         }
 
-        private void txtCategoryName_Enter(object sender, EventArgs e)
+        private void txtBrandName_Enter(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender);
         }
 
-        private void txtCategoryName_Leave(object sender, EventArgs e)
+        private void txtBrandName_Leave(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender, Color.White);
         }
@@ -229,46 +258,31 @@ namespace IMS.Masters
             {
                 try
                 {
-                    ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryID"].Value);
+                    ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["BrandID"].Value);
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
 
-                    txtCategoryName.Text = dataGridView1.SelectedRows[0].Cells["CategoryName"].Value.ToString();
-                    txtCategoryDescription.Text = dataGridView1.SelectedRows[0].Cells["CategoryDescription"].Value.ToString();
+                    txtBrandName.Text = dataGridView1.SelectedRows[0].Cells["BrandName"].Value.ToString();
+                    cmbSupplier.SelectedValue = dataGridView1.SelectedRows[0].Cells["SupplierID"].Value.ToString();
+                    cmbCountry.SelectedValue = dataGridView1.SelectedRows[0].Cells["CountryID"].Value.ToString();
                     cmbActiveStatus.SelectedItem = dataGridView1.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
 
-                    grpCategory.Enabled = false;
-                    txtCategoryName.Focus();
+                    grpBrand.Enabled = false;
+                    txtBrandName.Focus();
                 }
                 catch { }
             }
         }
 
-        private void txtCategoryName_KeyDown(object sender, KeyEventArgs e)
+        private void txtBrandName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
             {
-                txtCategoryDescription.Focus();
-                txtCategoryDescription.SelectionStart = txtCategoryDescription.MaxLength;
+                cmbSupplier.Focus();
                 return;
             }
         }
 
-        private void txtCategoryDescription_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Down)
-            {
-                cmbActiveStatus.Focus();
-                return;
-            }
-            else if (e.KeyCode == Keys.Up)
-            {
-                txtCategoryName.Focus();
-                txtCategoryName.SelectionStart = txtCategoryName.MaxLength;
-                return;
-            }
-        }
-
-        private void Category_Master_Load(object sender, EventArgs e)
+        private void Brand_Master_Load(object sender, EventArgs e)
         {
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
@@ -283,6 +297,8 @@ namespace IMS.Masters
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             LoadData();
+            FillSupplierData();
+            FillCountryData();
         }
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -297,17 +313,17 @@ namespace IMS.Masters
             btn.BackgroundImage = B_Leave;
         }
 
-        private void rdSearchByCategory_CheckedChanged(object sender, EventArgs e)
+        private void rdSearchByBrand_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdSearchByCategory.Checked)
+            if (rdSearchByBrand.Checked)
             {
-                txtSearchByCategory.Enabled = true;
-                txtSearchByCategory.Focus();
+                txtSearchByBrand.Enabled = true;
+                txtSearchByBrand.Focus();
             }
             else
             {
-                txtSearchByCategory.Enabled = false;
-                txtSearchByCategory.Clear();
+                txtSearchByBrand.Enabled = false;
+                txtSearchByBrand.Clear();
                 rdShowAll.Checked = true;
             }
         }
@@ -316,20 +332,20 @@ namespace IMS.Masters
         {
             if (rdShowAll.Checked)
             {
-                txtSearchByCategory.Enabled = false;
-                txtSearchByCategory.Clear();
+                txtSearchByBrand.Enabled = false;
+                txtSearchByBrand.Clear();
                 LoadData();
             }
         }
 
-        private void txtSearchByCategory_TextChanged(object sender, EventArgs e)
+        private void txtSearchByBrand_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchByCategory.Text.Trim().Length == 0)
+            if (txtSearchByBrand.Text.Trim().Length == 0)
             {
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID,CategoryName,CategoryDescription,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "CategoryName LIKE '%" + txtSearchByCategory.Text + "%'", "CategoryName");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName LIKE '%" + txtSearchByBrand.Text + "%'", "BrandName");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -344,7 +360,9 @@ namespace IMS.Masters
         {
             ObjUtil.SetRowNumber(dataGridView1);
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
-            dataGridView1.Columns["CategoryID"].Visible = false;
+            dataGridView1.Columns["BrandID"].Visible = false;
+            dataGridView1.Columns["SupplierID"].Visible = false;
+            dataGridView1.Columns["CountryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
     }

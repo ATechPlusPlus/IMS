@@ -44,11 +44,11 @@ namespace IMS
             {
                 try
                 {
-                    DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.UserManagement", "ID,UserName,Password,IsAdmin", "UserName='" + txtUserName.Text.Trim() + "' and Password='" + objUtil.Encrypt(txtPassword.Text, true) + "' and isnull(Isblock,0)=0", "ID desc");
+                    DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.UserManagement", "UserID,UserName,Password,IsAdmin", "UserName='" + txtUserName.Text.Trim() + "' AND Password='" + objUtil.Encrypt(txtPassword.Text, true) + "' and ISNULL(Isblock,0)=0", "UserID DESC");
                     //int a = ObjDAL.ExecuteScalarInt("select Count(*) From CyberCafeManagement.dbo.login where UserName='" + txtUserName.Text.Trim() + "' and Password='" + txtPassword.Text.Trim() + "'");                 
                     if (dt != null && dt.Rows.Count > 0)
                     {
-                        clsUtility.LoginID = Convert.ToInt32(dt.Rows[0]["ID"]);
+                        clsUtility.LoginID = Convert.ToInt32(dt.Rows[0]["UserID"]);
                         clsUtility.IsAdmin = Convert.ToBoolean(dt.Rows[0]["IsAdmin"]);
                         return true;
                     }
@@ -91,7 +91,7 @@ namespace IMS
                 {
                     int a = InsertLoginHistory();
                     frmHome Obj = new frmHome();
-                    Obj.Login_ID_History = a;
+                    Obj.Login_History_ID = a;
                     Obj.BringToFront();
                     this.Close();
                     Obj.ShowDialog();
@@ -131,7 +131,7 @@ namespace IMS
         {
             GetUserIPMacAddress();
 
-            ObjDAL.SetColumnData("Login_ID", SqlDbType.Int, clsUtility.LoginID);
+            ObjDAL.SetColumnData("UserID", SqlDbType.Int, clsUtility.LoginID);
             ObjDAL.SetColumnData("UserName", SqlDbType.NVarChar, txtUserName.Text.Trim());
             ObjDAL.SetColumnData("PcName", SqlDbType.NVarChar, System.Environment.MachineName);
             ObjDAL.SetColumnData("MachineUserName", SqlDbType.NVarChar, System.Environment.UserName);

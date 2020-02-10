@@ -19,7 +19,7 @@ namespace IMS.Masters
 
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
-
+        
         int ID = 0;
 
         Image B_Leave = IMS.Properties.Resources.B_click;
@@ -97,21 +97,31 @@ namespace IMS.Masters
 
         private void LoadData()
         {
-            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
+            //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.ExecuteSelectStatement("SELECT S.SupplierID,S.SupplierName,S.CountryID,C.CountryName,(CASE WHEN S.ActiveStatus =1 THEN 'Active' WHEN S.ActiveStatus =0 THEN 'InActive' END) ActiveStatus" +
-              "FROM " + clsUtility.DBName + ".[dbo].[SupplierMaster] S" +
+            dt = ObjDAL.ExecuteSelectStatement("SELECT S.SupplierID,S.SupplierName,S.CountryID,C.CountryName,(CASE WHEN S.ActiveStatus =1 THEN 'Active' WHEN S.ActiveStatus =0 THEN 'InActive' END) ActiveStatus,S.Phone,S.EmailID,S.BankName,S.BankAccountNo,S.BankAddress " +
+              "FROM " + clsUtility.DBName + ".[dbo].[SupplierMaster] S " +
               "LEFT OUTER JOIN " + clsUtility.DBName + ".[dbo].[CountryMaster] C ON S.CountryID = C.CountryID");
 
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
-                lblTotalRecords.Text = "Total Records : " + dt.Rows.Count;
             }
             else
             {
                 dataGridView1.DataSource = null;
             }
+        }
+
+        private void FillCountryData()
+        {
+            DataTable dt = null;
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryName", "ISNULL(ActiveStatus,1)=1", "CountryName ASC");
+            cmbCountry.DataSource = dt;
+            cmbCountry.DisplayMember = "CountryName";
+            cmbCountry.ValueMember = "CountryID";
+
+            cmbCountry.SelectedIndex = -1;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -143,6 +153,7 @@ namespace IMS.Masters
                         clsUtility.ShowInfoMessage("Supplier Name : '" + txtSupplierName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
+                        grpSupplier.Enabled = false;
                     }
                     else
                     {
@@ -181,15 +192,17 @@ namespace IMS.Masters
                     ObjDAL.UpdateColumnData("BankAccountNo", SqlDbType.VarChar, txtBankAccNo.Text.Trim());
                     ObjDAL.UpdateColumnData("BankAddress", SqlDbType.NVarChar, txtBankAdd.Text.Trim());
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
-                    ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test 
+                    ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
+                    ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
-                        clsUtility.ShowInfoMessage("'" + txtSupplierName.Text + "' Supplier Name is Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("'" + txtSupplierName.Text + "' Supplier is Updated", clsUtility.strProjectTitle);
                         LoadData();
                         ClearAll();
+                        grpSupplier.Enabled = false;
                         ObjDAL.ResetData();
                     }
                     else
@@ -217,6 +230,7 @@ namespace IMS.Masters
                     clsUtility.ShowInfoMessage("'" + txtSupplierName.Text + "' Supplier is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
                     LoadData();
+                    grpSupplier.Enabled = false;
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
                 }
                 else
@@ -270,7 +284,7 @@ namespace IMS.Masters
                     grpSupplier.Enabled = false;
                     txtSupplierName.Focus();
                 }
-                catch { }
+                catch (Exception ex) { clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle); }
             }
         }
 
@@ -374,6 +388,8 @@ namespace IMS.Masters
 
         private void Supplier_Details_Load(object sender, EventArgs e)
         {
+            clsUtility.IsAdmin = true;//removed
+
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
             btnEdit.BackgroundImage = B_Leave;
@@ -381,12 +397,11 @@ namespace IMS.Masters
             btnDelete.BackgroundImage = B_Leave;
             btnCancel.BackgroundImage = B_Leave;
 
-            clsUtility.IsAdmin = true;//removed
-
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             LoadData();
+            FillCountryData();
         }
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -434,8 +449,8 @@ namespace IMS.Masters
                 return;
             }
             DataTable dt = null;
-            dt = ObjDAL.ExecuteSelectStatement("SELECT S.SupplierID,S.SupplierName,S.CountryID,C.CountryName,(CASE WHEN S.ActiveStatus =1 THEN 'Active' WHEN S.ActiveStatus =0 THEN 'InActive' END) ActiveStatus" +
-              "FROM " + clsUtility.DBName + ".[dbo].[SupplierMaster] S" +
+            dt = ObjDAL.ExecuteSelectStatement("SELECT S.SupplierID,S.SupplierName,S.CountryID,C.CountryName,(CASE WHEN S.ActiveStatus =1 THEN 'Active' WHEN S.ActiveStatus =0 THEN 'InActive' END) ActiveStatus,S.Phone,S.EmailID,S.BankName,S.BankAccountNo,S.BankAddress " +
+              "FROM " + clsUtility.DBName + ".[dbo].[SupplierMaster] S " +
               "LEFT OUTER JOIN " + clsUtility.DBName + ".[dbo].[CountryMaster] C ON S.CountryID = C.CountryID " +
               "WHERE S.SupplierName LIKE '%" + txtSearchBySupplier.Text + "%'");
 
@@ -454,6 +469,8 @@ namespace IMS.Masters
             ObjUtil.SetRowNumber(dataGridView1);
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["SupplierID"].Visible = false;
+            dataGridView1.Columns["CountryID"].Visible = false;
+            lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
     }
 }

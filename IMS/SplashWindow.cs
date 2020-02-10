@@ -22,8 +22,6 @@ namespace IMS
         clsUtility ObjUtil = new clsUtility();
 
         String path1 = String.Empty;
-        //String DBName = String.Empty;
-
         bool IsPath = false;
         byte i = 0; //for closing Registrationprocess if system datetime is changes
 
@@ -49,7 +47,7 @@ namespace IMS
 
         private void AddStatusDate()
         {
-            DataTable dt = ObjDAL.GetData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "ID");
+            DataTable dt = ObjDAL.GetData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "RegistrationID");
             if (dt != null && dt.Rows.Count > 0)
             {
                 DateTime status = Convert.ToDateTime(ObjUtil.Decrypt(dt.Rows[0]["StatusDate"].ToString(), true));
@@ -81,14 +79,14 @@ namespace IMS
 
         private bool CheckReg()
         {
-            DataTable dt = ObjDAL.GetData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "ID");
+            DataTable dt = ObjDAL.GetData(clsUtility.DBName + ".dbo.RegistrationDetails", "PcName='" + Environment.MachineName + "'", "RegistrationID");
             if (dt != null && dt.Rows.Count > 0)
             {
                 if (dt.Rows[0]["IsKeyEnter"] != DBNull.Value && Convert.ToBoolean(dt.Rows[0]["IsKeyEnter"]) == false)
                 {
                     return false;
                 }
-                DateTime status = Convert.ToDateTime(ObjUtil.Decrypt(dt.Rows[0]["StatusDate"].ToString(),true));
+                DateTime status = Convert.ToDateTime(ObjUtil.Decrypt(dt.Rows[0]["StatusDate"].ToString(), true));
                 DateTime ExpDate = Convert.ToDateTime(ObjUtil.Decrypt(dt.Rows[0]["ExpiryDate"].ToString(), true));
                 if (status <= Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd h:mm:ss tt")))  //checking wheather user is changed datetime or not
                 {

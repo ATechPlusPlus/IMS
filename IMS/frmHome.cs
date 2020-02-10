@@ -19,8 +19,7 @@ namespace IMS
         }
 
         bool IsLogOut = false;
-        //String DBName = String.Empty;
-        public int Login_ID_History = 0;
+        public int Login_History_ID = 0;
 
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
@@ -52,11 +51,10 @@ namespace IMS
         {
             try
             {
-                //DBName = ObjDAL.GetCurrentDBName(true);
                 if (clsUtility.LoginID > 0)
                 {
 
-                    object ob = ObjDAL.ExecuteScalar("Select UserName from " + clsUtility.DBName + ".[dbo].[UserManagement] where ID=" + clsUtility.LoginID);
+                    object ob = ObjDAL.ExecuteScalar("SELECT UserName from " + clsUtility.DBName + ".[dbo].[UserManagement] WHERE UserID =" + clsUtility.LoginID);
                     lblLoginName.Text = "Login By : " + ob.ToString();
                 }
                 else
@@ -76,7 +74,7 @@ namespace IMS
                 if (b)
                 {
                     ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
-                    ObjDAL.UpdateData(clsUtility.DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
+                    ObjDAL.UpdateData(clsUtility.DBName + ".dbo.Login_History", "Login_History_ID = " + Login_History_ID);
                     IsLogOut = true;
                     Application.Exit();
                 }
@@ -88,17 +86,12 @@ namespace IMS
             }
         }
 
-        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
         private void picLogOut_Click(object sender, EventArgs e)
         {
             if (clsUtility.ShowQuestionMessage("Are you sure to Logout?", clsUtility.strProjectTitle))
             {
                 ObjDAL.UpdateColumnData("LogOutTime", SqlDbType.DateTime, DateTime.Now);
-                ObjDAL.UpdateData(clsUtility.DBName + ".dbo.Login_History", "Login_ID_History = " + Login_ID_History);
+                ObjDAL.UpdateData(clsUtility.DBName + ".dbo.Login_History", "Login_History_ID = " + Login_History_ID);
                 frmLogin Obj = new frmLogin();
                 Obj.BringToFront();
                 Obj.Show();
@@ -170,6 +163,18 @@ namespace IMS
         private void countryMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Masters.Country_Master Obj = new Masters.Country_Master();
+            Obj.Show();
+        }
+
+        private void brandMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Brand_Master Obj = new Masters.Brand_Master();
+            Obj.Show();
+        }
+
+        private void productMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Product_Master Obj = new Masters.Product_Master();
             Obj.Show();
         }
     }

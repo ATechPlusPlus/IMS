@@ -37,6 +37,7 @@
             this.SupplierDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.EmployeeDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.countryMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brandMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseInvoice_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseBillDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +51,7 @@
             this.otherArtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.CurrencyValueSetting_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeCommissionSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +61,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.employeeCommissionSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -106,7 +108,9 @@
             this.StoreDetails_ToolStrip,
             this.SupplierDetails_ToolStrip,
             this.EmployeeDetails_ToolStrip,
-            this.countryMasterToolStripMenuItem});
+            this.countryMasterToolStripMenuItem,
+            this.brandMasterToolStripMenuItem,
+            this.productMasterToolStripMenuItem});
             this.mobilePartsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mobilePartsToolStripMenuItem.Image")));
             this.mobilePartsToolStripMenuItem.Name = "mobilePartsToolStripMenuItem";
             this.mobilePartsToolStripMenuItem.Size = new System.Drawing.Size(86, 36);
@@ -147,6 +151,13 @@
             this.countryMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
             this.countryMasterToolStripMenuItem.Text = "Country Master";
             this.countryMasterToolStripMenuItem.Click += new System.EventHandler(this.countryMasterToolStripMenuItem_Click);
+            // 
+            // brandMasterToolStripMenuItem
+            // 
+            this.brandMasterToolStripMenuItem.Name = "brandMasterToolStripMenuItem";
+            this.brandMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
+            this.brandMasterToolStripMenuItem.Text = "Brand Master";
+            this.brandMasterToolStripMenuItem.Click += new System.EventHandler(this.brandMasterToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -261,6 +272,12 @@
             this.CurrencyValueSetting_ToolStrip.Text = "Currency Value Setting";
             this.CurrencyValueSetting_ToolStrip.Click += new System.EventHandler(this.CurrencyValueSetting_ToolStrip_Click);
             // 
+            // employeeCommissionSettingToolStripMenuItem
+            // 
+            this.employeeCommissionSettingToolStripMenuItem.Name = "employeeCommissionSettingToolStripMenuItem";
+            this.employeeCommissionSettingToolStripMenuItem.Size = new System.Drawing.Size(261, 24);
+            this.employeeCommissionSettingToolStripMenuItem.Text = "Employee Commission Setting";
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
@@ -355,11 +372,12 @@
             this.label1.Text = "Logout";
             this.label1.Click += new System.EventHandler(this.picLogOut_Click);
             // 
-            // employeeCommissionSettingToolStripMenuItem
+            // productMasterToolStripMenuItem
             // 
-            this.employeeCommissionSettingToolStripMenuItem.Name = "employeeCommissionSettingToolStripMenuItem";
-            this.employeeCommissionSettingToolStripMenuItem.Size = new System.Drawing.Size(261, 24);
-            this.employeeCommissionSettingToolStripMenuItem.Text = "Employee Commission Setting";
+            this.productMasterToolStripMenuItem.Name = "productMasterToolStripMenuItem";
+            this.productMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
+            this.productMasterToolStripMenuItem.Text = "Product Master";
+            this.productMasterToolStripMenuItem.Click += new System.EventHandler(this.productMasterToolStripMenuItem_Click);
             // 
             // frmHome
             // 
@@ -428,6 +446,8 @@
         private System.Windows.Forms.ToolStripMenuItem CurrencyValueSetting_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem countryMasterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeCommissionSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brandMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productMasterToolStripMenuItem;
     }
 }
 

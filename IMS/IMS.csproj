@@ -103,6 +103,18 @@
     <Compile Include="frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Product_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Product_Master.Designer.cs">
+      <DependentUpon>Product_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\Brand_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Brand_Master.Designer.cs">
+      <DependentUpon>Brand_Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Category_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Product_Master.resx">
+      <DependentUpon>Product_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Brand_Master.resx">
+      <DependentUpon>Brand_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Category_Master.resx">
       <DependentUpon>Category_Master.cs</DependentUpon>

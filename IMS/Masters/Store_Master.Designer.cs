@@ -114,7 +114,9 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(206, 25);
             this.txtFax.TabIndex = 192;
-            this.txtFax.UseSystemPasswordChar = true;
+            this.txtFax.Enter += new System.EventHandler(this.txtStoreName_Enter);
+            this.txtFax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFax_KeyDown);
+            this.txtFax.Leave += new System.EventHandler(this.txtStoreName_Leave);
             // 
             // lblFax
             // 
@@ -134,7 +136,9 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(206, 25);
             this.txtTel.TabIndex = 190;
-            this.txtTel.UseSystemPasswordChar = true;
+            this.txtTel.Enter += new System.EventHandler(this.txtStoreName_Enter);
+            this.txtTel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTel_KeyDown);
+            this.txtTel.Leave += new System.EventHandler(this.txtStoreName_Leave);
             // 
             // lblTel
             // 
@@ -165,7 +169,9 @@
             this.txtPlace.Name = "txtPlace";
             this.txtPlace.Size = new System.Drawing.Size(206, 25);
             this.txtPlace.TabIndex = 185;
-            this.txtPlace.UseSystemPasswordChar = true;
+            this.txtPlace.Enter += new System.EventHandler(this.txtStoreName_Enter);
+            this.txtPlace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPlace_KeyDown);
+            this.txtPlace.Leave += new System.EventHandler(this.txtStoreName_Leave);
             // 
             // lblActiveStatus
             // 
@@ -185,6 +191,9 @@
             this.txtStoreName.Name = "txtStoreName";
             this.txtStoreName.Size = new System.Drawing.Size(206, 25);
             this.txtStoreName.TabIndex = 184;
+            this.txtStoreName.Enter += new System.EventHandler(this.txtStoreName_Enter);
+            this.txtStoreName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStoreName_KeyDown);
+            this.txtStoreName.Leave += new System.EventHandler(this.txtStoreName_Leave);
             // 
             // cmbActiveStatus
             // 
@@ -236,6 +245,7 @@
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
+            this.rdShowAll.CheckedChanged += new System.EventHandler(this.rdShowAll_CheckedChanged);
             // 
             // rdSearchByStoreName
             // 
@@ -247,6 +257,7 @@
             this.rdSearchByStoreName.TabIndex = 6;
             this.rdSearchByStoreName.Text = "By Store Name :";
             this.rdSearchByStoreName.UseVisualStyleBackColor = true;
+            this.rdSearchByStoreName.CheckedChanged += new System.EventHandler(this.rdSearchByStoreName_CheckedChanged);
             // 
             // txtSearchByStoreName
             // 
@@ -257,6 +268,9 @@
             this.txtSearchByStoreName.Name = "txtSearchByStoreName";
             this.txtSearchByStoreName.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByStoreName.TabIndex = 5;
+            this.txtSearchByStoreName.TextChanged += new System.EventHandler(this.txtSearchByStoreName_TextChanged);
+            this.txtSearchByStoreName.Enter += new System.EventHandler(this.txtStoreName_Enter);
+            this.txtSearchByStoreName.Leave += new System.EventHandler(this.txtStoreName_Leave);
             // 
             // lblTotalRecords
             // 
@@ -293,6 +307,8 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(562, 147);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
             // btnUpdate
             // 
@@ -306,6 +322,7 @@
             this.btnUpdate.TabIndex = 197;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCancel
             // 
@@ -319,6 +336,7 @@
             this.btnCancel.TabIndex = 199;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
@@ -332,6 +350,7 @@
             this.btnDelete.TabIndex = 198;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -345,6 +364,7 @@
             this.btnEdit.TabIndex = 196;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSave
             // 
@@ -358,6 +378,7 @@
             this.btnSave.TabIndex = 195;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAdd
             // 
@@ -372,6 +393,8 @@
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // Store_Master
             // 
@@ -397,6 +420,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store Master";
+            this.Load += new System.EventHandler(this.Store_Master_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.grpStore.ResumeLayout(false);
