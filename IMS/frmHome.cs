@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CoreApp;
+using IMS.Settings;
 
 namespace IMS
 {
@@ -51,6 +52,7 @@ namespace IMS
         {
             try
             {
+                clsUtility.DBName = "IMS_DB";
                 if (clsUtility.LoginID > 0)
                 {
 
@@ -176,6 +178,12 @@ namespace IMS
         {
             Masters.Product_Master Obj = new Masters.Product_Master();
             Obj.Show();
+        }
+
+        private void defaultStoreSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOtherSetting frmOtherSetting = new frmOtherSetting();
+            frmOtherSetting.ShowDialog();
         }
     }
 }

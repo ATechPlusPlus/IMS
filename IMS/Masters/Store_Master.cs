@@ -31,7 +31,7 @@ namespace IMS.Masters
             txtFax.Clear();
             txtPlace.Clear();
             cmbActiveStatus.SelectedIndex = -1;
-
+            cmbStoreCat.SelectedIndex = -1;
             txtStoreName.Focus();
         }
 
@@ -53,6 +53,12 @@ namespace IMS.Masters
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
                 cmbActiveStatus.Focus();
+                return false;
+            }
+           else  if (cmbStoreCat.SelectedIndex==-1)
+            {
+                clsUtility.ShowInfoMessage("Please select store category.", clsUtility.strProjectTitle);
+                cmbStoreCat.Focus();
                 return false;
             }
             return true;
@@ -114,6 +120,7 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("Place", SqlDbType.NVarChar, txtPlace.Text.Trim());
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
+                    ObjDAL.SetColumnData("StoreCategory", SqlDbType.Int, cmbStoreCat.SelectedIndex); 
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.StoreMaster", true) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
@@ -158,7 +165,7 @@ namespace IMS.Masters
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
-
+                    ObjDAL.UpdateColumnData("StoreCategory", SqlDbType.Int, cmbStoreCat.SelectedIndex);
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.StoreMaster", "StoreID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
@@ -232,6 +239,7 @@ namespace IMS.Masters
             {
                 try
                 {
+                    ClearAll();
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
 
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["StoreID"].Value);

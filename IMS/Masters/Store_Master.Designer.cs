@@ -55,6 +55,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbStoreCat = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.grpStore.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,6 +90,8 @@
             // grpStore
             // 
             this.grpStore.BackColor = System.Drawing.Color.Transparent;
+            this.grpStore.Controls.Add(this.label1);
+            this.grpStore.Controls.Add(this.cmbStoreCat);
             this.grpStore.Controls.Add(this.txtFax);
             this.grpStore.Controls.Add(this.lblFax);
             this.grpStore.Controls.Add(this.txtTel);
@@ -102,7 +106,7 @@
             this.grpStore.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpStore.Location = new System.Drawing.Point(30, 93);
             this.grpStore.Name = "grpStore";
-            this.grpStore.Size = new System.Drawing.Size(486, 230);
+            this.grpStore.Size = new System.Drawing.Size(486, 295);
             this.grpStore.TabIndex = 203;
             this.grpStore.TabStop = false;
             this.grpStore.Text = "Store Details";
@@ -226,7 +230,7 @@
             this.groupBox1.Controls.Add(this.rdSearchByStoreName);
             this.groupBox1.Controls.Add(this.txtSearchByStoreName);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(30, 333);
+            this.groupBox1.Location = new System.Drawing.Point(30, 394);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(568, 51);
             this.groupBox1.TabIndex = 202;
@@ -277,7 +281,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(27, 568);
+            this.lblTotalRecords.Location = new System.Drawing.Point(27, 631);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 201;
@@ -288,7 +292,7 @@
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(30, 388);
+            this.grpGridview.Location = new System.Drawing.Point(30, 451);
             this.grpGridview.Name = "grpGridview";
             this.grpGridview.Size = new System.Drawing.Size(575, 175);
             this.grpGridview.TabIndex = 200;
@@ -396,13 +400,37 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 248);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.TabIndex = 195;
+            this.label1.Text = "Store Category :";
+            // 
+            // cmbStoreCat
+            // 
+            this.cmbStoreCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStoreCat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStoreCat.FormattingEnabled = true;
+            this.cmbStoreCat.Items.AddRange(new object[] {
+            "Normal Store",
+            "Wearhouse"});
+            this.cmbStoreCat.Location = new System.Drawing.Point(159, 241);
+            this.cmbStoreCat.Name = "cmbStoreCat";
+            this.cmbStoreCat.Size = new System.Drawing.Size(206, 27);
+            this.cmbStoreCat.TabIndex = 194;
+            // 
             // Store_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 592);
+            this.ClientSize = new System.Drawing.Size(633, 661);
             this.Controls.Add(this.grpStore);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTotalRecords);
@@ -461,5 +489,7 @@
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label lblFax;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbStoreCat;
     }
 }
