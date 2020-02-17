@@ -52,7 +52,7 @@ namespace IMS
         {
             try
             {
-                clsUtility.DBName = "IMS_DB";
+                clsUtility.DBName = "IMS";
                 if (clsUtility.LoginID > 0)
                 {
 

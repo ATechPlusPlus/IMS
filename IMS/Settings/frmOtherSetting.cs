@@ -29,7 +29,7 @@ namespace IMS.Settings
         }
         private void LoadStore()
         {
-            DataTable dt = ObjCon.ExecuteSelectStatement("select StoreID, StoreName FROM [IMS_DB].[dbo].[StoreMaster] ");
+            DataTable dt = ObjCon.ExecuteSelectStatement("select StoreID, StoreName FROM " + clsUtility.DBName + ".[dbo].[StoreMaster] ");
             if (dt.Rows.Count > 0)
             {
                 cmbStoreName.DataSource = dt;
@@ -41,8 +41,8 @@ namespace IMS.Settings
         }
         private void BindStoreSettingData()
         {
-            DataTable dt=  ObjCon.ExecuteSelectStatement("select *  FROM [IMS_DB].[dbo].[DefaultStoreSetting] where MachineName='"+Environment.MachineName+"'");
-            if (dt.Rows.Count>0)
+            DataTable dt = ObjCon.ExecuteSelectStatement("select *  FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting] where MachineName='" + Environment.MachineName + "'");
+            if (dt.Rows.Count > 0)
             {
                 lblmsg.Visible = false;
                 cmbStoreName.SelectedValue = dt.Rows[0]["StoreID"].ToString();
@@ -58,14 +58,14 @@ namespace IMS.Settings
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtPCName.Text.Trim().Length==0)
+            if (txtPCName.Text.Trim().Length == 0)
             {
                 clsUtility.ShowInfoMessage("Please enter PC name.", clsUtility.strProjectTitle);
                 txtPCName.Focus();
                 return;
-               
+
             }
-            else if (cmbStoreCategory.SelectedIndex==-1)
+            else if (cmbStoreCategory.SelectedIndex == -1)
             {
                 clsUtility.ShowInfoMessage("Please Select Store Category.", clsUtility.strProjectTitle);
                 cmbStoreCategory.Focus();
@@ -81,15 +81,15 @@ namespace IMS.Settings
             }
 
 
-            int result= ObjCon.ExecuteScalarInt("select count(*) FROM [IMS_DB].[dbo].[DefaultStoreSetting] where MachineName='" + txtPCName.Text + "'");
-            if (result>0) // if data found for the PC thenupdate
+            int result = ObjCon.ExecuteScalarInt("select count(1) FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting] where MachineName='" + txtPCName.Text + "'");
+            if (result > 0) // if data found for the PC thenupdate
             {
 
                 ObjCon.UpdateColumnData("StoreID", SqlDbType.Int, cmbStoreName.SelectedValue);
                 ObjCon.UpdateColumnData("MachineName", SqlDbType.NVarChar, txtPCName.Text);
                 ObjCon.UpdateColumnData("StoreCategory", SqlDbType.Int, cmbStoreCategory.SelectedIndex);
 
-              int r=  ObjCon.UpdateData("[IMS_DB].[dbo].[DefaultStoreSetting]", "MachineName='" + txtPCName.Text + "'");
+                int r = ObjCon.UpdateData(clsUtility.DBName + ".[dbo].[DefaultStoreSetting]", "MachineName='" + txtPCName.Text + "'");
                 if (r > 0)
                 {
                     clsUtility.ShowInfoMessage("Default store settings has been updated.", clsUtility.strProjectTitle);
@@ -102,13 +102,13 @@ namespace IMS.Settings
                 ObjCon.SetColumnData("MachineName", SqlDbType.NVarChar, txtPCName.Text);
                 ObjCon.SetColumnData("StoreCategory", SqlDbType.Int, cmbStoreCategory.SelectedIndex);
 
-                int r=  ObjCon.InsertData("[IMS_DB].[dbo].[DefaultStoreSetting]",false);
-                if (r>0)
+                int r = ObjCon.InsertData(clsUtility.DBName + ".[dbo].[DefaultStoreSetting]", false);
+                if (r > 0)
                 {
                     clsUtility.ShowInfoMessage("Default store settings has been saved.", clsUtility.strProjectTitle);
                 }
                 lblmsg.Visible = false;
-               
+
             }
 
 
@@ -128,10 +128,10 @@ namespace IMS.Settings
         clsUtility ObjUtil = new clsUtility();
         private void cmbStoreCategory_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cmbStoreCategory.SelectedIndex==0) // Normal store
+            if (cmbStoreCategory.SelectedIndex == 0) // Normal store
             {
-             DataTable dt=   ObjCon.ExecuteSelectStatement("select StoreID, StoreName FROM [IMS_DB].[dbo].[StoreMaster] where StoreCategory=0");
-                if (dt.Rows.Count>0)
+                DataTable dt = ObjCon.ExecuteSelectStatement("select StoreID, StoreName FROM " + clsUtility.DBName + ".[dbo].[StoreMaster] where StoreCategory=0");
+                if (dt.Rows.Count > 0)
                 {
                     cmbStoreName.DataSource = dt;
                     cmbStoreName.DisplayMember = "StoreName";
@@ -142,8 +142,8 @@ namespace IMS.Settings
             }
             else if (cmbStoreCategory.SelectedIndex == 1) // Wearhouse
             {
-                DataTable dt=ObjCon.ExecuteSelectStatement("select StoreID, StoreName FROM [IMS_DB].[dbo].[StoreMaster] where StoreCategory=1");
-                if (dt.Rows.Count>0)
+                DataTable dt = ObjCon.ExecuteSelectStatement("select StoreID, StoreName FROM " + clsUtility.DBName + ".[dbo].[StoreMaster] where StoreCategory=1");
+                if (dt.Rows.Count > 0)
                 {
                     cmbStoreName.DataSource = dt;
                     cmbStoreName.DisplayMember = "StoreName";

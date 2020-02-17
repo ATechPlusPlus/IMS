@@ -87,7 +87,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -136,8 +136,8 @@ namespace IMS.Masters
                 if (DuplicateUser(0))
                 {
                     ObjDAL.SetColumnData("BrandName", SqlDbType.NVarChar, txtBrandName.Text.Trim());
-                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
-                    ObjDAL.SetColumnData("CountryID", SqlDbType.Bit, cmbCountry.SelectedValue);
+                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
+                    ObjDAL.SetColumnData("CountryID", SqlDbType.Int, cmbCountry.SelectedValue);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.BrandMaster", true) > 0)
@@ -178,8 +178,8 @@ namespace IMS.Masters
                 if (DuplicateUser(0))
                 {
                     ObjDAL.UpdateColumnData("BrandName", SqlDbType.NVarChar, txtBrandName.Text.Trim());
-                    ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
-                    ObjDAL.UpdateColumnData("CountryID", SqlDbType.Bit, cmbCountry.SelectedValue);
+                    ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
+                    ObjDAL.UpdateColumnData("CountryID", SqlDbType.Int, cmbCountry.SelectedValue);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
@@ -345,7 +345,7 @@ namespace IMS.Masters
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName LIKE '%" + txtSearchByBrand.Text + "%'", "BrandName");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName LIKE '%" + txtSearchByBrand.Text + "%'", "BrandName");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;

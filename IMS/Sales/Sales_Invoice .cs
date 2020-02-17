@@ -18,7 +18,7 @@ namespace IMS.Sales
         }
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
         clsUtility ObjUtil = new clsUtility();
-        //clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
+
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
         private void Sales_Invoice_Load(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace IMS.Sales
         private void GenerateInvoiceNumber()
         {
             //SequenceInvoice : this is a sequance object created in SQL ( this is not a table)
-            int LastID = ObjDAL.ExecuteScalarInt("SELECT NEXT VALUE FOR IMS_DB.[dbo].SequenceInvoice");
+            int LastID = ObjDAL.ExecuteScalarInt("SELECT NEXT VALUE FOR " + clsUtility.DBName + ".[dbo].SequenceInvoice");
             string InvoiceNumber = "INV-" + LastID;
 
             txtInvoiceNumber.Text = InvoiceNumber;
@@ -78,7 +78,7 @@ namespace IMS.Sales
 
             // set Default store
 
-            int deafultStoreID = ObjDAL.ExecuteScalarInt("select Storeid FROM[IMS_DB].[dbo].[DefaultStoreSetting] where MachineName = '" + Environment.MachineName + "'");
+            int deafultStoreID = ObjDAL.ExecuteScalarInt("SELECT Storeid FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting] WHERE MachineName = '" + Environment.MachineName + "'");
             cmbShop.SelectedValue = deafultStoreID;
         }
 
@@ -120,13 +120,13 @@ namespace IMS.Sales
         {
             try
             {
-                DataTable dt = ObjDAL.ExecuteSelectStatement("select Empid,Name from IMS_DB.dbo.employeeDetails where Name Like '" + txtSalesMan.Text + "%'");
+                DataTable dt = ObjDAL.ExecuteSelectStatement("select Empid,Name from " + clsUtility.DBName + ".dbo.employeeDetails where Name Like '" + txtSalesMan.Text + "%'");
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     ObjUtil.SetControlData(txtSalesMan, "Name");
                     ObjUtil.SetControlData(txtEmpID, "Empid");
 
-                    
+
                     ObjUtil.ShowDataPopup(dt, txtSalesMan, this, this);
 
                     if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
@@ -161,10 +161,9 @@ namespace IMS.Sales
             {
                 try
                 {
-
-                    string query = "select p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from IMS_DB.dbo.ProductMaster p1 join " +
-                                    " IMS_DB.dbo.ProductStockMaster p2 on p1.ProductID = p2.ProductID " +
-                                    " where p2.StoreID = " + cmbShop.SelectedValue.ToString();
+                    string query = "SELECT p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " +
+                                    clsUtility.DBName + " .dbo.ProductStockMaster p2 ON p1.ProductID = p2.ProductID " +
+                                    " WHERE p2.StoreID = " + cmbShop.SelectedValue.ToString();
                     DataTable dt = ObjDAL.ExecuteSelectStatement(query + " AND p1.ProductName Like '" + txtProductName.Text + "%'");
                     if (dt != null && dt.Rows.Count > 0)
                     {
@@ -213,18 +212,17 @@ namespace IMS.Sales
             if (dgv.DataSource != null)
             {
                 GetItemDetailsByProductID(txtProductID.Text);
-
             }
 
 
         }
         private void GetItemDetailsByProductID(string productID)
         {
-            string strQ = "select p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from IMS_DB.dbo.ProductMaster p1 join " +
-                          " IMS_DB.dbo.ProductStockMaster p2 on p1.ProductID = p2.ProductID " +
+            string strQ = "select p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " +
+                          clsUtility.DBName + " .dbo.ProductStockMaster p2 on p1.ProductID = p2.ProductID " +
                            " where p2.StoreID = 2 and p1.ProductID = " + productID;
             DataTable dt = ObjDAL.ExecuteSelectStatement(strQ);
-            if (dt.Rows.Count > 0)
+            if (ObjUtil.ValidateTable(dt))
             {
 
                 string name = dt.Rows[0]["ProductName"].ToString();
@@ -246,14 +244,13 @@ namespace IMS.Sales
             ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.Fill);
             dgvProductDetails.Columns["ProductID"].Visible = false;
 
-
             txtTotalItems.Text = dgvProductDetails.Rows.Count.ToString();
         }
 
         private void dgvProductDetails_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (dgvProductDetails.Columns[e.ColumnIndex].Name == "Rate" || 
+            if (dgvProductDetails.Columns[e.ColumnIndex].Name == "Rate" ||
              dgvProductDetails.Columns[e.ColumnIndex].Name == "QTY")
             {
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
@@ -262,7 +259,6 @@ namespace IMS.Sales
 
                 dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
                 CalculateSubTotal();
-
             }
         }
         private void CalculateSubTotal()
@@ -314,6 +310,8 @@ namespace IMS.Sales
         {
             dgvProductDetails.EndEdit();
 
+            // Before sales invocing make sure you have available qty for particular store
+
             #region SalesInvoiceDetails
             ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
             ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd"));
@@ -322,38 +320,32 @@ namespace IMS.Sales
             ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtTexamount.Text);
             ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, TxtGrandTotal.Text);
             ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-            ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime, DateTime.Now);
-
+            //ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime, DateTime.Now);
             ObjDAL.SetColumnData("CustomerName", SqlDbType.NVarChar, txtCustomerName.Text);
             ObjDAL.SetColumnData("SalesMan", SqlDbType.Int, txtEmpID.Text);
             ObjDAL.SetColumnData("ShopeID", SqlDbType.Int, cmbShop.SelectedValue.ToString());
-            int InvoiceID = ObjDAL.InsertData("IMS_DB.dbo.SalesInvoiceDetails", true); 
+            int InvoiceID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesInvoiceDetails", true);
             #endregion
 
             for (int i = 0; i < dgvProductDetails.Rows.Count; i++)
             {
-                 string Total=  dgvProductDetails.Rows[i].Cells["Total"].Value.ToString();
-              string ProductID=  dgvProductDetails.Rows[i].Cells["ProductID"].Value.ToString();
-                 string QTY=  dgvProductDetails.Rows[i].Cells["QTY"].Value.ToString();
-              string Rate=  dgvProductDetails.Rows[i].Cells["Rate"].Value.ToString();
+                string Total = dgvProductDetails.Rows[i].Cells["Total"].Value.ToString();
+                string ProductID = dgvProductDetails.Rows[i].Cells["ProductID"].Value.ToString();
+                string QTY = dgvProductDetails.Rows[i].Cells["QTY"].Value.ToString();
+                string Rate = dgvProductDetails.Rows[i].Cells["Rate"].Value.ToString();
 
 
-               
+
                 ObjDAL.SetColumnData("InvoiceID", SqlDbType.Int, InvoiceID);
                 ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
                 ObjDAL.SetColumnData("QTY", SqlDbType.Decimal, QTY);
-                ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int,clsUtility.LoginID);
-                ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-               
-               
-                ObjDAL.InsertData("IMS_DB.dbo.SalesDetails", false);
+                ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
+                //ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesDetails", false);
 
-
-                ObjDAL.ExecuteNonQuery("update IMS_DB.dbo.ProductStockMaster set QTY=QTY-"+ QTY + " where ProductID=1 and StoreID="+cmbShop.SelectedValue.ToString());
-
-              
+                ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockMaster SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString());
             }
-            MessageBox.Show("Record has been saved !", clsUtility.strProjectTitle);
+            clsUtility.ShowInfoMessage("Record has been saved !", clsUtility.strProjectTitle);
             ClearAll();
         }
 

@@ -121,7 +121,7 @@ namespace IMS.Purchase
             ClearAll();
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
             grpPurchaseInvoice.Enabled = true;
-            txtShipmentNo.Focus();
+            txtSupplierBillNo.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -178,7 +178,7 @@ namespace IMS.Purchase
                     ObjDAL.UpdateColumnData("ShipmentNo", SqlDbType.VarChar, txtShipmentNo.Text.Trim());
                     ObjDAL.UpdateColumnData("BillValue", SqlDbType.Decimal, txtBillValue.Text.Trim());
                     ObjDAL.UpdateColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
-                    ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
+                    ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
                     ObjDAL.UpdateColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
