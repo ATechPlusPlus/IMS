@@ -342,7 +342,6 @@
             this.txtDiscount.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiscount.Location = new System.Drawing.Point(757, 512);
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.ReadOnly = true;
             this.txtDiscount.Size = new System.Drawing.Size(123, 25);
             this.txtDiscount.TabIndex = 208;
             this.txtDiscount.Text = "0";
@@ -397,7 +396,6 @@
             this.txtTexamount.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTexamount.Location = new System.Drawing.Point(757, 540);
             this.txtTexamount.Name = "txtTexamount";
-            this.txtTexamount.ReadOnly = true;
             this.txtTexamount.Size = new System.Drawing.Size(123, 25);
             this.txtTexamount.TabIndex = 213;
             this.txtTexamount.Text = "0";
@@ -459,12 +457,13 @@
             // txtProductID
             // 
             this.txtProductID.BackColor = System.Drawing.Color.White;
-            this.txtProductID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtProductID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProductID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductID.Location = new System.Drawing.Point(882, 46);
+            this.txtProductID.Location = new System.Drawing.Point(861, 46);
             this.txtProductID.Name = "txtProductID";
-            this.txtProductID.Size = new System.Drawing.Size(11, 18);
+            this.txtProductID.Size = new System.Drawing.Size(32, 25);
             this.txtProductID.TabIndex = 246;
+            this.txtProductID.Visible = false;
             // 
             // btnAdd
             // 

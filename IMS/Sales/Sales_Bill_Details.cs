@@ -24,7 +24,7 @@ namespace IMS.Sales
         {
             ObjUtil.SetRowNumber(dgvProductDetails);
             ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.Fill);
-           
+
 
             dgvProductDetails.Columns["SalesMan"].Visible = false;
             dgvProductDetails.Columns["ShopeID"].Visible = false;
@@ -37,11 +37,11 @@ namespace IMS.Sales
         }
         private void LoadData()
         {
-            string strQ = "select s1.id, s1.InvoiceNumber,s1.InvoiceDate,s1.SubTotal, s1.Discount,s1.Tax, s1.GrandTotal,s1.SalesMan, s1.ShopeID, e1.Name,s2.StoreName from "+clsUtility.DBName+".dbo.SalesInvoiceDetails s1 Left join" +
-                            clsUtility.DBName+" .dbo.EmployeeDetails e1 on s1.SalesMan = e1.empID" +
-                            " left join IMS_DB.dbo.StoreMaster s2 on s1.ShopeID = s2.StoreID";
+            string strQ = "select s1.id, s1.InvoiceNumber,s1.InvoiceDate,s1.SubTotal, s1.Discount,s1.Tax, s1.GrandTotal,s1.SalesMan, s1.ShopeID, e1.Name,s2.StoreName from " + clsUtility.DBName + ".dbo.SalesInvoiceDetails s1 Left join" +
+                            clsUtility.DBName + " .dbo.EmployeeDetails e1 on s1.SalesMan = e1.empID" +
+                            " left join " + clsUtility.DBName + ".dbo.StoreMaster s2 on s1.ShopeID = s2.StoreID";
 
-         dgvProductDetails.DataSource=   ObjDAL.ExecuteSelectStatement(strQ);
+            dgvProductDetails.DataSource = ObjDAL.ExecuteSelectStatement(strQ);
         }
 
         private void rdShowAll_CheckedChanged(object sender, EventArgs e)

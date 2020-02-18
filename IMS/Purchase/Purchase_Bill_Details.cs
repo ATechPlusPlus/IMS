@@ -23,7 +23,11 @@ namespace IMS.Purchase
         DataTable dtPurchaseInvoice = new DataTable();
 
         int ID = 0;
+        int pTotalQTY = 0;
+        double pTotalAmt = 0;
         int PurchaseInvoiceID = 0;
+        int _ProductID = 0;
+        int _QTY = 0;
 
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
@@ -38,13 +42,25 @@ namespace IMS.Purchase
             cmbSupplier.SelectedIndex = -1;
             cmbBrand.SelectedIndex = -1;
             dataGridView1.DataSource = null;
+            dtPurchaseInvoice.Clear();
 
             txtTotalQTYBill.Text = "0";
             txtTotalQTYEntered.Text = "0";
             txtTotalValueBill.Text = "0";
             txtTotalValueEntered.Text = "0";
-
             txtSupplierBillNo.Focus();
+        }
+
+        private void ClearPurchaseInvoiceBillDetails()
+        {
+            txtModelNo.Clear();
+            txtProductName.Clear();
+            txtQTY.Clear();
+            txtRate.Clear();
+            txtProductID.Clear();
+            cmbBrand.SelectedIndex = -1;
+
+            txtProductName.Focus();
         }
 
         private bool Validateform()
@@ -103,23 +119,36 @@ namespace IMS.Purchase
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (Validateform())
+            DataTable dtPurchaseInvoiceBill = (DataTable)dataGridView1.DataSource;
+            if (ObjUtil.ValidateTable(dtPurchaseInvoiceBill))
             {
-                ObjDAL.SetColumnData("PurchaseInvoiceID", SqlDbType.Int, PurchaseInvoiceID);
-                ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
-                ObjDAL.SetColumnData("ProductID", SqlDbType.Int, txtProductID.Text.Trim());
-                ObjDAL.SetColumnData("ModelNo", SqlDbType.NVarChar, txtModelNo.Text.Trim());
-                ObjDAL.SetColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
-                ObjDAL.SetColumnData("QTY", SqlDbType.Int, txtQTY.Text);
-                ObjDAL.SetColumnData("Rate", SqlDbType.Decimal, txtRate.Text.Trim());
-                ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
-                ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
-                ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoiceDetails", true) > 0)
+                int _ID = 0;
+                bool b = false;
+                for (int i = 0; i < dtPurchaseInvoiceBill.Rows.Count; i++)
+                {
+                    _ID = 0;
+                    ObjDAL.SetColumnData("PurchaseInvoiceID", SqlDbType.Int, PurchaseInvoiceID);
+                    ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
+                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
+                    ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
+                    ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
+                    _ProductID = Convert.ToInt32(dtPurchaseInvoiceBill.Rows[i]["ProductID"]);
+                    ObjDAL.SetColumnData("ProductID", SqlDbType.Int, _ProductID);
+                    ObjDAL.SetColumnData("ModelNo", SqlDbType.NVarChar, dtPurchaseInvoiceBill.Rows[i]["ModelNo"].ToString());
+                    ObjDAL.SetColumnData("BrandID", SqlDbType.Int, dtPurchaseInvoiceBill.Rows[i]["BrandID"].ToString());
+                    _QTY = Convert.ToInt32(dtPurchaseInvoiceBill.Rows[i]["QTY"]);
+                    ObjDAL.SetColumnData("QTY", SqlDbType.Int, _QTY);
+                    ObjDAL.SetColumnData("Rate", SqlDbType.Decimal, dtPurchaseInvoiceBill.Rows[i]["Rate"].ToString());
+
+                    _ID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoiceDetails", true);
+                    b = AddProductStockMaster();
+                }
+
+                if (_ID > 0)
                 {
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
 
-                    bool b = AddProductStockMaster();
+
                     if (b)
                         clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is Saved Successfully..", clsUtility.strProjectTitle);
 
@@ -131,37 +160,35 @@ namespace IMS.Purchase
                     clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Saved Successfully..", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                 }
+
             }
             else
             {
-                ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.VarChar, txtSupplierBillNo.Text.Trim());
-                ObjDAL.UpdateColumnData("ProductID", SqlDbType.Int, txtProductID.Text.Trim());
-                ObjDAL.UpdateColumnData("ModelNo", SqlDbType.NVarChar, txtModelNo.Text.Trim());
-                ObjDAL.UpdateColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
-                ObjDAL.UpdateColumnData("QTY", SqlDbType.Int, txtQTY.Text);
-                ObjDAL.UpdateColumnData("Rate", SqlDbType.Decimal, txtRate.Text.Trim());
+                //ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.VarChar, txtSupplierBillNo.Text.Trim());
+                //ObjDAL.UpdateColumnData("ProductID", SqlDbType.Int, txtProductID.Text.Trim());
+                //ObjDAL.UpdateColumnData("ModelNo", SqlDbType.NVarChar, txtModelNo.Text.Trim());
+                //ObjDAL.UpdateColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
+                //ObjDAL.UpdateColumnData("QTY", SqlDbType.Int, txtQTY.Text);
+                //ObjDAL.UpdateColumnData("Rate", SqlDbType.Decimal, txtRate.Text.Trim());
+                //ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
+                //ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-                //ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
-                //ObjDAL.UpdateColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
+                //if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoiceDetails", "PurchaseInvoiceID = " + PurchaseInvoiceID + "") > 0)
+                //{
+                //    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
-                ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
-                ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
-
-                if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoiceDetails", "PurchaseInvoiceID = " + PurchaseInvoiceID + "") > 0)
-                {
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
-
-                    clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is Updated", clsUtility.strProjectTitle);
-                    ClearAll();
-                    grpPurchaseBillDetail.Enabled = false;
-                    ObjDAL.ResetData();
-                }
-                else
-                {
-                    clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Updated", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
-                }
+                //    clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is Updated", clsUtility.strProjectTitle);
+                //    ClearAll();
+                //    grpPurchaseBillDetail.Enabled = false;
+                //    ObjDAL.ResetData();
+                //}
+                //else
+                //{
+                //    clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Updated", clsUtility.strProjectTitle);
+                //    ObjDAL.ResetData();
+                //}
             }
+            dataGridView1.DataSource = dtPurchaseInvoice;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -205,6 +232,8 @@ namespace IMS.Purchase
         {
             ObjUtil.SetRowNumber(dataGridView1);
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
+            dataGridView1.Columns["ProductID"].Visible = false;
+            dataGridView1.Columns["BrandID"].Visible = false;
         }
 
         private void LoadData()
@@ -219,6 +248,11 @@ namespace IMS.Purchase
                 txtTotalValueBill.Text = Convert.ToDouble(dt.Rows[0]["BillValue"]).ToString();
                 txtTotalQTYBill.Text = Convert.ToDouble(dt.Rows[0]["TotalQTY"]).ToString();
                 PurchaseInvoiceID = Convert.ToInt32(dt.Rows[0]["PurchaseInvoiceID"]);
+
+                txtDiffQty.Text = (Convert.ToInt32(txtTotalQTYBill.Text) - pTotalQTY).ToString();
+                txtDiffValue.Text = (Convert.ToDouble(txtTotalValueBill.Text) - pTotalAmt).ToString();
+
+                txtProductName.Focus();
             }
             else
             {
@@ -251,12 +285,12 @@ namespace IMS.Purchase
         {
             int deafultStoreID = ObjDAL.ExecuteScalarInt("SELECT Storeid FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting] WHERE MachineName = '" + Environment.MachineName + "'");
 
-            int pcount = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.ProductStockMaster", "ProductID=" + txtProductID.Text.Trim() + " AND StoreID = " + deafultStoreID);
+            int pcount = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.ProductStockMaster", "ProductID=" + _ProductID + " AND StoreID = " + deafultStoreID);
 
             if (pcount == 0)
             {
-                ObjDAL.SetColumnData("ProductID", SqlDbType.Int, txtProductID.Text.Trim());
-                ObjDAL.SetColumnData("QTY", SqlDbType.Int, txtQTY.Text);
+                ObjDAL.SetColumnData("ProductID", SqlDbType.Int, _ProductID);
+                ObjDAL.SetColumnData("QTY", SqlDbType.Int, _QTY);
                 ObjDAL.SetColumnData("StoreID", SqlDbType.Int, deafultStoreID);
                 ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                 if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.ProductStockMaster", true) > 0)
@@ -266,13 +300,13 @@ namespace IMS.Purchase
             }
             else
             {
-                int pQTY = ObjDAL.ExecuteScalarInt("SELECT Storeid FROM " + clsUtility.DBName + ".[dbo].[ProductStockMaster] WHERE ProductID=" + txtProductID.Text.Trim() + " AND StoreID = " + deafultStoreID);
+                int pQTY = ObjDAL.ExecuteScalarInt("SELECT Storeid FROM " + clsUtility.DBName + ".[dbo].[ProductStockMaster] WHERE ProductID=" + _ProductID + " AND StoreID = " + deafultStoreID);
 
-                ObjDAL.UpdateColumnData("QTY", SqlDbType.Int, (pQTY + Convert.ToInt32(txtQTY.Text.Trim())));
+                ObjDAL.UpdateColumnData("QTY", SqlDbType.Int, (pQTY + _QTY));
                 ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                 ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-                if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.ProductStockMaster", "ProductID=" + txtProductID.Text.Trim() + " AND StoreID = " + deafultStoreID) > 0)
+                if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.ProductStockMaster", "ProductID=" + _ProductID + " AND StoreID = " + deafultStoreID) > 0)
                 {
                     return true;
                 }
@@ -302,7 +336,7 @@ namespace IMS.Purchase
                             if (ObjUtil.GetDataPopup().ColumnCount > 0)
                             {
                                 ObjUtil.GetDataPopup().Columns["ProductID"].Visible = false;
-                                ObjUtil.SetDataPopupSize(450, 0);
+                                ObjUtil.SetDataPopupSize(350, 0);
 
 
                             }
@@ -330,8 +364,6 @@ namespace IMS.Purchase
             {
                 GetItemDetailsByProductID(txtProductID.Text);
             }
-
-
         }
 
         private void Purchase_Bill_Details_KeyDown(object sender, KeyEventArgs e)
@@ -345,7 +377,6 @@ namespace IMS.Purchase
             DataTable dt = ObjDAL.ExecuteSelectStatement(strQ);
             if (ObjUtil.ValidateTable(dt))
             {
-                clsUtility.ShowInfoMessage("selected product name " + dt.Rows[0]["ProductName"].ToString(), clsUtility.strProjectTitle);
                 //string name = dt.Rows[0]["ProductName"].ToString();
                 //string rate = dt.Rows[0]["Rate"].ToString();
                 //string qty = "1";
@@ -362,26 +393,40 @@ namespace IMS.Purchase
             DataRow dRow = dtPurchaseInvoice.NewRow();
             dRow["ProductID"] = txtProductID.Text;
             dRow["ProductName"] = txtProductName.Text;
+            dRow["BrandID"] = cmbBrand.SelectedValue;
+            dRow["ModelNo"] = txtModelNo.Text;
             dRow["QTY"] = txtQTY.Text;
             dRow["Rate"] = txtRate.Text;
             dRow["Total"] = (Convert.ToInt32(txtQTY.Text) * Convert.ToDouble(txtRate.Text));
-            //dRow["Delete"] = "Delete";
 
             dtPurchaseInvoice.Rows.Add(dRow);
             dtPurchaseInvoice.AcceptChanges();
-
             dataGridView1.DataSource = dtPurchaseInvoice;
+            CalculateSubTotal();
+            btnSave.Enabled = true;
         }
 
         private void InitItemTable()
         {
             dtPurchaseInvoice.Columns.Add("ProductID");
             dtPurchaseInvoice.Columns.Add("ProductName");
+            dtPurchaseInvoice.Columns.Add("ModelNo");
+            dtPurchaseInvoice.Columns.Add("BrandID");
             dtPurchaseInvoice.Columns.Add("QTY");
             dtPurchaseInvoice.Columns.Add("Rate");
             dtPurchaseInvoice.Columns.Add("Total");
+
+            DataGridViewButtonColumn ColDelete = new DataGridViewButtonColumn();
+            ColDelete.DataPropertyName = "Delete";
+            ColDelete.HeaderText = "Delete";
+            ColDelete.Name = "ColDelete";
+            ColDelete.Text = "Delete";
+            ColDelete.UseColumnTextForButtonValue = true;
+
             dtPurchaseInvoice.AcceptChanges();
             dataGridView1.DataSource = dtPurchaseInvoice;
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            ColDelete});
         }
 
         private void linkAddPurchaseBillItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -422,13 +467,60 @@ namespace IMS.Purchase
                 txtQTY.Focus();
                 return;
             }
-            else if (Convert.ToInt32(txtRate.Text) <= 0)
+            else if (Convert.ToDouble(txtRate.Text) <= 0)
             {
                 clsUtility.ShowInfoMessage("Please Enter Valid Rate ", clsUtility.strProjectTitle);
                 txtRate.Focus();
                 return;
             }
             AddRowToItemDetails();
+            ClearPurchaseInvoiceBillDetails();
+        }
+
+        private void CalculateSubTotal()
+        {
+            pTotalQTY = 0;
+            pTotalAmt = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                pTotalQTY += Convert.ToInt32(dataGridView1.Rows[i].Cells["QTY"].Value);
+                pTotalAmt += Convert.ToDouble(dataGridView1.Rows[i].Cells["Total"].Value);
+            }
+            txtTotalQTYEntered.Text = pTotalQTY.ToString();
+            txtTotalValueEntered.Text = pTotalAmt.ToString();
+
+            txtDiffQty.Text = (Convert.ToInt32(txtTotalQTYBill.Text) - pTotalQTY).ToString();
+            txtDiffValue.Text = (Convert.ToDouble(txtTotalValueBill.Text) - pTotalAmt).ToString();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "ColDelete")
+            {
+
+                DialogResult d = MessageBox.Show("Are you sure want to delete ? ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (d == DialogResult.Yes)
+                {
+                    dataGridView1.Rows.RemoveAt(e.RowIndex);
+                    dataGridView1.EndEdit();
+                    CalculateSubTotal();
+                    txtProductName.Focus();
+                }
+            }
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Rate" ||
+                dataGridView1.Columns[e.ColumnIndex].Name == "QTY")
+            {
+                int QTY = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["QTY"].Value);
+                double Rate = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Rate"].Value);
+                double Total = QTY * Rate;
+
+                dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
+                CalculateSubTotal();
+            }
         }
     }
 }

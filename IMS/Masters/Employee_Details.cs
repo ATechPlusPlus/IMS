@@ -252,7 +252,7 @@ namespace IMS.Masters
         private void LoadData()
         {
 
-            string q = " select e1.EmpID,EmployeeCode,Name,ShopID,Gender,DOB,[Address],Photo, s1.StoreName from " + clsUtility.DBName + ".dbo.EmployeeDetails e1 join IMS_DB.dbo.StoreMaster s1" +
+            string q = " select e1.EmpID,EmployeeCode,Name,ShopID,Gender,DOB,[Address],Photo, s1.StoreName from " + clsUtility.DBName + ".dbo.EmployeeDetails e1 join " + clsUtility.DBName + ".dbo.StoreMaster s1" +
                         " on e1.ShopID=s1.StoreID order by EmpID desc";
             DataTable dataTable = ObjDAL.ExecuteSelectStatement(q);
             if (dataTable.Rows.Count > 0)
@@ -320,7 +320,7 @@ namespace IMS.Masters
 
         private void BindUserDetails()
         {
-            DataTable dt = ObjDAL.ExecuteSelectStatement("select * from "+clsUtility.DBName+".[dbo].[UserManagement] where EmployeeID=" + EmployeeID);
+            DataTable dt = ObjDAL.ExecuteSelectStatement("select * from " + clsUtility.DBName + ".[dbo].[UserManagement] where EmployeeID=" + EmployeeID);
             if (dt.Rows.Count > 0)
             {
                 txtUsername.Text = dt.Rows[0]["UserName"].ToString();

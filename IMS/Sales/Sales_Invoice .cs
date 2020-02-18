@@ -220,7 +220,7 @@ namespace IMS.Sales
         {
             string strQ = "select p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " +
                           clsUtility.DBName + " .dbo.ProductStockMaster p2 on p1.ProductID = p2.ProductID " +
-                           " where p2.StoreID = 2 and p1.ProductID = " + productID;
+                           " where p2.StoreID = " + cmbShop.SelectedValue + " and p1.ProductID = " + productID;
             DataTable dt = ObjDAL.ExecuteSelectStatement(strQ);
             if (ObjUtil.ValidateTable(dt))
             {
@@ -320,7 +320,6 @@ namespace IMS.Sales
             ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtTexamount.Text);
             ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, TxtGrandTotal.Text);
             ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-            //ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime, DateTime.Now);
             ObjDAL.SetColumnData("CustomerName", SqlDbType.NVarChar, txtCustomerName.Text);
             ObjDAL.SetColumnData("SalesMan", SqlDbType.Int, txtEmpID.Text);
             ObjDAL.SetColumnData("ShopeID", SqlDbType.Int, cmbShop.SelectedValue.ToString());
