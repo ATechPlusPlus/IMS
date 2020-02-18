@@ -393,6 +393,7 @@
             this.txtTotalValueEntered.ReadOnly = true;
             this.txtTotalValueEntered.Size = new System.Drawing.Size(133, 20);
             this.txtTotalValueEntered.TabIndex = 245;
+            this.txtTotalValueEntered.Text = "0";
             // 
             // lblTotalValueBill
             // 
@@ -495,6 +496,7 @@
             this.txtTotalQTYEntered.ReadOnly = true;
             this.txtTotalQTYEntered.Size = new System.Drawing.Size(133, 20);
             this.txtTotalQTYEntered.TabIndex = 251;
+            this.txtTotalQTYEntered.Text = "0";
             // 
             // btnCancel
             // 

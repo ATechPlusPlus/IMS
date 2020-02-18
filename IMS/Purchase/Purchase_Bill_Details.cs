@@ -28,6 +28,7 @@ namespace IMS.Purchase
         int PurchaseInvoiceID = 0;
         int _ProductID = 0;
         int _QTY = 0;
+        bool pIsInvoiceDone = false;
 
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
@@ -48,6 +49,8 @@ namespace IMS.Purchase
             txtTotalQTYEntered.Text = "0";
             txtTotalValueBill.Text = "0";
             txtTotalValueEntered.Text = "0";
+            txtDiffValue.Text = "0";
+            txtDiffQty.Text = "0";
             txtSupplierBillNo.Focus();
         }
 
@@ -67,31 +70,43 @@ namespace IMS.Purchase
         {
             if (ObjUtil.IsControlTextEmpty(txtProductName))
             {
-                clsUtility.ShowInfoMessage("Enter Product Name           ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please Enter Product Name ", clsUtility.strProjectTitle);
                 txtProductName.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(txtModelNo))
             {
-                clsUtility.ShowInfoMessage("Enter Model Number           ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please Model Number ", clsUtility.strProjectTitle);
                 txtModelNo.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(cmbBrand))
             {
-                clsUtility.ShowInfoMessage("Select Brand for " + txtProductName.Text, clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please Select Brand Name ", clsUtility.strProjectTitle);
                 cmbBrand.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(txtQTY))
             {
-                clsUtility.ShowInfoMessage("Enter Qty           ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please Enter Quantity ", clsUtility.strProjectTitle);
                 txtQTY.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(txtRate))
             {
-                clsUtility.ShowInfoMessage("Enter Rate           ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please Enter Rate ", clsUtility.strProjectTitle);
+                txtRate.Focus();
+                return false;
+            }
+            else if (Convert.ToInt32(txtQTY.Text) <= 0)
+            {
+                clsUtility.ShowInfoMessage("Please Enter Valid Quantity ", clsUtility.strProjectTitle);
+                txtQTY.Focus();
+                return false;
+            }
+            else if (Convert.ToDouble(txtRate.Text) <= 0)
+            {
+                clsUtility.ShowInfoMessage("Please Enter Valid Rate ", clsUtility.strProjectTitle);
                 txtRate.Focus();
                 return false;
             }
@@ -148,16 +163,27 @@ namespace IMS.Purchase
                 {
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
 
-
                     if (b)
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is Saved Successfully..", clsUtility.strProjectTitle);
+                    {
+                        if (txtDiffQty.Text == "0" && txtDiffValue.Text == "0")
+                        {
+                            pIsInvoiceDone = true;
+                            ObjDAL.UpdateColumnData("PurchaseInvoice", SqlDbType.Bit, pIsInvoiceDone);
+                            ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID = " + PurchaseInvoiceID + "");
+                            clsUtility.ShowInfoMessage("Purchase Invoice is Saved Successfully..", clsUtility.strProjectTitle);
+                        }
+                    }
+                    else
+                    {
+                        clsUtility.ShowInfoMessage("Purchase Invoice is not Saved Successfully..", clsUtility.strProjectTitle);
+                    }
 
                     ClearAll();
                     grpPurchaseBillDetail.Enabled = false;
                 }
                 else
                 {
-                    clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                    clsUtility.ShowInfoMessage("Purchase Invoice is not Saved Successfully..", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                 }
 
@@ -256,6 +282,7 @@ namespace IMS.Purchase
             }
             else
             {
+                clsUtility.ShowInfoMessage("Purchase Invoice is not available for Bill No. " + txtSupplierBillNo.Text, clsUtility.strProjectTitle);
                 grpPurchaseBillDetail.Enabled = false;
             }
         }
@@ -315,14 +342,15 @@ namespace IMS.Purchase
         }
         private void txtProductName_TextChanged(object sender, EventArgs e)
         {
-            if (txtProductName.Text.Length > 0) // if manual entry
+            try
             {
-                try
+                if (txtProductName.Text.Length > 0) // if manual entry
                 {
                     string query = "SELECT ProductID, ProductName FROM " + clsUtility.DBName + ".dbo.ProductMaster";
                     DataTable dt = ObjDAL.ExecuteSelectStatement(query + " WHERE ProductName Like '" + txtProductName.Text + "%'");
                     if (ObjUtil.ValidateTable(dt))
                     {
+                        linkAddPurchaseBillItems.Enabled = true;
                         ObjUtil.SetControlData(txtProductName, "ProductName");
                         ObjUtil.SetControlData(txtProductID, "ProductID");
 
@@ -347,12 +375,17 @@ namespace IMS.Purchase
                     else
                     {
                         ObjUtil.CloseAutoExtender();
+                        linkAddPurchaseBillItems.Enabled = false;
                     }
                 }
-                catch (Exception)
+                else
                 {
-
+                    ObjUtil.CloseAutoExtender();
                 }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -362,6 +395,7 @@ namespace IMS.Purchase
             DataGridView dgv = (DataGridView)sender;
             if (dgv.DataSource != null)
             {
+                linkAddPurchaseBillItems.Enabled = true;
                 GetItemDetailsByProductID(txtProductID.Text);
             }
         }
@@ -369,6 +403,7 @@ namespace IMS.Purchase
         private void Purchase_Bill_Details_KeyDown(object sender, KeyEventArgs e)
         {
             txtProductName.Focus();
+            linkAddPurchaseBillItems.Enabled = true;
         }
 
         private void GetItemDetailsByProductID(string productID)
@@ -390,20 +425,34 @@ namespace IMS.Purchase
 
         private void AddRowToItemDetails()
         {
-            DataRow dRow = dtPurchaseInvoice.NewRow();
-            dRow["ProductID"] = txtProductID.Text;
-            dRow["ProductName"] = txtProductName.Text;
-            dRow["BrandID"] = cmbBrand.SelectedValue;
-            dRow["ModelNo"] = txtModelNo.Text;
-            dRow["QTY"] = txtQTY.Text;
-            dRow["Rate"] = txtRate.Text;
-            dRow["Total"] = (Convert.ToInt32(txtQTY.Text) * Convert.ToDouble(txtRate.Text));
+            if (Convert.ToInt32(txtTotalQTYEntered.Text) <= Convert.ToInt32(txtTotalQTYBill.Text))
+            {
+                DataRow dRow = dtPurchaseInvoice.NewRow();
+                dRow["ProductID"] = txtProductID.Text;
+                dRow["ProductName"] = txtProductName.Text;
+                dRow["BrandID"] = cmbBrand.SelectedValue;
+                dRow["ModelNo"] = txtModelNo.Text;
+                dRow["QTY"] = txtQTY.Text;
+                dRow["Rate"] = txtRate.Text;
+                dRow["Total"] = Math.Round((Convert.ToInt32(txtQTY.Text) * Convert.ToDouble(txtRate.Text)), 2);
 
-            dtPurchaseInvoice.Rows.Add(dRow);
-            dtPurchaseInvoice.AcceptChanges();
-            dataGridView1.DataSource = dtPurchaseInvoice;
-            CalculateSubTotal();
-            btnSave.Enabled = true;
+                dtPurchaseInvoice.Rows.Add(dRow);
+                dtPurchaseInvoice.AcceptChanges();
+                dataGridView1.DataSource = dtPurchaseInvoice;
+                btnSave.Enabled = true;
+
+                CalculateSubTotal();
+            }
+            else if (Convert.ToInt32(txtTotalQTYEntered.Text) == Convert.ToInt32(txtTotalQTYBill.Text))
+            {
+                clsUtility.ShowInfoMessage("Purchase Invoiced QTY and Entered QTY is already same", clsUtility.strProjectTitle);
+                btnSave.Enabled = false;
+            }
+            //else
+            //{
+            //    clsUtility.ShowInfoMessage("Entered QTY can not greater then Purchase Invoice QTY", clsUtility.strProjectTitle);
+            //    btnSave.Enabled = false;
+            //}
         }
 
         private void InitItemTable()
@@ -431,50 +480,11 @@ namespace IMS.Purchase
 
         private void linkAddPurchaseBillItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (ObjUtil.IsControlTextEmpty(txtProductName))
+            if (Validateform())
             {
-                clsUtility.ShowInfoMessage("Please Enter Product Name ", clsUtility.strProjectTitle);
-                txtProductName.Focus();
-                return;
+                AddRowToItemDetails();
+                ClearPurchaseInvoiceBillDetails();
             }
-            else if (ObjUtil.IsControlTextEmpty(txtModelNo))
-            {
-                clsUtility.ShowInfoMessage("Please Model Number ", clsUtility.strProjectTitle);
-                txtModelNo.Focus();
-                return;
-            }
-            else if (ObjUtil.IsControlTextEmpty(cmbBrand))
-            {
-                clsUtility.ShowInfoMessage("Please Select Brand Name ", clsUtility.strProjectTitle);
-                cmbBrand.Focus();
-                return;
-            }
-            else if (ObjUtil.IsControlTextEmpty(txtQTY))
-            {
-                clsUtility.ShowInfoMessage("Please Enter Quantity ", clsUtility.strProjectTitle);
-                txtQTY.Focus();
-                return;
-            }
-            else if (ObjUtil.IsControlTextEmpty(txtRate))
-            {
-                clsUtility.ShowInfoMessage("Please Enter Rate ", clsUtility.strProjectTitle);
-                txtRate.Focus();
-                return;
-            }
-            else if (Convert.ToInt32(txtQTY.Text) <= 0)
-            {
-                clsUtility.ShowInfoMessage("Please Enter Valid Quantity ", clsUtility.strProjectTitle);
-                txtQTY.Focus();
-                return;
-            }
-            else if (Convert.ToDouble(txtRate.Text) <= 0)
-            {
-                clsUtility.ShowInfoMessage("Please Enter Valid Rate ", clsUtility.strProjectTitle);
-                txtRate.Focus();
-                return;
-            }
-            AddRowToItemDetails();
-            ClearPurchaseInvoiceBillDetails();
         }
 
         private void CalculateSubTotal()
@@ -518,7 +528,7 @@ namespace IMS.Purchase
                 double Rate = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Rate"].Value);
                 double Total = QTY * Rate;
 
-                dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
+                dataGridView1.Rows[e.RowIndex].Cells["Total"].Value = Math.Round(Total, 2).ToString();
                 CalculateSubTotal();
             }
         }

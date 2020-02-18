@@ -161,9 +161,7 @@ namespace IMS.Masters
                 return false;
             }
 
-
-
-            int result = ObjDAL.ExecuteScalarInt("select count(*) from IMS_DB.dbo.EmployeeDetails where EmployeeCode='" + txtEmployeeCode.Text + "' and EMPID<>" + EmployeeID);
+            int result = ObjDAL.ExecuteScalarInt("select count(1) from "+clsUtility.DBName+".dbo.EmployeeDetails where EmployeeCode='" + txtEmployeeCode.Text + "' and EMPID<>" + EmployeeID);
             if (result > 0)
             {
                 clsUtility.ShowInfoMessage("The Employee already exist with the given employee code. Please Enter different employee code.", clsUtility.strProjectTitle);
@@ -182,7 +180,7 @@ namespace IMS.Masters
                     return false;
                 }
 
-                int countuser = ObjDAL.ExecuteScalarInt("select count(*) from IMS_DB.dbo.UserManagement where UserName='" + txtUsername.Text + "' and EmployeeID<>" + EmployeeID);
+                int countuser = ObjDAL.ExecuteScalarInt("select count(1) from "+clsUtility.DBName+".dbo.UserManagement where UserName='" + txtUsername.Text + "' and EmployeeID<>" + EmployeeID);
                 if (countuser > 0)
                 {
                     clsUtility.ShowInfoMessage("The user name already exist.Please enter different user name.", clsUtility.strProjectTitle);
@@ -190,16 +188,8 @@ namespace IMS.Masters
                     return false;
                 }
             }
-
-
-
             return true;
-
-
-
-
         }
-
 
         private void SaveEmployee()
         {
@@ -221,11 +211,7 @@ namespace IMS.Masters
             {
                 ObjDAL.SetColumnData("Photo", SqlDbType.VarBinary, ObjUtil.GetImageBytes(PicEmployee.Image));
             }
-
-
-
             ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-            ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime, DateTime.Now);
             EmployeeID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.EmployeeDetails", true);
 
             if (EmployeeID > 0)
@@ -278,8 +264,6 @@ namespace IMS.Masters
             dgvEmployee.Columns["Photo"].Visible = false;
             dgvEmployee.Columns["EmpID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dgvEmployee.Rows.Count;
-
-
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -293,13 +277,10 @@ namespace IMS.Masters
         }
 
         private void txtPass_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
+        {}
 
         private void txtPass_MouseUp(object sender, MouseEventArgs e)
-        {
-        }
+        {}
 
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
@@ -321,7 +302,7 @@ namespace IMS.Masters
         private void BindUserDetails()
         {
             DataTable dt = ObjDAL.ExecuteSelectStatement("select * from " + clsUtility.DBName + ".[dbo].[UserManagement] where EmployeeID=" + EmployeeID);
-            if (dt.Rows.Count > 0)
+            if (ObjUtil.ValidateTable(dt))
             {
                 txtUsername.Text = dt.Rows[0]["UserName"].ToString();
                 txtPass.Text = ObjUtil.Decrypt(dt.Rows[0]["Password"].ToString(), true);
@@ -334,12 +315,9 @@ namespace IMS.Masters
             {
                 try
                 {
-
                     ClearAll();
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
-
                     EmployeeID = Convert.ToInt32(dgvEmployee.SelectedRows[0].Cells["EmpID"].Value);
-
                     txtEmployeeCode.Text = dgvEmployee.SelectedRows[0].Cells["EmployeeCode"].Value.ToString();
                     txtName.Text = dgvEmployee.SelectedRows[0].Cells["Name"].Value.ToString();
                     cmbShop.SelectedValue = Convert.ToInt32(dgvEmployee.SelectedRows[0].Cells["ShopID"].Value);
@@ -375,7 +353,6 @@ namespace IMS.Masters
                         PicEmployee.Image = ObjUtil.GetImage((byte[])dgvEmployee.SelectedRows[0].Cells["Photo"].Value);
                     }
 
-
                     grpEmployee.Enabled = false;
                     BindUserDetails();
                 }
@@ -388,7 +365,6 @@ namespace IMS.Masters
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
             grpEmployee.Enabled = true;
             txtEmployeeCode.Focus();
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -400,7 +376,6 @@ namespace IMS.Masters
         }
         private void UpdateEmployee()
         {
-
             ObjDAL.UpdateColumnData("EmployeeCode", SqlDbType.NVarChar, txtEmployeeCode.Text.Trim());
             ObjDAL.UpdateColumnData("Name", SqlDbType.NVarChar, txtName.Text.Trim());
             ObjDAL.UpdateColumnData("ShopID", SqlDbType.Int, cmbShop.SelectedValue);
