@@ -43,9 +43,11 @@
             this.grpCountry = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbCountry = new System.Windows.Forms.ComboBox();
+            this.grpCurrencyValue = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
             this.grpCountry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpCurrencyValue.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -76,7 +78,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 129);
+            this.label1.Location = new System.Drawing.Point(48, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 17);
             this.label1.TabIndex = 204;
@@ -87,7 +89,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(65, 177);
+            this.label2.Location = new System.Drawing.Point(48, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 17);
             this.label2.TabIndex = 206;
@@ -97,7 +99,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(176, 172);
+            this.textBox1.Location = new System.Drawing.Point(159, 76);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(206, 25);
             this.textBox1.TabIndex = 207;
@@ -109,12 +111,13 @@
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(256, 61);
+            this.btnUpdate.Location = new System.Drawing.Point(257, 56);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
             this.btnUpdate.TabIndex = 211;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             this.btnUpdate.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnUpdate.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
@@ -124,12 +127,13 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(420, 61);
+            this.btnCancel.Location = new System.Drawing.Point(421, 56);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
             this.btnCancel.TabIndex = 213;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnCancel.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
@@ -139,12 +143,13 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(338, 61);
+            this.btnDelete.Location = new System.Drawing.Point(339, 56);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
             this.btnDelete.TabIndex = 212;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnDelete.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
@@ -154,12 +159,13 @@
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(176, 61);
+            this.btnEdit.Location = new System.Drawing.Point(177, 56);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
             this.btnEdit.TabIndex = 210;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             this.btnEdit.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnEdit.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
@@ -169,12 +175,13 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(94, 61);
+            this.btnSave.Location = new System.Drawing.Point(95, 56);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
             this.btnSave.TabIndex = 209;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             this.btnSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
@@ -184,12 +191,13 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(5, 61);
+            this.btnAdd.Location = new System.Drawing.Point(6, 56);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
             this.btnAdd.TabIndex = 208;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
@@ -227,10 +235,26 @@
             this.cmbCountry.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbCountry.Location = new System.Drawing.Point(176, 124);
+            this.cmbCountry.Location = new System.Drawing.Point(159, 28);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(206, 27);
             this.cmbCountry.TabIndex = 215;
+            // 
+            // grpCurrencyValue
+            // 
+            this.grpCurrencyValue.BackColor = System.Drawing.Color.Transparent;
+            this.grpCurrencyValue.Controls.Add(this.label1);
+            this.grpCurrencyValue.Controls.Add(this.cmbCountry);
+            this.grpCurrencyValue.Controls.Add(this.label2);
+            this.grpCurrencyValue.Controls.Add(this.textBox1);
+            this.grpCurrencyValue.Enabled = false;
+            this.grpCurrencyValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpCurrencyValue.Location = new System.Drawing.Point(14, 93);
+            this.grpCurrencyValue.Name = "grpCurrencyValue";
+            this.grpCurrencyValue.Size = new System.Drawing.Size(471, 130);
+            this.grpCurrencyValue.TabIndex = 216;
+            this.grpCurrencyValue.TabStop = false;
+            this.grpCurrencyValue.Text = "Currency Value Settings";
             // 
             // Currency_Value_Settings
             // 
@@ -239,7 +263,7 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(498, 448);
-            this.Controls.Add(this.cmbCountry);
+            this.Controls.Add(this.grpCurrencyValue);
             this.Controls.Add(this.grpCountry);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnCancel);
@@ -247,9 +271,6 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -262,8 +283,9 @@
             this.panel2.PerformLayout();
             this.grpCountry.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpCurrencyValue.ResumeLayout(false);
+            this.grpCurrencyValue.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -283,5 +305,6 @@
         private System.Windows.Forms.GroupBox grpCountry;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cmbCountry;
+        private System.Windows.Forms.GroupBox grpCurrencyValue;
     }
 }

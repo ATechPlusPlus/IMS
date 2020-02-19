@@ -26,7 +26,7 @@ namespace IMS.Settings
         private void LoadData()
         {
             DataTable dt = null;
-            //dt = ObjDAL.ExecuteSelectStatement("");
+            dt = ObjDAL.ExecuteSelectStatement("");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -38,6 +38,10 @@ namespace IMS.Settings
             }
         }
 
+        private void ClearAll()
+        { 
+        
+        }
         private void FillCountryData()
         {
             DataTable dt = null;
@@ -77,6 +81,63 @@ namespace IMS.Settings
         {
             Button btn = (Button)sender;
             btn.BackgroundImage = B_Leave;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            grpCurrencyValue.Enabled = true;
+            cmbCountry.Focus();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            grpCurrencyValue.Enabled = true;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult d = MessageBox.Show("Are you sure want to delete?", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (d == DialogResult.Yes)
+            {
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.CurrencyRateSetting", "CountryID=" + cmbCountry.SelectedValue + "") > 0)
+                {
+                    clsUtility.ShowInfoMessage("Deleted  ", clsUtility.strProjectTitle);
+                    ClearAll();
+                    LoadData();
+                    grpCurrencyValue.Enabled = false;
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                }
+                else
+                {
+                    clsUtility.ShowErrorMessage("Not deleted  ", clsUtility.strProjectTitle);
+                    ObjDAL.ResetData();
+                }
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            bool b = clsUtility.ShowQuestionMessage(clsUtility.MsgActionCancel, clsUtility.strProjectTitle);
+            if (b)
+            {
+                ClearAll();
+                LoadData();
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                grpCurrencyValue.Enabled = false;
+            }
         }
     }
 }

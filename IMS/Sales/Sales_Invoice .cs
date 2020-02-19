@@ -161,9 +161,8 @@ namespace IMS.Sales
             {
                 try
                 {
-                    string query = "SELECT p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " +
-                                    clsUtility.DBName + " .dbo.ProductStockMaster p2 ON p1.ProductID = p2.ProductID " +
-                                    " WHERE p2.StoreID = " + cmbShop.SelectedValue.ToString();
+                    string query = "SELECT p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " + clsUtility.DBName + ".dbo.ProductStockMaster p2 " +
+                        "ON p1.ProductID = p2.ProductID WHERE p2.StoreID = " + cmbShop.SelectedValue.ToString();
                     DataTable dt = ObjDAL.ExecuteSelectStatement(query + " AND p1.ProductName Like '" + txtProductName.Text + "%'");
                     if (dt != null && dt.Rows.Count > 0)
                     {
@@ -234,7 +233,7 @@ namespace IMS.Sales
                 txtProductID.Clear();
                 txtProductName.Clear();
 
-                CalculateSubTotal();
+                CalculateGrandTotal();
             }
         }
 
@@ -249,28 +248,35 @@ namespace IMS.Sales
 
         private void dgvProductDetails_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (dgvProductDetails.Columns[e.ColumnIndex].Name == "Rate" ||
-             dgvProductDetails.Columns[e.ColumnIndex].Name == "QTY")
+            //dgvProductDetails.Columns[e.ColumnIndex].Name == "Rate" ||
+            if (dgvProductDetails.Columns[e.ColumnIndex].Name == "QTY")
             {
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
                 decimal Rate = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["Rate"].Value);
                 decimal Total = QTY * Rate;
 
                 dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
-                CalculateSubTotal();
+                CalculateGrandTotal();
             }
         }
-        private void CalculateSubTotal()
+        private void CalculateGrandTotal()
         {
-            decimal subTotal = 0.0M;
+            decimal SubTotal = 0.0M;
+            decimal Discount = 0.0M;
+            decimal Deliverycharges = 0.0M;
+            decimal GrandTotal = 0.0M;
 
             for (int i = 0; i < dgvProductDetails.Rows.Count; i++)
             {
-                subTotal += Convert.ToDecimal(dgvProductDetails.Rows[i].Cells["Total"].Value);
+                SubTotal += Convert.ToDecimal(dgvProductDetails.Rows[i].Cells["Total"].Value);
             }
+            txtSubTotal.Text = Math.Round(SubTotal, 2).ToString();
 
-            txtSubTotal.Text = subTotal.ToString();
+            Discount = txtDiscount.Text.Length > 0 ? Convert.ToDecimal(txtDiscount.Text) : 0;
+            Deliverycharges = txtDeliveryCharges.Text.Length > 0 ? Convert.ToDecimal(txtDeliveryCharges.Text) : 0;
+
+            GrandTotal = SubTotal - (SubTotal * Discount * 0.01M) + Deliverycharges;
+            txtGrandTotal.Text = Math.Round(GrandTotal, 2).ToString();
         }
 
         private void dgvProductDetails_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -283,7 +289,7 @@ namespace IMS.Sales
                 {
                     dgvProductDetails.Rows.RemoveAt(e.RowIndex);
                     dgvProductDetails.EndEdit();
-                    CalculateSubTotal();
+                    CalculateGrandTotal();
                 }
             }
         }
@@ -300,10 +306,10 @@ namespace IMS.Sales
             cmbShop.SelectedIndex = -1;
             txtTotalItems.Clear();
 
-            txtSubTotal.Clear();
-            txtTexamount.Clear();
-            txtDiscount.Clear();
-            TxtGrandTotal.Clear();
+            txtSubTotal.Text = "0";
+            txtDeliveryCharges.Text = "0";
+            txtDiscount.Text = "0";
+            txtGrandTotal.Text = "0";
 
         }
         private void btnAdd_Click_1(object sender, EventArgs e)
@@ -317,8 +323,8 @@ namespace IMS.Sales
             ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd"));
             ObjDAL.SetColumnData("SubTotal", SqlDbType.Decimal, txtSubTotal.Text);
             ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtDiscount.Text);
-            ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtTexamount.Text);
-            ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, TxtGrandTotal.Text);
+            ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtDeliveryCharges.Text);
+            ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtGrandTotal.Text);
             ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
             ObjDAL.SetColumnData("CustomerName", SqlDbType.NVarChar, txtCustomerName.Text);
             ObjDAL.SetColumnData("SalesMan", SqlDbType.Int, txtEmpID.Text);
@@ -333,13 +339,10 @@ namespace IMS.Sales
                 string QTY = dgvProductDetails.Rows[i].Cells["QTY"].Value.ToString();
                 string Rate = dgvProductDetails.Rows[i].Cells["Rate"].Value.ToString();
 
-
-
                 ObjDAL.SetColumnData("InvoiceID", SqlDbType.Int, InvoiceID);
                 ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
                 ObjDAL.SetColumnData("QTY", SqlDbType.Decimal, QTY);
                 ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-                //ObjDAL.SetColumnData("CreatedOn", SqlDbType.DateTime,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesDetails", false);
 
                 ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockMaster SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString());
@@ -351,6 +354,11 @@ namespace IMS.Sales
         private void btnSave_Click(object sender, EventArgs e)
         {
             ClearAll();
+        }
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            CalculateGrandTotal();
         }
     }
 }
