@@ -119,7 +119,7 @@
             this.grpPurchaseBillDetail.Size = new System.Drawing.Size(746, 173);
             this.grpPurchaseBillDetail.TabIndex = 238;
             this.grpPurchaseBillDetail.TabStop = false;
-            this.grpPurchaseBillDetail.Text = "Product Details";
+            this.grpPurchaseBillDetail.Text = "Item Details";
             // 
             // linkAddPurchaseBillItems
             // 
@@ -235,9 +235,9 @@
             this.lblProductName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductName.Location = new System.Drawing.Point(10, 41);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(101, 17);
+            this.lblProductName.Size = new System.Drawing.Size(82, 17);
             this.lblProductName.TabIndex = 229;
-            this.lblProductName.Text = "Product Name :";
+            this.lblProductName.Text = "Item Name :";
             // 
             // txtProductName
             // 

@@ -97,7 +97,6 @@ namespace IMS.Masters
 
         private void LoadData()
         {
-            //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
             dt = ObjDAL.ExecuteSelectStatement("SELECT S.SupplierID,S.SupplierName,S.CountryID,C.CountryName,(CASE WHEN S.ActiveStatus =1 THEN 'Active' WHEN S.ActiveStatus =0 THEN 'InActive' END) ActiveStatus,S.Phone,S.EmailID,S.BankName,S.BankAccountNo,S.BankAddress " +
               "FROM " + clsUtility.DBName + ".[dbo].[SupplierMaster] S " +
