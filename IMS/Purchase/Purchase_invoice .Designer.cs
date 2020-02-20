@@ -57,11 +57,35 @@
             this.txtShipmentNo = new System.Windows.Forms.TextBox();
             this.lblSupplierBillNo = new System.Windows.Forms.Label();
             this.txtSupplierBillNo = new System.Windows.Forms.TextBox();
+            this.grpCurrencyRate = new System.Windows.Forms.GroupBox();
+            this.txtCurrencyRate = new System.Windows.Forms.TextBox();
+            this.cmbCountry = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grpForeignCurrency = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtForeignExp = new System.Windows.Forms.TextBox();
+            this.grpLocalCurrency = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLocalExp = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtForeignDiscount = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtNetValue = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNewPriceRate = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLocalBillValue = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtLocalValue = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpPurchaseInvoice.SuspendLayout();
+            this.grpCurrencyRate.SuspendLayout();
+            this.grpForeignCurrency.SuspendLayout();
+            this.grpLocalCurrency.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -72,7 +96,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(768, 40);
+            this.panel2.Size = new System.Drawing.Size(978, 40);
             this.panel2.TabIndex = 110;
             // 
             // label12
@@ -180,7 +204,7 @@
             this.groupBox1.Controls.Add(this.rdSearchByShipment);
             this.groupBox1.Controls.Add(this.txtSearchByShipmentNo);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(20, 273);
+            this.groupBox1.Location = new System.Drawing.Point(15, 399);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(723, 51);
             this.groupBox1.TabIndex = 235;
@@ -192,7 +216,7 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(457, 19);
+            this.rdShowAll.Location = new System.Drawing.Point(474, 19);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
@@ -218,18 +242,20 @@
             this.txtSearchByShipmentNo.BackColor = System.Drawing.Color.White;
             this.txtSearchByShipmentNo.Enabled = false;
             this.txtSearchByShipmentNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByShipmentNo.Location = new System.Drawing.Point(167, 18);
+            this.txtSearchByShipmentNo.Location = new System.Drawing.Point(156, 19);
             this.txtSearchByShipmentNo.Name = "txtSearchByShipmentNo";
-            this.txtSearchByShipmentNo.Size = new System.Drawing.Size(206, 25);
+            this.txtSearchByShipmentNo.Size = new System.Drawing.Size(183, 25);
             this.txtSearchByShipmentNo.TabIndex = 5;
             this.txtSearchByShipmentNo.TextChanged += new System.EventHandler(this.txtSearchByShipmentNo_TextChanged);
+            this.txtSearchByShipmentNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtSearchByShipmentNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // grpGridview
             // 
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(20, 330);
+            this.grpGridview.Location = new System.Drawing.Point(15, 455);
             this.grpGridview.Name = "grpGridview";
             this.grpGridview.Size = new System.Drawing.Size(730, 175);
             this.grpGridview.TabIndex = 234;
@@ -256,7 +282,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(17, 514);
+            this.lblTotalRecords.Location = new System.Drawing.Point(12, 637);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 236;
@@ -281,7 +307,7 @@
             this.grpPurchaseInvoice.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPurchaseInvoice.Location = new System.Drawing.Point(20, 92);
             this.grpPurchaseInvoice.Name = "grpPurchaseInvoice";
-            this.grpPurchaseInvoice.Size = new System.Drawing.Size(746, 173);
+            this.grpPurchaseInvoice.Size = new System.Drawing.Size(946, 106);
             this.grpPurchaseInvoice.TabIndex = 237;
             this.grpPurchaseInvoice.TabStop = false;
             this.grpPurchaseInvoice.Text = "Purchase Invoice";
@@ -291,27 +317,30 @@
             this.lblTotalQty.AutoSize = true;
             this.lblTotalQty.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalQty.Location = new System.Drawing.Point(389, 131);
+            this.lblTotalQty.Location = new System.Drawing.Point(681, 72);
             this.lblTotalQty.Name = "lblTotalQty";
-            this.lblTotalQty.Size = new System.Drawing.Size(72, 17);
+            this.lblTotalQty.Size = new System.Drawing.Size(78, 17);
             this.lblTotalQty.TabIndex = 239;
-            this.lblTotalQty.Text = "Total QTY";
+            this.lblTotalQty.Text = "Total QTY :";
             // 
             // txtTotalQTY
             // 
             this.txtTotalQTY.BackColor = System.Drawing.Color.White;
-            this.txtTotalQTY.Location = new System.Drawing.Point(530, 131);
+            this.txtTotalQTY.Location = new System.Drawing.Point(777, 68);
             this.txtTotalQTY.Name = "txtTotalQTY";
-            this.txtTotalQTY.Size = new System.Drawing.Size(206, 25);
+            this.txtTotalQTY.Size = new System.Drawing.Size(126, 25);
             this.txtTotalQTY.TabIndex = 238;
+            this.txtTotalQTY.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
+            this.txtTotalQTY.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtTotalQTY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalQTY_KeyDown);
+            this.txtTotalQTY.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // lblBillValue
             // 
             this.lblBillValue.AutoSize = true;
             this.lblBillValue.BackColor = System.Drawing.Color.Transparent;
             this.lblBillValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillValue.Location = new System.Drawing.Point(10, 131);
+            this.lblBillValue.Location = new System.Drawing.Point(370, 67);
             this.lblBillValue.Name = "lblBillValue";
             this.lblBillValue.Size = new System.Drawing.Size(71, 17);
             this.lblBillValue.TabIndex = 237;
@@ -320,11 +349,14 @@
             // txtBillValue
             // 
             this.txtBillValue.BackColor = System.Drawing.Color.White;
-            this.txtBillValue.Location = new System.Drawing.Point(151, 131);
+            this.txtBillValue.Location = new System.Drawing.Point(469, 67);
             this.txtBillValue.Name = "txtBillValue";
             this.txtBillValue.Size = new System.Drawing.Size(206, 25);
             this.txtBillValue.TabIndex = 236;
+            this.txtBillValue.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
+            this.txtBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtBillValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillValue_KeyDown);
+            this.txtBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // cmbSupplier
             // 
@@ -334,7 +366,7 @@
             this.cmbSupplier.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbSupplier.Location = new System.Drawing.Point(151, 80);
+            this.cmbSupplier.Location = new System.Drawing.Point(128, 67);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(206, 27);
             this.cmbSupplier.TabIndex = 235;
@@ -344,7 +376,7 @@
             this.lblSupplier.AutoSize = true;
             this.lblSupplier.BackColor = System.Drawing.Color.Transparent;
             this.lblSupplier.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplier.Location = new System.Drawing.Point(10, 82);
+            this.lblSupplier.Location = new System.Drawing.Point(10, 69);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(62, 17);
             this.lblSupplier.TabIndex = 234;
@@ -354,9 +386,9 @@
             // 
             this.dtpBillDate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBillDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBillDate.Location = new System.Drawing.Point(530, 79);
+            this.dtpBillDate.Location = new System.Drawing.Point(777, 28);
             this.dtpBillDate.Name = "dtpBillDate";
-            this.dtpBillDate.Size = new System.Drawing.Size(190, 25);
+            this.dtpBillDate.Size = new System.Drawing.Size(126, 25);
             this.dtpBillDate.TabIndex = 233;
             // 
             // lblBillDate
@@ -364,7 +396,7 @@
             this.lblBillDate.AutoSize = true;
             this.lblBillDate.BackColor = System.Drawing.Color.Transparent;
             this.lblBillDate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillDate.Location = new System.Drawing.Point(389, 79);
+            this.lblBillDate.Location = new System.Drawing.Point(681, 28);
             this.lblBillDate.Name = "lblBillDate";
             this.lblBillDate.Size = new System.Drawing.Size(67, 17);
             this.lblBillDate.TabIndex = 232;
@@ -375,7 +407,7 @@
             this.lblShipmentNo.AutoSize = true;
             this.lblShipmentNo.BackColor = System.Drawing.Color.Transparent;
             this.lblShipmentNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShipmentNo.Location = new System.Drawing.Point(389, 41);
+            this.lblShipmentNo.Location = new System.Drawing.Point(369, 28);
             this.lblShipmentNo.Name = "lblShipmentNo";
             this.lblShipmentNo.Size = new System.Drawing.Size(91, 17);
             this.lblShipmentNo.TabIndex = 231;
@@ -384,18 +416,20 @@
             // txtShipmentNo
             // 
             this.txtShipmentNo.BackColor = System.Drawing.Color.White;
-            this.txtShipmentNo.Location = new System.Drawing.Point(530, 41);
+            this.txtShipmentNo.Location = new System.Drawing.Point(469, 28);
             this.txtShipmentNo.Name = "txtShipmentNo";
             this.txtShipmentNo.Size = new System.Drawing.Size(206, 25);
             this.txtShipmentNo.TabIndex = 230;
+            this.txtShipmentNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtShipmentNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShipmentNo_KeyDown);
+            this.txtShipmentNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // lblSupplierBillNo
             // 
             this.lblSupplierBillNo.AutoSize = true;
             this.lblSupplierBillNo.BackColor = System.Drawing.Color.Transparent;
             this.lblSupplierBillNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplierBillNo.Location = new System.Drawing.Point(10, 41);
+            this.lblSupplierBillNo.Location = new System.Drawing.Point(10, 28);
             this.lblSupplierBillNo.Name = "lblSupplierBillNo";
             this.lblSupplierBillNo.Size = new System.Drawing.Size(111, 17);
             this.lblSupplierBillNo.TabIndex = 229;
@@ -404,7 +438,7 @@
             // txtSupplierBillNo
             // 
             this.txtSupplierBillNo.BackColor = System.Drawing.Color.White;
-            this.txtSupplierBillNo.Location = new System.Drawing.Point(151, 41);
+            this.txtSupplierBillNo.Location = new System.Drawing.Point(128, 28);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
             this.txtSupplierBillNo.TabIndex = 228;
@@ -412,13 +446,275 @@
             this.txtSupplierBillNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplierBillNo_KeyDown);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
+            // grpCurrencyRate
+            // 
+            this.grpCurrencyRate.BackColor = System.Drawing.Color.Transparent;
+            this.grpCurrencyRate.Controls.Add(this.label2);
+            this.grpCurrencyRate.Controls.Add(this.cmbCountry);
+            this.grpCurrencyRate.Controls.Add(this.txtCurrencyRate);
+            this.grpCurrencyRate.Controls.Add(this.label1);
+            this.grpCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpCurrencyRate.Location = new System.Drawing.Point(20, 203);
+            this.grpCurrencyRate.Name = "grpCurrencyRate";
+            this.grpCurrencyRate.Size = new System.Drawing.Size(686, 51);
+            this.grpCurrencyRate.TabIndex = 238;
+            this.grpCurrencyRate.TabStop = false;
+            this.grpCurrencyRate.Text = "Currency";
+            // 
+            // txtCurrencyRate
+            // 
+            this.txtCurrencyRate.BackColor = System.Drawing.Color.White;
+            this.txtCurrencyRate.Enabled = false;
+            this.txtCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrencyRate.Location = new System.Drawing.Point(469, 19);
+            this.txtCurrencyRate.Name = "txtCurrencyRate";
+            this.txtCurrencyRate.ReadOnly = true;
+            this.txtCurrencyRate.Size = new System.Drawing.Size(206, 25);
+            this.txtCurrencyRate.TabIndex = 5;
+            this.txtCurrencyRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtCurrencyRate.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // cmbCountry
+            // 
+            this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCountry.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCountry.FormattingEnabled = true;
+            this.cmbCountry.Location = new System.Drawing.Point(128, 17);
+            this.cmbCountry.Name = "cmbCountry";
+            this.cmbCountry.Size = new System.Drawing.Size(206, 27);
+            this.cmbCountry.TabIndex = 241;
+            this.cmbCountry.SelectionChangeCommitted += new System.EventHandler(this.cmbCountry_SelectionChangeCommitted);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.TabIndex = 240;
+            this.label1.Text = "Country :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(366, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 17);
+            this.label2.TabIndex = 242;
+            this.label2.Text = "Currency Rate :";
+            // 
+            // grpForeignCurrency
+            // 
+            this.grpForeignCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.grpForeignCurrency.Controls.Add(this.label3);
+            this.grpForeignCurrency.Controls.Add(this.txtForeignExp);
+            this.grpForeignCurrency.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpForeignCurrency.Location = new System.Drawing.Point(22, 267);
+            this.grpForeignCurrency.Name = "grpForeignCurrency";
+            this.grpForeignCurrency.Size = new System.Drawing.Size(342, 51);
+            this.grpForeignCurrency.TabIndex = 243;
+            this.grpForeignCurrency.TabStop = false;
+            this.grpForeignCurrency.Text = "Foreign Currency";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 17);
+            this.label3.TabIndex = 242;
+            this.label3.Text = "Foreign Expenses :";
+            // 
+            // txtForeignExp
+            // 
+            this.txtForeignExp.BackColor = System.Drawing.Color.White;
+            this.txtForeignExp.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtForeignExp.Location = new System.Drawing.Point(149, 16);
+            this.txtForeignExp.Name = "txtForeignExp";
+            this.txtForeignExp.Size = new System.Drawing.Size(183, 25);
+            this.txtForeignExp.TabIndex = 5;
+            this.txtForeignExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
+            this.txtForeignExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtForeignExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // grpLocalCurrency
+            // 
+            this.grpLocalCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.grpLocalCurrency.Controls.Add(this.label4);
+            this.grpLocalCurrency.Controls.Add(this.txtLocalExp);
+            this.grpLocalCurrency.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpLocalCurrency.Location = new System.Drawing.Point(378, 267);
+            this.grpLocalCurrency.Name = "grpLocalCurrency";
+            this.grpLocalCurrency.Size = new System.Drawing.Size(328, 51);
+            this.grpLocalCurrency.TabIndex = 244;
+            this.grpLocalCurrency.TabStop = false;
+            this.grpLocalCurrency.Text = "Local Currency";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(7, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 17);
+            this.label4.TabIndex = 242;
+            this.label4.Text = "Local Expenses :";
+            // 
+            // txtLocalExp
+            // 
+            this.txtLocalExp.BackColor = System.Drawing.Color.White;
+            this.txtLocalExp.Enabled = false;
+            this.txtLocalExp.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalExp.Location = new System.Drawing.Point(134, 13);
+            this.txtLocalExp.Name = "txtLocalExp";
+            this.txtLocalExp.Size = new System.Drawing.Size(183, 25);
+            this.txtLocalExp.TabIndex = 5;
+            this.txtLocalExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
+            this.txtLocalExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtLocalExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(27, 337);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(138, 17);
+            this.label5.TabIndex = 246;
+            this.label5.Text = "Foreign Discount(%) :";
+            // 
+            // txtForeignDiscount
+            // 
+            this.txtForeignDiscount.BackColor = System.Drawing.Color.White;
+            this.txtForeignDiscount.Enabled = false;
+            this.txtForeignDiscount.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtForeignDiscount.Location = new System.Drawing.Point(171, 329);
+            this.txtForeignDiscount.Name = "txtForeignDiscount";
+            this.txtForeignDiscount.Size = new System.Drawing.Size(183, 25);
+            this.txtForeignDiscount.TabIndex = 245;
+            this.txtForeignDiscount.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
+            this.txtForeignDiscount.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtForeignDiscount.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(27, 368);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 17);
+            this.label6.TabIndex = 248;
+            this.label6.Text = "Net Value :";
+            // 
+            // txtNetValue
+            // 
+            this.txtNetValue.BackColor = System.Drawing.Color.White;
+            this.txtNetValue.Enabled = false;
+            this.txtNetValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNetValue.Location = new System.Drawing.Point(171, 363);
+            this.txtNetValue.Name = "txtNetValue";
+            this.txtNetValue.ReadOnly = true;
+            this.txtNetValue.Size = new System.Drawing.Size(183, 25);
+            this.txtNetValue.TabIndex = 247;
+            this.txtNetValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtNetValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(386, 368);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 17);
+            this.label7.TabIndex = 252;
+            this.label7.Text = "New Price Rate :";
+            // 
+            // txtNewPriceRate
+            // 
+            this.txtNewPriceRate.BackColor = System.Drawing.Color.White;
+            this.txtNewPriceRate.Enabled = false;
+            this.txtNewPriceRate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNewPriceRate.Location = new System.Drawing.Point(512, 364);
+            this.txtNewPriceRate.Name = "txtNewPriceRate";
+            this.txtNewPriceRate.ReadOnly = true;
+            this.txtNewPriceRate.Size = new System.Drawing.Size(183, 25);
+            this.txtNewPriceRate.TabIndex = 251;
+            this.txtNewPriceRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtNewPriceRate.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(386, 337);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(108, 17);
+            this.label8.TabIndex = 250;
+            this.label8.Text = "Local Bill Value :";
+            // 
+            // txtLocalBillValue
+            // 
+            this.txtLocalBillValue.BackColor = System.Drawing.Color.White;
+            this.txtLocalBillValue.Enabled = false;
+            this.txtLocalBillValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalBillValue.Location = new System.Drawing.Point(512, 329);
+            this.txtLocalBillValue.Name = "txtLocalBillValue";
+            this.txtLocalBillValue.ReadOnly = true;
+            this.txtLocalBillValue.Size = new System.Drawing.Size(183, 25);
+            this.txtLocalBillValue.TabIndex = 249;
+            this.txtLocalBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtLocalBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(712, 226);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 17);
+            this.label9.TabIndex = 241;
+            this.label9.Text = "Local Value :";
+            // 
+            // txtLocalValue
+            // 
+            this.txtLocalValue.BackColor = System.Drawing.Color.White;
+            this.txtLocalValue.Location = new System.Drawing.Point(797, 224);
+            this.txtLocalValue.Name = "txtLocalValue";
+            this.txtLocalValue.Size = new System.Drawing.Size(126, 20);
+            this.txtLocalValue.TabIndex = 240;
+            // 
             // Purchase_Invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(768, 533);
+            this.ClientSize = new System.Drawing.Size(978, 658);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtLocalValue);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtNewPriceRate);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtLocalBillValue);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtNetValue);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtForeignDiscount);
+            this.Controls.Add(this.grpLocalCurrency);
+            this.Controls.Add(this.grpForeignCurrency);
+            this.Controls.Add(this.grpCurrencyRate);
             this.Controls.Add(this.grpPurchaseInvoice);
             this.Controls.Add(this.lblTotalRecords);
             this.Controls.Add(this.groupBox1);
@@ -445,6 +741,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grpPurchaseInvoice.ResumeLayout(false);
             this.grpPurchaseInvoice.PerformLayout();
+            this.grpCurrencyRate.ResumeLayout(false);
+            this.grpCurrencyRate.PerformLayout();
+            this.grpForeignCurrency.ResumeLayout(false);
+            this.grpForeignCurrency.PerformLayout();
+            this.grpLocalCurrency.ResumeLayout(false);
+            this.grpLocalCurrency.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,5 +782,26 @@
         private System.Windows.Forms.TextBox txtShipmentNo;
         private System.Windows.Forms.Label lblSupplierBillNo;
         private System.Windows.Forms.TextBox txtSupplierBillNo;
+        private System.Windows.Forms.GroupBox grpCurrencyRate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbCountry;
+        private System.Windows.Forms.TextBox txtCurrencyRate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox grpForeignCurrency;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtForeignExp;
+        private System.Windows.Forms.GroupBox grpLocalCurrency;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtLocalExp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtForeignDiscount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtNetValue;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtNewPriceRate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtLocalBillValue;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtLocalValue;
     }
 }

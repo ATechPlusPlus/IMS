@@ -33,7 +33,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCurrencyRate = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -95,15 +95,17 @@
             this.label2.TabIndex = 206;
             this.label2.Text = "Currency Rate  :";
             // 
-            // textBox1
+            // txtCurrencyRate
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(159, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 25);
-            this.textBox1.TabIndex = 207;
-            this.textBox1.Text = "0";
+            this.txtCurrencyRate.BackColor = System.Drawing.Color.White;
+            this.txtCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrencyRate.Location = new System.Drawing.Point(159, 76);
+            this.txtCurrencyRate.Name = "txtCurrencyRate";
+            this.txtCurrencyRate.Size = new System.Drawing.Size(206, 25);
+            this.txtCurrencyRate.TabIndex = 207;
+            this.txtCurrencyRate.Text = "0";
+            this.txtCurrencyRate.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
+            this.txtCurrencyRate.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
             // 
             // btnUpdate
             // 
@@ -226,6 +228,8 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(470, 166);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
             // cmbCountry
             // 
@@ -246,7 +250,7 @@
             this.grpCurrencyValue.Controls.Add(this.label1);
             this.grpCurrencyValue.Controls.Add(this.cmbCountry);
             this.grpCurrencyValue.Controls.Add(this.label2);
-            this.grpCurrencyValue.Controls.Add(this.textBox1);
+            this.grpCurrencyValue.Controls.Add(this.txtCurrencyRate);
             this.grpCurrencyValue.Enabled = false;
             this.grpCurrencyValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpCurrencyValue.Location = new System.Drawing.Point(14, 93);
@@ -295,7 +299,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCurrencyRate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;

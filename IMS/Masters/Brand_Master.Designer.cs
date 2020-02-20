@@ -73,6 +73,8 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnUpdate.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnCancel
             // 
@@ -87,6 +89,8 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnDelete
             // 
@@ -101,6 +105,8 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnEdit
             // 
@@ -115,6 +121,8 @@
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnEdit.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnSave
             // 
@@ -129,6 +137,8 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnAdd
             // 
@@ -310,6 +320,8 @@
             this.txtSearchByBrand.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByBrand.TabIndex = 5;
             this.txtSearchByBrand.TextChanged += new System.EventHandler(this.txtSearchByBrand_TextChanged);
+            this.txtSearchByBrand.Enter += new System.EventHandler(this.txtBrandName_Enter);
+            this.txtSearchByBrand.Leave += new System.EventHandler(this.txtBrandName_Leave);
             // 
             // grpGridview
             // 

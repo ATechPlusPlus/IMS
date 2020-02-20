@@ -158,5 +158,15 @@ namespace IMS.Settings
             LoadStore();
             BindStoreSettingData();
         }
+
+        private void txtPCName_Enter(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender);
+        }
+
+        private void txtPCName_Leave(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender, Color.White);
+        }
     }
 }
