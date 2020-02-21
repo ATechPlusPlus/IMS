@@ -465,5 +465,15 @@ namespace IMS.Masters
                 }
             }
         }
+
+        private void txtEmployeeCode_Enter(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender);
+        }
+
+        private void txtEmployeeCode_Leave(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender, Color.White);
+        }
     }
 }

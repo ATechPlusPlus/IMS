@@ -36,6 +36,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grpProduct = new System.Windows.Forms.GroupBox();
+            this.cmbBrand = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblActiveStatus = new System.Windows.Forms.Label();
             this.txtProductName = new System.Windows.Forms.TextBox();
@@ -75,6 +79,8 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnUpdate.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnCancel
             // 
@@ -89,6 +95,8 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnDelete
             // 
@@ -103,6 +111,8 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnEdit
             // 
@@ -117,6 +127,8 @@
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnEdit.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnSave
             // 
@@ -131,6 +143,8 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnAdd
             // 
@@ -151,6 +165,10 @@
             // grpProduct
             // 
             this.grpProduct.BackColor = System.Drawing.Color.Transparent;
+            this.grpProduct.Controls.Add(this.cmbBrand);
+            this.grpProduct.Controls.Add(this.label1);
+            this.grpProduct.Controls.Add(this.cmbCategory);
+            this.grpProduct.Controls.Add(this.lblCategory);
             this.grpProduct.Controls.Add(this.lblProductName);
             this.grpProduct.Controls.Add(this.lblActiveStatus);
             this.grpProduct.Controls.Add(this.txtProductName);
@@ -163,6 +181,48 @@
             this.grpProduct.TabIndex = 215;
             this.grpProduct.TabStop = false;
             this.grpProduct.Text = "Product Details";
+            // 
+            // cmbBrand
+            // 
+            this.cmbBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBrand.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBrand.FormattingEnabled = true;
+            this.cmbBrand.Location = new System.Drawing.Point(159, 107);
+            this.cmbBrand.Name = "cmbBrand";
+            this.cmbBrand.Size = new System.Drawing.Size(206, 27);
+            this.cmbBrand.TabIndex = 198;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.TabIndex = 197;
+            this.label1.Text = "Brand :";
+            // 
+            // cmbCategory
+            // 
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(159, 66);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(206, 27);
+            this.cmbCategory.TabIndex = 196;
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.BackColor = System.Drawing.Color.Transparent;
+            this.lblCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(18, 69);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(85, 17);
+            this.lblCategory.TabIndex = 195;
+            this.lblCategory.Text = "Department :";
             // 
             // lblProductName
             // 
@@ -180,7 +240,7 @@
             this.lblActiveStatus.AutoSize = true;
             this.lblActiveStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveStatus.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveStatus.Location = new System.Drawing.Point(18, 71);
+            this.lblActiveStatus.Location = new System.Drawing.Point(18, 153);
             this.lblActiveStatus.Name = "lblActiveStatus";
             this.lblActiveStatus.Size = new System.Drawing.Size(94, 17);
             this.lblActiveStatus.TabIndex = 189;
@@ -193,9 +253,9 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(206, 25);
             this.txtProductName.TabIndex = 184;
-            this.txtProductName.Enter += new System.EventHandler(this.txtBrandName_Enter);
+            this.txtProductName.Enter += new System.EventHandler(this.txtProductName_Enter);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
-            this.txtProductName.Leave += new System.EventHandler(this.txtBrandName_Leave);
+            this.txtProductName.Leave += new System.EventHandler(this.txtProductName_Leave);
             // 
             // cmbActiveStatus
             // 
@@ -205,7 +265,7 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 69);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 148);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
@@ -260,6 +320,8 @@
             this.txtSearchByProduct.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByProduct.TabIndex = 5;
             this.txtSearchByProduct.TextChanged += new System.EventHandler(this.txtSearchByProduct_TextChanged);
+            this.txtSearchByProduct.Enter += new System.EventHandler(this.txtProductName_Enter);
+            this.txtSearchByProduct.Leave += new System.EventHandler(this.txtProductName_Leave);
             // 
             // grpGridview
             // 
@@ -439,5 +501,9 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox PicProductMaster;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.ComboBox cmbBrand;
+        private System.Windows.Forms.Label label1;
     }
 }

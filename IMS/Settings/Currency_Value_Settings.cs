@@ -108,7 +108,7 @@ namespace IMS.Settings
             }
             else
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CurrencyRateSetting", "CountryID=" + cmbCountry.SelectedValue + " AND CurrencyRateID !=" + i);
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.CurrencyRateSetting", "CurrencyRateID !=" + i + " AND CountryID=" + cmbCountry.SelectedValue + " AND (CurrencyCode ='" + txtCurrencyCode.Text + "' OR CurrencyName = '" + txtCurrencyName.Text + "')");
             }
             if (a > 0)
             {
@@ -146,8 +146,10 @@ namespace IMS.Settings
             {
                 if (DuplicateUser(0))
                 {
-                    ObjDAL.SetColumnData("CountryID", SqlDbType.Bit, cmbCountry.SelectedValue);
-                    ObjDAL.SetColumnData("Rate", SqlDbType.Decimal, txtCurrencyRate.Text);
+                    ObjDAL.SetColumnData("CountryID", SqlDbType.Int, cmbCountry.SelectedValue);
+                    ObjDAL.SetColumnData("CurrencyCode", SqlDbType.NVarChar, txtCurrencyCode.Text);
+                    ObjDAL.SetColumnData("CurrencyName", SqlDbType.NVarChar, txtCurrencyName.Text);
+                    ObjDAL.SetColumnData("CurrencyRate", SqlDbType.Decimal, txtCurrencyRate.Text);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.CurrencyRateSetting", true) > 0)
                     {
@@ -159,13 +161,13 @@ namespace IMS.Settings
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Currency Rate for '" + cmbCountry.SelectedItem + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Currency Rate for '" + cmbCountry.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.SelectedItem + "' is already exist..", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.Text + "' is already exist..", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                     cmbCountry.Focus();
                 }
@@ -185,8 +187,10 @@ namespace IMS.Settings
             {
                 if (DuplicateUser(ID))
                 {
-                    ObjDAL.UpdateColumnData("CountryID", SqlDbType.Bit, cmbCountry.SelectedValue);
-                    ObjDAL.UpdateColumnData("Rate", SqlDbType.Decimal, txtCurrencyRate.Text);
+                    ObjDAL.UpdateColumnData("CountryID", SqlDbType.Int, cmbCountry.SelectedValue);
+                    ObjDAL.UpdateColumnData("CurrencyCode", SqlDbType.NVarChar, txtCurrencyCode.Text);
+                    ObjDAL.UpdateColumnData("CurrencyName", SqlDbType.NVarChar, txtCurrencyName.Text);
+                    ObjDAL.UpdateColumnData("CurrencyRate", SqlDbType.Decimal, txtCurrencyRate.Text);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CurrencyRateSetting", "CurrencyRateID = " + ID + "") > 0)
@@ -207,7 +211,7 @@ namespace IMS.Settings
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.SelectedItem + "' is already exist..", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.Text + "' is already exist..", clsUtility.strProjectTitle);
                     cmbCountry.Focus();
                     ObjDAL.ResetData();
                 }
@@ -219,9 +223,9 @@ namespace IMS.Settings
             DialogResult d = MessageBox.Show("Are you sure want to delete?", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.CurrencyRateSetting", "CountryID=" + cmbCountry.SelectedValue + "") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.CurrencyRateSetting", "CurrencyRateID=" + ID) > 0)
                 {
-                    clsUtility.ShowInfoMessage("Currency Rate for '" + cmbCountry.SelectedItem + "' is Deleted  ", clsUtility.strProjectTitle);
+                    clsUtility.ShowInfoMessage("Currency Rate for '" + cmbCountry.Text + "' is Deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
                     LoadData();
                     grpCurrencyValue.Enabled = false;
@@ -229,7 +233,7 @@ namespace IMS.Settings
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.SelectedItem + "' is not Deleted  ", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.Text + "' is not Deleted  ", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                 }
             }
@@ -273,14 +277,15 @@ namespace IMS.Settings
                 {
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CurrencyRateID"].Value);
-                    txtCurrencyRate.Text = dataGridView1.SelectedRows[0].Cells["Rate"].Value.ToString();
+                    txtCurrencyRate.Text = dataGridView1.SelectedRows[0].Cells["CurrencyRate"].Value.ToString();
                     cmbCountry.SelectedValue = dataGridView1.SelectedRows[0].Cells["CountryID"].Value.ToString();
-
+                    txtCurrencyCode.Text = dataGridView1.SelectedRows[0].Cells["CurrencyCode"].Value.ToString();
+                    txtCurrencyName.Text = dataGridView1.SelectedRows[0].Cells["CurrencyName"].Value.ToString();
                     grpCurrencyValue.Enabled = false;
                     cmbCountry.Focus();
                 }
 
-                catch { }
+                catch (Exception ex) { clsUtility.ShowInfoMessage(ex.ToString(), clsUtility.strProjectTitle); }
             }
         }
     }

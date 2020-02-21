@@ -26,9 +26,9 @@ namespace IMS.Masters
         private void ClearAll()
         {
             txtProductName.Clear();
-
+            cmbCategory.SelectedIndex = -1;
+            cmbBrand.SelectedIndex = -1;
             cmbActiveStatus.SelectedIndex = -1;
-
             txtProductName.Focus();
         }
 
@@ -36,11 +36,22 @@ namespace IMS.Masters
         {
             if (ObjUtil.IsControlTextEmpty(txtProductName))
             {
-                clsUtility.ShowInfoMessage("Enter Brand Name           ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Enter Product Name           ", clsUtility.strProjectTitle);
                 txtProductName.Focus();
                 return false;
             }
-
+            else if (ObjUtil.IsControlTextEmpty(cmbCategory))
+            {
+                clsUtility.ShowInfoMessage("Select Department for " + txtProductName.Text, clsUtility.strProjectTitle);
+                cmbCategory.Focus();
+                return false;
+            }
+            else if (ObjUtil.IsControlTextEmpty(cmbBrand))
+            {
+                clsUtility.ShowInfoMessage("Select Brand for " + txtProductName.Text, clsUtility.strProjectTitle);
+                cmbBrand.Focus();
+                return false;
+            }
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
@@ -75,7 +86,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,Photo", "ProductName");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,CategoryID,BrandID,Photo", "ProductName");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -89,13 +100,24 @@ namespace IMS.Masters
 
         private void FillDepartmentData()
         {
-            //DataTable dt = null;
-            //dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierID,SupplierName", "ISNULL(ActiveStatus,1)=1", "SupplierName ASC");
-            //cmbSupplier.DataSource = dt;
-            //cmbSupplier.DisplayMember = "SupplierName";
-            //cmbSupplier.ValueMember = "SupplierID";
+            DataTable dt = null;
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID,CategoryName", "ISNULL(ActiveStatus,1)=1", "CategoryName ASC");
+            cmbCategory.DataSource = dt;
+            cmbCategory.DisplayMember = "CategoryName";
+            cmbCategory.ValueMember = "CategoryID";
 
-            //cmbSupplier.SelectedIndex = -1;
+            cmbCategory.SelectedIndex = -1;
+        }
+
+        private void FillBrandData()
+        {
+            DataTable dt = null;
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandNameMaster", "BrandID,BrandName", "ISNULL(ActiveStatus,1)=1", "BrandName ASC");
+            cmbBrand.DataSource = dt;
+            cmbBrand.DisplayMember = "BrandName";
+            cmbBrand.ValueMember = "BrandID";
+
+            cmbBrand.SelectedIndex = -1;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -113,6 +135,8 @@ namespace IMS.Masters
                 if (DuplicateUser(0))
                 {
                     ObjDAL.SetColumnData("ProductName", SqlDbType.NVarChar, txtProductName.Text.Trim());
+                    ObjDAL.SetColumnData("CategoryID", SqlDbType.Int, cmbCategory.SelectedValue);
+                    ObjDAL.SetColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (PicProductMaster.Image != null)
@@ -154,9 +178,11 @@ namespace IMS.Masters
         {
             if (Validateform())
             {
-                if (DuplicateUser(0))
+                if (DuplicateUser(ID))
                 {
                     ObjDAL.UpdateColumnData("ProductName", SqlDbType.NVarChar, txtProductName.Text.Trim());
+                    ObjDAL.UpdateColumnData("CategoryID", SqlDbType.Int, cmbCategory.SelectedValue);
+                    ObjDAL.UpdateColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
@@ -222,12 +248,12 @@ namespace IMS.Masters
             }
         }
 
-        private void txtBrandName_Enter(object sender, EventArgs e)
+        private void txtProductName_Enter(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender);
         }
 
-        private void txtBrandName_Leave(object sender, EventArgs e)
+        private void txtProductName_Leave(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender, Color.White);
         }
@@ -279,6 +305,7 @@ namespace IMS.Masters
 
             LoadData();
             FillDepartmentData();
+            FillBrandData();
         }
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -325,7 +352,7 @@ namespace IMS.Masters
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "ProductName LIKE '%" + txtSearchByProduct.Text + "%'", "ProductName");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,CategoryID,BrandID,Photo", "ProductName LIKE '%" + txtSearchByProduct.Text + "%'", "ProductName");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
