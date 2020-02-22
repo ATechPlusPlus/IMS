@@ -65,19 +65,19 @@
             this.grpForeignCurrency = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtForeignExp = new System.Windows.Forms.TextBox();
-            this.grpLocalCurrency = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtLocalExp = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtForeignDiscount = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtNetValue = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtNewPriceRate = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtLocalBillValue = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.grpLocalCurrency = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtLocalValue = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLocalExp = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtLocalBillValue = new System.Windows.Forms.TextBox();
+            this.txtNewPriceRate = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -252,7 +252,7 @@
             this.txtSearchByShipmentNo.BackColor = System.Drawing.Color.White;
             this.txtSearchByShipmentNo.Enabled = false;
             this.txtSearchByShipmentNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByShipmentNo.Location = new System.Drawing.Point(156, 19);
+            this.txtSearchByShipmentNo.Location = new System.Drawing.Point(157, 17);
             this.txtSearchByShipmentNo.Name = "txtSearchByShipmentNo";
             this.txtSearchByShipmentNo.Size = new System.Drawing.Size(183, 25);
             this.txtSearchByShipmentNo.TabIndex = 5;
@@ -558,6 +558,52 @@
             this.txtForeignExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtForeignExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(138, 17);
+            this.label5.TabIndex = 246;
+            this.label5.Text = "Foreign Discount(%) :";
+            // 
+            // txtForeignDiscount
+            // 
+            this.txtForeignDiscount.BackColor = System.Drawing.Color.White;
+            this.txtForeignDiscount.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtForeignDiscount.Location = new System.Drawing.Point(150, 54);
+            this.txtForeignDiscount.Name = "txtForeignDiscount";
+            this.txtForeignDiscount.Size = new System.Drawing.Size(183, 25);
+            this.txtForeignDiscount.TabIndex = 245;
+            this.txtForeignDiscount.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
+            this.txtForeignDiscount.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtForeignDiscount.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // txtNetValue
+            // 
+            this.txtNetValue.BackColor = System.Drawing.Color.White;
+            this.txtNetValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNetValue.Location = new System.Drawing.Point(150, 87);
+            this.txtNetValue.Name = "txtNetValue";
+            this.txtNetValue.ReadOnly = true;
+            this.txtNetValue.Size = new System.Drawing.Size(183, 25);
+            this.txtNetValue.TabIndex = 247;
+            this.txtNetValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtNetValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(9, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 17);
+            this.label6.TabIndex = 248;
+            this.label6.Text = "Net Value :";
+            // 
             // grpLocalCurrency
             // 
             this.grpLocalCurrency.BackColor = System.Drawing.Color.Transparent;
@@ -577,6 +623,25 @@
             this.grpLocalCurrency.TabIndex = 244;
             this.grpLocalCurrency.TabStop = false;
             this.grpLocalCurrency.Text = "Local Currency";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 24);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 17);
+            this.label9.TabIndex = 241;
+            this.label9.Text = "Local Value :";
+            // 
+            // txtLocalValue
+            // 
+            this.txtLocalValue.BackColor = System.Drawing.Color.White;
+            this.txtLocalValue.Location = new System.Drawing.Point(134, 18);
+            this.txtLocalValue.Name = "txtLocalValue";
+            this.txtLocalValue.Size = new System.Drawing.Size(183, 25);
+            this.txtLocalValue.TabIndex = 240;
             // 
             // label4
             // 
@@ -601,52 +666,6 @@
             this.txtLocalExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtLocalExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 17);
-            this.label5.TabIndex = 246;
-            this.label5.Text = "Foreign Discount(%) :";
-            // 
-            // txtForeignDiscount
-            // 
-            this.txtForeignDiscount.BackColor = System.Drawing.Color.White;
-            this.txtForeignDiscount.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtForeignDiscount.Location = new System.Drawing.Point(150, 54);
-            this.txtForeignDiscount.Name = "txtForeignDiscount";
-            this.txtForeignDiscount.Size = new System.Drawing.Size(183, 25);
-            this.txtForeignDiscount.TabIndex = 245;
-            this.txtForeignDiscount.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
-            this.txtForeignDiscount.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
-            this.txtForeignDiscount.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 17);
-            this.label6.TabIndex = 248;
-            this.label6.Text = "Net Value :";
-            // 
-            // txtNetValue
-            // 
-            this.txtNetValue.BackColor = System.Drawing.Color.White;
-            this.txtNetValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNetValue.Location = new System.Drawing.Point(150, 87);
-            this.txtNetValue.Name = "txtNetValue";
-            this.txtNetValue.ReadOnly = true;
-            this.txtNetValue.Size = new System.Drawing.Size(183, 25);
-            this.txtNetValue.TabIndex = 247;
-            this.txtNetValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
-            this.txtNetValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -657,6 +676,18 @@
             this.label7.Size = new System.Drawing.Size(111, 17);
             this.label7.TabIndex = 252;
             this.label7.Text = "New Price Rate :";
+            // 
+            // txtLocalBillValue
+            // 
+            this.txtLocalBillValue.BackColor = System.Drawing.Color.White;
+            this.txtLocalBillValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalBillValue.Location = new System.Drawing.Point(134, 84);
+            this.txtLocalBillValue.Name = "txtLocalBillValue";
+            this.txtLocalBillValue.ReadOnly = true;
+            this.txtLocalBillValue.Size = new System.Drawing.Size(183, 25);
+            this.txtLocalBillValue.TabIndex = 249;
+            this.txtLocalBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtLocalBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // txtNewPriceRate
             // 
@@ -680,37 +711,6 @@
             this.label8.Size = new System.Drawing.Size(108, 17);
             this.label8.TabIndex = 250;
             this.label8.Text = "Local Bill Value :";
-            // 
-            // txtLocalBillValue
-            // 
-            this.txtLocalBillValue.BackColor = System.Drawing.Color.White;
-            this.txtLocalBillValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocalBillValue.Location = new System.Drawing.Point(134, 84);
-            this.txtLocalBillValue.Name = "txtLocalBillValue";
-            this.txtLocalBillValue.ReadOnly = true;
-            this.txtLocalBillValue.Size = new System.Drawing.Size(183, 25);
-            this.txtLocalBillValue.TabIndex = 249;
-            this.txtLocalBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
-            this.txtLocalBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 24);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 17);
-            this.label9.TabIndex = 241;
-            this.label9.Text = "Local Value :";
-            // 
-            // txtLocalValue
-            // 
-            this.txtLocalValue.BackColor = System.Drawing.Color.White;
-            this.txtLocalValue.Location = new System.Drawing.Point(134, 18);
-            this.txtLocalValue.Name = "txtLocalValue";
-            this.txtLocalValue.Size = new System.Drawing.Size(183, 25);
-            this.txtLocalValue.TabIndex = 240;
             // 
             // Purchase_Invoice
             // 

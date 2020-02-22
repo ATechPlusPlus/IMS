@@ -109,7 +109,7 @@ namespace IMS.Purchase
 
         private void LoadData()
         {
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,Discount,ForeignExp,GrandTotal", "BillDate");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,Discount,ForeignExp,GrandTotal,LocalValue,LocalExp,LocalBillValue", "BillDate");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -167,6 +167,11 @@ namespace IMS.Purchase
                     ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
                     ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
                     ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
+
+                    ObjDAL.SetColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
+                    ObjDAL.SetColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Trim());
+                    ObjDAL.SetColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
+
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoice", true) > 0)
                     {
@@ -219,6 +224,11 @@ namespace IMS.Purchase
                     ObjDAL.UpdateColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
                     ObjDAL.UpdateColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
                     ObjDAL.UpdateColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
+
+                    ObjDAL.UpdateColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
+                    ObjDAL.UpdateColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Trim());
+                    ObjDAL.UpdateColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
+
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
@@ -304,6 +314,9 @@ namespace IMS.Purchase
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PurchaseInvoiceID"].Value);
                     txtSupplierBillNo.Text = dataGridView1.SelectedRows[0].Cells["SupplierBillNo"].Value.ToString();
                     cmbSupplier.SelectedValue = dataGridView1.SelectedRows[0].Cells["SupplierID"].Value.ToString();
+                    
+                    cmbSupplier_SelectionChangeCommitted(sender, e);
+
                     txtShipmentNo.Text = dataGridView1.SelectedRows[0].Cells["ShipmentNo"].Value.ToString();
                     txtBillValue.Text = dataGridView1.SelectedRows[0].Cells["BillValue"].Value.ToString();
                     txtTotalQTY.Text = dataGridView1.SelectedRows[0].Cells["TotalQTY"].Value.ToString();
@@ -311,6 +324,10 @@ namespace IMS.Purchase
                     txtForeignDiscount.Text = dataGridView1.SelectedRows[0].Cells["Discount"].Value.ToString();
                     txtForeignExp.Text = dataGridView1.SelectedRows[0].Cells["ForeignExp"].Value.ToString();
                     txtNetValue.Text = dataGridView1.SelectedRows[0].Cells["GrandTotal"].Value.ToString();
+
+                    txtLocalValue.Text = dataGridView1.SelectedRows[0].Cells["LocalValue"].Value.ToString();
+                    txtLocalExp.Text = dataGridView1.SelectedRows[0].Cells["LocalExp"].Value.ToString();
+                    txtLocalBillValue.Text = dataGridView1.SelectedRows[0].Cells["LocalBillValue"].Value.ToString();
 
                     dtpBillDate.Value = Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells["BillDate"].Value);
 
@@ -425,7 +442,7 @@ namespace IMS.Purchase
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY", "ShipmentNo LIKE '%" + txtSearchByShipmentNo.Text + "%'", "BillDate");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,Discount,ForeignExp,GrandTotal,LocalValue,LocalExp,LocalBillValue", "ShipmentNo LIKE '%" + txtSearchByShipmentNo.Text + "%'", "BillDate");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -450,7 +467,7 @@ namespace IMS.Purchase
             decimal CurrencyRate = 0.0M;
             decimal BillValue = 0.0M;
             decimal LocalValue = 0.0M;
-            int TotalQTY = 0;
+            //int TotalQTY = 0;
             decimal ForeignExp = 0.0M;
             decimal ForeignDiscount = 0.0M;
             decimal ForeignNetValue = 0.0M;
@@ -475,7 +492,7 @@ namespace IMS.Purchase
                 BillValue = txtBillValue.Text.Length > 0 ? Convert.ToDecimal(txtBillValue.Text) : 0;
                 ForeignExp = txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0;
                 ForeignDiscount = txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0;
-                TotalQTY = txtTotalQTY.Text.Length > 0 ? Convert.ToInt32(txtTotalQTY.Text) : 0;
+                //TotalQTY = txtTotalQTY.Text.Length > 0 ? Convert.ToInt32(txtTotalQTY.Text) : 0;
                 LocalExp = txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0;
 
                 LocalValue = (BillValue * CurrencyRate);
@@ -521,3 +538,5 @@ namespace IMS.Purchase
         }
     }
 }
+
+

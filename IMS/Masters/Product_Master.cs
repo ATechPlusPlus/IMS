@@ -46,12 +46,12 @@ namespace IMS.Masters
                 cmbCategory.Focus();
                 return false;
             }
-            else if (ObjUtil.IsControlTextEmpty(cmbBrand))
-            {
-                clsUtility.ShowInfoMessage("Select Brand for " + txtProductName.Text, clsUtility.strProjectTitle);
-                cmbBrand.Focus();
-                return false;
-            }
+            //else if (ObjUtil.IsControlTextEmpty(cmbBrand))
+            //{
+            //    clsUtility.ShowInfoMessage("Select Brand for " + txtProductName.Text, clsUtility.strProjectTitle);
+            //    cmbBrand.Focus();
+            //    return false;
+            //}
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
