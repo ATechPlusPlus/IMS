@@ -52,7 +52,8 @@ namespace IMS
         {
             try
             {
-                clsUtility.DBName = "IMS";
+                clsUtility.DBName = "IMS_DB";
+                clsUtility.IsAdmin = true;
                 if (clsUtility.LoginID > 0)
                 {
 
@@ -184,6 +185,12 @@ namespace IMS
         {
             frmOtherSetting frmOtherSetting = new frmOtherSetting();
             frmOtherSetting.ShowDialog();
+        }
+
+        private void CustomerMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Customer_Master Obj = new Masters.Customer_Master();
+            Obj.Show();
         }
     }
 }
