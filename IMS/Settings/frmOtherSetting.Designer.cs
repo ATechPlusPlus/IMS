@@ -32,15 +32,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblCategoryName = new System.Windows.Forms.Label();
-            this.txtPCName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbStoreCategory = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbStoreName = new System.Windows.Forms.ComboBox();
+            this.lblmsg = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblmsg = new System.Windows.Forms.Label();
+            this.cmbStoreName = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbStoreCategory = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCategoryName = new System.Windows.Forms.Label();
+            this.txtPCName = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +87,96 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Default Shop/Store";
             // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.ForeColor = System.Drawing.Color.Crimson;
+            this.lblmsg.Location = new System.Drawing.Point(135, 13);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(242, 17);
+            this.lblmsg.TabIndex = 194;
+            this.lblmsg.Text = "No Default Store is selected for this PC";
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(286, 168);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(71, 25);
+            this.btnSave.TabIndex = 114;
+            this.btnSave.Text = "Cancel";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(151, 168);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(76, 25);
+            this.btnAdd.TabIndex = 113;
+            this.btnAdd.Text = "Save";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
+            // 
+            // cmbStoreName
+            // 
+            this.cmbStoreName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStoreName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStoreName.FormattingEnabled = true;
+            this.cmbStoreName.Location = new System.Drawing.Point(151, 131);
+            this.cmbStoreName.Name = "cmbStoreName";
+            this.cmbStoreName.Size = new System.Drawing.Size(206, 27);
+            this.cmbStoreName.TabIndex = 193;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 17);
+            this.label2.TabIndex = 192;
+            this.label2.Text = "Select Store :";
+            // 
+            // cmbStoreCategory
+            // 
+            this.cmbStoreCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStoreCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStoreCategory.FormattingEnabled = true;
+            this.cmbStoreCategory.Items.AddRange(new object[] {
+            "Normal Store",
+            "Wearhouse"});
+            this.cmbStoreCategory.Location = new System.Drawing.Point(151, 82);
+            this.cmbStoreCategory.Name = "cmbStoreCategory";
+            this.cmbStoreCategory.Size = new System.Drawing.Size(206, 27);
+            this.cmbStoreCategory.TabIndex = 191;
+            this.cmbStoreCategory.SelectionChangeCommitted += new System.EventHandler(this.cmbStoreCategory_SelectionChangeCommitted);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.TabIndex = 190;
+            this.label1.Text = "Store Category :";
+            // 
             // lblCategoryName
             // 
             this.lblCategoryName.AutoSize = true;
@@ -105,96 +195,8 @@
             this.txtPCName.Name = "txtPCName";
             this.txtPCName.Size = new System.Drawing.Size(206, 25);
             this.txtPCName.TabIndex = 188;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 83);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 17);
-            this.label1.TabIndex = 190;
-            this.label1.Text = "Store Category :";
-            // 
-            // cmbStoreCategory
-            // 
-            this.cmbStoreCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStoreCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStoreCategory.FormattingEnabled = true;
-            this.cmbStoreCategory.Items.AddRange(new object[] {
-            "Normal Store",
-            "Wearhouse"});
-            this.cmbStoreCategory.Location = new System.Drawing.Point(151, 78);
-            this.cmbStoreCategory.Name = "cmbStoreCategory";
-            this.cmbStoreCategory.Size = new System.Drawing.Size(206, 27);
-            this.cmbStoreCategory.TabIndex = 191;
-            this.cmbStoreCategory.SelectionChangeCommitted += new System.EventHandler(this.cmbStoreCategory_SelectionChangeCommitted);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 17);
-            this.label2.TabIndex = 192;
-            this.label2.Text = "Select Store :";
-            // 
-            // cmbStoreName
-            // 
-            this.cmbStoreName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStoreName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStoreName.FormattingEnabled = true;
-            this.cmbStoreName.Location = new System.Drawing.Point(151, 131);
-            this.cmbStoreName.Name = "cmbStoreName";
-            this.cmbStoreName.Size = new System.Drawing.Size(206, 27);
-            this.cmbStoreName.TabIndex = 193;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(342, 170);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 114;
-            this.btnSave.Text = "Cancel";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            this.btnSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
-            this.btnSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(253, 170);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 113;
-            this.btnAdd.Text = "Save";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
-            this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsg.ForeColor = System.Drawing.Color.Crimson;
-            this.lblmsg.Location = new System.Drawing.Point(135, 13);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(242, 17);
-            this.lblmsg.TabIndex = 194;
-            this.lblmsg.Text = "No Default Store is selected for this PC";
+            this.txtPCName.Enter += new System.EventHandler(this.txtPCName_Enter);
+            this.txtPCName.Leave += new System.EventHandler(this.txtPCName_Leave);
             // 
             // frmOtherSetting
             // 

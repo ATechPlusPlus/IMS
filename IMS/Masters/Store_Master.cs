@@ -372,7 +372,7 @@ namespace IMS.Masters
                 return;
             }
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.StoreMaster", "StoreID, StoreName, Tel, Fax, Place, (CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus ", "StoreName LIKE '" + txtSearchByStoreName.Text + "'", "StoreName");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.StoreMaster", "StoreID, StoreName, Tel, Fax, Place, (CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus ", "StoreName LIKE '%" + txtSearchByStoreName.Text + "%'", "StoreName");
 
             if (ObjUtil.ValidateTable(dt))
             {

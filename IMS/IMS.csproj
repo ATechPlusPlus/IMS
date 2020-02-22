@@ -150,6 +150,18 @@
     <Compile Include="Masters\Employee_Details.Designer.cs">
       <DependentUpon>Employee_Details.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Size_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Size_Master.Designer.cs">
+      <DependentUpon>Size_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\Size_Type_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Size_Type_Master.Designer.cs">
+      <DependentUpon>Size_Type_Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Store_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Employee_Details.resx">
       <DependentUpon>Employee_Details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Size_Master.resx">
+      <DependentUpon>Size_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Size_Type_Master.resx">
+      <DependentUpon>Size_Type_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Store_Master.resx">
       <DependentUpon>Store_Master.cs</DependentUpon>

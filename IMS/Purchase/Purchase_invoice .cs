@@ -30,9 +30,24 @@ namespace IMS.Purchase
             txtShipmentNo.Clear();
             txtBillValue.Clear();
             txtTotalQTY.Clear();
+
+            txtCurrencyRate.Clear();
+            txtForeignDiscount.Clear();
+            txtForeignExp.Clear();
+            txtLocalBillValue.Clear();
+            txtLocalExp.Clear();
+            txtLocalValue.Clear();
+            txtNetValue.Clear();
+            txtNewPriceRate.Clear();
+
             cmbSupplier.SelectedIndex = -1;
+            cmbCountry.SelectedIndex = -1;
 
             txtSupplierBillNo.Focus();
+
+            grpCurrencyRate.Enabled = false;
+            grpForeignCurrency.Enabled = false;
+            grpLocalCurrency.Enabled = false;
         }
 
         private bool Validateform()
@@ -94,7 +109,7 @@ namespace IMS.Purchase
 
         private void LoadData()
         {
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY", "BillDate");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,Discount,ForeignExp,GrandTotal", "BillDate");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -116,11 +131,24 @@ namespace IMS.Purchase
             cmbSupplier.SelectedIndex = -1;
         }
 
+        private void FillCountryData()
+        {
+            DataTable dt = null;
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CountryMaster", "CountryID,CountryName", "ISNULL(ActiveStatus,1)=1", "CountryName ASC");
+            cmbCountry.DataSource = dt;
+            cmbCountry.DisplayMember = "CountryName";
+            cmbCountry.ValueMember = "CountryID";
+
+            cmbCountry.SelectedIndex = -1;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
             grpPurchaseInvoice.Enabled = true;
+            grpForeignCurrency.Enabled = true;
+            grpLocalCurrency.Enabled = true;
             txtSupplierBillNo.Focus();
         }
 
@@ -136,24 +164,29 @@ namespace IMS.Purchase
                     ObjDAL.SetColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
                     ObjDAL.SetColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
                     ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
+                    ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
+                    ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
+                    ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoice", true) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
                         grpPurchaseInvoice.Enabled = false;
+                        grpForeignCurrency.Enabled = false;
+                        grpLocalCurrency.Enabled = false;
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is already exist..", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                     cmbSupplier.Focus();
                 }
@@ -166,13 +199,16 @@ namespace IMS.Purchase
             grpPurchaseInvoice.Enabled = true;
             txtSupplierBillNo.Focus();
             txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+
+            grpForeignCurrency.Enabled = true;
+            grpLocalCurrency.Enabled = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (Validateform())
             {
-                if (DuplicateUser(0))
+                if (DuplicateUser(ID))
                 {
                     ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.VarChar, txtSupplierBillNo.Text.Trim());
                     ObjDAL.UpdateColumnData("ShipmentNo", SqlDbType.VarChar, txtShipmentNo.Text.Trim());
@@ -180,6 +216,9 @@ namespace IMS.Purchase
                     ObjDAL.UpdateColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
                     ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
                     ObjDAL.UpdateColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
+                    ObjDAL.UpdateColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
+                    ObjDAL.UpdateColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
+                    ObjDAL.UpdateColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
@@ -187,21 +226,25 @@ namespace IMS.Purchase
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
                         LoadData();
                         ClearAll();
                         grpPurchaseInvoice.Enabled = false;
+
+                        grpPurchaseInvoice.Enabled = false;
+                        grpForeignCurrency.Enabled = false;
+                        grpLocalCurrency.Enabled = false;
                         ObjDAL.ResetData();
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is not Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
                     }
                 }
                 else
                 {
-                    clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.SelectedItem + "' is already exist..", clsUtility.strProjectTitle);
+                    clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
                     cmbSupplier.Focus();
                     ObjDAL.ResetData();
                 }
@@ -264,6 +307,11 @@ namespace IMS.Purchase
                     txtShipmentNo.Text = dataGridView1.SelectedRows[0].Cells["ShipmentNo"].Value.ToString();
                     txtBillValue.Text = dataGridView1.SelectedRows[0].Cells["BillValue"].Value.ToString();
                     txtTotalQTY.Text = dataGridView1.SelectedRows[0].Cells["TotalQTY"].Value.ToString();
+
+                    txtForeignDiscount.Text = dataGridView1.SelectedRows[0].Cells["Discount"].Value.ToString();
+                    txtForeignExp.Text = dataGridView1.SelectedRows[0].Cells["ForeignExp"].Value.ToString();
+                    txtNetValue.Text = dataGridView1.SelectedRows[0].Cells["GrandTotal"].Value.ToString();
+
                     dtpBillDate.Value = Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells["BillDate"].Value);
 
                     grpPurchaseInvoice.Enabled = false;
@@ -330,6 +378,7 @@ namespace IMS.Purchase
 
             LoadData();
             FillSupplierData();
+            FillCountryData();
         }
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -394,6 +443,81 @@ namespace IMS.Purchase
             dataGridView1.Columns["PurchaseInvoiceID"].Visible = false;
             //dataGridView1.Columns["SupplierID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
+        }
+
+        private void CalculateTotalBill()
+        {
+            decimal CurrencyRate = 0.0M;
+            decimal BillValue = 0.0M;
+            decimal LocalValue = 0.0M;
+            int TotalQTY = 0;
+            decimal ForeignExp = 0.0M;
+            decimal ForeignDiscount = 0.0M;
+            decimal ForeignNetValue = 0.0M;
+
+            decimal LocalExp = 0.0M;
+            decimal LocalNewPriceRate = 0.0M;
+            decimal LocalBillValue = 0.0M;
+
+            if (ObjUtil.IsControlTextEmpty(cmbCountry))
+            {
+                clsUtility.ShowInfoMessage("Please Select Supplier Country..", clsUtility.strProjectTitle);
+                return;
+            }
+            else if (ObjUtil.IsControlTextEmpty(txtCurrencyRate))
+            {
+                clsUtility.ShowInfoMessage("Currency Rate is not found for Country " + cmbCountry.Text, clsUtility.strProjectTitle);
+                return;
+            }
+            try
+            {
+                CurrencyRate = txtCurrencyRate.Text.Length > 0 ? Convert.ToDecimal(txtCurrencyRate.Text) : 0;
+                BillValue = txtBillValue.Text.Length > 0 ? Convert.ToDecimal(txtBillValue.Text) : 0;
+                ForeignExp = txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0;
+                ForeignDiscount = txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0;
+                TotalQTY = txtTotalQTY.Text.Length > 0 ? Convert.ToInt32(txtTotalQTY.Text) : 0;
+                LocalExp = txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0;
+
+                LocalValue = (BillValue * CurrencyRate);
+                txtLocalValue.Text = Math.Round(LocalValue, 2).ToString();
+
+                ForeignNetValue = BillValue - (BillValue * ForeignDiscount * 0.01M) + ForeignExp;
+                txtNetValue.Text = Math.Round(ForeignNetValue, 2).ToString();
+
+                LocalBillValue = Math.Round((ForeignNetValue * CurrencyRate) + LocalExp, 2);
+                txtLocalBillValue.Text = Math.Round(LocalBillValue, 2).ToString();
+                LocalNewPriceRate = Math.Round((LocalBillValue / BillValue), 2);
+                txtNewPriceRate.Text = LocalNewPriceRate.ToString();
+            }
+            catch { }
+        }
+
+        private void cmbCountry_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbCountry.SelectedIndex >= 0)
+            {
+                object ob = ObjDAL.ExecuteScalar("SELECT CurrencyRate FROM " + clsUtility.DBName + ".dbo.CurrencyRateSetting WHERE CountryID = " + cmbCountry.SelectedValue);
+                txtCurrencyRate.Text = Convert.ToDecimal(ob).ToString();
+            }
+        }
+
+        private void txtBillValue_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotalBill();
+        }
+
+        private void cmbSupplier_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbSupplier.SelectedIndex >= 0)
+            {
+                object ob = ObjDAL.ExecuteScalarInt("SELECT CountryID FROM " + clsUtility.DBName + ".dbo.SupplierMaster WHERE SupplierID = " + cmbSupplier.SelectedValue);
+                cmbCountry.SelectedValue = ob;
+                cmbCountry_SelectionChangeCommitted(sender, e);
+
+                grpCurrencyRate.Enabled = true;
+                grpForeignCurrency.Enabled = true;
+                grpLocalCurrency.Enabled = true;
+            }
         }
     }
 }

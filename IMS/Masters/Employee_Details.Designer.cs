@@ -269,6 +269,8 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(206, 25);
             this.txtEmail.TabIndex = 219;
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
             // label11
             // 
@@ -302,6 +304,8 @@
             this.txtPass.Size = new System.Drawing.Size(206, 25);
             this.txtPass.TabIndex = 217;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtPass.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             this.txtPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtPass_MouseDown);
             this.txtPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.txtPass_MouseUp);
             // 
@@ -335,6 +339,8 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(206, 25);
             this.txtUsername.TabIndex = 214;
+            this.txtUsername.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtUsername.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
             // radFemale
             // 
@@ -437,6 +443,8 @@
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(206, 81);
             this.txtAdd.TabIndex = 224;
+            this.txtAdd.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtAdd.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
             // label1
             // 
@@ -457,6 +465,8 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(206, 25);
             this.txtName.TabIndex = 222;
+            this.txtName.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtName.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
             // lblCountryCode
             // 
@@ -477,6 +487,8 @@
             this.txtEmployeeCode.Name = "txtEmployeeCode";
             this.txtEmployeeCode.Size = new System.Drawing.Size(206, 25);
             this.txtEmployeeCode.TabIndex = 220;
+            this.txtEmployeeCode.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtEmployeeCode.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
             // btnUpdate
             // 

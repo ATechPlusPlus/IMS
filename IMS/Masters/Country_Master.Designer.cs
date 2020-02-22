@@ -183,6 +183,8 @@
             this.txtSearchByCountry.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByCountry.TabIndex = 5;
             this.txtSearchByCountry.TextChanged += new System.EventHandler(this.txtSearchByCountry_TextChanged);
+            this.txtSearchByCountry.Enter += new System.EventHandler(this.txtCountryCode_Enter);
+            this.txtSearchByCountry.Leave += new System.EventHandler(this.txtCountryCode_Leave);
             // 
             // groupBox1
             // 

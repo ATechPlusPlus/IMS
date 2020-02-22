@@ -77,9 +77,9 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(11, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(150, 22);
+            this.label12.Size = new System.Drawing.Size(107, 22);
             this.label12.TabIndex = 82;
-            this.label12.Text = "Category Master";
+            this.label12.Text = "Department";
             // 
             // btnUpdate
             // 
@@ -185,7 +185,7 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 125);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(183, 125);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
@@ -195,29 +195,29 @@
             this.lblCategoryName.AutoSize = true;
             this.lblCategoryName.BackColor = System.Drawing.Color.Transparent;
             this.lblCategoryName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryName.Location = new System.Drawing.Point(18, 27);
+            this.lblCategoryName.Location = new System.Drawing.Point(11, 27);
             this.lblCategoryName.Name = "lblCategoryName";
-            this.lblCategoryName.Size = new System.Drawing.Size(109, 17);
+            this.lblCategoryName.Size = new System.Drawing.Size(125, 17);
             this.lblCategoryName.TabIndex = 187;
-            this.lblCategoryName.Text = "Category Name :";
+            this.lblCategoryName.Text = "Department Name :";
             // 
             // lblCategoryDescription
             // 
             this.lblCategoryDescription.AutoSize = true;
             this.lblCategoryDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblCategoryDescription.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryDescription.Location = new System.Drawing.Point(18, 79);
+            this.lblCategoryDescription.Location = new System.Drawing.Point(11, 79);
             this.lblCategoryDescription.Name = "lblCategoryDescription";
-            this.lblCategoryDescription.Size = new System.Drawing.Size(140, 17);
+            this.lblCategoryDescription.Size = new System.Drawing.Size(156, 17);
             this.lblCategoryDescription.TabIndex = 188;
-            this.lblCategoryDescription.Text = "Category Description :";
+            this.lblCategoryDescription.Text = "Department Description :";
             // 
             // lblActiveStatus
             // 
             this.lblActiveStatus.AutoSize = true;
             this.lblActiveStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveStatus.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveStatus.Location = new System.Drawing.Point(18, 131);
+            this.lblActiveStatus.Location = new System.Drawing.Point(21, 131);
             this.lblActiveStatus.Name = "lblActiveStatus";
             this.lblActiveStatus.Size = new System.Drawing.Size(94, 17);
             this.lblActiveStatus.TabIndex = 189;
@@ -226,7 +226,7 @@
             // txtCategoryDescription
             // 
             this.txtCategoryDescription.BackColor = System.Drawing.Color.White;
-            this.txtCategoryDescription.Location = new System.Drawing.Point(159, 64);
+            this.txtCategoryDescription.Location = new System.Drawing.Point(183, 64);
             this.txtCategoryDescription.Multiline = true;
             this.txtCategoryDescription.Name = "txtCategoryDescription";
             this.txtCategoryDescription.Size = new System.Drawing.Size(206, 46);
@@ -257,7 +257,7 @@
             this.grpGridview.Size = new System.Drawing.Size(575, 175);
             this.grpGridview.TabIndex = 190;
             this.grpGridview.TabStop = false;
-            this.grpGridview.Text = "List of Categories";
+            this.grpGridview.Text = "List of Departments";
             // 
             // dataGridView1
             // 
@@ -306,11 +306,11 @@
             // 
             this.rdSearchByCategory.AutoSize = true;
             this.rdSearchByCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchByCategory.Location = new System.Drawing.Point(18, 20);
+            this.rdSearchByCategory.Location = new System.Drawing.Point(13, 20);
             this.rdSearchByCategory.Name = "rdSearchByCategory";
-            this.rdSearchByCategory.Size = new System.Drawing.Size(148, 21);
+            this.rdSearchByCategory.Size = new System.Drawing.Size(164, 21);
             this.rdSearchByCategory.TabIndex = 6;
-            this.rdSearchByCategory.Text = "By Category Name :";
+            this.rdSearchByCategory.Text = "By Department Name :";
             this.rdSearchByCategory.UseVisualStyleBackColor = true;
             this.rdSearchByCategory.CheckedChanged += new System.EventHandler(this.rdSearchByCategory_CheckedChanged);
             // 
@@ -319,7 +319,7 @@
             this.txtSearchByCategory.BackColor = System.Drawing.Color.White;
             this.txtSearchByCategory.Enabled = false;
             this.txtSearchByCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByCategory.Location = new System.Drawing.Point(167, 18);
+            this.txtSearchByCategory.Location = new System.Drawing.Point(183, 18);
             this.txtSearchByCategory.Name = "txtSearchByCategory";
             this.txtSearchByCategory.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByCategory.TabIndex = 5;
@@ -330,7 +330,7 @@
             // txtCategoryName
             // 
             this.txtCategoryName.BackColor = System.Drawing.Color.White;
-            this.txtCategoryName.Location = new System.Drawing.Point(159, 24);
+            this.txtCategoryName.Location = new System.Drawing.Point(183, 24);
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(206, 25);
             this.txtCategoryName.TabIndex = 184;
@@ -354,7 +354,7 @@
             this.grpCategory.Size = new System.Drawing.Size(486, 159);
             this.grpCategory.TabIndex = 193;
             this.grpCategory.TabStop = false;
-            this.grpCategory.Text = "Category Details";
+            this.grpCategory.Text = "Department Details";
             // 
             // Category_Master
             // 
