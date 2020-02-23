@@ -192,5 +192,11 @@ namespace IMS
             Masters.Customer_Master Obj = new Masters.Customer_Master();
             Obj.Show();
         }
+
+        private void ColorMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Color_Master Obj = new Masters.Color_Master();
+            Obj.Show();
+        }
     }
 }
