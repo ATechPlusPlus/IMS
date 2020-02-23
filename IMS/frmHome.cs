@@ -198,5 +198,11 @@ namespace IMS
             Masters.Color_Master Obj = new Masters.Color_Master();
             Obj.Show();
         }
+
+        private void SizeTypeMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Size_Type_Master Obj = new Masters.Size_Type_Master();
+            Obj.Show();
+        }
     }
 }
