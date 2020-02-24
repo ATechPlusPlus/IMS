@@ -503,6 +503,7 @@
             this.txtCurrencyRate.ReadOnly = true;
             this.txtCurrencyRate.Size = new System.Drawing.Size(206, 25);
             this.txtCurrencyRate.TabIndex = 5;
+            this.txtCurrencyRate.Text = "0";
             this.txtCurrencyRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtCurrencyRate.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -554,6 +555,7 @@
             this.txtForeignExp.Name = "txtForeignExp";
             this.txtForeignExp.Size = new System.Drawing.Size(183, 25);
             this.txtForeignExp.TabIndex = 5;
+            this.txtForeignExp.Text = "0";
             this.txtForeignExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtForeignExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtForeignExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -577,6 +579,7 @@
             this.txtForeignDiscount.Name = "txtForeignDiscount";
             this.txtForeignDiscount.Size = new System.Drawing.Size(183, 25);
             this.txtForeignDiscount.TabIndex = 245;
+            this.txtForeignDiscount.Text = "0";
             this.txtForeignDiscount.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtForeignDiscount.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtForeignDiscount.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -590,6 +593,7 @@
             this.txtNetValue.ReadOnly = true;
             this.txtNetValue.Size = new System.Drawing.Size(183, 25);
             this.txtNetValue.TabIndex = 247;
+            this.txtNetValue.Text = "0";
             this.txtNetValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtNetValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -638,10 +642,15 @@
             // txtLocalValue
             // 
             this.txtLocalValue.BackColor = System.Drawing.Color.White;
+            this.txtLocalValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocalValue.Location = new System.Drawing.Point(134, 18);
             this.txtLocalValue.Name = "txtLocalValue";
+            this.txtLocalValue.ReadOnly = true;
             this.txtLocalValue.Size = new System.Drawing.Size(183, 25);
             this.txtLocalValue.TabIndex = 240;
+            this.txtLocalValue.Text = "0";
+            this.txtLocalValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtLocalValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // label4
             // 
@@ -662,6 +671,7 @@
             this.txtLocalExp.Name = "txtLocalExp";
             this.txtLocalExp.Size = new System.Drawing.Size(183, 25);
             this.txtLocalExp.TabIndex = 5;
+            this.txtLocalExp.Text = "0";
             this.txtLocalExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtLocalExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtLocalExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -686,6 +696,7 @@
             this.txtLocalBillValue.ReadOnly = true;
             this.txtLocalBillValue.Size = new System.Drawing.Size(183, 25);
             this.txtLocalBillValue.TabIndex = 249;
+            this.txtLocalBillValue.Text = "0";
             this.txtLocalBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtLocalBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -698,6 +709,7 @@
             this.txtNewPriceRate.ReadOnly = true;
             this.txtNewPriceRate.Size = new System.Drawing.Size(126, 25);
             this.txtNewPriceRate.TabIndex = 251;
+            this.txtNewPriceRate.Text = "0";
             this.txtNewPriceRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtNewPriceRate.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 

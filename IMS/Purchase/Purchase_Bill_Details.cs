@@ -63,6 +63,11 @@ namespace IMS.Purchase
             txtProductID.Clear();
             cmbBrand.SelectedIndex = -1;
 
+            txtNewRate.Clear();
+            txtSalesPrice.Clear();
+            txtCurrencyRate.Clear();
+            cmbAddRatio.SelectedIndex = -1;
+
             txtProductName.Focus();
         }
 
@@ -174,7 +179,7 @@ namespace IMS.Purchase
                         if (txtDiffQty.Text == "0" && txtDiffValue.Text == "0")
                         {
                             pIsInvoiceDone = true;
-                            ObjDAL.UpdateColumnData("PurchaseInvoice", SqlDbType.Bit, pIsInvoiceDone);
+                            ObjDAL.UpdateColumnData("IsInvoiceDone", SqlDbType.Bit, pIsInvoiceDone);
                             ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID = " + PurchaseInvoiceID + "");
                             clsUtility.ShowInfoMessage("Purchase Invoice is Saved Successfully..", clsUtility.strProjectTitle);
                         }
@@ -311,6 +316,7 @@ namespace IMS.Purchase
                 return;
             }
             cmbAddRatio.Enabled = true;
+            cmbAddRatio.SelectedIndex = 0;
             LoadData();
         }
 
@@ -380,7 +386,7 @@ namespace IMS.Purchase
                             if (ObjUtil.GetDataPopup().ColumnCount > 0)
                             {
                                 ObjUtil.GetDataPopup().Columns["ProductID"].Visible = false;
-                                ObjUtil.SetDataPopupSize(350, 0);
+                                ObjUtil.SetDataPopupSize(300, 0);
 
 
                             }
@@ -447,15 +453,16 @@ namespace IMS.Purchase
                 dRow["ProductID"] = txtProductID.Text;
                 dRow["ProductName"] = txtProductName.Text;
                 dRow["BrandID"] = cmbBrand.SelectedValue;
+                dRow["BrandName"] = cmbBrand.Text;
                 dRow["ModelNo"] = txtModelNo.Text;
                 dRow["QTY"] = txtQTY.Text;
                 dRow["Rate"] = txtRate.Text;
                 dRow["Total"] = Math.Round((Convert.ToInt32(txtQTY.Text) * Convert.ToDouble(txtRate.Text)), 2);
-                
-                double pLocalCost = Math.Round(LocalBillValue / Convert.ToInt32(txtQTY.Text), 2);
+
+                double pLocalCost = Math.Round(LocalBillValue / Convert.ToInt32(txtTotalQTYBill.Text), 2);
 
                 dRow["LocalCost"] = pLocalCost;
-                dRow["AddedRatio%"] = cmbAddRatio.SelectedItem;
+                dRow["AddedRatio"] = cmbAddRatio.SelectedItem;
                 dRow["SuppossedPrice"] = pLocalCost + (pLocalCost * Convert.ToInt32(cmbAddRatio.SelectedItem) * 0.01);
                 dRow["EndUser"] = txtSalesPrice.Text;
 
@@ -546,6 +553,11 @@ namespace IMS.Purchase
                     txtProductName.Focus();
                 }
             }
+        }
+
+        private void cmbAddRatio_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

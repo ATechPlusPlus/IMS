@@ -32,6 +32,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.grpPurchaseBillDetail = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSalesPrice = new System.Windows.Forms.TextBox();
             this.linkAddPurchaseBillItems = new System.Windows.Forms.LinkLabel();
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.lblBrand = new System.Windows.Forms.Label();
@@ -68,6 +70,12 @@
             this.txtTotalQTYEntered = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbAddRatio = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCurrencyRate = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNewRate = new System.Windows.Forms.TextBox();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModelNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,14 +89,6 @@
             this.SuppossedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalesPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbAddRatio = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSalesPrice = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCurrencyRate = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNewRate = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.grpPurchaseBillDetail.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -143,6 +143,25 @@
             this.grpPurchaseBillDetail.TabIndex = 238;
             this.grpPurchaseBillDetail.TabStop = false;
             this.grpPurchaseBillDetail.Text = "Item Details";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(389, 125);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.TabIndex = 250;
+            this.label2.Text = "Sales Price :";
+            // 
+            // txtSalesPrice
+            // 
+            this.txtSalesPrice.BackColor = System.Drawing.Color.White;
+            this.txtSalesPrice.Location = new System.Drawing.Point(482, 121);
+            this.txtSalesPrice.Name = "txtSalesPrice";
+            this.txtSalesPrice.Size = new System.Drawing.Size(206, 25);
+            this.txtSalesPrice.TabIndex = 249;
             // 
             // linkAddPurchaseBillItems
             // 
@@ -387,7 +406,6 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -576,82 +594,6 @@
             this.btnSave.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
             this.btnSave.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
             // 
-            // ProductID
-            // 
-            this.ProductID.HeaderText = "ProductID";
-            this.ProductID.Name = "ProductID";
-            this.ProductID.Visible = false;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // ModelNo
-            // 
-            this.ModelNo.HeaderText = "ModelNo";
-            this.ModelNo.Name = "ModelNo";
-            this.ModelNo.ReadOnly = true;
-            // 
-            // BrandID
-            // 
-            this.BrandID.HeaderText = "BrandID";
-            this.BrandID.Name = "BrandID";
-            this.BrandID.Visible = false;
-            // 
-            // BrandName
-            // 
-            this.BrandName.HeaderText = "BrandName";
-            this.BrandName.Name = "BrandName";
-            this.BrandName.ReadOnly = true;
-            // 
-            // QTY
-            // 
-            this.QTY.HeaderText = "QTY";
-            this.QTY.Name = "QTY";
-            // 
-            // Rate
-            // 
-            this.Rate.HeaderText = "Cost Price";
-            this.Rate.Name = "Rate";
-            this.Rate.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // LocalCost
-            // 
-            this.LocalCost.HeaderText = "Local Cost";
-            this.LocalCost.Name = "LocalCost";
-            this.LocalCost.ReadOnly = true;
-            // 
-            // AddedRatio
-            // 
-            this.AddedRatio.HeaderText = "AddedRatio%";
-            this.AddedRatio.Name = "AddedRatio";
-            // 
-            // SuppossedPrice
-            // 
-            this.SuppossedPrice.HeaderText = "SuppossedPrice";
-            this.SuppossedPrice.Name = "SuppossedPrice";
-            this.SuppossedPrice.ReadOnly = true;
-            // 
-            // SalesPrice
-            // 
-            this.SalesPrice.HeaderText = "EndUser";
-            this.SalesPrice.Name = "SalesPrice";
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.HeaderText = "Delete";
-            this.ColDelete.Name = "ColDelete";
-            this.ColDelete.Text = "Delete";
-            this.ColDelete.UseColumnTextForButtonValue = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -676,25 +618,7 @@
             this.cmbAddRatio.Name = "cmbAddRatio";
             this.cmbAddRatio.Size = new System.Drawing.Size(147, 27);
             this.cmbAddRatio.TabIndex = 248;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(389, 125);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 17);
-            this.label2.TabIndex = 250;
-            this.label2.Text = "Sales Price :";
-            // 
-            // txtSalesPrice
-            // 
-            this.txtSalesPrice.BackColor = System.Drawing.Color.White;
-            this.txtSalesPrice.Location = new System.Drawing.Point(482, 121);
-            this.txtSalesPrice.Name = "txtSalesPrice";
-            this.txtSalesPrice.Size = new System.Drawing.Size(206, 25);
-            this.txtSalesPrice.TabIndex = 249;
+            this.cmbAddRatio.SelectionChangeCommitted += new System.EventHandler(this.cmbAddRatio_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -737,6 +661,95 @@
             this.txtNewRate.ReadOnly = true;
             this.txtNewRate.Size = new System.Drawing.Size(111, 25);
             this.txtNewRate.TabIndex = 259;
+            // 
+            // ProductID
+            // 
+            this.ProductID.DataPropertyName = "ProductID";
+            this.ProductID.HeaderText = "ProductID";
+            this.ProductID.Name = "ProductID";
+            this.ProductID.Visible = false;
+            // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ModelNo
+            // 
+            this.ModelNo.DataPropertyName = "ModelNo";
+            this.ModelNo.HeaderText = "ModelNo";
+            this.ModelNo.Name = "ModelNo";
+            this.ModelNo.ReadOnly = true;
+            // 
+            // BrandID
+            // 
+            this.BrandID.DataPropertyName = "BrandID";
+            this.BrandID.HeaderText = "BrandID";
+            this.BrandID.Name = "BrandID";
+            this.BrandID.Visible = false;
+            // 
+            // BrandName
+            // 
+            this.BrandName.DataPropertyName = "BrandName";
+            this.BrandName.HeaderText = "BrandName";
+            this.BrandName.Name = "BrandName";
+            this.BrandName.ReadOnly = true;
+            // 
+            // QTY
+            // 
+            this.QTY.DataPropertyName = "QTY";
+            this.QTY.HeaderText = "QTY";
+            this.QTY.Name = "QTY";
+            // 
+            // Rate
+            // 
+            this.Rate.DataPropertyName = "Rate";
+            this.Rate.HeaderText = "Cost Price";
+            this.Rate.Name = "Rate";
+            this.Rate.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // LocalCost
+            // 
+            this.LocalCost.DataPropertyName = "LocalCost";
+            this.LocalCost.HeaderText = "Local Cost";
+            this.LocalCost.Name = "LocalCost";
+            this.LocalCost.ReadOnly = true;
+            // 
+            // AddedRatio
+            // 
+            this.AddedRatio.DataPropertyName = "AddedRatio";
+            this.AddedRatio.HeaderText = "AddedRatio%";
+            this.AddedRatio.Name = "AddedRatio";
+            // 
+            // SuppossedPrice
+            // 
+            this.SuppossedPrice.DataPropertyName = "SuppossedPrice";
+            this.SuppossedPrice.HeaderText = "SuppossedPrice";
+            this.SuppossedPrice.Name = "SuppossedPrice";
+            this.SuppossedPrice.ReadOnly = true;
+            // 
+            // SalesPrice
+            // 
+            this.SalesPrice.DataPropertyName = "EndUser";
+            this.SalesPrice.HeaderText = "EndUser";
+            this.SalesPrice.Name = "SalesPrice";
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.DataPropertyName = "Delete";
+            this.ColDelete.HeaderText = "Delete";
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.Text = "Delete";
+            this.ColDelete.UseColumnTextForButtonValue = true;
             // 
             // Purchase_Bill_Details
             // 
@@ -835,6 +848,14 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.LinkLabel linkAddPurchaseBillItems;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbAddRatio;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSalesPrice;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCurrencyRate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNewRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModelNo;
@@ -848,13 +869,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SuppossedPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalesPrice;
         private System.Windows.Forms.DataGridViewButtonColumn ColDelete;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbAddRatio;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSalesPrice;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCurrencyRate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNewRate;
     }
 }

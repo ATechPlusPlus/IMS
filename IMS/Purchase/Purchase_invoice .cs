@@ -162,7 +162,7 @@ namespace IMS.Purchase
                     ObjDAL.SetColumnData("ShipmentNo", SqlDbType.NVarChar, txtShipmentNo.Text.Trim());
                     ObjDAL.SetColumnData("BillValue", SqlDbType.Decimal, txtBillValue.Text.Trim());
                     ObjDAL.SetColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
-                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Bit, cmbSupplier.SelectedValue);
+                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
                     ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
                     ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
                     ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
@@ -476,16 +476,16 @@ namespace IMS.Purchase
             decimal LocalNewPriceRate = 0.0M;
             decimal LocalBillValue = 0.0M;
 
-            if (ObjUtil.IsControlTextEmpty(cmbCountry))
-            {
-                clsUtility.ShowInfoMessage("Please Select Supplier Country..", clsUtility.strProjectTitle);
-                return;
-            }
-            else if (ObjUtil.IsControlTextEmpty(txtCurrencyRate))
-            {
-                clsUtility.ShowInfoMessage("Currency Rate is not found for Country " + cmbCountry.Text, clsUtility.strProjectTitle);
-                return;
-            }
+            //if (ObjUtil.IsControlTextEmpty(cmbCountry))
+            //{
+            //    clsUtility.ShowInfoMessage("Please Select Supplier Country..", clsUtility.strProjectTitle);
+            //    return;
+            //}
+            //else if (ObjUtil.IsControlTextEmpty(txtCurrencyRate))
+            //{
+            //    clsUtility.ShowInfoMessage("Currency Rate is not found for Country " + cmbCountry.Text, clsUtility.strProjectTitle);
+            //    return;
+            //}
             try
             {
                 CurrencyRate = txtCurrencyRate.Text.Length > 0 ? Convert.ToDecimal(txtCurrencyRate.Text) : 0;
