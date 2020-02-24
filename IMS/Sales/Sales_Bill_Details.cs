@@ -23,9 +23,10 @@ namespace IMS.Sales
         private void dgvProductDetails_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ObjUtil.SetRowNumber(dgvProductDetails);
-            ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.Fill);
+            ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.ColumnHeader);
 
 
+            dgvProductDetails.Columns["Id"].Visible = false;
             dgvProductDetails.Columns["SalesMan"].Visible = false;
             dgvProductDetails.Columns["ShopeID"].Visible = false;
 
