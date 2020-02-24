@@ -39,6 +39,8 @@
             this.EmployeeDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.brandMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CustomerMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ColorMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseInvoice_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseBillDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +65,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CustomerMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SizeTypeMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -114,7 +116,9 @@
             this.EmployeeDetails_ToolStrip,
             this.brandMasterToolStripMenuItem,
             this.productMasterToolStripMenuItem,
-            this.CustomerMasterToolStripMenuItem});
+            this.CustomerMasterToolStripMenuItem,
+            this.ColorMasterToolStripMenuItem,
+            this.SizeTypeMasterToolStripMenuItem});
             this.mobilePartsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mobilePartsToolStripMenuItem.Image")));
             this.mobilePartsToolStripMenuItem.Name = "mobilePartsToolStripMenuItem";
             this.mobilePartsToolStripMenuItem.Size = new System.Drawing.Size(107, 36);
@@ -169,6 +173,20 @@
             this.productMasterToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.productMasterToolStripMenuItem.Text = "Product Master";
             this.productMasterToolStripMenuItem.Click += new System.EventHandler(this.productMasterToolStripMenuItem_Click);
+            // 
+            // CustomerMasterToolStripMenuItem
+            // 
+            this.CustomerMasterToolStripMenuItem.Name = "CustomerMasterToolStripMenuItem";
+            this.CustomerMasterToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.CustomerMasterToolStripMenuItem.Text = "Customer Master";
+            this.CustomerMasterToolStripMenuItem.Click += new System.EventHandler(this.CustomerMasterToolStripMenuItem_Click);
+            // 
+            // ColorMasterToolStripMenuItem
+            // 
+            this.ColorMasterToolStripMenuItem.Name = "ColorMasterToolStripMenuItem";
+            this.ColorMasterToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.ColorMasterToolStripMenuItem.Text = "Color Master";
+            this.ColorMasterToolStripMenuItem.Click += new System.EventHandler(this.ColorMasterToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -392,12 +410,12 @@
             this.label1.Text = "Logout";
             this.label1.Click += new System.EventHandler(this.picLogOut_Click);
             // 
-            // CustomerMasterToolStripMenuItem
+            // SizeTypeMasterToolStripMenuItem
             // 
-            this.CustomerMasterToolStripMenuItem.Name = "CustomerMasterToolStripMenuItem";
-            this.CustomerMasterToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
-            this.CustomerMasterToolStripMenuItem.Text = "Customer Master";
-            this.CustomerMasterToolStripMenuItem.Click += new System.EventHandler(this.CustomerMasterToolStripMenuItem_Click);
+            this.SizeTypeMasterToolStripMenuItem.Name = "SizeTypeMasterToolStripMenuItem";
+            this.SizeTypeMasterToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.SizeTypeMasterToolStripMenuItem.Text = "Size Type Master";
+            this.SizeTypeMasterToolStripMenuItem.Click += new System.EventHandler(this.SizeTypeMasterToolStripMenuItem_Click);
             // 
             // frmHome
             // 
@@ -470,6 +488,8 @@
         private System.Windows.Forms.ToolStripMenuItem productMasterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem defaultStoreSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CustomerMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ColorMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SizeTypeMasterToolStripMenuItem;
     }
 }
 
