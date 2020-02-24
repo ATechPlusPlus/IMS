@@ -30,6 +30,7 @@ namespace IMS.Masters
             cmbBrand.SelectedIndex = -1;
             cmbActiveStatus.SelectedIndex = -1;
             txtProductName.Focus();
+            PicProductMaster.Image = null;
         }
 
         private bool Validateform()
@@ -112,7 +113,7 @@ namespace IMS.Masters
         private void FillBrandData()
         {
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandNameMaster", "BrandID,BrandName", "ISNULL(ActiveStatus,1)=1", "BrandName ASC");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName", "ISNULL(ActiveStatus,1)=1", "BrandName ASC");
             cmbBrand.DataSource = dt;
             cmbBrand.DisplayMember = "BrandName";
             cmbBrand.ValueMember = "BrandID";

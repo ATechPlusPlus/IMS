@@ -30,6 +30,19 @@ namespace IMS.Sales
 
             GenerateInvoiceNumber();
             InitItemTable();
+
+            txtProductName.Focus();
+        }
+        private void btnAdd_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackgroundImage = B_Enter;
+        }
+
+        private void btnAdd_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackgroundImage = B_Leave;
         }
         private void InitItemTable()
         {
@@ -57,6 +70,47 @@ namespace IMS.Sales
 
             dgvProductDetails.DataSource = dtItemDetails;
 
+        }
+        private bool IsItemExist(string pID)
+        {
+            DataRow [] dRow=  dtItemDetails.Select("ProductID='" + pID + "'");
+            if (dRow.Length==0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void UpdateQTYByOne(string pID, decimal rate)
+        {
+           
+            
+            DataRow[] dRow = dtItemDetails.Select("ProductID='" + pID + "'");
+            
+            // add one qty
+            decimal NewQTY= Convert.ToDecimal(dRow[0]["QTY"]) + 1;
+
+            if (CheckProductQTY(Convert.ToInt32(pID), Convert.ToDecimal(NewQTY)))
+            {
+                // set to col
+                dRow[0]["QTY"] = NewQTY.ToString();
+
+                // cal total
+                decimal total = rate * NewQTY;
+
+                // set the total
+                dRow[0]["Total"] = total.ToString();
+
+                dtItemDetails.AcceptChanges();
+                dgvProductDetails.DataSource = dtItemDetails;
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("No QTY avaiable for the given Product.", clsUtility.strProjectTitle);
+            }
+           
         }
         private void GenerateInvoiceNumber()
         {
@@ -96,7 +150,8 @@ namespace IMS.Sales
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Masters.Customer_Master customer_Master = new Masters.Customer_Master();
+            customer_Master.ShowDialog();
         }
 
         DataTable dtItemDetails = new DataTable();
@@ -104,17 +159,7 @@ namespace IMS.Sales
         {
 
         }
-        private void btnAdd_MouseEnter(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            btn.BackgroundImage = B_Enter;
-        }
-
-        private void btnAdd_MouseLeave(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            btn.BackgroundImage = B_Leave;
-        }
+       
 
         private void txtSalesMan_TextChanged(object sender, EventArgs e)
         {
@@ -123,6 +168,8 @@ namespace IMS.Sales
                 DataTable dt = ObjDAL.ExecuteSelectStatement("select Empid,Name from " + clsUtility.DBName + ".dbo.employeeDetails where Name Like '" + txtSalesMan.Text + "%'");
                 if (dt != null && dt.Rows.Count > 0)
                 {
+                  
+
                     ObjUtil.SetControlData(txtSalesMan, "Name");
                     ObjUtil.SetControlData(txtEmpID, "Empid");
 
@@ -155,10 +202,33 @@ namespace IMS.Sales
         }
 
 
+        private Image GetProductPhoto(int ProductID)
+        {
+            Image imgProduct = null;
+
+           DataTable dt= ObjDAL.ExecuteSelectStatement("select Photo from "+ clsUtility.DBName+".dbo.ProductMaster where ProductID="+ ProductID );
+            if (dt!=null && dt.Rows.Count>=0)
+            {
+                if (dt.Rows[0]["Photo"]!=DBNull.Value)
+                {
+                    byte[] imgData = (byte[])(dt.Rows[0]["Photo"]);
+                    imgProduct = ObjUtil.GetImage(imgData);
+                }
+               
+            }
+
+            return imgProduct;
+
+
+        }
+
         private void txtProductName_TextChanged(object sender, EventArgs e)
         {
             if (cboEntryMode.SelectedIndex == 1) // if manual entry
             {
+
+            
+
                 try
                 {
                     string query = "SELECT p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " + clsUtility.DBName + ".dbo.ProductStockMaster p2 " +
@@ -197,11 +267,33 @@ namespace IMS.Sales
 
                 }
             }
+            else
+            {
+                if(txtProductName.Text.Trim().Length!=0 && !ObjUtil.IsNumeric(txtProductName.Text))
+                {
+                   clsUtility.ShowInfoMessage("Invalid BarCode Entry. Please check the Product Code.",clsUtility.strProjectTitle);
+                }
+               
+               
+            }
         }
 
         private void Sales_Invoice_KeyDown(object sender, KeyEventArgs e)
         {
-            txtProductName.Focus();
+            if (e.KeyData == Keys.Enter)
+            {
+                if (cboEntryMode.SelectedIndex==1)
+                {
+                    
+                    GetItemDetailsByProductID(txtProductID.Text);
+                }
+                else
+                {
+                 
+                    
+                }
+             
+            }
         }
 
         private void Sales_Invoice_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -215,11 +307,35 @@ namespace IMS.Sales
 
 
         }
-        private void GetItemDetailsByProductID(string productID)
+        private void CustomerPopup_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+
+        }
+        private bool CheckProductQTY(int ProductID, decimal CurQTY)
+        {
+            string strSQL = "select QTY from  " + clsUtility.DBName + ".[dbo].[ProductStockMaster] where ProductID="+ ProductID + " and StoreID="+cmbShop.SelectedValue.ToString();
+
+   
+            decimal TotalQTY =  Convert.ToDecimal(ObjDAL.ExecuteScalar(strSQL));
+
+
+            if (CurQTY > TotalQTY)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+        private void GetItemDetailsByProductID(string _productID)
         {
             string strQ = "select p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " +
                           clsUtility.DBName + " .dbo.ProductStockMaster p2 on p1.ProductID = p2.ProductID " +
-                           " where p2.StoreID = " + cmbShop.SelectedValue + " and p1.ProductID = " + productID;
+                           " where p2.StoreID = " + cmbShop.SelectedValue + " and p1.ProductID = " + _productID;
             DataTable dt = ObjDAL.ExecuteSelectStatement(strQ);
             if (ObjUtil.ValidateTable(dt))
             {
@@ -229,11 +345,36 @@ namespace IMS.Sales
                 string qty = "1";
 
                 decimal total = Convert.ToDecimal(rate) * Convert.ToDecimal(qty);
-                AddRowToItemDetails(productID, name, qty, rate, total.ToString());
-                txtProductID.Clear();
-                txtProductName.Clear();
 
-                CalculateGrandTotal();
+                if (CheckProductQTY(Convert.ToInt32(_productID), Convert.ToDecimal(qty)))
+                {
+                    // if Item already there in the grid, then just increase the QTY
+                    if (IsItemExist(_productID))
+                    {
+                        UpdateQTYByOne(_productID.ToString(), Convert.ToDecimal(rate));
+                        picProduct.Image = GetProductPhoto(Convert.ToInt32(_productID));
+                    }
+                    else
+                    {
+                        AddRowToItemDetails(_productID, name, qty, rate, total.ToString());
+                     picProduct.Image=   GetProductPhoto(Convert.ToInt32(_productID));
+                       
+                    }
+                    
+                   
+                    
+                    txtProductID.Clear();
+                    txtProductName.Clear();
+
+                    CalculateGrandTotal();
+                    dgvProductDetails.ClearSelection();
+                    txtProductName.Focus();
+                }
+                else
+                {
+                    clsUtility.ShowInfoMessage("No QTY avaiable for the Product : "+txtProductName.Text,clsUtility.strProjectTitle);
+                }
+               
             }
         }
 
@@ -254,9 +395,21 @@ namespace IMS.Sales
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
                 decimal Rate = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["Rate"].Value);
                 decimal Total = QTY * Rate;
+                int _ProductID = Convert.ToInt32(dgvProductDetails.Rows[e.RowIndex].Cells["ProductID"].Value);
+                if (CheckProductQTY(_ProductID,Convert.ToDecimal(QTY)))
+                {
+                    dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
+                    CalculateGrandTotal();
+                }
+                else
+                {
+                    dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = _StartValue;
+                    CalculateGrandTotal();
 
-                dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
-                CalculateGrandTotal();
+                    clsUtility.ShowInfoMessage("QTY : "+ QTY + "NOT avaiable for the Product : " + dgvProductDetails.Rows[e.RowIndex].Cells["ProductName"].Value, clsUtility.strProjectTitle);
+                }
+                
+                
             }
         }
         private void CalculateGrandTotal()
@@ -292,10 +445,21 @@ namespace IMS.Sales
                     CalculateGrandTotal();
                 }
             }
+            else
+            {
+                int _PID =Convert.ToInt32( dgvProductDetails.Rows[e.RowIndex].Cells["ProductID"].Value);
+                picProduct.Image = GetProductPhoto(Convert.ToInt32(_PID));
+            }
+
+         
         }
 
         private void ClearAll()
         {
+            Other_Forms.frmPayment.strPaymentAutoID = "";
+            lblPMode.Text = "";
+            txtCustomerID.Clear();
+            txtCustomerName.Clear();
             dtItemDetails.Clear();
             txtProductID.Clear();
             txtEmpID.Clear();
@@ -304,61 +468,244 @@ namespace IMS.Sales
             txtProductName.Clear();
             txtCustomerName.Clear();
             cmbShop.SelectedIndex = -1;
-            txtTotalItems.Clear();
+            txtTotalItems.Text = "0";
 
             txtSubTotal.Text = "0";
             txtDeliveryCharges.Text = "0";
             txtDiscount.Text = "0";
             txtGrandTotal.Text = "0";
+            picProduct.Image = null;
+           
+
+
+        }
+        private bool SalesValidation()
+        {
+            if (txtCustomerID.Text.Trim().Length==0)
+            {
+                clsUtility.ShowInfoMessage("Please Enter Customer Name.", clsUtility.strProjectTitle);
+                txtCustomerName.Focus();
+                return false;
+            }
+            if (txtEmpID.Text.Trim().Length == 0)
+            {
+                clsUtility.ShowInfoMessage("Please Enter Sales Man Name.", clsUtility.strProjectTitle);
+                txtSalesMan.Focus();
+                return false;
+            }
+            if (Other_Forms.frmPayment.strPaymentAutoID.Trim().Length==0)
+            {
+                clsUtility.ShowInfoMessage("Please Select Payment Mode.", clsUtility.strProjectTitle);
+              
+                return false;
+            }
+
+            return true;
 
         }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            dgvProductDetails.EndEdit();
-
-            // Before sales invocing make sure you have available qty for particular store
-
-            #region SalesInvoiceDetails
-            ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
-            ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd"));
-            ObjDAL.SetColumnData("SubTotal", SqlDbType.Decimal, txtSubTotal.Text);
-            ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtDiscount.Text);
-            ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtDeliveryCharges.Text);
-            ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtGrandTotal.Text);
-            ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-            ObjDAL.SetColumnData("CustomerName", SqlDbType.NVarChar, txtCustomerName.Text);
-            ObjDAL.SetColumnData("SalesMan", SqlDbType.Int, txtEmpID.Text);
-            ObjDAL.SetColumnData("ShopeID", SqlDbType.Int, cmbShop.SelectedValue.ToString());
-            int InvoiceID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesInvoiceDetails", true);
-            #endregion
-
-            for (int i = 0; i < dgvProductDetails.Rows.Count; i++)
+            if (SalesValidation())
             {
-                string Total = dgvProductDetails.Rows[i].Cells["Total"].Value.ToString();
-                string ProductID = dgvProductDetails.Rows[i].Cells["ProductID"].Value.ToString();
-                string QTY = dgvProductDetails.Rows[i].Cells["QTY"].Value.ToString();
-                string Rate = dgvProductDetails.Rows[i].Cells["Rate"].Value.ToString();
+                dgvProductDetails.EndEdit();
 
-                ObjDAL.SetColumnData("InvoiceID", SqlDbType.Int, InvoiceID);
-                ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
-                ObjDAL.SetColumnData("QTY", SqlDbType.Decimal, QTY);
+                // Before sales invocing make sure you have available qty for particular store
+
+                #region SalesInvoiceDetails
+                ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
+                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd"));
+                ObjDAL.SetColumnData("SubTotal", SqlDbType.Decimal, txtSubTotal.Text);
+                ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtDiscount.Text);
+                ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtDeliveryCharges.Text);
+                ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtGrandTotal.Text);
                 ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-                ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesDetails", false);
+                ObjDAL.SetColumnData("CustomerID", SqlDbType.Int, txtCustomerID.Text);
+                ObjDAL.SetColumnData("SalesMan", SqlDbType.Int, txtEmpID.Text);
+                ObjDAL.SetColumnData("ShopeID", SqlDbType.Int, cmbShop.SelectedValue.ToString());
 
-                ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockMaster SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString());
+                ObjDAL.SetColumnData("PaymentMode", SqlDbType.NVarChar, lblPMode.Text);
+                ObjDAL.SetColumnData("PaymentAutoID", SqlDbType.Int, Other_Forms.frmPayment.strPaymentAutoID);
+
+                int InvoiceID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesInvoiceDetails", true);
+                #endregion
+
+                for (int i = 0; i < dgvProductDetails.Rows.Count; i++)
+                {
+                    string Total = dgvProductDetails.Rows[i].Cells["Total"].Value.ToString();
+                    string ProductID = dgvProductDetails.Rows[i].Cells["ProductID"].Value.ToString();
+                    string QTY = dgvProductDetails.Rows[i].Cells["QTY"].Value.ToString();
+                    string Rate = dgvProductDetails.Rows[i].Cells["Rate"].Value.ToString();
+
+                    ObjDAL.SetColumnData("InvoiceID", SqlDbType.Int, InvoiceID);
+                    ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
+                    ObjDAL.SetColumnData("QTY", SqlDbType.Decimal, QTY);
+                    ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
+                    ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesDetails", false);
+
+                    ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockMaster SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString());
+                }
+                clsUtility.ShowInfoMessage("Record has been saved successfully.", clsUtility.strProjectTitle);
+                ClearAll();
             }
-            clsUtility.ShowInfoMessage("Record has been saved !", clsUtility.strProjectTitle);
-            ClearAll();
+
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ClearAll();
+            bool result=clsUtility.ShowQuestionMessage("Are you sure, you want to cancel?", clsUtility.strProjectTitle);
+            if (result)
+            {
+                ClearAll();
+            }
+            
         }
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
             CalculateGrandTotal();
+        }
+
+        decimal _StartValue = 0;
+        private void dgvProductDetails_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            try
+            {
+                _StartValue = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
+            }
+            catch (Exception)
+            {
+
+               
+            }
+           
+        }
+
+        private void txtProductName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (cboEntryMode.SelectedIndex == 0)
+            {
+                if (e.KeyData==Keys.Enter)
+                {
+                    GetItemDetailsByProductID(txtProductName.Text);
+                }
+               
+            }
+            else
+            {
+                if (ObjUtil.GetDataPopup() != null)
+                {
+                    ObjUtil.GetDataPopup().Focus();
+                }
+
+            }
+           
+          
+        }
+
+        private void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtCustomerName.Text.Trim().Length>0)
+                {
+                  
+                    string query = "select CustomerID,Name,PhoneNo from " + clsUtility.DBName + ".dbo.CustomerMaster where Name like '%" + txtCustomerName.Text + "%'";
+                    DataTable dt = ObjDAL.ExecuteSelectStatement(query);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        ObjUtil.SetControlData(txtCustomerName, "Name");
+                        ObjUtil.SetControlData(txtCustomerID, "CustomerID");
+
+                        ObjUtil.ShowDataPopup(dt, txtCustomerName, this, this);
+
+                        if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
+                        {
+                            // if there is only one column                
+                            ObjUtil.GetDataPopup().AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                            if (ObjUtil.GetDataPopup().ColumnCount > 0)
+                            {
+                                ObjUtil.GetDataPopup().Columns["CustomerID"].Visible = false;
+                                ObjUtil.SetDataPopupSize(450, 0);
+
+
+                            }
+                        }
+                        //ObjUtil.GetDataPopup().CellClick += Sales_Invoice_CellClick;
+                        //ObjUtil.GetDataPopup().KeyDown += Sales_Invoice_KeyDown;
+                    }
+                    else
+                    {
+                        ObjUtil.CloseAutoExtender();
+                    }
+                }
+               
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void picCash_Click(object sender, EventArgs e)
+        {
+            lblPMode.Text = "Cash";
+            //deafult auto ID for cash is four times zero
+            Other_Forms.frmPayment.strPaymentAutoID = "0000";
+        }
+
+        private void picKnet_Click(object sender, EventArgs e)
+        {
+            lblPMode.Text = "K Net";
+            Other_Forms.frmPayment frmPayment = new Other_Forms.frmPayment();
+            Other_Forms.frmPayment.strPaymentAutoID = "";
+            frmPayment.lblPaymentMode.Text = "K Net";
+            frmPayment.picPaymentMode.Image = picKnet.Image;
+            frmPayment.ShowDialog();
+
+
+
+        }
+
+        private void picVisa_Click(object sender, EventArgs e)
+        {
+            lblPMode.Text = "Visa";
+            Other_Forms.frmPayment frmPayment = new Other_Forms.frmPayment();
+            Other_Forms.frmPayment.strPaymentAutoID = "";
+            frmPayment.lblPaymentMode.Text = "Visa";
+            frmPayment.picPaymentMode.Image = picVisa.Image;
+            frmPayment.ShowDialog();
+        }
+
+        private void PicMaster_Click(object sender, EventArgs e)
+        {
+            lblPMode.Text = "Master Card";
+            Other_Forms.frmPayment frmPayment = new Other_Forms.frmPayment();
+            Other_Forms.frmPayment.strPaymentAutoID = "";
+            frmPayment.lblPaymentMode.Text = "Master Card";
+            frmPayment.picPaymentMode.Image = PicMaster.Image;
+            frmPayment.ShowDialog();
+        }
+
+        private void picOther_Click(object sender, EventArgs e)
+        {
+            lblPMode.Text = "Other";
+            Other_Forms.frmPayment frmPayment = new Other_Forms.frmPayment();
+            Other_Forms.frmPayment.strPaymentAutoID = "";
+            frmPayment.lblPaymentMode.Text = "Other";
+            frmPayment.picPaymentMode.Image = picOther.Image;
+            frmPayment.ShowDialog();
+        }
+
+        private void lblActiveStatus_Click(object sender, EventArgs e)
+        {
+            txtInvoiceNumber.ReadOnly = false;
+        }
+
+        private void Sales_Invoice_Activated(object sender, EventArgs e)
+        {
+            txtProductName.Focus();
         }
     }
 }
