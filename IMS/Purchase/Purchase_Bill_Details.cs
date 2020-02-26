@@ -42,8 +42,9 @@ namespace IMS.Purchase
             txtProductID.Clear();
             cmbSupplier.SelectedIndex = -1;
             cmbBrand.SelectedIndex = -1;
-            dataGridView1.DataSource = null;
+
             dtPurchaseInvoice.Clear();
+            dataGridView1.DataSource = dtPurchaseInvoice;
 
             txtTotalQTYBill.Text = "0";
             txtTotalQTYEntered.Text = "0";
@@ -66,14 +67,20 @@ namespace IMS.Purchase
             txtNewRate.Clear();
             txtSalesPrice.Clear();
             txtCurrencyRate.Clear();
-            cmbAddRatio.SelectedIndex = -1;
+            //cmbAddRatio.SelectedIndex = -1;
 
             txtProductName.Focus();
         }
 
         private bool Validateform()
         {
-            if (ObjUtil.IsControlTextEmpty(txtProductName))
+            if (ObjUtil.IsControlTextEmpty(cmbAddRatio))
+            {
+                clsUtility.ShowInfoMessage("Please select Add Ratio to Suggested price.", clsUtility.strProjectTitle);
+                cmbAddRatio.Focus();
+                return false;
+            }
+            else if (ObjUtil.IsControlTextEmpty(txtProductName))
             {
                 clsUtility.ShowInfoMessage("Please Enter Product Name ", clsUtility.strProjectTitle);
                 txtProductName.Focus();
@@ -165,8 +172,16 @@ namespace IMS.Purchase
                     _QTY = Convert.ToInt32(dtPurchaseInvoiceBill.Rows[i]["QTY"]);
                     ObjDAL.SetColumnData("QTY", SqlDbType.Int, _QTY);
                     ObjDAL.SetColumnData("Rate", SqlDbType.Decimal, dtPurchaseInvoiceBill.Rows[i]["Rate"].ToString());
+                    ObjDAL.SetColumnData("Sales_Price", SqlDbType.Decimal, dtPurchaseInvoiceBill.Rows[i]["EndUser"].ToString());
+                    ObjDAL.SetColumnData("AddedRatio", SqlDbType.Int, dtPurchaseInvoiceBill.Rows[i]["AddedRatio"].ToString());
+                    ObjDAL.SetColumnData("SuppossedPrice", SqlDbType.Decimal, dtPurchaseInvoiceBill.Rows[i]["SuppossedPrice"].ToString());
 
                     _ID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoiceDetails", true);
+
+                    //Updating Sales price in Product Master table for sales window
+                    ObjDAL.UpdateColumnData("Rate", SqlDbType.Decimal, dtPurchaseInvoiceBill.Rows[i]["EndUser"]);
+                    ObjDAL.UpdateData(clsUtility.DBName + ".dbo.ProductMaster", "ProductID = " + _ProductID + "");
+
                     b = AddProductStockMaster();
                 }
 
@@ -275,7 +290,7 @@ namespace IMS.Purchase
 
         private void LoadData()
         {
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,LocalValue,LocalExp,LocalBillValue", "SupplierBillNo = '" + txtSupplierBillNo.Text.Trim() + "'", "BillDate");
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,LocalValue,LocalExp,LocalBillValue", " ISNULL(IsInvoiceDone,0) = 0 AND SupplierBillNo = '" + txtSupplierBillNo.Text.Trim() + "'", "BillDate");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -302,7 +317,7 @@ namespace IMS.Purchase
             }
             else
             {
-                clsUtility.ShowInfoMessage("Purchase Invoice is not available for Bill No. " + txtSupplierBillNo.Text, clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Purchase Invoice is already billed OR not available for Bill No. " + txtSupplierBillNo.Text, clsUtility.strProjectTitle);
                 grpPurchaseBillDetail.Enabled = false;
             }
         }
@@ -447,7 +462,9 @@ namespace IMS.Purchase
 
         private void AddRowToItemDetails()
         {
-            if (Convert.ToInt32(txtTotalQTYEntered.Text) <= Convert.ToInt32(txtTotalQTYBill.Text))
+            int pEnteredQTY = 0;
+            pEnteredQTY = Convert.ToInt32(txtTotalQTYEntered.Text) + Convert.ToInt32(txtQTY.Text);
+            if (pEnteredQTY <= Convert.ToInt32(txtTotalQTYBill.Text))
             {
                 DataRow dRow = dtPurchaseInvoice.NewRow();
                 dRow["ProductID"] = txtProductID.Text;
@@ -473,16 +490,14 @@ namespace IMS.Purchase
 
                 CalculateSubTotal();
             }
-            else if (Convert.ToInt32(txtTotalQTYEntered.Text) == Convert.ToInt32(txtTotalQTYBill.Text))
+            else if (pEnteredQTY == Convert.ToInt32(txtTotalQTYBill.Text))
             {
                 clsUtility.ShowInfoMessage("Purchase Invoiced QTY and Entered QTY is already same", clsUtility.strProjectTitle);
-                btnSave.Enabled = false;
             }
-            //else
-            //{
-            //    clsUtility.ShowInfoMessage("Entered QTY can not greater then Purchase Invoice QTY", clsUtility.strProjectTitle);
-            //    btnSave.Enabled = false;
-            //}
+            else
+            {
+                clsUtility.ShowInfoMessage("Entered QTY can not greater then Purchase Invoice QTY", clsUtility.strProjectTitle);
+            }
         }
 
         private void InitItemTable()

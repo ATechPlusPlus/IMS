@@ -32,12 +32,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSearchByProductName = new System.Windows.Forms.TextBox();
+            this.rdSearchByItem = new System.Windows.Forms.RadioButton();
             this.cmbShop = new System.Windows.Forms.ComboBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdSearchByStore = new System.Windows.Forms.RadioButton();
             this.rdShowAll = new System.Windows.Forms.RadioButton();
             this.dgvProductDetails = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.rdSearchByItem = new System.Windows.Forms.RadioButton();
+            this.txtProductID = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
@@ -69,10 +70,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.txtSearchByProductName);
             this.groupBox1.Controls.Add(this.rdSearchByItem);
             this.groupBox1.Controls.Add(this.cmbShop);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rdSearchByStore);
             this.groupBox1.Controls.Add(this.rdShowAll);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 50);
@@ -82,27 +83,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
+            // txtSearchByProductName
+            // 
+            this.txtSearchByProductName.BackColor = System.Drawing.Color.White;
+            this.txtSearchByProductName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSearchByProductName.Enabled = false;
+            this.txtSearchByProductName.Location = new System.Drawing.Point(452, 24);
+            this.txtSearchByProductName.Name = "txtSearchByProductName";
+            this.txtSearchByProductName.Size = new System.Drawing.Size(181, 25);
+            this.txtSearchByProductName.TabIndex = 229;
+            this.txtSearchByProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
+            // 
+            // rdSearchByItem
+            // 
+            this.rdSearchByItem.AutoSize = true;
+            this.rdSearchByItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdSearchByItem.Location = new System.Drawing.Point(365, 24);
+            this.rdSearchByItem.Name = "rdSearchByItem";
+            this.rdSearchByItem.Size = new System.Drawing.Size(81, 21);
+            this.rdSearchByItem.TabIndex = 199;
+            this.rdSearchByItem.Text = "By Item :";
+            this.rdSearchByItem.UseVisualStyleBackColor = true;
+            this.rdSearchByItem.CheckedChanged += new System.EventHandler(this.rdSearchByItem_CheckedChanged);
+            // 
             // cmbShop
             // 
             this.cmbShop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbShop.Enabled = false;
             this.cmbShop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbShop.FormattingEnabled = true;
-            this.cmbShop.Location = new System.Drawing.Point(458, 24);
+            this.cmbShop.Location = new System.Drawing.Point(159, 24);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(181, 27);
             this.cmbShop.TabIndex = 198;
+            this.cmbShop.SelectionChangeCommitted += new System.EventHandler(this.cmbShop_SelectionChangeCommitted);
             // 
-            // radioButton1
+            // rdSearchByStore
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(328, 24);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(125, 21);
-            this.radioButton1.TabIndex = 197;
-            this.radioButton1.Text = "By Store/Shope :";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdSearchByStore.AutoSize = true;
+            this.rdSearchByStore.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdSearchByStore.Location = new System.Drawing.Point(17, 27);
+            this.rdSearchByStore.Name = "rdSearchByStore";
+            this.rdSearchByStore.Size = new System.Drawing.Size(125, 21);
+            this.rdSearchByStore.TabIndex = 197;
+            this.rdSearchByStore.Text = "By Store/Shope :";
+            this.rdSearchByStore.UseVisualStyleBackColor = true;
+            this.rdSearchByStore.CheckedChanged += new System.EventHandler(this.rdSearchByStore_CheckedChanged);
             // 
             // rdShowAll
             // 
@@ -116,6 +142,7 @@
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
+            this.rdShowAll.CheckedChanged += new System.EventHandler(this.rdShowAll_CheckedChanged);
             // 
             // dgvProductDetails
             // 
@@ -129,28 +156,17 @@
             this.dgvProductDetails.ReadOnly = true;
             this.dgvProductDetails.Size = new System.Drawing.Size(776, 309);
             this.dgvProductDetails.TabIndex = 207;
+            this.dgvProductDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProductDetails_DataBindingComplete);
             // 
-            // comboBox1
+            // txtProductID
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Enabled = false;
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(122, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 27);
-            this.comboBox1.TabIndex = 200;
-            // 
-            // rdSearchByItem
-            // 
-            this.rdSearchByItem.AutoSize = true;
-            this.rdSearchByItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchByItem.Location = new System.Drawing.Point(26, 24);
-            this.rdSearchByItem.Name = "rdSearchByItem";
-            this.rdSearchByItem.Size = new System.Drawing.Size(81, 21);
-            this.rdSearchByItem.TabIndex = 199;
-            this.rdSearchByItem.Text = "By Item :";
-            this.rdSearchByItem.UseVisualStyleBackColor = true;
+            this.txtProductID.BackColor = System.Drawing.Color.White;
+            this.txtProductID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtProductID.Location = new System.Drawing.Point(744, 40);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(38, 20);
+            this.txtProductID.TabIndex = 230;
+            this.txtProductID.Visible = false;
             // 
             // Material_Details
             // 
@@ -159,6 +175,7 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 459);
+            this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvProductDetails);
             this.Controls.Add(this.panel2);
@@ -168,12 +185,14 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Material Details";
+            this.Load += new System.EventHandler(this.Material_Details_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,10 +202,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbShop;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdSearchByStore;
         private System.Windows.Forms.RadioButton rdShowAll;
         private System.Windows.Forms.DataGridView dgvProductDetails;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RadioButton rdSearchByItem;
+        private System.Windows.Forms.TextBox txtSearchByProductName;
+        private System.Windows.Forms.TextBox txtProductID;
     }
 }

@@ -164,12 +164,12 @@ namespace IMS.Purchase
                     ObjDAL.SetColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
                     ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
                     ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
-                    ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
-                    ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
+                    ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0);
+                    ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0);
                     ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
 
                     ObjDAL.SetColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
-                    ObjDAL.SetColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Trim());
+                    ObjDAL.SetColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0);
                     ObjDAL.SetColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
 
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
@@ -221,12 +221,12 @@ namespace IMS.Purchase
                     ObjDAL.UpdateColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
                     ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
                     ObjDAL.UpdateColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
-                    ObjDAL.UpdateColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Trim());
-                    ObjDAL.UpdateColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Trim());
+                    ObjDAL.UpdateColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0);
+                    ObjDAL.UpdateColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0);
                     ObjDAL.UpdateColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
 
                     ObjDAL.UpdateColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
-                    ObjDAL.UpdateColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Trim());
+                    ObjDAL.UpdateColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0);
                     ObjDAL.UpdateColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
 
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test

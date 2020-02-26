@@ -32,17 +32,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblTotalRecords = new System.Windows.Forms.Label();
             this.rdShowAll = new System.Windows.Forms.RadioButton();
-            this.rdSearchBySize = new System.Windows.Forms.RadioButton();
-            this.txtSearchBySizeType = new System.Windows.Forms.TextBox();
+            this.rdSearchBySizeType = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbSearchBySizeType = new System.Windows.Forms.ComboBox();
             this.grpGridview = new System.Windows.Forms.GroupBox();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.cmbSizeType = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSizeTypeName = new System.Windows.Forms.Label();
             this.lblActiveStatus = new System.Windows.Forms.Label();
-            this.txtSizeTypeName = new System.Windows.Forms.TextBox();
+            this.txtSize = new System.Windows.Forms.TextBox();
             this.cmbActiveStatus = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -50,6 +50,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.grpSizeType = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnAddMore = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -68,8 +70,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(562, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(684, 147);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
             // lblTotalRecords
             // 
@@ -87,48 +91,52 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(440, 19);
+            this.rdShowAll.Location = new System.Drawing.Point(611, 21);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
+            this.rdShowAll.CheckedChanged += new System.EventHandler(this.rdShowAll_CheckedChanged);
             // 
-            // rdSearchBySize
+            // rdSearchBySizeType
             // 
-            this.rdSearchBySize.AutoSize = true;
-            this.rdSearchBySize.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchBySize.Location = new System.Drawing.Point(34, 22);
-            this.rdSearchBySize.Name = "rdSearchBySize";
-            this.rdSearchBySize.Size = new System.Drawing.Size(78, 21);
-            this.rdSearchBySize.TabIndex = 6;
-            this.rdSearchBySize.Text = "By Size :";
-            this.rdSearchBySize.UseVisualStyleBackColor = true;
-            // 
-            // txtSearchBySizeType
-            // 
-            this.txtSearchBySizeType.BackColor = System.Drawing.Color.White;
-            this.txtSearchBySizeType.Enabled = false;
-            this.txtSearchBySizeType.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBySizeType.Location = new System.Drawing.Point(172, 22);
-            this.txtSearchBySizeType.Name = "txtSearchBySizeType";
-            this.txtSearchBySizeType.Size = new System.Drawing.Size(206, 25);
-            this.txtSearchBySizeType.TabIndex = 5;
+            this.rdSearchBySizeType.AutoSize = true;
+            this.rdSearchBySizeType.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdSearchBySizeType.Location = new System.Drawing.Point(34, 22);
+            this.rdSearchBySizeType.Name = "rdSearchBySizeType";
+            this.rdSearchBySizeType.Size = new System.Drawing.Size(107, 21);
+            this.rdSearchBySizeType.TabIndex = 6;
+            this.rdSearchBySizeType.Text = "By SizeType :";
+            this.rdSearchBySizeType.UseVisualStyleBackColor = true;
+            this.rdSearchBySizeType.CheckedChanged += new System.EventHandler(this.rdSearchBySizeType_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmbSearchBySizeType);
             this.groupBox1.Controls.Add(this.rdShowAll);
-            this.groupBox1.Controls.Add(this.rdSearchBySize);
-            this.groupBox1.Controls.Add(this.txtSearchBySizeType);
+            this.groupBox1.Controls.Add(this.rdSearchBySizeType);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 253);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(527, 51);
+            this.groupBox1.Size = new System.Drawing.Size(702, 51);
             this.groupBox1.TabIndex = 234;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
+            // 
+            // cmbSearchBySizeType
+            // 
+            this.cmbSearchBySizeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSearchBySizeType.Enabled = false;
+            this.cmbSearchBySizeType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSearchBySizeType.FormattingEnabled = true;
+            this.cmbSearchBySizeType.Location = new System.Drawing.Point(172, 18);
+            this.cmbSearchBySizeType.Name = "cmbSearchBySizeType";
+            this.cmbSearchBySizeType.Size = new System.Drawing.Size(206, 27);
+            this.cmbSearchBySizeType.TabIndex = 236;
+            this.cmbSearchBySizeType.SelectionChangeCommitted += new System.EventHandler(this.cmbSearchBySizeType_SelectionChangeCommitted);
             // 
             // grpGridview
             // 
@@ -137,27 +145,27 @@
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpGridview.Location = new System.Drawing.Point(2, 309);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(575, 175);
+            this.grpGridview.Size = new System.Drawing.Size(696, 175);
             this.grpGridview.TabIndex = 232;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Sizes";
             // 
-            // cmbCategory
+            // cmbSizeType
             // 
-            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(159, 66);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(206, 27);
-            this.cmbCategory.TabIndex = 194;
+            this.cmbSizeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSizeType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSizeType.FormattingEnabled = true;
+            this.cmbSizeType.Location = new System.Drawing.Point(159, 26);
+            this.cmbSizeType.Name = "cmbSizeType";
+            this.cmbSizeType.Size = new System.Drawing.Size(206, 27);
+            this.cmbSizeType.TabIndex = 1;
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
             this.lblCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(18, 68);
+            this.lblCategory.Location = new System.Drawing.Point(18, 28);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(72, 17);
             this.lblCategory.TabIndex = 193;
@@ -175,6 +183,9 @@
             this.btnSave.TabIndex = 226;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnAdd
             // 
@@ -188,13 +199,16 @@
             this.btnAdd.TabIndex = 225;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // lblSizeTypeName
             // 
             this.lblSizeTypeName.AutoSize = true;
             this.lblSizeTypeName.BackColor = System.Drawing.Color.Transparent;
             this.lblSizeTypeName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSizeTypeName.Location = new System.Drawing.Point(18, 27);
+            this.lblSizeTypeName.Location = new System.Drawing.Point(18, 112);
             this.lblSizeTypeName.Name = "lblSizeTypeName";
             this.lblSizeTypeName.Size = new System.Drawing.Size(39, 17);
             this.lblSizeTypeName.TabIndex = 187;
@@ -205,19 +219,21 @@
             this.lblActiveStatus.AutoSize = true;
             this.lblActiveStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveStatus.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveStatus.Location = new System.Drawing.Point(18, 110);
+            this.lblActiveStatus.Location = new System.Drawing.Point(18, 70);
             this.lblActiveStatus.Name = "lblActiveStatus";
             this.lblActiveStatus.Size = new System.Drawing.Size(94, 17);
             this.lblActiveStatus.TabIndex = 189;
             this.lblActiveStatus.Text = "Active Status :";
             // 
-            // txtSizeTypeName
+            // txtSize
             // 
-            this.txtSizeTypeName.BackColor = System.Drawing.Color.White;
-            this.txtSizeTypeName.Location = new System.Drawing.Point(159, 27);
-            this.txtSizeTypeName.Name = "txtSizeTypeName";
-            this.txtSizeTypeName.Size = new System.Drawing.Size(206, 25);
-            this.txtSizeTypeName.TabIndex = 184;
+            this.txtSize.BackColor = System.Drawing.Color.White;
+            this.txtSize.Location = new System.Drawing.Point(159, 112);
+            this.txtSize.Name = "txtSize";
+            this.txtSize.Size = new System.Drawing.Size(206, 25);
+            this.txtSize.TabIndex = 184;
+            this.txtSize.Enter += new System.EventHandler(this.txtSize_Enter);
+            this.txtSize.Leave += new System.EventHandler(this.txtSize_Leave);
             // 
             // cmbActiveStatus
             // 
@@ -227,7 +243,7 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 108);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 69);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
@@ -244,6 +260,9 @@
             this.btnUpdate.TabIndex = 228;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnUpdate.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnCancel
             // 
@@ -257,6 +276,9 @@
             this.btnCancel.TabIndex = 230;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnDelete
             // 
@@ -270,6 +292,9 @@
             this.btnDelete.TabIndex = 229;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnEdit
             // 
@@ -283,6 +308,9 @@
             this.btnEdit.TabIndex = 227;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnEdit.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // label12
             // 
@@ -299,20 +327,48 @@
             // grpSizeType
             // 
             this.grpSizeType.BackColor = System.Drawing.Color.Transparent;
-            this.grpSizeType.Controls.Add(this.cmbCategory);
+            this.grpSizeType.Controls.Add(this.listBox1);
+            this.grpSizeType.Controls.Add(this.btnAddMore);
+            this.grpSizeType.Controls.Add(this.cmbSizeType);
             this.grpSizeType.Controls.Add(this.lblCategory);
             this.grpSizeType.Controls.Add(this.lblSizeTypeName);
             this.grpSizeType.Controls.Add(this.lblActiveStatus);
-            this.grpSizeType.Controls.Add(this.txtSizeTypeName);
+            this.grpSizeType.Controls.Add(this.txtSize);
             this.grpSizeType.Controls.Add(this.cmbActiveStatus);
             this.grpSizeType.Enabled = false;
             this.grpSizeType.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpSizeType.Location = new System.Drawing.Point(15, 92);
             this.grpSizeType.Name = "grpSizeType";
-            this.grpSizeType.Size = new System.Drawing.Size(486, 151);
-            this.grpSizeType.TabIndex = 231;
+            this.grpSizeType.Size = new System.Drawing.Size(689, 151);
+            this.grpSizeType.TabIndex = 0;
             this.grpSizeType.TabStop = false;
             this.grpSizeType.Text = "Size Details";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(473, 16);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(210, 123);
+            this.listBox1.TabIndex = 236;
+            this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
+            // 
+            // btnAddMore
+            // 
+            this.btnAddMore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddMore.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddMore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddMore.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddMore.Location = new System.Drawing.Point(371, 112);
+            this.btnAddMore.Name = "btnAddMore";
+            this.btnAddMore.Size = new System.Drawing.Size(87, 25);
+            this.btnAddMore.TabIndex = 235;
+            this.btnAddMore.Text = "Add More";
+            this.btnAddMore.UseVisualStyleBackColor = true;
+            this.btnAddMore.Click += new System.EventHandler(this.btnAddMore_Click);
+            this.btnAddMore.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnAddMore.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // panel2
             // 
@@ -322,7 +378,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(585, 40);
+            this.panel2.Size = new System.Drawing.Size(718, 40);
             this.panel2.TabIndex = 224;
             // 
             // Size_Master
@@ -331,7 +387,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(585, 507);
+            this.ClientSize = new System.Drawing.Size(718, 507);
             this.Controls.Add(this.lblTotalRecords);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpGridview);
@@ -349,6 +405,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Size";
+            this.Load += new System.EventHandler(this.Size_Master_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -367,17 +424,16 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblTotalRecords;
         private System.Windows.Forms.RadioButton rdShowAll;
-        private System.Windows.Forms.RadioButton rdSearchBySize;
-        private System.Windows.Forms.TextBox txtSearchBySizeType;
+        private System.Windows.Forms.RadioButton rdSearchBySizeType;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox grpGridview;
-        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.ComboBox cmbSizeType;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblSizeTypeName;
         private System.Windows.Forms.Label lblActiveStatus;
-        private System.Windows.Forms.TextBox txtSizeTypeName;
+        private System.Windows.Forms.TextBox txtSize;
         private System.Windows.Forms.ComboBox cmbActiveStatus;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
@@ -386,5 +442,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox grpSizeType;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnAddMore;
+        private System.Windows.Forms.ComboBox cmbSearchBySizeType;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

@@ -82,7 +82,9 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dgvSizeTypeMaster, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID,SizeTypeName,CategoryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "SizeTypeName");
+            dt = ObjDAL.ExecuteSelectStatement("SELECT sm.SizeTypeID,sm.SizeTypeName,cm.CategoryID,cm.CategoryName"+
+                    ", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) "+   "ActiveStatus FROM SizeTypeMaster sm "+
+                    " LEFT JOIN CategoryMaster cm ON sm.CategoryID = cm.CategoryID");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -120,7 +122,10 @@ namespace IMS.Masters
                 if (DuplicateUser(0))
                 {
                     ObjDAL.SetColumnData("SizeTypeName", SqlDbType.NVarChar, txtSizeTypeName.Text.Trim());
-                    ObjDAL.SetColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
+                    if (cmbDepartment.SelectedIndex >= 0)
+                    {
+                        ObjDAL.SetColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
+                    }
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.SizeTypeMaster", true) > 0)
@@ -161,7 +166,10 @@ namespace IMS.Masters
                 if (DuplicateUser(ID))
                 {
                     ObjDAL.UpdateColumnData("SizeTypeName", SqlDbType.NVarChar, txtSizeTypeName.Text.Trim());
-                    ObjDAL.UpdateColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
+                    if (cmbDepartment.SelectedIndex >= 0)
+                    {
+                        ObjDAL.UpdateColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
+                    }
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
@@ -280,8 +288,6 @@ namespace IMS.Masters
             LoadData();
             FillDepartmentData();
         }
-
-        
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
         {

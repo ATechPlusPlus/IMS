@@ -708,7 +708,6 @@
             this.Rate.DataPropertyName = "Rate";
             this.Rate.HeaderText = "Cost Price";
             this.Rate.Name = "Rate";
-            this.Rate.ReadOnly = true;
             // 
             // Total
             // 
@@ -729,6 +728,7 @@
             this.AddedRatio.DataPropertyName = "AddedRatio";
             this.AddedRatio.HeaderText = "AddedRatio%";
             this.AddedRatio.Name = "AddedRatio";
+            this.AddedRatio.ReadOnly = true;
             // 
             // SuppossedPrice
             // 
@@ -742,6 +742,7 @@
             this.SalesPrice.DataPropertyName = "EndUser";
             this.SalesPrice.HeaderText = "EndUser";
             this.SalesPrice.Name = "SalesPrice";
+            this.SalesPrice.ReadOnly = true;
             // 
             // ColDelete
             // 

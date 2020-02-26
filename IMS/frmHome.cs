@@ -204,5 +204,17 @@ namespace IMS
             Masters.Size_Type_Master Obj = new Masters.Size_Type_Master();
             Obj.Show();
         }
+
+        private void deliveringPurchaseBillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Purchase.Delivering_Purchase_Bill Obj = new Purchase.Delivering_Purchase_Bill();
+            Obj.Show();
+        }
+
+        private void sizeMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Masters.Size_Master Obj = new Masters.Size_Master();
+            Obj.Show();
+        }
     }
 }
