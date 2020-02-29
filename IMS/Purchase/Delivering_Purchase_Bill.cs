@@ -380,7 +380,10 @@ namespace IMS.Purchase
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            grpPurchaseBillDetail.Enabled = true;
+            txtSupplierBillNo.Focus();
+            txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -395,7 +398,14 @@ namespace IMS.Purchase
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            bool b = clsUtility.ShowQuestionMessage(clsUtility.MsgActionCancel, clsUtility.strProjectTitle);
+            if (b)
+            {
+                ClearAll();
+                LoadData();
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                grpPurchaseBillDetail.Enabled = false;
+            }
         }
 
         private void LoadData()
