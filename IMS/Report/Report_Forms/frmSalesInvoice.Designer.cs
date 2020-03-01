@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSalesInvoice));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(575, 40);
+            this.panel2.Size = new System.Drawing.Size(796, 40);
             this.panel2.TabIndex = 111;
             // 
             // label12
@@ -57,17 +58,28 @@
             this.label12.TabIndex = 82;
             this.label12.Text = "Sales Invoice";
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "IMS.Report.RDLC_Files.SalesInvoiceReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 40);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(796, 510);
+            this.reportViewer1.TabIndex = 112;
+            // 
             // frmSalesInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 519);
+            this.ClientSize = new System.Drawing.Size(796, 550);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmSalesInvoice";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sale Invoice";
+            this.Load += new System.EventHandler(this.frmSalesInvoice_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -78,5 +90,6 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label12;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }
