@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="ds_SalesDetails">
@@ -115,8 +116,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <ReportSections>
-    <ReportSection>
+  
       <Body>
         <ReportItems>
           <Textbox Name="CompanyName">
@@ -1520,8 +1520,7 @@
         <BottomMargin>0.5in</BottomMargin>
         <Style />
       </Page>
-    </ReportSection>
-  </ReportSections>
+  
   <ReportParameters>
     <ReportParameter Name="CompanyName">
       <DataType>String</DataType>
@@ -1536,24 +1535,7 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>1</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>CompanyName</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>Address</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
+  
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0df557a4-b084-4102-82d4-0040ed5679af</rd:ReportID>
 </Report>

@@ -136,7 +136,7 @@ namespace IMS.Barcode
                     this.pnlBarCodePreview.Controls.Remove(obj);
                     pnlBarCodePreview.Invalidate();
 
-
+                    string ProductID = _Row.Cells["ProductID"].Value.ToString();
 
                     //obj.Controls.Clear();
                     //    obj.Refresh();
@@ -223,10 +223,11 @@ namespace IMS.Barcode
                                     objPicBox.Size = new Size(Convert.ToInt32(strInfo[5]), Convert.ToInt32(strInfo[6]));
                                     objPicBox.Location = new Point(Convert.ToInt32(strInfo[7]), Convert.ToInt32(strInfo[8]));
                                     objPicBox.BorderStyle = BorderStyle.FixedSingle;
-                                   
-                           
-                                 
-                                    objPicBox.Image = IMS.Properties.Resources.barCode;
+
+                                    string barValue = "Product_" + ProductID;
+
+
+                                    objPicBox.Image = BarcodeWriter.CreateBarcode(barValue, BarcodeWriterEncoding.Code128).Image;
                                     objPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
                                     objPicBox.MouseLeave += new EventHandler(obj.control_MouseLeave);
                                     obj.Controls.Add(objPicBox);
@@ -352,19 +353,19 @@ namespace IMS.Barcode
                 encParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
                
 
-                if (File.Exists(Application.StartupPath + "//TempBarCode.jpeg"))
-                {
-                    File.Delete(Application.StartupPath + "//TempBarCode.jpeg");
+                //if (File.Exists(Application.StartupPath + "//TempBarCode.jpeg"))
+                //{
+                //    File.Delete(Application.StartupPath + "//TempBarCode.jpeg");
 
-                    bmp.Save(Application.StartupPath + "//TempBarCode.jpeg", encoder, encParams);
-                }
-                bmp.Save(Application.StartupPath + "//TempBarCode.jpeg", encoder, encParams);
+                //    bmp.Save(Application.StartupPath + "//TempBarCode.jpeg", encoder, encParams);
+                //}
+                //bmp.Save(Application.StartupPath + "//TempBarCode.jpeg", encoder, encParams);
 
-                picBarCode.Image = Image.FromFile(Application.StartupPath + "//TempBarCode.jpeg");
+                //picBarCode.Image = Image.FromFile(Application.StartupPath + "//TempBarCode.jpeg");
 
-
-                //Show print dialog
-                PrintDialog pd = new PrintDialog();
+                picBarCode.Image = bmp;
+            //Show print dialog
+            PrintDialog pd = new PrintDialog();
                 PrintDocument doc = new PrintDocument();
                 doc.PrintPage += Doc_PrintPage;
                 pd.Document = doc;
