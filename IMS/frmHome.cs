@@ -216,5 +216,23 @@ namespace IMS
             Masters.Size_Master Obj = new Masters.Size_Master();
             Obj.Show();
         }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+            frmSalesInvoice.Show();
+        }
+
+        private void BarcodeStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IMS.Barcode.DefaultStoreSetting frmHome = new IMS.Barcode.DefaultStoreSetting();
+            frmHome.Show();
+        }
+
+        private void barCodePrintingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Barcode.frmBarCode frmBarCode = new Barcode.frmBarCode();
+            frmBarCode.Show();
+        }
     }
 }

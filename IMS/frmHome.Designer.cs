@@ -42,6 +42,7 @@
             this.CustomerMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ColorMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SizeTypeMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sizeMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseInvoice_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchaseBillDetails_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@
             this.CurrencyValueSetting_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeCommissionSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defaultStoreSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +69,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.sizeMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BarcodeStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barCodePrintingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -84,11 +87,11 @@
             this.mobilePartsToolStripMenuItem,
             this.toolStripMenuItem4,
             this.hardwarePartsToolStripMenuItem,
+            this.aboutToolStripMenuItem,
             this.toolStripMenuItem1,
             this.reportsToolStripMenuItem,
             this.otherArtsToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.aboutToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -198,6 +201,13 @@
             this.SizeTypeMasterToolStripMenuItem.Text = "Size Type Master";
             this.SizeTypeMasterToolStripMenuItem.Click += new System.EventHandler(this.SizeTypeMasterToolStripMenuItem_Click);
             // 
+            // sizeMasterToolStripMenuItem
+            // 
+            this.sizeMasterToolStripMenuItem.Name = "sizeMasterToolStripMenuItem";
+            this.sizeMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
+            this.sizeMasterToolStripMenuItem.Text = "Size Master";
+            this.sizeMasterToolStripMenuItem.Click += new System.EventHandler(this.sizeMasterToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -245,14 +255,14 @@
             // SalesInvoice_ToolStrip
             // 
             this.SalesInvoice_ToolStrip.Name = "SalesInvoice_ToolStrip";
-            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(178, 24);
+            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(180, 24);
             this.SalesInvoice_ToolStrip.Text = "Sales";
             this.SalesInvoice_ToolStrip.Click += new System.EventHandler(this.SalesInvoice_ToolStrip_Click);
             // 
             // SalesBillDetails_ToolStrip
             // 
             this.SalesBillDetails_ToolStrip.Name = "SalesBillDetails_ToolStrip";
-            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(178, 24);
+            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
             this.SalesBillDetails_ToolStrip.Text = "Sales Bill Details";
             this.SalesBillDetails_ToolStrip.Click += new System.EventHandler(this.SalesBillDetails_ToolStrip_Click);
             // 
@@ -269,7 +279,7 @@
             // MaterialDetails_ToolStrip
             // 
             this.MaterialDetails_ToolStrip.Name = "MaterialDetails_ToolStrip";
-            this.MaterialDetails_ToolStrip.Size = new System.Drawing.Size(177, 24);
+            this.MaterialDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
             this.MaterialDetails_ToolStrip.Text = " Material Details";
             this.MaterialDetails_ToolStrip.Click += new System.EventHandler(this.MaterialDetails_ToolStrip_Click);
             // 
@@ -306,7 +316,8 @@
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CurrencyValueSetting_ToolStrip,
             this.employeeCommissionSettingToolStripMenuItem,
-            this.defaultStoreSettingsToolStripMenuItem});
+            this.defaultStoreSettingsToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(68, 36);
@@ -333,14 +344,23 @@
             this.defaultStoreSettingsToolStripMenuItem.Text = "Other Settings";
             this.defaultStoreSettingsToolStripMenuItem.Click += new System.EventHandler(this.defaultStoreSettingsToolStripMenuItem_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(261, 24);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BarcodeStripMenuItem,
+            this.barCodePrintingToolStripMenuItem});
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
-            this.aboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(91, 36);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.ToolTipText = "About";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(101, 36);
+            this.aboutToolStripMenuItem.Text = "Bar Code";
+            this.aboutToolStripMenuItem.ToolTipText = "Bar Code";
             // 
             // settingsToolStripMenuItem
             // 
@@ -428,12 +448,19 @@
             this.label1.Text = "Logout";
             this.label1.Click += new System.EventHandler(this.picLogOut_Click);
             // 
-            // sizeMasterToolStripMenuItem
+            // barCodeIMS.BarcodeStripMenuItem
             // 
-            this.sizeMasterToolStripMenuItem.Name = "sizeMasterToolStripMenuItem";
-            this.sizeMasterToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
-            this.sizeMasterToolStripMenuItem.Text = "Size Master";
-            this.sizeMasterToolStripMenuItem.Click += new System.EventHandler(this.sizeMasterToolStripMenuItem_Click);
+            this.BarcodeStripMenuItem.Name = "barCodeIMS.BarcodeStripMenuItem";
+            this.BarcodeStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.BarcodeStripMenuItem.Text = "Bar Code Designer";
+            this.BarcodeStripMenuItem.Click += new System.EventHandler(this.BarcodeStripMenuItem_Click);
+            // 
+            // barCodePrintingToolStripMenuItem
+            // 
+            this.barCodePrintingToolStripMenuItem.Name = "barCodePrintingToolStripMenuItem";
+            this.barCodePrintingToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.barCodePrintingToolStripMenuItem.Text = "Bar Code Printing";
+            this.barCodePrintingToolStripMenuItem.Click += new System.EventHandler(this.barCodePrintingToolStripMenuItem_Click);
             // 
             // frmHome
             // 
@@ -510,6 +537,9 @@
         private System.Windows.Forms.ToolStripMenuItem SizeTypeMasterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deliveringPurchaseBillToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sizeMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BarcodeStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem barCodePrintingToolStripMenuItem;
     }
 }
 
