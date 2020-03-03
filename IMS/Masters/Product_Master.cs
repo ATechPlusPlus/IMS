@@ -385,5 +385,11 @@ namespace IMS.Masters
         {
             PicProductMaster.Image = null;
         }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            Other_Forms.Import_Data Obj = new Other_Forms.Import_Data();
+            Obj.Show();
+        }
     }
 }

@@ -540,12 +540,17 @@ namespace IMS.Sales
                     ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
                     ObjDAL.SetColumnData("QTY", SqlDbType.Decimal, QTY);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
+                    ObjDAL.SetColumnData("Rate", SqlDbType.Decimal, Rate);
                     ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesDetails", false);
 
                     ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockMaster SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString());
                 }
                 clsUtility.ShowInfoMessage("Record has been saved successfully.", clsUtility.strProjectTitle);
                 ClearAll();
+
+                Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+                frmSalesInvoice.InvoiceID = InvoiceID;
+                frmSalesInvoice.Show();
             }
 
            
