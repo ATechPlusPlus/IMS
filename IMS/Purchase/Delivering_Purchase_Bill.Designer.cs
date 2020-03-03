@@ -75,9 +75,10 @@
             // 
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Enabled = false;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(283, 100);
+            this.btnSearch.Location = new System.Drawing.Point(255, 98);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(76, 25);
             this.btnSearch.TabIndex = 245;
@@ -101,8 +102,9 @@
             // txtSupplierBillNo
             // 
             this.txtSupplierBillNo.BackColor = System.Drawing.Color.White;
+            this.txtSupplierBillNo.Enabled = false;
             this.txtSupplierBillNo.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtSupplierBillNo.Location = new System.Drawing.Point(153, 100);
+            this.txtSupplierBillNo.Location = new System.Drawing.Point(125, 98);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(124, 25);
             this.txtSupplierBillNo.TabIndex = 243;
@@ -301,7 +303,6 @@
             // 
             // dgvQtycolor
             // 
-            this.dgvQtycolor.AllowUserToAddRows = false;
             this.dgvQtycolor.AllowUserToDeleteRows = false;
             this.dgvQtycolor.AllowUserToResizeColumns = false;
             this.dgvQtycolor.AllowUserToResizeRows = false;
@@ -312,7 +313,9 @@
             this.dgvQtycolor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvQtycolor.Size = new System.Drawing.Size(845, 147);
             this.dgvQtycolor.TabIndex = 258;
+            this.dgvQtycolor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellClick);
             this.dgvQtycolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellEndEdit);
+            this.dgvQtycolor.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvQtycolor_DataBindingComplete);
             // 
             // btnUpdate
             // 

@@ -99,7 +99,7 @@ namespace IMS.Masters
                 int a = 0;
                 for (int i = 0; i < dtSize.Rows.Count; i++)
                 {
-                    ObjDAL.SetColumnData("Size", SqlDbType.Int, Convert.ToInt32(dtSize.Rows[i]["Size"]));
+                    ObjDAL.SetColumnData("Size", SqlDbType.VarChar, dtSize.Rows[i]["Size"].ToString());
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, Convert.ToInt32(dtSize.Rows[i]["ActiveStatus"]));
                     ObjDAL.SetColumnData("SizeTypeID", SqlDbType.Int, Convert.ToInt32(dtSize.Rows[i]["SizeTypeID"]));
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
@@ -136,7 +136,7 @@ namespace IMS.Masters
             //{
                 if (DuplicateColor(ID))
                 {
-                    ObjDAL.UpdateColumnData("Size", SqlDbType.Int, txtSize.Text);
+                    ObjDAL.UpdateColumnData("Size", SqlDbType.VarChar, txtSize.Text);
                     ObjDAL.UpdateColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test

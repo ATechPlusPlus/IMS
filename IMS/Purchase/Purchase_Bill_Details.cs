@@ -182,7 +182,8 @@ namespace IMS.Purchase
                     ObjDAL.UpdateColumnData("Rate", SqlDbType.Decimal, dtPurchaseInvoiceBill.Rows[i]["EndUser"]);
                     ObjDAL.UpdateData(clsUtility.DBName + ".dbo.ProductMaster", "ProductID = " + _ProductID + "");
 
-                    b = AddProductStockMaster();
+                    //b = AddProductStockMaster();
+                    b = true;
                 }
 
                 if (_ID > 0)

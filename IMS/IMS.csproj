@@ -216,6 +216,12 @@
     <Compile Include="Purchase\Delivering_Purchase_Bill.Designer.cs">
       <DependentUpon>Delivering_Purchase_Bill.cs</DependentUpon>
     </Compile>
+    <Compile Include="Purchase\Posting_Delivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\Posting_Delivery.Designer.cs">
+      <DependentUpon>Posting_Delivery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchase\Purchase_Bill_Details.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     </Compile>
     <EmbeddedResource Include="Purchase\Delivering_Purchase_Bill.resx">
       <DependentUpon>Delivering_Purchase_Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\Posting_Delivery.resx">
+      <DependentUpon>Posting_Delivery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Purchase\Purchase_Bill_Details.resx">
       <DependentUpon>Purchase_Bill_Details.cs</DependentUpon>

@@ -216,5 +216,11 @@ namespace IMS
             Masters.Size_Master Obj = new Masters.Size_Master();
             Obj.Show();
         }
+
+        private void postingDevliveryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Purchase.Posting_Delivery Obj = new Purchase.Posting_Delivery();
+            Obj.Show();
+        }
     }
 }
