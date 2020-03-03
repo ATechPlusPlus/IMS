@@ -494,6 +494,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\x86\Debug\barCode.jpg" />
+    <None Include="Resources\Barcode.PNG" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
