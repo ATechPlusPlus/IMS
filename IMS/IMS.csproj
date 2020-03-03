@@ -91,12 +91,6 @@
     <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
     </Reference>
@@ -495,19 +489,19 @@
   <ItemGroup>
     <None Include="bin\x86\Debug\barCode.jpg" />
     <None Include="Resources\Barcode.PNG" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <!-- <Content Include="SqlServerTypes\readme.htm" /> -->
+    <!-- <Content Include="SqlServerTypes\x64\msvcr120.dll"> -->
+      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- </Content> -->
+    <!-- <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll"> -->
+      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- </Content> -->
+    <!-- <Content Include="SqlServerTypes\x86\msvcr120.dll"> -->
+      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- </Content> -->
+    <!-- <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll"> -->
+      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- </Content> -->
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
