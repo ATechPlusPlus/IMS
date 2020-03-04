@@ -18,7 +18,6 @@ namespace IMS.Report
 
         private void frmSalesReport_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

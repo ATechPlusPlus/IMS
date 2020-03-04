@@ -100,16 +100,15 @@ namespace IMS.Purchase
             FillCountryData();
             FillBrandData();
             FillCategoryData();
-
             //InitItemTable();
         }
 
         private void InitItemTable()
         {
             dtPurchaseQTYColor.Columns.Clear();
-            dtPurchaseQTYColor.Columns.Add("DeliveryPurchaseID3", typeof(int));
             dtPurchaseQTYColor.Columns.Add("Color", typeof(string));
             dtPurchaseQTYColor.Columns.Add("ColorID", typeof(int));
+            dtPurchaseQTYColor.Columns.Add("DeliveryPurchaseID3", typeof(int));
             dtPurchaseQTYColor.AcceptChanges();
             dgvQtycolor.DataSource = dtPurchaseQTYColor;
         }
@@ -350,12 +349,17 @@ namespace IMS.Purchase
             {
                 for (int i = 0; i < dtPurchaseQTYColor.Rows.Count; i++)
                 {
-                    if (dtPurchaseQTYColor.Rows[i]["ColorID"] == DBNull.Value)
+                    if (dtPurchaseQTYColor.Rows[i]["Color"] == DBNull.Value)
+                    {
+                        dtPurchaseQTYColor.Rows[i].Delete();
+                    }
+                    else if (dtPurchaseQTYColor.Rows[i]["ColorID"] == DBNull.Value)
                     {
                         clsUtility.ShowInfoMessage("Enter Valid Colour Name.         ", clsUtility.strProjectTitle);
                         return false;
                     }
                 }
+                dtPurchaseQTYColor.AcceptChanges();
                 return true;
             }
             else if (Convert.ToInt32(txtDiffQty) < 0)
@@ -404,7 +408,7 @@ namespace IMS.Purchase
             ObjDAL.SetColumnData("DeliveryPurchaseID1", SqlDbType.Int, ID);
             for (int i = 3; i < dtPurchaseQTYColor.Columns.Count - 1; i++)
             {
-                ObjDAL.SetColumnData("Col" + (i - 1), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
+                ObjDAL.SetColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
             }
             ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
             return ObjDAL.InsertData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill2", true);
@@ -420,7 +424,7 @@ namespace IMS.Purchase
                 ObjDAL.SetColumnData("ColorID", SqlDbType.Int, Convert.ToInt32(dtPurchaseQTYColor.Rows[i]["ColorID"]));
                 for (int j = 3; j < dtPurchaseQTYColor.Columns.Count - 1; j++)
                 {
-                    ObjDAL.SetColumnData("Col" + (j - 1), SqlDbType.VarChar, dtPurchaseQTYColor.Rows[i][j].ToString());
+                    ObjDAL.SetColumnData("Col" + (j - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Rows[i][j].ToString());
                 }
                 ObjDAL.SetColumnData("Total", SqlDbType.Int, Convert.ToInt32(dtPurchaseQTYColor.Rows[i]["Total"]));
                 ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
@@ -434,7 +438,7 @@ namespace IMS.Purchase
         {
             for (int i = 3; i < dtPurchaseQTYColor.Columns.Count - 1; i++)
             {
-                ObjDAL.UpdateColumnData("Col" + (i - 1), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
+                ObjDAL.UpdateColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
             }
             ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
             ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
@@ -451,7 +455,7 @@ namespace IMS.Purchase
                 ObjDAL.UpdateColumnData("ColorID", SqlDbType.Int, Convert.ToInt32(dtPurchaseQTYColor.Rows[i]["ColorID"]));
                 for (int j = 3; j < dtPurchaseQTYColor.Columns.Count - 1; j++)
                 {
-                    ObjDAL.UpdateColumnData("Col" + (j - 1), SqlDbType.VarChar, dtPurchaseQTYColor.Rows[i][j].ToString());
+                    ObjDAL.UpdateColumnData("Col" + (j - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Rows[i][j].ToString());
                 }
                 ObjDAL.UpdateColumnData("Total", SqlDbType.Int, Convert.ToInt32(dtPurchaseQTYColor.Rows[i]["Total"]));
                 ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
@@ -484,6 +488,7 @@ namespace IMS.Purchase
                     ObjDAL.SetColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
                     ObjDAL.SetColumnData("ModelNo", SqlDbType.NVarChar, listBoxModelNo.SelectedItem);
                     ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
+                    ObjDAL.SetColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     DeliveryPurchaseBillID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", true);
                     if (DeliveryPurchaseBillID > 0)
@@ -535,6 +540,7 @@ namespace IMS.Purchase
                     ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
                     ObjDAL.UpdateColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
                     ObjDAL.UpdateColumnData("ModelNo", SqlDbType.NVarChar, listBoxModelNo.SelectedItem);
+                    ObjDAL.UpdateColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
                     DeliveryPurchaseBillID = ObjDAL.UpdateData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", "PurchaseInvoiceID=" + ID);
@@ -543,7 +549,7 @@ namespace IMS.Purchase
                         int DeliveryPurchaseBillID2 = DataUpdateDeliveryPurchaseBill2(DeliveryPurchaseBillID);
                         int DeliveryPurchaseBillID3 = DataUpdateDeliveryPurchaseBill3(DeliveryPurchaseBillID, DeliveryPurchaseBillID2);
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        clsUtility.ShowInfoMessage(clsUtility.MsgDataSaved, clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage(clsUtility.MsgDataUpdated, clsUtility.strProjectTitle);
                         //ClearAll();
                         Clear_ColorSize();
                         LoadData();
@@ -603,7 +609,6 @@ namespace IMS.Purchase
         private void dgvQtycolor_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ObjUtil.SetDataGridProperty(dgvQtycolor, DataGridViewAutoSizeColumnsMode.Fill);
-            //dgvQtycolor.Columns["ColorID"].Visible = false;
             if (dgvQtycolor.Columns.Contains("ColorID"))
             {
                 dgvQtycolor.Columns["ColorID"].Visible = false;

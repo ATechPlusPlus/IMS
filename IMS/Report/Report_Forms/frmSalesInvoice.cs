@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CoreApp;
 
 namespace IMS.Report
 {
@@ -16,42 +17,37 @@ namespace IMS.Report
         {
             InitializeComponent();
         }
-        CoreApp.clsConnection_DAL ObjCon = new CoreApp.clsConnection_DAL(true);
+        clsConnection_DAL ObjCon = new clsConnection_DAL(true);
+
         public int InvoiceID = 0;
+
         private void frmSalesInvoice_Load(object sender, EventArgs e)
         {
-          
-          
+            string query = "select p1.ProductName,s1.QTY,s1.Rate, (s1.Qty*s1.Rate) as Total from " + clsUtility.DBName + ".[dbo].[SalesDetails] s1 join " + clsUtility.DBName + ".dbo.ProductMaster p1 " +
+               " on s1.ProductID = p1.ProductID where s1.InvoiceID = " + InvoiceID;
 
-            string query= "select p1.ProductName,s1.QTY,s1.Rate, (s1.Qty*s1.Rate) as Total from IMS.[dbo].[SalesDetails] s1 join IMS.dbo.ProductMaster p1 "+
-                           " on s1.ProductID = p1.ProductID where s1.InvoiceID = "+ InvoiceID;
-
-
-          DataTable dtSalesDetails=  ObjCon.ExecuteSelectStatement(query);
+            DataTable dtSalesDetails = ObjCon.ExecuteSelectStatement(query);
 
 
-            string strQueryHeader_Footer = "select s1.InvoiceNumber,s1.InvoiceDate, c1.Name as CustName,e1.Name as empName,st1.StoreName as StoreName,s1.SubTotal,s1.Discount,s1.Tax,s1.GrandTotal,s1.PaymentMode,s1.PaymentAutoID from IMS.dbo.SalesInvoiceDetails s1 left join " +
-                                            " IMS.dbo.EmployeeDetails e1 on s1.SalesMan = e1.EmpID left join" +
-                                            " IMS.[dbo].[CustomerMaster] c1 on s1.CustomerID = c1.CustomerID left join" +
-                                            " IMS.dbo.StoreMaster st1 on st1.StoreID = s1.ShopeID where s1.Id=" + InvoiceID;
-
+            string strQueryHeader_Footer = "select s1.InvoiceNumber,s1.InvoiceDate, c1.Name as CustName,e1.Name as empName,st1.StoreName as StoreName,s1.SubTotal,s1.Discount,s1.Tax,s1.GrandTotal,s1.PaymentMode,s1.PaymentAutoID from " + clsUtility.DBName + ".dbo.SalesInvoiceDetails s1 left join " +
+                                            " " + clsUtility.DBName + ".dbo.EmployeeDetails e1 on s1.SalesMan = e1.EmpID left join" +
+                                            " " + clsUtility.DBName + ".[dbo].[CustomerMaster] c1 on s1.CustomerID = c1.CustomerID left join" +
+                                            " " + clsUtility.DBName + ".dbo.StoreMaster st1 on st1.StoreID = s1.ShopeID where s1.Id=" + InvoiceID;
 
             DataTable dtSalesHeader_Footer = ObjCon.ExecuteSelectStatement(strQueryHeader_Footer);
-
 
             reportViewer1.LocalReport.DataSources.Clear();
 
             ReportDataSource rds = new ReportDataSource("DataSet_SalesInvoice", dtSalesDetails);
             ReportDataSource rds2 = new ReportDataSource("DataSet_SalesInvoice_Header_Footer", dtSalesHeader_Footer);
 
-
             string strcomName = "";
             string strAddress = "";
-           DataTable dtCompinfo=  ObjCon.ExecuteSelectStatement("Select CompanyName,[Address] from IMS.dbo.CompanyMaster");
-            if (dtCompinfo!=null && dtCompinfo.Rows.Count>0)
+            DataTable dtCompinfo = ObjCon.ExecuteSelectStatement("Select CompanyName,[Address] from " + clsUtility.DBName + ".dbo.CompanyMaster");
+            if (dtCompinfo != null && dtCompinfo.Rows.Count > 0)
             {
                 strcomName = dtCompinfo.Rows[0]["CompanyName"].ToString();
-                strAddress= dtCompinfo.Rows[0]["Address"].ToString();
+                strAddress = dtCompinfo.Rows[0]["Address"].ToString();
             }
             else
             {
@@ -67,13 +63,10 @@ namespace IMS.Report
             reportViewer1.LocalReport.SetParameters(param1);
             reportViewer1.LocalReport.SetParameters(param2);
 
-
             reportViewer1.LocalReport.DataSources.Add(rds);
             reportViewer1.LocalReport.DataSources.Add(rds2);
 
-
             this.reportViewer1.RefreshReport();
-
         }
     }
 }

@@ -303,6 +303,7 @@
             // 
             // dgvQtycolor
             // 
+            this.dgvQtycolor.AllowUserToAddRows = false;
             this.dgvQtycolor.AllowUserToDeleteRows = false;
             this.dgvQtycolor.AllowUserToResizeColumns = false;
             this.dgvQtycolor.AllowUserToResizeRows = false;

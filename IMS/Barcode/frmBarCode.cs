@@ -20,9 +20,11 @@ namespace IMS.Barcode
         {
             InitializeComponent();
         }
-        CoreApp.clsConnection_DAL ObjCon = new clsConnection_DAL(true);
-        CoreApp.clsUtility ObjUtil = new clsUtility();
+        clsConnection_DAL ObjCon = new clsConnection_DAL(true);
+        clsUtility ObjUtil = new clsUtility();
+
         string strCompanyName = "";
+
         private void frmBarCode_Load(object sender, EventArgs e)
         {
             LoadProductDetails();
@@ -31,9 +33,9 @@ namespace IMS.Barcode
 
         private void LoadProductDetails()
         {
-                string str= "select p1.ProductID,p1.ProductName,c1.CategoryName,b1.BrandName,p1.Rate from IMS.[dbo].[ProductMaster] p1 left join "+
-                            " IMS.dbo.CategoryMaster c1 on p1.CategoryID = c1.CategoryID left join "+
-                            " IMS.dbo.BrandMaster b1 on p1.BrandID = b1.BrandID";
+                string str= "select p1.ProductID,p1.ProductName,c1.CategoryName,b1.BrandName,p1.Rate from "+clsUtility.DBName+".[dbo].[ProductMaster] p1 left join "+
+                            " " + clsUtility.DBName + ".dbo.CategoryMaster c1 on p1.CategoryID = c1.CategoryID left join " +
+                            " " + clsUtility.DBName + ".dbo.BrandMaster b1 on p1.BrandID = b1.BrandID";
 
              DataTable dtProductDetails= ObjCon.ExecuteSelectStatement(str);
             if (dtProductDetails!=null && dtProductDetails.Rows.Count>0)
@@ -53,7 +55,6 @@ namespace IMS.Barcode
         {
             if (dgvProductDetails.SelectedRows.Count!=0)
             {
-
                 LoadTemplate(dgvProductDetails.SelectedRows[0]);
             }
         }
@@ -61,45 +62,34 @@ namespace IMS.Barcode
         {
             obj = new Form1();
             obj.Show();
-        
             obj.TopLevel = false;
-
-           
-
             obj.Text = "New Page";
             obj.Location = new Point(0, 0);
             obj.Size = new System.Drawing.Size(300, 120);
           
-           
             this.pnlBarCodePreview.Controls.Add(obj);
-           
-       
+          
             obj.Invalidate();
-         
-        
         }
         private string GetBarCodeSettings()
         {
             string strBarCodeSettings = null;
-            DataTable dataTable = ObjCon.ExecuteSelectStatement("select BarCodeSetting from IMS.dbo.DefaultStoreSetting where MachineName='DESKTOP-5NGMVDR'");
+            DataTable dataTable = ObjCon.ExecuteSelectStatement("SELECT BarCodeSetting from " + clsUtility.DBName + ".dbo.DefaultStoreSetting where MachineName='" + Environment.MachineName+"'");
             if (dataTable != null && dataTable.Rows.Count > 0)
             {
                 if (dataTable.Rows[0]["BarCodeSetting"] != DBNull.Value)
                 {
                     strBarCodeSettings = dataTable.Rows[0]["BarCodeSetting"].ToString();
                 }
-
             }
             return strBarCodeSettings;
         }
         private string GetStoreName()
         {
-           return   Convert.ToString(ObjCon.ExecuteScalar("select CompanyName from IMS.dbo.CompanyMaster"));
-
+           return   Convert.ToString(ObjCon.ExecuteScalar("SELECT CompanyName from " + clsUtility.DBName + ".dbo.CompanyMaster"));
         }
         private void SetBarCodeValues(Control objLable, DataGridViewRow selectedRow)
         {
-           
             if (objLable.Tag.ToString().Trim() == "ProductName")
             {
                 objLable.Text = selectedRow.Cells["ProductName"].Value.ToString();
@@ -107,7 +97,6 @@ namespace IMS.Barcode
             else if (objLable.Tag.ToString().Trim() == "StoreName")
             {
                 objLable.Text = strCompanyName;
-
             }
             else if (objLable.Tag.ToString().Trim() == "Category")
             {
@@ -132,7 +121,6 @@ namespace IMS.Barcode
 
                 if (strfiles.Length > 0)
                 {
-
                     this.pnlBarCodePreview.Controls.Remove(obj);
                     pnlBarCodePreview.Invalidate();
 
@@ -141,8 +129,6 @@ namespace IMS.Barcode
                     //obj.Controls.Clear();
                     //    obj.Refresh();
                     AddNewPage();
-
-
 
                     if (strfiles.Length > 0)
                     {
@@ -154,7 +140,6 @@ namespace IMS.Barcode
                             {
                                 obj.BackColor = Color.FromArgb(Convert.ToInt32(strInfo[0]));
                                 obj.Size = new Size(Convert.ToInt32(strInfo[1]), Convert.ToInt32(strInfo[2]));
-
                             }
                             else
                             { //Type-IsBold-Family-argb(int)-fsize(float)-w-h-x-y-text-backColor(int)-RecBorderStyle-borderStyle-borderColor
@@ -182,7 +167,6 @@ namespace IMS.Barcode
 
                                     obj.Controls.Add(objLable);
                                     obj.Refresh();
-
                                 }
                                 else if (strInfo[0] == "VerticalLabel")
                                 {
@@ -206,15 +190,9 @@ namespace IMS.Barcode
 
                                     SetBarCodeValues(objLable, _Row);
 
-
-
                                     objLable.MouseLeave += new EventHandler(obj.control_MouseLeave);
                                     obj.Controls.Add(objLable);
                                     obj.Refresh();
-
-
-
-
                                 }
                                 else if (strInfo[0] == "PictureBox")
                                 {
@@ -225,7 +203,6 @@ namespace IMS.Barcode
                                     objPicBox.BorderStyle = BorderStyle.FixedSingle;
 
                                     string barValue = "Product_" + ProductID;
-
 
                                     objPicBox.Image = BarcodeWriter.CreateBarcode(barValue, BarcodeWriterEncoding.Code128).Image;
                                     objPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -239,7 +216,6 @@ namespace IMS.Barcode
                                     objRec.Location = new Point(Convert.ToInt32(strInfo[7]), Convert.ToInt32(strInfo[8]));
 
                                     objRec.BackColor = Color.FromArgb(Convert.ToInt32(strInfo[10]));
-
 
                                     switch (strInfo[11].Trim())
                                     {
@@ -261,7 +237,6 @@ namespace IMS.Barcode
                                         case "Outset":
                                             objRec.RectangleBorderStyle = ButtonBorderStyle.Outset;
                                             break;
-
                                     }
 
                                     switch (strInfo[12].Trim())
@@ -310,40 +285,21 @@ namespace IMS.Barcode
                                     objLable.Text = strInfo[9];
 
                                     objLable.BackColor = Color.FromArgb(Convert.ToInt32(strInfo[10]));
-
-                                   
-                           
-
-                            
                                     obj.Controls.Add(objLable);
                                     obj.Refresh();
-
-
-
-
                                 }
                             }
                         }
-
-                      
                     }
                 }
             }
-
-
-
-
-
-
             obj.Refresh();
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             using (Bitmap bmp = new Bitmap(obj.Width, obj.Height))
             {
-
                 picBarCode.Size = new Size(obj.Size.Width, obj.Size.Height);
                 obj.DrawToBitmap(bmp, new Rectangle(Point.Empty, bmp.Size));
 
@@ -352,7 +308,6 @@ namespace IMS.Barcode
                 var encParams = new EncoderParameters(1);
                 encParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
                
-
                 //if (File.Exists(Application.StartupPath + "//TempBarCode.jpeg"))
                 //{
                 //    File.Delete(Application.StartupPath + "//TempBarCode.jpeg");
@@ -371,16 +326,12 @@ namespace IMS.Barcode
                 pd.Document = doc;
                 if (pd.ShowDialog() == DialogResult.OK)
                 {
-                   
                     doc.Print();
-                  
-
                 }
 
                 picBarCode.Image = null;
                 bmp.Dispose();
             }
-            
         }
         private void Doc_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -404,9 +355,9 @@ namespace IMS.Barcode
                 LoadProductDetails();
                 return;
             }
-            string str = "select p1.ProductID,p1.ProductName,c1.CategoryName,b1.BrandName,p1.Rate from IMS.[dbo].[ProductMaster] p1 left join " +
-                           " IMS.dbo.CategoryMaster c1 on p1.CategoryID = c1.CategoryID left join " +
-                           " IMS.dbo.BrandMaster b1 on p1.BrandID = b1.BrandID and p1.ProductName like '%"+txtSearchByBrand.Text+"%'";
+            string str = "SELECT p1.ProductID,p1.ProductName,c1.CategoryName,b1.BrandName,p1.Rate FROM " + clsUtility.DBName + ".[dbo].[ProductMaster] p1 left join " +
+                           " " + clsUtility.DBName + ".dbo.CategoryMaster c1 on p1.CategoryID = c1.CategoryID left join " +
+                           " " + clsUtility.DBName + ".dbo.BrandMaster b1 on p1.BrandID = b1.BrandID and p1.ProductName like '%" + txtSearchByBrand.Text+"%'";
 
             DataTable dtProductDetails = ObjCon.ExecuteSelectStatement(str);
             if (dtProductDetails != null && dtProductDetails.Rows.Count > 0)

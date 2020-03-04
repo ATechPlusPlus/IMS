@@ -234,5 +234,11 @@ namespace IMS
             Barcode.frmBarCode frmBarCode = new Barcode.frmBarCode();
             frmBarCode.Show();
         }
+
+        private void postingDeliveryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Purchase.Posting_Delivery obj = new Purchase.Posting_Delivery();
+            obj.Show();
+        }
     }
 }

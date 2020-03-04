@@ -19,7 +19,6 @@ namespace IMS.Barcode
         {
             BorderColor = Color.Black;
             RectangleBorderStyle = ButtonBorderStyle.Solid;
-            
         }
         public Color BorderColor { get; set; }
         public ButtonBorderStyle RectangleBorderStyle { get; set; }
@@ -28,15 +27,11 @@ namespace IMS.Barcode
             Graphics g = this.CreateGraphics();
             //draw the border and drag handles
             ControlPaint.DrawBorder(g, this.ClientRectangle, BorderColor, RectangleBorderStyle);
-          
-            
         }
 
         private void uRectangle_Resize(object sender, EventArgs e)
         {
             this.Invalidate();
         }
-
-   
     }
 }

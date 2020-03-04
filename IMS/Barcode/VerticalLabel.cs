@@ -11,7 +11,6 @@ namespace IMS.Barcode
 {
     public class VerticalLabel : System.Windows.Forms.Label
     {
-
         private bool bFlip = true;
 
         public VerticalLabel()

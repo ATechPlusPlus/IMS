@@ -42,8 +42,6 @@ namespace IMS.Barcode
         {
             if (e.Button == MouseButtons.Left)
             {
-               
-
                 this.Invalidate();  //unselect other control
                 SelectedControl = (Control)sender;
                 Control control = (Control)sender;
@@ -51,8 +49,8 @@ namespace IMS.Barcode
                 mouseY = -e.Y;
                 control.Invalidate();
                 DrawControlBorder(sender);
-               // propertyGrid1.SelectedObject = SelectedControl;a
-            }  
+                // propertyGrid1.SelectedObject = SelectedControl;a
+            }
         }
         public void control_MouseMove(object sender, MouseEventArgs e)
         {
@@ -88,42 +86,42 @@ namespace IMS.Barcode
             //around the control, so when the drag handles are drawn they will be seem
             //connected in the middle.
             Rectangle Border = new Rectangle(
-                new Point(control.Location.X - DRAG_HANDLE_SIZE / 2, 
-                    control.Location.Y - DRAG_HANDLE_SIZE / 2), 
-                new Size(control.Size.Width + DRAG_HANDLE_SIZE, 
+                new Point(control.Location.X - DRAG_HANDLE_SIZE / 2,
+                    control.Location.Y - DRAG_HANDLE_SIZE / 2),
+                new Size(control.Size.Width + DRAG_HANDLE_SIZE,
                     control.Size.Height + DRAG_HANDLE_SIZE));
             //define the 8 drag handles, that has the size of DRAG_HANDLE_SIZE
             Rectangle NW = new Rectangle(
-                new Point(control.Location.X - DRAG_HANDLE_SIZE, 
-                    control.Location.Y - DRAG_HANDLE_SIZE), 
+                new Point(control.Location.X - DRAG_HANDLE_SIZE,
+                    control.Location.Y - DRAG_HANDLE_SIZE),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle N = new Rectangle(
-                new Point(control.Location.X + control.Width / 2 - DRAG_HANDLE_SIZE/2, 
-                    control.Location.Y - DRAG_HANDLE_SIZE), 
+                new Point(control.Location.X + control.Width / 2 - DRAG_HANDLE_SIZE / 2,
+                    control.Location.Y - DRAG_HANDLE_SIZE),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle NE = new Rectangle(
-                new Point(control.Location.X + control.Width, 
-                    control.Location.Y - DRAG_HANDLE_SIZE), 
+                new Point(control.Location.X + control.Width,
+                    control.Location.Y - DRAG_HANDLE_SIZE),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle W = new Rectangle(
-                new Point(control.Location.X - DRAG_HANDLE_SIZE, 
-                    control.Location.Y + control.Height/2-DRAG_HANDLE_SIZE/2), 
+                new Point(control.Location.X - DRAG_HANDLE_SIZE,
+                    control.Location.Y + control.Height / 2 - DRAG_HANDLE_SIZE / 2),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle E = new Rectangle(
-                new Point(control.Location.X + control.Width, 
-                    control.Location.Y + control.Height / 2 - DRAG_HANDLE_SIZE / 2), 
+                new Point(control.Location.X + control.Width,
+                    control.Location.Y + control.Height / 2 - DRAG_HANDLE_SIZE / 2),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle SW = new Rectangle(
-                new Point(control.Location.X - DRAG_HANDLE_SIZE, 
-                    control.Location.Y + control.Height), 
+                new Point(control.Location.X - DRAG_HANDLE_SIZE,
+                    control.Location.Y + control.Height),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle S = new Rectangle(
-                new Point(control.Location.X + control.Width / 2 - DRAG_HANDLE_SIZE/2, 
-                    control.Location.Y + control.Height), 
+                new Point(control.Location.X + control.Width / 2 - DRAG_HANDLE_SIZE / 2,
+                    control.Location.Y + control.Height),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
             Rectangle SE = new Rectangle(
-                new Point(control.Location.X + control.Width, 
-                    control.Location.Y + control.Height), 
+                new Point(control.Location.X + control.Width,
+                    control.Location.Y + control.Height),
                 new Size(DRAG_HANDLE_SIZE, DRAG_HANDLE_SIZE));
 
             //get the form graphic
@@ -148,7 +146,6 @@ namespace IMS.Barcode
         /// <param name="e"></param>
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-          
             if (SelectedControl != null && e.Button == MouseButtons.Left)
             {
                 timer1.Stop();
@@ -168,10 +165,8 @@ namespace IMS.Barcode
                     Cursor = Cursors.Default;
                     return;
                 }
-
                 //get the current mouse position relative the the app
                 Point pos = this.PointToClient(MousePosition);
-
                 #region resize the control in 8 directions
                 if (direction == Direction.NW)
                 {
@@ -245,24 +240,20 @@ namespace IMS.Barcode
                 #endregion
             }
         }
-       
+
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (SelectedControl != null)
                 DrawControlBorder(SelectedControl);
             timer1.Start();
         }
-       public DefaultStoreSetting ObjHome;
-       public void RemoveTimerTickEvent()
-       {
-            
-             
-       }
-       public void RegTimerTickEvent()
-       {
-
-         
-       }
+        public DefaultStoreSetting ObjHome;
+        public void RemoveTimerTickEvent()
+        {
+        }
+        public void RegTimerTickEvent()
+        {
+        }
         private void Form1_MouseEnter(object sender, EventArgs e)
         {
         }
@@ -384,7 +375,7 @@ namespace IMS.Barcode
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             PictureBox ctrl = new PictureBox();
-          
+
             ctrl.Location = new Point(50, 50);
             ctrl.SizeMode = PictureBoxSizeMode.StretchImage;
             ctrl.MouseEnter += new EventHandler(control_MouseEnter);
@@ -399,20 +390,16 @@ namespace IMS.Barcode
         {
             ctrCopyControl = SelectedControl;
         }
-       
+
         public void PasteControl()
         {
-
-
-
-
-            if (ctrCopyControl!=null && ctrCopyControl.GetType() == typeof(Label))
+            if (ctrCopyControl != null && ctrCopyControl.GetType() == typeof(Label))
             {
                 Label ctrl = new Label();
-               Point p=  this.PointToClient(Cursor.Position);
+                Point p = this.PointToClient(Cursor.Position);
 
                 ctrl.Text = ctrCopyControl.Text;
-                ctrl.Location = new Point(p.X,p.Y);
+                ctrl.Location = new Point(p.X, p.Y);
                 ctrl.MouseEnter += new EventHandler(control_MouseEnter);
                 ctrl.MouseLeave += new EventHandler(control_MouseLeave);
                 ctrl.MouseDown += new MouseEventHandler(control_MouseDown);
@@ -431,24 +418,16 @@ namespace IMS.Barcode
         int YRefPoint;
         public void SetLeftAlignRef()
         {
-           
-                XRefPoint = SelectedControl.Location.X;
-               
-           
-              
-           
-           
+            XRefPoint = SelectedControl.Location.X;
         }
         public void SetTopAlignRef()
         {
-
             YRefPoint = SelectedControl.Location.Y;
         }
         public void SetLeftAlignment()
         {
             if (XRefPoint != 0)
             {
-
                 SelectedControl.Location = new Point(XRefPoint, SelectedControl.Location.Y);
                 this.Refresh();
             }
@@ -468,7 +447,6 @@ namespace IMS.Barcode
             {
                 MessageBox.Show("Please set the Top Alignment Ref first.", "Designer Tool");
             }
-        
         }
         public void ClearSelectedControl()
         {
@@ -484,8 +462,8 @@ namespace IMS.Barcode
             this.Refresh();
             this.Invalidate();
         }
-       public PropertyGrid PG;
-        public void AddLable(ContextMenuStrip cntx,PropertyGrid p)
+        public PropertyGrid PG;
+        public void AddLable(ContextMenuStrip cntx, PropertyGrid p)
         {
             PG = p;
             Label ctrl = new Label();
@@ -500,7 +478,7 @@ namespace IMS.Barcode
             ctrl.Click += ctrl_Click;
             ctrl.DoubleClick += ctrl_DoubleClick;
             ctrl.ContextMenuStrip = cntx;
-            
+
             this.Controls.Add(ctrl);
         }
         public void AddVerticalLable(ContextMenuStrip cntx, PropertyGrid p)
@@ -511,7 +489,7 @@ namespace IMS.Barcode
             ctrl.Size = new Size(21, 96);
             ctrl.Location = new Point(15, 13);
             ctrl.Font = new System.Drawing.Font("Times new Roman", 11.2F, FontStyle.Regular);
-        
+
             ctrl.MouseEnter += new EventHandler(control_MouseEnter);
             ctrl.MouseLeave += new EventHandler(control_MouseLeave);
             ctrl.MouseDown += new MouseEventHandler(control_MouseDown);
@@ -522,20 +500,12 @@ namespace IMS.Barcode
             ctrl.ContextMenuStrip = cntx;
             this.Controls.Add(ctrl);
         }
-        
-       public void ctrl_DoubleClick(object sender, EventArgs e)
+
+        public void ctrl_DoubleClick(object sender, EventArgs e)
         {
-           
             Label lbl = (Label)sender;
-
             richTextBox1.Text = lbl.Text;
-
-
-         
-
             pnlPopup.Location = new Point(lbl.Location.X, lbl.Location.Y + 20);
-
-
             pnlPopup.Visible = true;
             pnlPopup.BringToFront();
         }
@@ -543,7 +513,7 @@ namespace IMS.Barcode
         {
             PG = p;
             PictureBox ctrl = new PictureBox();
-          
+
             ctrl.Location = new Point(43, 26);
             ctrl.Size = new System.Drawing.Size(200, 79);
             ctrl.BorderStyle = BorderStyle.FixedSingle;
@@ -562,10 +532,10 @@ namespace IMS.Barcode
         {
             PG = p;
             Line ctrl = new Line();
-           
+
             ctrl.Location = new Point(50, 50);
-           ctrl.Size = new System.Drawing.Size(50, 1);
-           
+            ctrl.Size = new System.Drawing.Size(50, 1);
+
             ctrl.MouseEnter += new EventHandler(control_MouseEnter);
             ctrl.MouseLeave += new EventHandler(control_MouseLeave);
             ctrl.MouseDown += new MouseEventHandler(control_MouseDown);
@@ -582,7 +552,7 @@ namespace IMS.Barcode
             ctrl.Text = "New Button";
             ctrl.Location = new Point(50, 50);
             ctrl.Size = new System.Drawing.Size(100, 50);
-           
+
             ctrl.MouseEnter += new EventHandler(control_MouseEnter);
             ctrl.MouseLeave += new EventHandler(control_MouseLeave);
             ctrl.MouseDown += new MouseEventHandler(control_MouseDown);
@@ -596,7 +566,7 @@ namespace IMS.Barcode
         {
             PG = p;
             uRectangle ctrl = new uRectangle();
-           
+
             ctrl.Location = new Point(50, 50);
             ctrl.MouseEnter += new EventHandler(control_MouseEnter);
             ctrl.MouseLeave += new EventHandler(control_MouseLeave);
@@ -609,12 +579,8 @@ namespace IMS.Barcode
         }
         public void ctrl_Click(object sender, EventArgs e)
         {
-
-         
-            ObjHome.UnRegisterAll( sender);
+            ObjHome.UnRegisterAll(sender);
             PG.SelectedObject = sender;
-
-
         }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
@@ -626,8 +592,6 @@ namespace IMS.Barcode
             ctrl.MouseDown += new MouseEventHandler(control_MouseDown);
             ctrl.MouseMove += new MouseEventHandler(control_MouseMove);
             ctrl.MouseUp += new MouseEventHandler(control_MouseUp);
-
-
             this.Controls.Add(ctrl);
         }
 
@@ -652,7 +616,6 @@ namespace IMS.Barcode
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-         
         }
     }
 }
