@@ -37,7 +37,7 @@
             this.cmbShop = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpSalesDate = new System.Windows.Forms.DateTimePicker();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.txtCustomerMobile = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSalesMan = new System.Windows.Forms.TextBox();
@@ -46,12 +46,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTotalItems = new System.Windows.Forms.Label();
             this.dgvProductDetails = new System.Windows.Forms.DataGridView();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSubTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,7 +67,10 @@
             this.picProduct = new System.Windows.Forms.PictureBox();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblPMode = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -84,8 +81,13 @@
             this.picVisa = new System.Windows.Forms.PictureBox();
             this.picCash = new System.Windows.Forms.PictureBox();
             this.picKnet = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblPMode = new System.Windows.Forms.Label();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
@@ -129,11 +131,11 @@
             this.lblCategoryName.AutoSize = true;
             this.lblCategoryName.BackColor = System.Drawing.Color.Transparent;
             this.lblCategoryName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryName.Location = new System.Drawing.Point(328, 147);
+            this.lblCategoryName.Location = new System.Drawing.Point(322, 147);
             this.lblCategoryName.Name = "lblCategoryName";
-            this.lblCategoryName.Size = new System.Drawing.Size(72, 17);
+            this.lblCategoryName.Size = new System.Drawing.Size(86, 17);
             this.lblCategoryName.TabIndex = 192;
-            this.lblCategoryName.Text = "Customer :";
+            this.lblCategoryName.Text = "Cust Mobile :";
             // 
             // lblActiveStatus
             // 
@@ -167,9 +169,9 @@
             this.cmbShop.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbShop.Location = new System.Drawing.Point(401, 97);
+            this.cmbShop.Location = new System.Drawing.Point(414, 99);
             this.cmbShop.Name = "cmbShop";
-            this.cmbShop.Size = new System.Drawing.Size(181, 27);
+            this.cmbShop.Size = new System.Drawing.Size(168, 27);
             this.cmbShop.TabIndex = 191;
             // 
             // label1
@@ -192,15 +194,15 @@
             this.dtpSalesDate.Size = new System.Drawing.Size(183, 25);
             this.dtpSalesDate.TabIndex = 195;
             // 
-            // txtCustomerName
+            // txtCustomerMobile
             // 
-            this.txtCustomerName.BackColor = System.Drawing.Color.White;
-            this.txtCustomerName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerName.Location = new System.Drawing.Point(401, 143);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(166, 25);
-            this.txtCustomerName.TabIndex = 196;
-            this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
+            this.txtCustomerMobile.BackColor = System.Drawing.Color.White;
+            this.txtCustomerMobile.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerMobile.Location = new System.Drawing.Point(414, 143);
+            this.txtCustomerMobile.Name = "txtCustomerMobile";
+            this.txtCustomerMobile.Size = new System.Drawing.Size(153, 25);
+            this.txtCustomerMobile.TabIndex = 196;
+            this.txtCustomerMobile.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // label2
             // 
@@ -241,17 +243,17 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(21, 147);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.Size = new System.Drawing.Size(68, 17);
             this.label4.TabIndex = 200;
-            this.label4.Text = "Product Details :";
+            this.label4.Text = "BarCode :";
             // 
             // txtProductName
             // 
             this.txtProductName.BackColor = System.Drawing.Color.White;
             this.txtProductName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductName.Location = new System.Drawing.Point(138, 147);
+            this.txtProductName.Location = new System.Drawing.Point(138, 143);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(163, 25);
+            this.txtProductName.Size = new System.Drawing.Size(171, 25);
             this.txtProductName.TabIndex = 201;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
@@ -302,43 +304,6 @@
             this.dgvProductDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellClick);
             this.dgvProductDetails.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellEndEdit);
             this.dgvProductDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProductDetails_DataBindingComplete);
-            // 
-            // ProductID
-            // 
-            this.ProductID.DataPropertyName = "ProductID";
-            this.ProductID.HeaderText = "ProductID";
-            this.ProductID.Name = "ProductID";
-            // 
-            // ProductName
-            // 
-            this.ProductName.DataPropertyName = "ProductName";
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.Name = "ProductName";
-            // 
-            // Rate
-            // 
-            this.Rate.DataPropertyName = "Rate";
-            this.Rate.HeaderText = "Rate";
-            this.Rate.Name = "Rate";
-            this.Rate.ReadOnly = true;
-            // 
-            // QTY
-            // 
-            this.QTY.DataPropertyName = "QTY";
-            this.QTY.HeaderText = "QTY";
-            this.QTY.Name = "QTY";
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // ColDelete
-            // 
-            this.ColDelete.DataPropertyName = "Delete";
-            this.ColDelete.HeaderText = "Delete";
-            this.ColDelete.Name = "ColDelete";
             // 
             // label5
             // 
@@ -510,11 +475,11 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(736, 7);
+            this.btnAdd.Location = new System.Drawing.Point(712, 7);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 25);
+            this.btnAdd.Size = new System.Drawing.Size(100, 25);
             this.btnAdd.TabIndex = 247;
-            this.btnAdd.Text = "Submit";
+            this.btnAdd.Text = "Print Preview";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
@@ -599,11 +564,34 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bill Details";
             // 
+            // lblPMode
+            // 
+            this.lblPMode.AutoSize = true;
+            this.lblPMode.BackColor = System.Drawing.Color.Transparent;
+            this.lblPMode.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPMode.Location = new System.Drawing.Point(136, 148);
+            this.lblPMode.Name = "lblPMode";
+            this.lblPMode.Size = new System.Drawing.Size(30, 17);
+            this.lblPMode.TabIndex = 215;
+            this.lblPMode.Text = "NA";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(18, 148);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 17);
+            this.label11.TabIndex = 214;
+            this.label11.Text = "Payment Mode :";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BackgroundImage = global::IMS.Properties.Resources.back;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -611,6 +599,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(905, 40);
             this.panel1.TabIndex = 254;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrint.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(630, 7);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(76, 25);
+            this.btnPrint.TabIndex = 249;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnAdd_Click_1);
+            this.btnPrint.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             // 
             // groupBox4
             // 
@@ -741,27 +744,54 @@
             this.picKnet.TabStop = false;
             this.picKnet.Click += new System.EventHandler(this.picKnet_Click);
             // 
-            // label11
+            // ProductID
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(18, 148);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(105, 17);
-            this.label11.TabIndex = 214;
-            this.label11.Text = "Payment Mode :";
+            this.ProductID.DataPropertyName = "ProductID";
+            this.ProductID.HeaderText = "ProductID";
+            this.ProductID.Name = "ProductID";
             // 
-            // lblPMode
+            // ProductName
             // 
-            this.lblPMode.AutoSize = true;
-            this.lblPMode.BackColor = System.Drawing.Color.Transparent;
-            this.lblPMode.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPMode.Location = new System.Drawing.Point(136, 148);
-            this.lblPMode.Name = "lblPMode";
-            this.lblPMode.Size = new System.Drawing.Size(30, 17);
-            this.lblPMode.TabIndex = 215;
-            this.lblPMode.Text = "NA";
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // Rate
+            // 
+            this.Rate.DataPropertyName = "Rate";
+            this.Rate.HeaderText = "Rate";
+            this.Rate.Name = "Rate";
+            this.Rate.ReadOnly = true;
+            // 
+            // QTY
+            // 
+            this.QTY.DataPropertyName = "QTY";
+            this.QTY.HeaderText = "QTY";
+            this.QTY.Name = "QTY";
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.DataPropertyName = "Delete";
+            this.ColDelete.HeaderText = "Delete";
+            this.ColDelete.Name = "ColDelete";
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.BackColor = System.Drawing.Color.White;
+            this.txtCustomerName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerName.Location = new System.Drawing.Point(517, 45);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(54, 25);
+            this.txtCustomerName.TabIndex = 255;
+            this.txtCustomerName.Visible = false;
             // 
             // Sales_Invoice
             // 
@@ -770,6 +800,7 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(905, 704);
+            this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
@@ -787,7 +818,7 @@
             this.Controls.Add(this.txtSalesMan);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtCustomerName);
+            this.Controls.Add(this.txtCustomerMobile);
             this.Controls.Add(this.dtpSalesDate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCategoryName);
@@ -835,7 +866,7 @@
         private System.Windows.Forms.ComboBox cmbShop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpSalesDate;
-        private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.TextBox txtCustomerMobile;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSalesMan;
@@ -860,12 +891,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtEmpID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QTY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewButtonColumn ColDelete;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox picProduct;
         private System.Windows.Forms.Label txtTotalItems;
@@ -884,5 +909,13 @@
         private System.Windows.Forms.PictureBox picKnet;
         private System.Windows.Forms.Label lblPMode;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QTY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewButtonColumn ColDelete;
+        private System.Windows.Forms.TextBox txtCustomerName;
     }
 }

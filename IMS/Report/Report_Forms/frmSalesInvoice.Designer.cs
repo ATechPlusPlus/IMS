@@ -61,7 +61,7 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "IMS.Report.RDLC_Files.SalesInvoiceReport.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "IMS.Report.RDLC_Files.Sales_Invoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 40);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(796, 510);

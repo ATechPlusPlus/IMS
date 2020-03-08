@@ -62,13 +62,13 @@
             this.saveTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteBarcodeSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteBarcodeSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbProperty = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1.SuspendLayout();
@@ -386,6 +386,13 @@
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
+            // deleteBarcodeSettingsToolStripMenuItem
+            // 
+            this.deleteBarcodeSettingsToolStripMenuItem.Name = "deleteBarcodeSettingsToolStripMenuItem";
+            this.deleteBarcodeSettingsToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.deleteBarcodeSettingsToolStripMenuItem.Text = "Delete Barcode Settings";
+            this.deleteBarcodeSettingsToolStripMenuItem.Click += new System.EventHandler(this.deleteBarcodeSettingsToolStripMenuItem_Click);
+            // 
             // dfToolStripMenuItem
             // 
             this.dfToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -402,44 +409,37 @@
             // lableToolStripMenuItem
             // 
             this.lableToolStripMenuItem.Name = "lableToolStripMenuItem";
-            this.lableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lableToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.lableToolStripMenuItem.Text = "Lable";
             this.lableToolStripMenuItem.Click += new System.EventHandler(this.lableToolStripMenuItem_Click);
             // 
             // pictureBoxToolStripMenuItem
             // 
             this.pictureBoxToolStripMenuItem.Name = "pictureBoxToolStripMenuItem";
-            this.pictureBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pictureBoxToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.pictureBoxToolStripMenuItem.Text = "Bar Code";
             this.pictureBoxToolStripMenuItem.Click += new System.EventHandler(this.pictureBoxToolStripMenuItem_Click);
             // 
             // boxToolStripMenuItem
             // 
             this.boxToolStripMenuItem.Name = "boxToolStripMenuItem";
-            this.boxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.boxToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.boxToolStripMenuItem.Text = "Box (Rectangle)";
             this.boxToolStripMenuItem.Click += new System.EventHandler(this.boxToolStripMenuItem_Click);
             // 
             // lineToolStripMenuItem
             // 
             this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
-            this.lineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lineToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.lineToolStripMenuItem.Text = "Line";
             this.lineToolStripMenuItem.Click += new System.EventHandler(this.lineToolStripMenuItem_Click_1);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem1.Text = "Vertical Lable";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_1);
-            // 
-            // deleteBarcodeSettingsToolStripMenuItem
-            // 
-            this.deleteBarcodeSettingsToolStripMenuItem.Name = "deleteBarcodeSettingsToolStripMenuItem";
-            this.deleteBarcodeSettingsToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.deleteBarcodeSettingsToolStripMenuItem.Text = "Delete Barcode Settings";
-            this.deleteBarcodeSettingsToolStripMenuItem.Click += new System.EventHandler(this.deleteBarcodeSettingsToolStripMenuItem_Click);
             // 
             // label4
             // 
@@ -459,8 +459,10 @@
             this.cmbProperty.Items.AddRange(new object[] {
             "StoreName",
             "ProductName",
-            "Category",
-            "Brand",
+            "Size",
+            "Color",
+            "BarcodeNo",
+            "Model",
             "Rate"});
             this.cmbProperty.Location = new System.Drawing.Point(166, 77);
             this.cmbProperty.Name = "cmbProperty";

@@ -289,6 +289,8 @@ namespace IMS.Report.RDLC_DataSets {
             
             private global::System.Data.DataColumn columnColNum;
             
+            private global::System.Data.DataColumn columnBarNumber;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public tblSalesDetailsDataTable() {
@@ -364,6 +366,14 @@ namespace IMS.Report.RDLC_DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BarNumberColumn {
+                get {
+                    return this.columnBarNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +409,15 @@ namespace IMS.Report.RDLC_DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblSalesDetailsRow AddtblSalesDetailsRow(string ProductName, string QTY, string Rate, string Total) {
+            public tblSalesDetailsRow AddtblSalesDetailsRow(string ProductName, string QTY, string Rate, string Total, string BarNumber) {
                 tblSalesDetailsRow rowtblSalesDetailsRow = ((tblSalesDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProductName,
                         QTY,
                         Rate,
                         Total,
-                        null};
+                        null,
+                        BarNumber};
                 rowtblSalesDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblSalesDetailsRow);
                 return rowtblSalesDetailsRow;
@@ -434,6 +445,7 @@ namespace IMS.Report.RDLC_DataSets {
                 this.columnRate = base.Columns["Rate"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnColNum = base.Columns["ColNum"];
+                this.columnBarNumber = base.Columns["BarNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -449,6 +461,8 @@ namespace IMS.Report.RDLC_DataSets {
                 base.Columns.Add(this.columnTotal);
                 this.columnColNum = new global::System.Data.DataColumn("ColNum", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnColNum);
+                this.columnBarNumber = new global::System.Data.DataColumn("BarNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBarNumber);
                 this.columnColNum.AutoIncrement = true;
             }
             
@@ -672,6 +686,22 @@ namespace IMS.Report.RDLC_DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BarNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblSalesDetails.BarNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BarNumber\' in table \'tblSalesDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblSalesDetails.BarNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsProductNameNull() {
                 return this.IsNull(this.tabletblSalesDetails.ProductNameColumn);
             }
@@ -728,6 +758,18 @@ namespace IMS.Report.RDLC_DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetColNumNull() {
                 this[this.tabletblSalesDetails.ColNumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBarNumberNull() {
+                return this.IsNull(this.tabletblSalesDetails.BarNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBarNumberNull() {
+                this[this.tabletblSalesDetails.BarNumberColumn] = global::System.Convert.DBNull;
             }
         }
         

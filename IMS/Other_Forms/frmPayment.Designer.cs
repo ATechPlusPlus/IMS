@@ -37,10 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPaymentAutoID = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPaymentMode)).BeginInit();
             this.panel1.SuspendLayout();
@@ -110,9 +110,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 221);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 17);
+            this.label1.Size = new System.Drawing.Size(171, 17);
             this.label1.TabIndex = 221;
-            this.label1.Text = "Enter Auto ID :";
+            this.label1.Text = "Enter Payment Number :";
             // 
             // txtPaymentAutoID
             // 
@@ -137,32 +137,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(397, 40);
             this.panel1.TabIndex = 255;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(736, 7);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 247;
-            this.btnAdd.Text = "Submit";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(818, 7);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 248;
-            this.btnSave.Text = "Cancel";
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnOK
             // 
@@ -195,6 +169,32 @@
             this.btnCancel.Click += new System.EventHandler(this.button2_Click);
             this.btnCancel.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnCancel.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(736, 7);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(76, 25);
+            this.btnAdd.TabIndex = 247;
+            this.btnAdd.Text = "Submit";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(818, 7);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(71, 25);
+            this.btnSave.TabIndex = 248;
+            this.btnSave.Text = "Cancel";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // frmPayment
             // 

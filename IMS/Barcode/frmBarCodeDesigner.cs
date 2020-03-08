@@ -761,6 +761,7 @@ namespace IMS.Barcode
         }
         private void saveTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            strTemplate = "";
             //Type-IsBold-Family-argb(int)-fsize(float)-w-h-x-y-text-backColor(int)-RecBorderStyle-borderStyle-borderColor
             WriteToLog(obj.BackColor.ToArgb().ToString() + "@" + obj.Size.Width + "@" + obj.Size.Height);
 
