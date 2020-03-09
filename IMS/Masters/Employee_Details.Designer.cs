@@ -68,6 +68,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnStorePopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.lblTotalRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
@@ -180,6 +181,7 @@
             // grpEmployee
             // 
             this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.btnStorePopup);
             this.grpEmployee.Controls.Add(this.label10);
             this.grpEmployee.Controls.Add(this.label9);
             this.grpEmployee.Controls.Add(this.label8);
@@ -586,6 +588,21 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
+            // btnStorePopup
+            // 
+            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
+            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStorePopup.Location = new System.Drawing.Point(664, 35);
+            this.btnStorePopup.Name = "btnStorePopup";
+            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnStorePopup.TabIndex = 279;
+            this.btnStorePopup.UseVisualStyleBackColor = false;
+            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
+            // 
             // Employee_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,5 +683,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnStorePopup;
     }
 }

@@ -55,7 +55,7 @@
             "Delivery Entry for Purchase Invoice"});
             this.cmbEntryType.Location = new System.Drawing.Point(141, 139);
             this.cmbEntryType.Name = "cmbEntryType";
-            this.cmbEntryType.Size = new System.Drawing.Size(236, 27);
+            this.cmbEntryType.Size = new System.Drawing.Size(240, 27);
             this.cmbEntryType.Sorted = true;
             this.cmbEntryType.TabIndex = 239;
             // 

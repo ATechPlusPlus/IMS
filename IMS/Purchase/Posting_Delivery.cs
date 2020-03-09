@@ -21,7 +21,7 @@ namespace IMS.Purchase
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
 
         int ID = 0;
-        int ProductID = 0;
+        //int ProductID = 0;
 
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
@@ -51,6 +51,7 @@ namespace IMS.Purchase
 
         private void ClearAll()
         {
+            txtPurchaseInvoiceID.Clear();
             cmbEntryType.SelectedIndex = -1;
             cmbStore.SelectedIndex = -1;
             txtSupplierBillNo.Clear();
@@ -65,33 +66,21 @@ namespace IMS.Purchase
                 bool b = clsUtility.ShowQuestionMessage("Are you sure want to post for " + txtSupplierBillNo.Text + " ?", clsUtility.strProjectTitle);
                 if (b)
                 {
-                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC Insert_Posting_Delivery " + ProductID + "," + cmbStore.SelectedValue + "," + txtTotalQTY.Text + "," + cmbEntryType.SelectedIndex + "," + txtSupplierBillNo.Text + "," + clsUtility.LoginID);
+                    string para = txtPurchaseInvoiceID.Text + "," + cmbStore.SelectedValue + "," + txtTotalQTY.Text + "," + cmbEntryType.SelectedIndex + "," + txtSupplierBillNo.Text + "," + clsUtility.LoginID;
+
+                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Insert_PurchaseInvoice_BulkPrint_Color_Size " + para);
                     if (ObjUtil.ValidateTable(dt))
                     {
-                        clsUtility.ShowInfoMessage("Posting Delivery Entry for '" + txtSupplierBillNo.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
+                        int flag = Convert.ToInt32(dt.Rows[0]["Flag"]);
+                        string Msg = dt.Rows[0]["Msg"].ToString();
+
+                        clsUtility.ShowInfoMessage(Msg, clsUtility.strProjectTitle);
                         ClearAll();
                     }
                     else
                     {
                         clsUtility.ShowInfoMessage("Posting Delivery Entry for '" + txtSupplierBillNo.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
                     }
-                    #region below code for calling SP
-                    //ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.VarChar, txtSupplierBillNo.Text.Trim());
-                    //ObjDAL.SetColumnData("EntryType", SqlDbType.Int, cmbEntryType.SelectedIndex);
-                    //ObjDAL.SetColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
-                    //ObjDAL.SetColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
-                    //if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.PostingDeliveryEntry", true) > 0)
-                    //{
-                    //    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                    //    clsUtility.ShowInfoMessage("Posting Delivery Entry for '" + txtSupplierBillNo.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
-                    //    ClearAll();
-                    //}
-                    //else
-                    //{
-                    //    clsUtility.ShowInfoMessage("Posting Delivery Entry for '" + txtSupplierBillNo.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                    //    ObjDAL.ResetData();
-                    //}
-                    #endregion
                 }
             }
         }
@@ -145,10 +134,9 @@ namespace IMS.Purchase
         {
             try
             {
-                if (txtSupplierBillNo.Text.Length > 0) // if manual entry
+                if (txtSupplierBillNo.Text.Length > 0)
                 {
-                    string query = "SELECT PurchaseInvoiceID, SupplierBillNo,ShipmentNo,BillDate,TotalQTY FROM " + clsUtility.DBName + ".dbo.PurchaseInvoice";
-                    DataTable dt = ObjDAL.ExecuteSelectStatement(query + " WHERE ISNULL(IsInvoiceDone,0) = 0 AND SupplierBillNo Like '" + txtSupplierBillNo.Text + "%'");
+                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_Popup '" + txtSupplierBillNo.Text + "'");
                     if (ObjUtil.ValidateTable(dt))
                     {
                         ObjUtil.SetControlData(txtSupplierBillNo, "SupplierBillNo");
@@ -164,6 +152,7 @@ namespace IMS.Purchase
                             if (ObjUtil.GetDataPopup().ColumnCount > 0)
                             {
                                 ObjUtil.GetDataPopup().Columns["PurchaseInvoiceID"].Visible = false;
+                                ObjUtil.GetDataPopup().Columns["SupplierID"].Visible = false;
                                 ObjUtil.SetDataPopupSize(300, 0);
                             }
                         }
@@ -177,36 +166,48 @@ namespace IMS.Purchase
                 }
                 else
                 {
+                    txtPurchaseInvoiceID.Clear();
+                    txtTotalQTY.Clear();
                     ObjUtil.CloseAutoExtender();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
             }
         }
 
         private void Posting_Delivery_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             DataGridView dgv = (DataGridView)sender;
             if (dgv.DataSource != null)
             {
-                //GetItemDetailsByProductID(txtPurchaseInvoiceID.Text);
+                txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+                txtSupplierBillNo.Focus();
+
+                DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Posting_Delivery_QTY " + txtPurchaseInvoiceID.Text);
+                if (ObjUtil.ValidateTable(dt))
+                {
+                    cmbStore.SelectedValue = dt.Rows[0]["StoreID"].ToString();
+                    txtTotalQTY.Text = dt.Rows[0]["Total"].ToString();
+                }
             }
         }
 
         private void Posting_Delivery_KeyDown(object sender, KeyEventArgs e)
         {
-            txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
-            txtSupplierBillNo.Focus();
-
-            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC Get_Posting_Delivery_QTY " + txtPurchaseInvoiceID.Text);
-            if (ObjUtil.ValidateTable(dt))
+            if (e.KeyData == Keys.Enter)
             {
-                ProductID = Convert.ToInt32(dt.Rows[0]["ProductID"]);
-                cmbStore.SelectedValue = dt.Rows[0]["StoreID"].ToString();
-                txtTotalQTY.Text = dt.Rows[0]["Total"].ToString();
+                txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+                txtSupplierBillNo.Focus();
+
+                DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Posting_Delivery_QTY " + txtPurchaseInvoiceID.Text);
+                if (ObjUtil.ValidateTable(dt))
+                {
+                    //ProductID = Convert.ToInt32(dt.Rows[0]["ProductID"]);
+                    cmbStore.SelectedValue = dt.Rows[0]["StoreID"].ToString();
+                    txtTotalQTY.Text = dt.Rows[0]["Total"].ToString();
+                }
             }
         }
     }

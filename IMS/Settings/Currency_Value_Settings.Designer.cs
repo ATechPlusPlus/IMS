@@ -44,10 +44,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbCountry = new System.Windows.Forms.ComboBox();
             this.grpCurrencyValue = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCurrencyCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCurrencyName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCurrencyCode = new System.Windows.Forms.TextBox();
+            this.btnCountryPopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.grpCountry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -251,6 +252,7 @@
             // grpCurrencyValue
             // 
             this.grpCurrencyValue.BackColor = System.Drawing.Color.Transparent;
+            this.grpCurrencyValue.Controls.Add(this.btnCountryPopup);
             this.grpCurrencyValue.Controls.Add(this.label4);
             this.grpCurrencyValue.Controls.Add(this.label1);
             this.grpCurrencyValue.Controls.Add(this.txtCurrencyName);
@@ -267,6 +269,28 @@
             this.grpCurrencyValue.TabIndex = 216;
             this.grpCurrencyValue.TabStop = false;
             this.grpCurrencyValue.Text = "Currency Value Settings";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(28, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 17);
+            this.label4.TabIndex = 218;
+            this.label4.Text = "Currency Name  :";
+            // 
+            // txtCurrencyName
+            // 
+            this.txtCurrencyName.BackColor = System.Drawing.Color.White;
+            this.txtCurrencyName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrencyName.Location = new System.Drawing.Point(159, 100);
+            this.txtCurrencyName.Name = "txtCurrencyName";
+            this.txtCurrencyName.Size = new System.Drawing.Size(206, 25);
+            this.txtCurrencyName.TabIndex = 219;
+            this.txtCurrencyName.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
+            this.txtCurrencyName.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
             // 
             // label3
             // 
@@ -290,27 +314,20 @@
             this.txtCurrencyCode.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
             this.txtCurrencyCode.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
             // 
-            // label4
+            // btnCountryPopup
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 17);
-            this.label4.TabIndex = 218;
-            this.label4.Text = "Currency Name  :";
-            // 
-            // txtCurrencyName
-            // 
-            this.txtCurrencyName.BackColor = System.Drawing.Color.White;
-            this.txtCurrencyName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrencyName.Location = new System.Drawing.Point(159, 100);
-            this.txtCurrencyName.Name = "txtCurrencyName";
-            this.txtCurrencyName.Size = new System.Drawing.Size(206, 25);
-            this.txtCurrencyName.TabIndex = 219;
-            this.txtCurrencyName.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
-            this.txtCurrencyName.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
+            this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCountryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCountryPopup.BackgroundImage")));
+            this.btnCountryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCountryPopup.Location = new System.Drawing.Point(370, 28);
+            this.btnCountryPopup.Name = "btnCountryPopup";
+            this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCountryPopup.TabIndex = 279;
+            this.btnCountryPopup.UseVisualStyleBackColor = false;
+            this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
             // 
             // Currency_Value_Settings
             // 
@@ -366,5 +383,6 @@
         private System.Windows.Forms.TextBox txtCurrencyCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCurrencyName;
+        private System.Windows.Forms.Button btnCountryPopup;
     }
 }

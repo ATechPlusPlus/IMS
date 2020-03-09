@@ -50,11 +50,11 @@ namespace IMS.Masters
             int a = 0;
             if (i == 0)
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.SizeMaster", "SizeTypeID = " + cmbSizeType.SelectedValue + " AND Size=" + txtSize.Text.Trim() + "");
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.SizeMaster", "SizeTypeID = " + cmbSizeType.SelectedValue + " AND Size='" + txtSize.Text.Trim() + "'");
             }
             else
             {
-                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.SizeMaster", "SizeTypeID = " + cmbSizeType.SelectedValue + " AND Size=" + txtSize.Text.Trim() + " AND SizeID!=" + i + "");
+                a = ObjDAL.CountRecords(clsUtility.DBName + ".dbo.SizeMaster", "SizeTypeID = " + cmbSizeType.SelectedValue + " AND Size='" + txtSize.Text.Trim() + "' AND SizeID!=" + i + "");
             }
             if (a > 0)
             {
@@ -71,8 +71,8 @@ namespace IMS.Masters
         {
             DataTable dt = null;
             dt = ObjDAL.ExecuteSelectStatement("SELECT sm.SizeID, sm.Size, sm.SizeTypeID, stm.SizeTypeName" +
-                ", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) ActiveStatus FROM [dbo].[SizeMaster] sm " +
-                  "INNER JOIN [dbo].[SizeTypeMaster] stm ON sm.SizeTypeID = stm.SizeTypeID");
+                ", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) ActiveStatus FROM " + clsUtility.DBName + ".[dbo].[SizeMaster] sm " +
+                  "INNER JOIN " + clsUtility.DBName + ".[dbo].[SizeTypeMaster] stm ON sm.SizeTypeID = stm.SizeTypeID ORDER BY sm.SizeTypeID,sm.Size");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -90,6 +90,7 @@ namespace IMS.Masters
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
             grpSizeType.Enabled = true;
             cmbSizeType.Focus();
+            btnAddMore.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -134,36 +135,36 @@ namespace IMS.Masters
         {
             //if (ValidateForm())
             //{
-                if (DuplicateColor(ID))
+            if (DuplicateColor(ID))
+            {
+                ObjDAL.UpdateColumnData("Size", SqlDbType.VarChar, txtSize.Text);
+                ObjDAL.UpdateColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
+                ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
+                ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
+                ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
+
+                if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SizeMaster", "SizeID = " + ID + "") > 0)
                 {
-                    ObjDAL.UpdateColumnData("Size", SqlDbType.VarChar, txtSize.Text);
-                    ObjDAL.UpdateColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
-                    ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
-                    ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
-                    ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SizeMaster", "SizeID = " + ID + "") > 0)
-                    {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
-
-                        clsUtility.ShowInfoMessage(clsUtility.MsgDataUpdated, clsUtility.strProjectTitle);
-                        LoadData();
-                        ClearAll();
-                        grpSizeType.Enabled = false;
-                        ObjDAL.ResetData();
-                    }
-                    else
-                    {
-                        clsUtility.ShowErrorMessage(clsUtility.MsgDatanotUpdated, clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
-                    }
+                    clsUtility.ShowInfoMessage(clsUtility.MsgDataUpdated, clsUtility.strProjectTitle);
+                    LoadData();
+                    ClearAll();
+                    grpSizeType.Enabled = false;
+                    ObjDAL.ResetData();
                 }
                 else
                 {
-                    //clsUtility.ShowErrorMessage("'" + txtSize.Text + "' Size is already exist..", clsUtility.strProjectTitle);
-                    txtSize.Focus();
+                    clsUtility.ShowErrorMessage(clsUtility.MsgDatanotUpdated, clsUtility.strProjectTitle);
                     ObjDAL.ResetData();
                 }
+            }
+            else
+            {
+                //clsUtility.ShowErrorMessage("'" + txtSize.Text + "' Size is already exist..", clsUtility.strProjectTitle);
+                txtSize.Focus();
+                ObjDAL.ResetData();
+            }
             //}
         }
 
@@ -216,6 +217,7 @@ namespace IMS.Masters
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             FillSizeTypeData();
+            FillSearchBySizeTypeData();
             InitItemTable();
             LoadData();
 
@@ -260,23 +262,27 @@ namespace IMS.Masters
                 txtSize.Focus();
                 return;
             }
-            else if (Convert.ToInt32(txtSize.Text) == 0)
+            else if (ObjUtil.IsNumeric(txtSize.Text))
             {
-                clsUtility.ShowInfoMessage("Please enter Valid Size for " + cmbSizeType.Text, clsUtility.strProjectTitle);
-                txtSize.Focus();
-                return;
-            }
-            else if (listBox1.Items.Count > 0)
-            {
-                for (int i = 0; i < listBox1.Items.Count; i++)
+                if (Convert.ToInt32(txtSize.Text) == 0)
                 {
-                    if (txtSize.Text == listBox1.Items[i].ToString())
+                    clsUtility.ShowInfoMessage("Please enter Valid Size for " + cmbSizeType.Text, clsUtility.strProjectTitle);
+                    txtSize.Focus();
+                    return;
+                }
+                else if (listBox1.Items.Count > 0)
+                {
+                    for (int i = 0; i < listBox1.Items.Count; i++)
                     {
-                        clsUtility.ShowInfoMessage("Size is already entered for " + cmbSizeType.Text, clsUtility.strProjectTitle);
-                        return;
+                        if (txtSize.Text == listBox1.Items[i].ToString())
+                        {
+                            clsUtility.ShowInfoMessage("Size is already entered for " + cmbSizeType.Text, clsUtility.strProjectTitle);
+                            return;
+                        }
                     }
                 }
             }
+
             if (DuplicateColor(0))
             {
                 listBox1.Items.Add(txtSize.Text);
@@ -302,16 +308,24 @@ namespace IMS.Masters
         private void FillSizeTypeData()
         {
             DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID,SizeTypeName", "ISNULL(ActiveStatus,1)=1", "SizeTypeName ASC");
-            cmbSizeType.DataSource = dt;
-            cmbSizeType.DisplayMember = "SizeTypeName";
-            cmbSizeType.ValueMember = "SizeTypeID";
-
+            if (ObjUtil.ValidateTable(dt))
+            {
+                cmbSizeType.DataSource = dt;
+                cmbSizeType.DisplayMember = "SizeTypeName";
+                cmbSizeType.ValueMember = "SizeTypeID";
+            }
             cmbSizeType.SelectedIndex = -1;
+        }
 
-            cmbSearchBySizeType.DataSource = dt;
-            cmbSearchBySizeType.DisplayMember = "SizeTypeName";
-            cmbSearchBySizeType.ValueMember = "SizeTypeID";
-
+        private void FillSearchBySizeTypeData()
+        {
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID,SizeTypeName", "ISNULL(ActiveStatus,1)=1", "SizeTypeName ASC");
+            if (ObjUtil.ValidateTable(dt))
+            {
+                cmbSearchBySizeType.DataSource = dt;
+                cmbSearchBySizeType.DisplayMember = "SizeTypeName";
+                cmbSearchBySizeType.ValueMember = "SizeTypeID";
+            }
             cmbSearchBySizeType.SelectedIndex = -1;
         }
 
@@ -352,8 +366,8 @@ namespace IMS.Masters
 
         private void cmbSearchBySizeType_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            DataTable dt = ObjDAL.ExecuteSelectStatement("SELECT sm.SizeID, sm.Size, sm.SizeTypeID, stm.SizeTypeName" +", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) ActiveStatus FROM [dbo].[SizeMaster] sm " +
-                  "INNER JOIN [dbo].[SizeTypeMaster] stm ON sm.SizeTypeID = stm.SizeTypeID WHERE sm.SizeTypeID = "+cmbSearchBySizeType.SelectedValue);
+            DataTable dt = ObjDAL.ExecuteSelectStatement("SELECT sm.SizeID, sm.Size, sm.SizeTypeID, stm.SizeTypeName" + ", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) ActiveStatus FROM "+clsUtility.DBName+".[dbo].[SizeMaster] sm " +
+                  "INNER JOIN " + clsUtility.DBName + ".[dbo].[SizeTypeMaster] stm ON sm.SizeTypeID = stm.SizeTypeID WHERE sm.SizeTypeID = " + cmbSearchBySizeType.SelectedValue);
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -406,6 +420,13 @@ namespace IMS.Masters
                 cmbSearchBySizeType.SelectedIndex = -1;
                 rdShowAll.Checked = true;
             }
+        }
+
+        private void btnSizeTypePopup_Click(object sender, EventArgs e)
+        {
+            Masters.Size_Type_Master Obj = new Size_Type_Master();
+            Obj.ShowDialog();
+            FillSizeTypeData();
         }
     }
 }

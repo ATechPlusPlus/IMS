@@ -217,9 +217,6 @@ namespace IMS.Barcode
 
             pageControl.Invalidate();
         }
-        private void dfToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -306,21 +303,9 @@ namespace IMS.Barcode
             #endregion
         }
 
-        private void frmHome_MouseMove(object sender, MouseEventArgs e)
-        {
-        }
-
-        private void frmHome_MouseUp(object sender, MouseEventArgs e)
-        {
-        }
-
         private void timerDisableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UnRegisterAll();
-        }
-
-        private void frmHome_Click(object sender, EventArgs e)
-        {
         }
 
         private void frmHome_Load(object sender, EventArgs e)
@@ -443,14 +428,6 @@ namespace IMS.Barcode
             obj.GetSelectedControl().BringToFront();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void boxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             obj.AddRectangle(contextMenuStrip1, propertyGrid1);
@@ -552,7 +529,6 @@ namespace IMS.Barcode
 
                 if (strfiles.Length > 0)
                 {
-
                     this.Controls.Remove(obj);
                     this.Invalidate();
 
@@ -801,7 +777,7 @@ namespace IMS.Barcode
             }
 
             SaveBarCodeSettings(strTemplate);
-            CoreApp.clsUtility.ShowInfoMessage("Barcode Template has been saved.", CoreApp.clsUtility.strProjectTitle);
+            clsUtility.ShowInfoMessage("Barcode Template has been saved.", CoreApp.clsUtility.strProjectTitle);
             //SaveFileDialog Obj = new SaveFileDialog();
             //Obj.Filter = ".dat Data File (*.dat)|*.dat|All files (*.*)|*.*";
             //Obj.FileName = "Template 01";
@@ -869,7 +845,7 @@ namespace IMS.Barcode
             }
             else
             {
-                CoreApp.clsUtility.ShowInfoMessage("Please select a control in design area", CoreApp.clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please select a control in design area", clsUtility.strProjectTitle);
             }
         }
 

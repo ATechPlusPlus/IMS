@@ -53,6 +53,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnAddMore = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSupplierPopup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -228,6 +229,7 @@
             // txtSize
             // 
             this.txtSize.BackColor = System.Drawing.Color.White;
+            this.txtSize.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSize.Location = new System.Drawing.Point(159, 112);
             this.txtSize.Name = "txtSize";
             this.txtSize.Size = new System.Drawing.Size(206, 25);
@@ -327,6 +329,7 @@
             // grpSizeType
             // 
             this.grpSizeType.BackColor = System.Drawing.Color.Transparent;
+            this.grpSizeType.Controls.Add(this.btnSupplierPopup);
             this.grpSizeType.Controls.Add(this.listBox1);
             this.grpSizeType.Controls.Add(this.btnAddMore);
             this.grpSizeType.Controls.Add(this.cmbSizeType);
@@ -346,6 +349,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
             this.listBox1.Location = new System.Drawing.Point(473, 16);
@@ -380,6 +384,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(718, 40);
             this.panel2.TabIndex = 224;
+            // 
+            // btnSupplierPopup
+            // 
+            this.btnSupplierPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnSupplierPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSupplierPopup.BackgroundImage")));
+            this.btnSupplierPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSupplierPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSupplierPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSupplierPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupplierPopup.Location = new System.Drawing.Point(371, 26);
+            this.btnSupplierPopup.Name = "btnSupplierPopup";
+            this.btnSupplierPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnSupplierPopup.TabIndex = 279;
+            this.btnSupplierPopup.UseVisualStyleBackColor = false;
+            this.btnSupplierPopup.Click += new System.EventHandler(this.btnSizeTypePopup_Click);
             // 
             // Size_Master
             // 
@@ -445,5 +464,6 @@
         private System.Windows.Forms.Button btnAddMore;
         private System.Windows.Forms.ComboBox cmbSearchBySizeType;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnSupplierPopup;
     }
 }

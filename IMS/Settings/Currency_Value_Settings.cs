@@ -28,7 +28,7 @@ namespace IMS.Settings
         private void LoadData()
         {
             DataTable dt = null;
-            dt = ObjDAL.ExecuteSelectStatement("EXEC Get_CurrencyRate");
+            dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_CurrencyRate");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -287,6 +287,13 @@ namespace IMS.Settings
 
                 catch (Exception ex) { clsUtility.ShowInfoMessage(ex.ToString(), clsUtility.strProjectTitle); }
             }
+        }
+
+        private void btnCountryPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Country_Master Obj = new Masters.Country_Master();
+            Obj.ShowDialog();
+            FillCountryData();
         }
     }
 }

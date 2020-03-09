@@ -471,5 +471,12 @@ namespace IMS.Masters
             dataGridView1.Columns["CountryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
+
+        private void btnCountryPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Country_Master Obj = new Country_Master();
+            Obj.ShowDialog();
+            FillCountryData();
+        }
     }
 }

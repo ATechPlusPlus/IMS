@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblCategoryName = new System.Windows.Forms.Label();
             this.txtPCName = new System.Windows.Forms.TextBox();
+            this.btnStorePopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnStorePopup);
             this.groupBox1.Controls.Add(this.lblmsg);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnAdd);
@@ -198,6 +200,21 @@
             this.txtPCName.Enter += new System.EventHandler(this.txtPCName_Enter);
             this.txtPCName.Leave += new System.EventHandler(this.txtPCName_Leave);
             // 
+            // btnStorePopup
+            // 
+            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
+            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStorePopup.Location = new System.Drawing.Point(363, 82);
+            this.btnStorePopup.Name = "btnStorePopup";
+            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnStorePopup.TabIndex = 280;
+            this.btnStorePopup.UseVisualStyleBackColor = false;
+            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
+            // 
             // frmOtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,5 +252,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.Button btnStorePopup;
     }
 }

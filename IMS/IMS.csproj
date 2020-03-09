@@ -488,19 +488,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\x86\Debug\barCode.jpg" />
-    <None Include="Resources\Barcode.PNG" />
+    <None Include="Resources\barCode.PNG" />
     <!-- <Content Include="SqlServerTypes\readme.htm" /> -->
     <!-- <Content Include="SqlServerTypes\x64\msvcr120.dll"> -->
-      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
     <!-- </Content> -->
     <!-- <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll"> -->
-      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
     <!-- </Content> -->
     <!-- <Content Include="SqlServerTypes\x86\msvcr120.dll"> -->
-      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
     <!-- </Content> -->
     <!-- <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll"> -->
-      <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+    <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
     <!-- </Content> -->
   </ItemGroup>
   <ItemGroup>

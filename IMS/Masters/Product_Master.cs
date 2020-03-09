@@ -391,5 +391,19 @@ namespace IMS.Masters
             //Other_Forms.Import_Data Obj = new Other_Forms.Import_Data();
             //Obj.Show();
         }
+
+        private void btnCategoryPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Category_Master Obj = new Category_Master();
+            Obj.ShowDialog();
+            FillDepartmentData();
+        }
+
+        private void btnBrandPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Brand_Master Obj = new Brand_Master();
+            Obj.ShowDialog();
+            FillBrandData();
+        }
     }
 }

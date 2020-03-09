@@ -55,7 +55,7 @@ namespace IMS.Masters
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
-            BindStoreDetails();
+            FillStoreDetails();
             LoadData();
         }
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace IMS.Masters
             txtEmployeeCode.Focus();
 
         }
-        private void BindStoreDetails()
+        private void FillStoreDetails()
         {
             DataTable dt = null;
             dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.StoreMaster", "StoreID,StoreName", "ISNULL(ActiveStatus,1)=1", " StoreID");
@@ -474,6 +474,13 @@ namespace IMS.Masters
         private void txtEmployeeCode_Leave(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender, Color.White);
+        }
+
+        private void btnStorePopup_Click(object sender, EventArgs e)
+        {
+            Masters.Store_Master Obj = new Store_Master();
+            Obj.ShowDialog();
+            FillStoreDetails();
         }
     }
 }

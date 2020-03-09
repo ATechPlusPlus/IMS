@@ -63,6 +63,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnCountryPopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.grpSupplier.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -96,6 +97,7 @@
             // grpSupplier
             // 
             this.grpSupplier.BackColor = System.Drawing.Color.Transparent;
+            this.grpSupplier.Controls.Add(this.btnCountryPopup);
             this.grpSupplier.Controls.Add(this.lblBankAccNo);
             this.grpSupplier.Controls.Add(this.txtBankAccNo);
             this.grpSupplier.Controls.Add(this.lblEmail);
@@ -514,6 +516,21 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
+            // btnCountryPopup
+            // 
+            this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCountryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCountryPopup.BackgroundImage")));
+            this.btnCountryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCountryPopup.Location = new System.Drawing.Point(370, 63);
+            this.btnCountryPopup.Name = "btnCountryPopup";
+            this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCountryPopup.TabIndex = 279;
+            this.btnCountryPopup.UseVisualStyleBackColor = false;
+            this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
+            // 
             // Supplier_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,5 +605,6 @@
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Button btnCountryPopup;
     }
 }

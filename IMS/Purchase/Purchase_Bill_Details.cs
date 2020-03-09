@@ -34,6 +34,7 @@ namespace IMS.Purchase
         Image B_Enter = IMS.Properties.Resources.B_on;
         private void ClearAll()
         {
+            txtPurchaseInvoiceID.Clear();
             txtSupplierBillNo.Clear();
             txtModelNo.Clear();
             txtProductName.Clear();
@@ -194,8 +195,8 @@ namespace IMS.Purchase
                     {
                         if (txtDiffQty.Text == "0" && txtDiffValue.Text == "0")
                         {
-                            pIsInvoiceDone = true;
-                            ObjDAL.UpdateColumnData("IsInvoiceDone", SqlDbType.Bit, pIsInvoiceDone);
+                            //pIsInvoiceDone = true;
+                            //ObjDAL.UpdateColumnData("IsInvoiceDone", SqlDbType.Bit, pIsInvoiceDone);
                             ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID = " + PurchaseInvoiceID + "");
                             clsUtility.ShowInfoMessage("Purchase Invoice is Saved Successfully..", clsUtility.strProjectTitle);
                         }
@@ -384,7 +385,7 @@ namespace IMS.Purchase
             {
                 if (txtProductName.Text.Length > 0) // if manual entry
                 {
-                    string query = "SELECT ProductID, ProductName FROM " + clsUtility.DBName + ".dbo.ProductMaster";
+                    string query = "SELECT ProductID, ProductName FROM " + clsUtility.DBName + ".dbo.ProductMaster WITH(NOLOCK)";
                     DataTable dt = ObjDAL.ExecuteSelectStatement(query + " WHERE ProductName Like '" + txtProductName.Text + "%'");
                     if (ObjUtil.ValidateTable(dt))
                     {
@@ -413,6 +414,7 @@ namespace IMS.Purchase
                     else
                     {
                         ObjUtil.CloseAutoExtender();
+                        clsUtility.ShowInfoMessage("Item Name " + txtProductName.Text + " is not available in Item Master.", clsUtility.strProjectTitle);
                         linkAddPurchaseBillItems.Enabled = false;
                     }
                 }
@@ -421,26 +423,26 @@ namespace IMS.Purchase
                     ObjUtil.CloseAutoExtender();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
             }
         }
 
         private void Purchase_Bill_Details_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             DataGridView dgv = (DataGridView)sender;
             if (dgv.DataSource != null)
             {
+                txtModelNo.Focus();
                 linkAddPurchaseBillItems.Enabled = true;
-                GetItemDetailsByProductID(txtProductID.Text);
+                //GetItemDetailsByProductID(txtProductID.Text);
             }
         }
 
         private void Purchase_Bill_Details_KeyDown(object sender, KeyEventArgs e)
         {
-            txtProductName.Focus();
+            txtModelNo.Focus();
             linkAddPurchaseBillItems.Enabled = true;
         }
 
@@ -574,6 +576,78 @@ namespace IMS.Purchase
         private void cmbAddRatio_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtSupplierBillNo_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSupplierBillNo.Text.Length > 0)
+                {
+                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_Popup " + txtSupplierBillNo.Text);
+                    if (ObjUtil.ValidateTable(dt))
+                    {
+                        ObjUtil.SetControlData(txtSupplierBillNo, "SupplierBillNo");
+                        ObjUtil.SetControlData(txtPurchaseInvoiceID, "PurchaseInvoiceID");
+                        ObjUtil.ShowDataPopup(dt, txtSupplierBillNo, this, this);
+
+                        if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
+                        {
+                            // if there is only one column                
+                            ObjUtil.GetDataPopup().AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                            if (ObjUtil.GetDataPopup().ColumnCount > 0)
+                            {
+                                ObjUtil.GetDataPopup().Columns["PurchaseInvoiceID"].Visible = false;
+                                ObjUtil.SetDataPopupSize(300, 0);
+                            }
+                        }
+                        ObjUtil.GetDataPopup().CellClick += Purchase_Bill_Details_Supplier_CellClick;
+                        ObjUtil.GetDataPopup().KeyDown += Purchase_Bill_Details_Supplier_KeyDown;
+                    }
+                    else
+                    {
+                        ObjUtil.CloseAutoExtender();
+                    }
+                }
+                else
+                {
+                    ObjUtil.CloseAutoExtender();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void Purchase_Bill_Details_Supplier_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridView dgv = (DataGridView)sender;
+            if (dgv.DataSource != null)
+            {
+                //GetItemDetailsByProductID(txtPurchaseInvoiceID.Text);
+                txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+                txtSupplierBillNo.Focus();
+
+                cmbAddRatio.Enabled = true;
+                cmbAddRatio.SelectedIndex = 0;
+                LoadData();
+            }
+        }
+
+        private void Purchase_Bill_Details_Supplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+                txtSupplierBillNo.Focus();
+
+                cmbAddRatio.Enabled = true;
+                cmbAddRatio.SelectedIndex = 0;
+                LoadData();
+            }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

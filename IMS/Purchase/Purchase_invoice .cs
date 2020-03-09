@@ -82,6 +82,16 @@ namespace IMS.Purchase
                 txtTotalQTY.Focus();
                 return false;
             }
+            else if (ObjUtil.IsControlTextEmpty(txtLocalValue))
+            {
+                clsUtility.ShowInfoMessage("Local Value can't be empty           ", clsUtility.strProjectTitle);
+                return false;
+            }
+            else if (ObjUtil.IsNumeric(txtLocalValue.Text) && Convert.ToInt32(txtLocalValue.Text) == 0)
+            {
+                clsUtility.ShowInfoMessage("Local Value can't be 0           ", clsUtility.strProjectTitle);
+                return false;
+            }
             return true;
         }
 
@@ -314,7 +324,7 @@ namespace IMS.Purchase
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PurchaseInvoiceID"].Value);
                     txtSupplierBillNo.Text = dataGridView1.SelectedRows[0].Cells["SupplierBillNo"].Value.ToString();
                     cmbSupplier.SelectedValue = dataGridView1.SelectedRows[0].Cells["SupplierID"].Value.ToString();
-                    
+
                     cmbSupplier_SelectionChangeCommitted(sender, e);
 
                     txtShipmentNo.Text = dataGridView1.SelectedRows[0].Cells["ShipmentNo"].Value.ToString();
@@ -535,6 +545,19 @@ namespace IMS.Purchase
                 grpForeignCurrency.Enabled = true;
                 grpLocalCurrency.Enabled = true;
             }
+        }
+
+        private void btnSupplierPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Supplier_Details Obj = new Masters.Supplier_Details();
+            Obj.ShowDialog();
+            FillSupplierData();
+        }
+
+        private void txtCurrencyRate_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCurrencyRate.TextLength > 0)
+                CalculateTotalBill();
         }
     }
 }

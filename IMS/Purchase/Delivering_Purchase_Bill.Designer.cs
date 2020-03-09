@@ -65,6 +65,9 @@
             this.txtTotalQTY = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtPurchaseInvoiceID = new System.Windows.Forms.TextBox();
+            this.btnStorePopup = new System.Windows.Forms.Button();
+            this.btnSizeTypePopup = new System.Windows.Forms.Button();
             this.grpPurchaseBillDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQtycolor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,12 +81,13 @@
             this.btnSearch.Enabled = false;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(255, 98);
+            this.btnSearch.Location = new System.Drawing.Point(813, 54);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(76, 25);
+            this.btnSearch.Size = new System.Drawing.Size(64, 25);
             this.btnSearch.TabIndex = 245;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             this.btnSearch.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnSearch.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
@@ -106,8 +110,9 @@
             this.txtSupplierBillNo.Font = new System.Drawing.Font("Times New Roman", 11.25F);
             this.txtSupplierBillNo.Location = new System.Drawing.Point(125, 98);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
-            this.txtSupplierBillNo.Size = new System.Drawing.Size(124, 25);
+            this.txtSupplierBillNo.Size = new System.Drawing.Size(207, 25);
             this.txtSupplierBillNo.TabIndex = 243;
+            this.txtSupplierBillNo.TextChanged += new System.EventHandler(this.txtSupplierBillNo_TextChanged);
             this.txtSupplierBillNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -307,15 +312,18 @@
             this.dgvQtycolor.AllowUserToDeleteRows = false;
             this.dgvQtycolor.AllowUserToResizeColumns = false;
             this.dgvQtycolor.AllowUserToResizeRows = false;
+            this.dgvQtycolor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvQtycolor.BackgroundColor = System.Drawing.Color.White;
             this.dgvQtycolor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQtycolor.Location = new System.Drawing.Point(7, 312);
             this.dgvQtycolor.Name = "dgvQtycolor";
             this.dgvQtycolor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvQtycolor.Size = new System.Drawing.Size(845, 147);
+            this.dgvQtycolor.Size = new System.Drawing.Size(932, 147);
             this.dgvQtycolor.TabIndex = 258;
+            this.dgvQtycolor.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvQtycolor_CellBeginEdit);
             this.dgvQtycolor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellClick);
             this.dgvQtycolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellEndEdit);
+            this.dgvQtycolor.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvQtycolor_ColumnAdded);
             this.dgvQtycolor.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvQtycolor_DataBindingComplete);
             // 
             // btnUpdate
@@ -419,7 +427,7 @@
             this.lblDiffQty.AutoSize = true;
             this.lblDiffQty.BackColor = System.Drawing.Color.Transparent;
             this.lblDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiffQty.Location = new System.Drawing.Point(592, 473);
+            this.lblDiffQty.Location = new System.Drawing.Point(674, 473);
             this.lblDiffQty.Name = "lblDiffQty";
             this.lblDiffQty.Size = new System.Drawing.Size(113, 17);
             this.lblDiffQty.TabIndex = 270;
@@ -429,7 +437,7 @@
             // 
             this.txtDiffQty.BackColor = System.Drawing.Color.White;
             this.txtDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtDiffQty.Location = new System.Drawing.Point(719, 469);
+            this.txtDiffQty.Location = new System.Drawing.Point(806, 466);
             this.txtDiffQty.Name = "txtDiffQty";
             this.txtDiffQty.ReadOnly = true;
             this.txtDiffQty.Size = new System.Drawing.Size(133, 25);
@@ -441,7 +449,7 @@
             this.lblTotalQtyBill.AutoSize = true;
             this.lblTotalQtyBill.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalQtyBill.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalQtyBill.Location = new System.Drawing.Point(301, 473);
+            this.lblTotalQtyBill.Location = new System.Drawing.Point(324, 473);
             this.lblTotalQtyBill.Name = "lblTotalQtyBill";
             this.lblTotalQtyBill.Size = new System.Drawing.Size(134, 17);
             this.lblTotalQtyBill.TabIndex = 268;
@@ -451,7 +459,7 @@
             // 
             this.txtTotalQTYBill.BackColor = System.Drawing.Color.White;
             this.txtTotalQTYBill.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtTotalQTYBill.Location = new System.Drawing.Point(440, 468);
+            this.txtTotalQTYBill.Location = new System.Drawing.Point(463, 468);
             this.txtTotalQTYBill.Name = "txtTotalQTYBill";
             this.txtTotalQTYBill.ReadOnly = true;
             this.txtTotalQTYBill.Size = new System.Drawing.Size(133, 25);
@@ -484,13 +492,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(7, 504);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(932, 147);
             this.dataGridView1.TabIndex = 271;
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
@@ -539,6 +548,47 @@
             this.label12.TabIndex = 82;
             this.label12.Text = "Delivering Purchase Bill Details";
             // 
+            // txtPurchaseInvoiceID
+            // 
+            this.txtPurchaseInvoiceID.BackColor = System.Drawing.Color.White;
+            this.txtPurchaseInvoiceID.Enabled = false;
+            this.txtPurchaseInvoiceID.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtPurchaseInvoiceID.Location = new System.Drawing.Point(883, 54);
+            this.txtPurchaseInvoiceID.Name = "txtPurchaseInvoiceID";
+            this.txtPurchaseInvoiceID.Size = new System.Drawing.Size(56, 25);
+            this.txtPurchaseInvoiceID.TabIndex = 275;
+            this.txtPurchaseInvoiceID.Visible = false;
+            // 
+            // btnStorePopup
+            // 
+            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
+            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStorePopup.Location = new System.Drawing.Point(813, 100);
+            this.btnStorePopup.Name = "btnStorePopup";
+            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnStorePopup.TabIndex = 276;
+            this.btnStorePopup.UseVisualStyleBackColor = false;
+            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
+            // 
+            // btnSizeTypePopup
+            // 
+            this.btnSizeTypePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnSizeTypePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSizeTypePopup.BackgroundImage")));
+            this.btnSizeTypePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSizeTypePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSizeTypePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSizeTypePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSizeTypePopup.Location = new System.Drawing.Point(815, 272);
+            this.btnSizeTypePopup.Name = "btnSizeTypePopup";
+            this.btnSizeTypePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnSizeTypePopup.TabIndex = 277;
+            this.btnSizeTypePopup.UseVisualStyleBackColor = false;
+            this.btnSizeTypePopup.Click += new System.EventHandler(this.btnSizeTypePopup_Click);
+            // 
             // Delivering_Purchase_Bill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,6 +596,9 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(978, 692);
+            this.Controls.Add(this.btnSizeTypePopup);
+            this.Controls.Add(this.btnStorePopup);
+            this.Controls.Add(this.txtPurchaseInvoiceID);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTotalQTY);
@@ -627,5 +680,8 @@
         private System.Windows.Forms.TextBox txtTotalQTY;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtPurchaseInvoiceID;
+        private System.Windows.Forms.Button btnStorePopup;
+        private System.Windows.Forms.Button btnSizeTypePopup;
     }
 }

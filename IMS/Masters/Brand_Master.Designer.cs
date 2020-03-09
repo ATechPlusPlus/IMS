@@ -36,6 +36,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grpBrand = new System.Windows.Forms.GroupBox();
+            this.btnSupplierPopup = new System.Windows.Forms.Button();
             this.cmbSupplier = new System.Windows.Forms.ComboBox();
             this.lblSupplier = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
@@ -159,6 +160,7 @@
             // grpBrand
             // 
             this.grpBrand.BackColor = System.Drawing.Color.Transparent;
+            this.grpBrand.Controls.Add(this.btnSupplierPopup);
             this.grpBrand.Controls.Add(this.cmbSupplier);
             this.grpBrand.Controls.Add(this.lblSupplier);
             this.grpBrand.Controls.Add(this.lblCountry);
@@ -169,12 +171,27 @@
             this.grpBrand.Controls.Add(this.cmbActiveStatus);
             this.grpBrand.Enabled = false;
             this.grpBrand.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpBrand.Location = new System.Drawing.Point(45, 96);
+            this.grpBrand.Location = new System.Drawing.Point(21, 96);
             this.grpBrand.Name = "grpBrand";
             this.grpBrand.Size = new System.Drawing.Size(486, 196);
             this.grpBrand.TabIndex = 215;
             this.grpBrand.TabStop = false;
             this.grpBrand.Text = "Brand Details";
+            // 
+            // btnSupplierPopup
+            // 
+            this.btnSupplierPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnSupplierPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSupplierPopup.BackgroundImage")));
+            this.btnSupplierPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSupplierPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSupplierPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSupplierPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupplierPopup.Location = new System.Drawing.Point(370, 66);
+            this.btnSupplierPopup.Name = "btnSupplierPopup";
+            this.btnSupplierPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnSupplierPopup.TabIndex = 278;
+            this.btnSupplierPopup.UseVisualStyleBackColor = false;
+            this.btnSupplierPopup.Click += new System.EventHandler(this.btnSupplierPopup_Click);
             // 
             // cmbSupplier
             // 
@@ -277,7 +294,7 @@
             this.groupBox1.Controls.Add(this.rdSearchByBrand);
             this.groupBox1.Controls.Add(this.txtSearchByBrand);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(45, 298);
+            this.groupBox1.Location = new System.Drawing.Point(21, 298);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(568, 51);
             this.groupBox1.TabIndex = 214;
@@ -328,9 +345,9 @@
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(45, 362);
+            this.grpGridview.Location = new System.Drawing.Point(21, 362);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(575, 175);
+            this.grpGridview.Size = new System.Drawing.Size(595, 175);
             this.grpGridview.TabIndex = 213;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Brands";
@@ -345,7 +362,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(562, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(583, 147);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -378,7 +395,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(42, 547);
+            this.lblTotalRecords.Location = new System.Drawing.Point(18, 547);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 217;
@@ -447,5 +464,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblTotalRecords;
+        private System.Windows.Forms.Button btnSupplierPopup;
     }
 }

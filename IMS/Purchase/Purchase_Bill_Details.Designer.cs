@@ -76,6 +76,7 @@
             this.txtCurrencyRate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNewRate = new System.Windows.Forms.TextBox();
+            this.txtPurchaseInvoiceID = new System.Windows.Forms.TextBox();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModelNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -355,9 +356,11 @@
             this.txtSupplierBillNo.BackColor = System.Drawing.Color.White;
             this.txtSupplierBillNo.Font = new System.Drawing.Font("Times New Roman", 11.25F);
             this.txtSupplierBillNo.Location = new System.Drawing.Point(162, 62);
+            this.txtSupplierBillNo.MaxLength = 50;
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
-            this.txtSupplierBillNo.Size = new System.Drawing.Size(124, 25);
+            this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
             this.txtSupplierBillNo.TabIndex = 240;
+            this.txtSupplierBillNo.TextChanged += new System.EventHandler(this.txtSupplierBillNo_TextChanged);
             this.txtSupplierBillNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -367,12 +370,13 @@
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(292, 62);
+            this.btnSearch.Location = new System.Drawing.Point(903, 151);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(76, 25);
+            this.btnSearch.Size = new System.Drawing.Size(63, 25);
             this.btnSearch.TabIndex = 242;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             this.btnSearch.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
             this.btnSearch.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
@@ -406,6 +410,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -662,6 +668,17 @@
             this.txtNewRate.Size = new System.Drawing.Size(111, 25);
             this.txtNewRate.TabIndex = 259;
             // 
+            // txtPurchaseInvoiceID
+            // 
+            this.txtPurchaseInvoiceID.BackColor = System.Drawing.Color.White;
+            this.txtPurchaseInvoiceID.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtPurchaseInvoiceID.Location = new System.Drawing.Point(903, 182);
+            this.txtPurchaseInvoiceID.Name = "txtPurchaseInvoiceID";
+            this.txtPurchaseInvoiceID.ReadOnly = true;
+            this.txtPurchaseInvoiceID.Size = new System.Drawing.Size(51, 25);
+            this.txtPurchaseInvoiceID.TabIndex = 261;
+            this.txtPurchaseInvoiceID.Visible = false;
+            // 
             // ProductID
             // 
             this.ProductID.DataPropertyName = "ProductID";
@@ -672,7 +689,7 @@
             // ProductName
             // 
             this.ProductName.DataPropertyName = "ProductName";
-            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.HeaderText = "ItemName";
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
             // 
@@ -759,6 +776,7 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(978, 658);
+            this.Controls.Add(this.txtPurchaseInvoiceID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNewRate);
             this.Controls.Add(this.label1);
@@ -857,6 +875,7 @@
         private System.Windows.Forms.TextBox txtCurrencyRate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNewRate;
+        private System.Windows.Forms.TextBox txtPurchaseInvoiceID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModelNo;

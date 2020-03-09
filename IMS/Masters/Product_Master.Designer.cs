@@ -58,6 +58,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicProductMaster = new System.Windows.Forms.PictureBox();
             this.btnImport = new System.Windows.Forms.Button();
+            this.btnCategoryPopup = new System.Windows.Forms.Button();
+            this.btnBrandPopup = new System.Windows.Forms.Button();
             this.grpProduct.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -73,10 +75,9 @@
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(395, 68);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(296, 55);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(95, 31);
+            this.btnUpdate.Size = new System.Drawing.Size(71, 25);
             this.btnUpdate.TabIndex = 207;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -90,10 +91,9 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(613, 68);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Location = new System.Drawing.Point(460, 55);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 31);
+            this.btnCancel.Size = new System.Drawing.Size(71, 25);
             this.btnCancel.TabIndex = 209;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -107,10 +107,9 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(504, 68);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(378, 55);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(95, 31);
+            this.btnDelete.Size = new System.Drawing.Size(71, 25);
             this.btnDelete.TabIndex = 208;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -124,10 +123,9 @@
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(288, 68);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Location = new System.Drawing.Point(216, 55);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(95, 31);
+            this.btnEdit.Size = new System.Drawing.Size(71, 25);
             this.btnEdit.TabIndex = 206;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -141,10 +139,9 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(179, 68);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Location = new System.Drawing.Point(134, 55);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(95, 31);
+            this.btnSave.Size = new System.Drawing.Size(71, 25);
             this.btnSave.TabIndex = 205;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -158,10 +155,9 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(60, 68);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(45, 55);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(101, 31);
+            this.btnAdd.Size = new System.Drawing.Size(76, 25);
             this.btnAdd.TabIndex = 204;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -172,6 +168,8 @@
             // grpProduct
             // 
             this.grpProduct.BackColor = System.Drawing.Color.Transparent;
+            this.grpProduct.Controls.Add(this.btnBrandPopup);
+            this.grpProduct.Controls.Add(this.btnCategoryPopup);
             this.grpProduct.Controls.Add(this.cmbBrand);
             this.grpProduct.Controls.Add(this.label1);
             this.grpProduct.Controls.Add(this.cmbCategory);
@@ -182,11 +180,9 @@
             this.grpProduct.Controls.Add(this.cmbActiveStatus);
             this.grpProduct.Enabled = false;
             this.grpProduct.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpProduct.Location = new System.Drawing.Point(60, 118);
-            this.grpProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpProduct.Location = new System.Drawing.Point(45, 96);
             this.grpProduct.Name = "grpProduct";
-            this.grpProduct.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpProduct.Size = new System.Drawing.Size(648, 241);
+            this.grpProduct.Size = new System.Drawing.Size(486, 196);
             this.grpProduct.TabIndex = 215;
             this.grpProduct.TabStop = false;
             this.grpProduct.Text = "Product Details";
@@ -196,10 +192,9 @@
             this.cmbBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBrand.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBrand.FormattingEnabled = true;
-            this.cmbBrand.Location = new System.Drawing.Point(212, 132);
-            this.cmbBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBrand.Location = new System.Drawing.Point(159, 107);
             this.cmbBrand.Name = "cmbBrand";
-            this.cmbBrand.Size = new System.Drawing.Size(273, 30);
+            this.cmbBrand.Size = new System.Drawing.Size(206, 27);
             this.cmbBrand.TabIndex = 198;
             // 
             // label1
@@ -207,10 +202,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 137);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(18, 111);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
+            this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 197;
             this.label1.Text = "Brand :";
             // 
@@ -219,10 +213,9 @@
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(212, 81);
-            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCategory.Location = new System.Drawing.Point(159, 66);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(273, 30);
+            this.cmbCategory.Size = new System.Drawing.Size(206, 27);
             this.cmbCategory.TabIndex = 196;
             // 
             // lblCategory
@@ -230,10 +223,9 @@
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
             this.lblCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(24, 85);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCategory.Location = new System.Drawing.Point(18, 69);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(105, 21);
+            this.lblCategory.Size = new System.Drawing.Size(85, 17);
             this.lblCategory.TabIndex = 195;
             this.lblCategory.Text = "Department :";
             // 
@@ -242,10 +234,9 @@
             this.lblProductName.AutoSize = true;
             this.lblProductName.BackColor = System.Drawing.Color.Transparent;
             this.lblProductName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(24, 33);
-            this.lblProductName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProductName.Location = new System.Drawing.Point(18, 27);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(127, 21);
+            this.lblProductName.Size = new System.Drawing.Size(101, 17);
             this.lblProductName.TabIndex = 187;
             this.lblProductName.Text = "Product Name :";
             // 
@@ -254,20 +245,18 @@
             this.lblActiveStatus.AutoSize = true;
             this.lblActiveStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveStatus.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveStatus.Location = new System.Drawing.Point(24, 188);
-            this.lblActiveStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActiveStatus.Location = new System.Drawing.Point(18, 153);
             this.lblActiveStatus.Name = "lblActiveStatus";
-            this.lblActiveStatus.Size = new System.Drawing.Size(118, 21);
+            this.lblActiveStatus.Size = new System.Drawing.Size(94, 17);
             this.lblActiveStatus.TabIndex = 189;
             this.lblActiveStatus.Text = "Active Status :";
             // 
             // txtProductName
             // 
             this.txtProductName.BackColor = System.Drawing.Color.White;
-            this.txtProductName.Location = new System.Drawing.Point(212, 33);
-            this.txtProductName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtProductName.Location = new System.Drawing.Point(159, 27);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(273, 29);
+            this.txtProductName.Size = new System.Drawing.Size(206, 25);
             this.txtProductName.TabIndex = 184;
             this.txtProductName.Enter += new System.EventHandler(this.txtProductName_Enter);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
@@ -281,10 +270,9 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(212, 182);
-            this.cmbActiveStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 148);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
-            this.cmbActiveStatus.Size = new System.Drawing.Size(273, 30);
+            this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
             // 
             // groupBox1
@@ -294,11 +282,9 @@
             this.groupBox1.Controls.Add(this.rdSearchByProduct);
             this.groupBox1.Controls.Add(this.txtSearchByProduct);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(60, 367);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(45, 298);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(919, 63);
+            this.groupBox1.Size = new System.Drawing.Size(689, 51);
             this.groupBox1.TabIndex = 214;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -308,10 +294,9 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(780, 25);
-            this.rdShowAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdShowAll.Location = new System.Drawing.Point(585, 20);
             this.rdShowAll.Name = "rdShowAll";
-            this.rdShowAll.Size = new System.Drawing.Size(99, 25);
+            this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
@@ -322,10 +307,9 @@
             // 
             this.rdSearchByProduct.AutoSize = true;
             this.rdSearchByProduct.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchByProduct.Location = new System.Drawing.Point(24, 25);
-            this.rdSearchByProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdSearchByProduct.Location = new System.Drawing.Point(18, 20);
             this.rdSearchByProduct.Name = "rdSearchByProduct";
-            this.rdSearchByProduct.Size = new System.Drawing.Size(174, 25);
+            this.rdSearchByProduct.Size = new System.Drawing.Size(140, 21);
             this.rdSearchByProduct.TabIndex = 6;
             this.rdSearchByProduct.Text = "By Product Name :";
             this.rdSearchByProduct.UseVisualStyleBackColor = true;
@@ -336,10 +320,9 @@
             this.txtSearchByProduct.BackColor = System.Drawing.Color.White;
             this.txtSearchByProduct.Enabled = false;
             this.txtSearchByProduct.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByProduct.Location = new System.Drawing.Point(223, 22);
-            this.txtSearchByProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchByProduct.Location = new System.Drawing.Point(167, 18);
             this.txtSearchByProduct.Name = "txtSearchByProduct";
-            this.txtSearchByProduct.Size = new System.Drawing.Size(273, 29);
+            this.txtSearchByProduct.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByProduct.TabIndex = 5;
             this.txtSearchByProduct.TextChanged += new System.EventHandler(this.txtSearchByProduct_TextChanged);
             this.txtSearchByProduct.Enter += new System.EventHandler(this.txtProductName_Enter);
@@ -350,11 +333,9 @@
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(60, 446);
-            this.grpGridview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpGridview.Location = new System.Drawing.Point(45, 362);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpGridview.Size = new System.Drawing.Size(927, 215);
+            this.grpGridview.Size = new System.Drawing.Size(695, 175);
             this.grpGridview.TabIndex = 213;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Products";
@@ -365,12 +346,11 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 30);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 24);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(911, 178);
+            this.dataGridView1.Size = new System.Drawing.Size(683, 145);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -382,9 +362,8 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1025, 49);
+            this.panel2.Size = new System.Drawing.Size(769, 40);
             this.panel2.TabIndex = 216;
             // 
             // label12
@@ -393,10 +372,9 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(15, 11);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(11, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(175, 26);
+            this.label12.Size = new System.Drawing.Size(139, 22);
             this.label12.TabIndex = 82;
             this.label12.Text = "Product Master";
             // 
@@ -405,10 +383,9 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(56, 673);
-            this.lblTotalRecords.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalRecords.Location = new System.Drawing.Point(42, 547);
             this.lblTotalRecords.Name = "lblTotalRecords";
-            this.lblTotalRecords.Size = new System.Drawing.Size(150, 22);
+            this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 217;
             this.lblTotalRecords.Text = "Total Records : 0";
             // 
@@ -419,11 +396,9 @@
             this.groupBox2.Controls.Add(this.linkLabel1);
             this.groupBox2.Controls.Add(this.PicProductMaster);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(717, 68);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Location = new System.Drawing.Point(538, 55);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(292, 292);
+            this.groupBox2.Size = new System.Drawing.Size(219, 237);
             this.groupBox2.TabIndex = 218;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Photo";
@@ -433,10 +408,9 @@
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(107, 256);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel2.Location = new System.Drawing.Point(80, 208);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(61, 21);
+            this.linkLabel2.Size = new System.Drawing.Size(49, 17);
             this.linkLabel2.TabIndex = 212;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Cancel";
@@ -447,10 +421,9 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(11, 256);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(8, 208);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(82, 21);
+            this.linkLabel1.Size = new System.Drawing.Size(66, 17);
             this.linkLabel1.TabIndex = 211;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Browse...";
@@ -459,10 +432,9 @@
             // PicProductMaster
             // 
             this.PicProductMaster.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicProductMaster.Location = new System.Drawing.Point(15, 31);
-            this.PicProductMaster.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PicProductMaster.Location = new System.Drawing.Point(11, 25);
             this.PicProductMaster.Name = "PicProductMaster";
-            this.PicProductMaster.Size = new System.Drawing.Size(254, 220);
+            this.PicProductMaster.Size = new System.Drawing.Size(191, 179);
             this.PicProductMaster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicProductMaster.TabIndex = 209;
             this.PicProductMaster.TabStop = false;
@@ -473,22 +445,51 @@
             this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnImport.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.Location = new System.Drawing.Point(272, 664);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImport.Location = new System.Drawing.Point(204, 540);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(218, 31);
+            this.btnImport.Size = new System.Drawing.Size(164, 25);
             this.btnImport.TabIndex = 219;
             this.btnImport.Text = "Import data From Excel";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
+            // btnCategoryPopup
+            // 
+            this.btnCategoryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCategoryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCategoryPopup.BackgroundImage")));
+            this.btnCategoryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoryPopup.Location = new System.Drawing.Point(371, 66);
+            this.btnCategoryPopup.Name = "btnCategoryPopup";
+            this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCategoryPopup.TabIndex = 280;
+            this.btnCategoryPopup.UseVisualStyleBackColor = false;
+            this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
+            // 
+            // btnBrandPopup
+            // 
+            this.btnBrandPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnBrandPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBrandPopup.BackgroundImage")));
+            this.btnBrandPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBrandPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrandPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBrandPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrandPopup.Location = new System.Drawing.Point(371, 107);
+            this.btnBrandPopup.Name = "btnBrandPopup";
+            this.btnBrandPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnBrandPopup.TabIndex = 281;
+            this.btnBrandPopup.UseVisualStyleBackColor = false;
+            this.btnBrandPopup.Click += new System.EventHandler(this.btnBrandPopup_Click);
+            // 
             // Product_Master
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1025, 700);
+            this.ClientSize = new System.Drawing.Size(769, 569);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblTotalRecords);
@@ -503,7 +504,6 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Product_Master";
             this.ShowIcon = false;
@@ -556,5 +556,7 @@
         private System.Windows.Forms.ComboBox cmbBrand;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnBrandPopup;
+        private System.Windows.Forms.Button btnCategoryPopup;
     }
 }

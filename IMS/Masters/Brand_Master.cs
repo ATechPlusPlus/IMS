@@ -365,5 +365,12 @@ namespace IMS.Masters
             dataGridView1.Columns["CountryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
+
+        private void btnSupplierPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Supplier_Details Obj = new Supplier_Details();
+            Obj.ShowDialog();
+            FillSupplierData();
+        }
     }
 }

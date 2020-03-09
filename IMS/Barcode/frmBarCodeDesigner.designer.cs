@@ -295,7 +295,6 @@
             this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Height :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // numericUpDown1
             // 
@@ -321,7 +320,6 @@
             this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Width :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // menuStrip1
             // 
@@ -397,7 +395,6 @@
             this.dfToolStripMenuItem.Name = "dfToolStripMenuItem";
             this.dfToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.dfToolStripMenuItem.Text = "Controls";
-            this.dfToolStripMenuItem.Click += new System.EventHandler(this.dfToolStripMenuItem_Click);
             // 
             // lableToolStripMenuItem
             // 
@@ -484,9 +481,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BarCode Designer";
             this.Load += new System.EventHandler(this.frmHome_Load);
-            this.Click += new System.EventHandler(this.frmHome_Click);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmHome_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmHome_MouseUp);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
