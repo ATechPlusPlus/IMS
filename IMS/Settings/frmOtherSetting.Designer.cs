@@ -41,9 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblCategoryName = new System.Windows.Forms.Label();
             this.txtPCName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnFooterCancel = new System.Windows.Forms.Button();
+            this.btnFooterSave = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtFooterNote = new System.Windows.Forms.TextBox();
             this.btnStorePopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -200,6 +206,72 @@
             this.txtPCName.Enter += new System.EventHandler(this.txtPCName_Enter);
             this.txtPCName.Leave += new System.EventHandler(this.txtPCName_Leave);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtFooterNote);
+            this.groupBox2.Controls.Add(this.btnFooterCancel);
+            this.groupBox2.Controls.Add(this.btnFooterSave);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(16, 263);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(419, 139);
+            this.groupBox2.TabIndex = 195;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Sales Invoice Footer Note :";
+            // 
+            // btnFooterCancel
+            // 
+            this.btnFooterCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFooterCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFooterCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFooterCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFooterCancel.Location = new System.Drawing.Point(342, 97);
+            this.btnFooterCancel.Name = "btnFooterCancel";
+            this.btnFooterCancel.Size = new System.Drawing.Size(71, 25);
+            this.btnFooterCancel.TabIndex = 114;
+            this.btnFooterCancel.Text = "Cancel";
+            this.btnFooterCancel.UseVisualStyleBackColor = true;
+            this.btnFooterCancel.Click += new System.EventHandler(this.btnFooterCancel_Click);
+            this.btnFooterCancel.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnFooterCancel.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
+            // 
+            // btnFooterSave
+            // 
+            this.btnFooterSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFooterSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFooterSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFooterSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFooterSave.Location = new System.Drawing.Point(254, 97);
+            this.btnFooterSave.Name = "btnFooterSave";
+            this.btnFooterSave.Size = new System.Drawing.Size(76, 25);
+            this.btnFooterSave.TabIndex = 113;
+            this.btnFooterSave.Text = "Save";
+            this.btnFooterSave.UseVisualStyleBackColor = true;
+            this.btnFooterSave.Click += new System.EventHandler(this.button2_Click);
+            this.btnFooterSave.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnFooterSave.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 17);
+            this.label4.TabIndex = 192;
+            this.label4.Text = "Note :";
+            // 
+            // txtFooterNote
+            // 
+            this.txtFooterNote.BackColor = System.Drawing.Color.White;
+            this.txtFooterNote.Location = new System.Drawing.Point(61, 35);
+            this.txtFooterNote.Multiline = true;
+            this.txtFooterNote.Name = "txtFooterNote";
+            this.txtFooterNote.Size = new System.Drawing.Size(352, 56);
+            this.txtFooterNote.TabIndex = 195;
+            // 
             // btnStorePopup
             // 
             this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
@@ -220,7 +292,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(447, 264);
+            this.ClientSize = new System.Drawing.Size(447, 418);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -234,6 +307,8 @@
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -252,6 +327,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtFooterNote;
+        private System.Windows.Forms.Button btnFooterCancel;
+        private System.Windows.Forms.Button btnFooterSave;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnStorePopup;
     }
 }

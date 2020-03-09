@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using CoreApp;
 
+
 namespace IMS.Sales
 {
     public partial class Sales_Invoice : Form
@@ -26,11 +27,12 @@ namespace IMS.Sales
             cboEntryMode.SelectedIndex = 0; // by default
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
+            btnPrint.BackgroundImage = B_Leave;
             BindStoreDetails();
 
             GenerateInvoiceNumber();
             InitItemTable();
-
+            dtpSalesDate.Value = DateTime.Now;
             txtProductName.Focus();
         }
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -459,14 +461,14 @@ namespace IMS.Sales
             Other_Forms.frmPayment.strPaymentAutoID = "";
             lblPMode.Text = "";
             txtCustomerID.Clear();
-            txtCustomerName.Clear();
+            txtCustomerMobile.Clear();
             dtItemDetails.Clear();
             txtProductID.Clear();
             txtEmpID.Clear();
 
             txtInvoiceNumber.Clear();
             txtProductName.Clear();
-            txtCustomerName.Clear();
+            txtCustomerMobile.Clear();
             cmbShop.SelectedIndex = -1;
             txtTotalItems.Text = "0";
 
@@ -475,7 +477,9 @@ namespace IMS.Sales
             txtDiscount.Text = "0";
             txtGrandTotal.Text = "0";
             picProduct.Image = null;
-           
+            BindStoreDetails();
+          
+            txtSalesMan.Clear();
 
 
         }
@@ -484,7 +488,7 @@ namespace IMS.Sales
             if (txtCustomerID.Text.Trim().Length==0)
             {
                 clsUtility.ShowInfoMessage("Please Enter Customer Name.", clsUtility.strProjectTitle);
-                txtCustomerName.Focus();
+                txtCustomerMobile.Focus();
                 return false;
             }
             if (txtEmpID.Text.Trim().Length == 0)
@@ -513,7 +517,7 @@ namespace IMS.Sales
 
                 #region SalesInvoiceDetails
                 ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
-                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd"));
+                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd HH:mm:ss"));
                 ObjDAL.SetColumnData("SubTotal", SqlDbType.Decimal, txtSubTotal.Text);
                 ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtDiscount.Text);
                 ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtDeliveryCharges.Text);
@@ -548,9 +552,24 @@ namespace IMS.Sales
                 clsUtility.ShowInfoMessage("Record has been saved successfully.", clsUtility.strProjectTitle);
                 ClearAll();
 
-                Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
-                frmSalesInvoice.InvoiceID = InvoiceID;
-                frmSalesInvoice.Show();
+
+                Button button = (Button)sender;
+                if (button.Name=="btnPrint")
+                {
+                    Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+                    frmSalesInvoice.InvoiceID = InvoiceID;
+                    frmSalesInvoice.IsDirectPrint = true;
+                    frmSalesInvoice.Show();
+                }
+                else
+                {
+                    
+                    Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+                    frmSalesInvoice.InvoiceID = InvoiceID;
+                    frmSalesInvoice.IsDirectPrint = false;
+                    frmSalesInvoice.Show();
+                }
+               
             }
 
            
@@ -592,6 +611,10 @@ namespace IMS.Sales
             {
                 if (e.KeyData==Keys.Enter)
                 {
+                    
+
+
+
                     GetItemDetailsByProductID(txtProductName.Text);
                 }
                
@@ -612,17 +635,18 @@ namespace IMS.Sales
         {
             try
             {
-                if (txtCustomerName.Text.Trim().Length>0)
+                if (txtCustomerMobile.Text.Trim().Length>0)
                 {
                   
-                    string query = "select CustomerID,Name,PhoneNo from " + clsUtility.DBName + ".dbo.CustomerMaster where Name like '%" + txtCustomerName.Text + "%'";
+                    string query = "select CustomerID,Name,PhoneNo from " + clsUtility.DBName + ".dbo.CustomerMaster where PhoneNo like '%" + txtCustomerMobile.Text + "%'";
                     DataTable dt = ObjDAL.ExecuteSelectStatement(query);
                     if (dt != null && dt.Rows.Count > 0)
                     {
                         ObjUtil.SetControlData(txtCustomerName, "Name");
+                        ObjUtil.SetControlData(txtCustomerMobile, "PhoneNo");
                         ObjUtil.SetControlData(txtCustomerID, "CustomerID");
 
-                        ObjUtil.ShowDataPopup(dt, txtCustomerName, this, this);
+                        ObjUtil.ShowDataPopup(dt, txtCustomerMobile, this, this);
 
                         if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
                         {

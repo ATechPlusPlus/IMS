@@ -27,11 +27,14 @@ namespace IMS.Settings
         {
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
+            btnFooterCancel.BackgroundImage= B_Leave;
+            btnFooterSave.BackgroundImage = B_Leave;
 
             txtPCName.Text = Environment.MachineName;
             LoadStore();
             BindStoreSettingData();
         }
+      
         private void LoadStore()
         {
             DataTable dt = ObjCon.ExecuteSelectStatement("SELECT StoreID, StoreName FROM " + clsUtility.DBName + ".[dbo].[StoreMaster] WITH(NOLOCK) ");
@@ -53,6 +56,16 @@ namespace IMS.Settings
 
                 //we are binding store category by index value.
                 cmbStoreCategory.SelectedIndex = Convert.ToInt32(dt.Rows[0]["StoreCategory"]);
+
+                if (dt.Rows[0]["InvoiceFooterNote"]!=DBNull.Value)
+                {
+                    txtFooterNote.Text = dt.Rows[0]["InvoiceFooterNote"].ToString();
+                }
+                else
+                {
+                    txtFooterNote.Text = "";
+                }
+             
             }
             else
             {
@@ -164,6 +177,43 @@ namespace IMS.Settings
         private void txtPCName_Leave(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender, Color.White);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable dtFooterNote = ObjCon.ExecuteSelectStatement("select * FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting]");
+            if (dtFooterNote!=null && dtFooterNote.Rows.Count > 0) // if data found for the PC thenupdate
+            {
+                if (dtFooterNote.Rows[0]["InvoiceFooterNote"] !=DBNull.Value)
+                {
+                   
+                    
+                    ObjCon.ExecuteNonQuery("update "+ clsUtility.DBName + ".dbo.DefaultStoreSetting set InvoiceFooterNote ='"+txtFooterNote.Text+"'");
+                    clsUtility.ShowInfoMessage("Footer note has been updated.", clsUtility.strProjectTitle);
+                }
+               
+            }
+            else
+            {
+                // else insert.
+               
+                ObjCon.SetColumnData("InvoiceFooterNote", SqlDbType.NVarChar, txtFooterNote.Text);
+              
+
+                int r = ObjCon.InsertData(clsUtility.DBName + ".[dbo].[DefaultStoreSetting]", false);
+                if (r > 0)
+                {
+                    clsUtility.ShowInfoMessage("Foorter note settings has been saved.", clsUtility.strProjectTitle);
+                }
+                lblmsg.Visible = false;
+
+            }
+        }
+
+        private void btnFooterCancel_Click(object sender, EventArgs e)
+        {
+            LoadStore();
+            BindStoreSettingData();
         }
 
         private void btnStorePopup_Click(object sender, EventArgs e)
