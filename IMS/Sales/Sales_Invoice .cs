@@ -30,7 +30,7 @@ namespace IMS.Sales
             btnPrint.BackgroundImage = B_Leave;
             BindStoreDetails();
 
-            GenerateInvoiceNumber();
+           // GenerateInvoiceNumber();
             InitItemTable();
             dtpSalesDate.Value = DateTime.Now;
             txtProductName.Focus();
@@ -50,14 +50,26 @@ namespace IMS.Sales
         {
             dtItemDetails.Columns.Add("ProductID");
             dtItemDetails.Columns.Add("ProductName");
+            dtItemDetails.Columns.Add("BarcodeNo");
+         
+
+            dtItemDetails.Columns.Add("ColorID");
+            dtItemDetails.Columns.Add("Color");
+
+            dtItemDetails.Columns.Add("SizeID");
+            dtItemDetails.Columns.Add("Size");
+
+
             dtItemDetails.Columns.Add("QTY");
             dtItemDetails.Columns.Add("Rate");
+
             dtItemDetails.Columns.Add("Total");
             dtItemDetails.Columns.Add("Delete");
 
 
         }
-        private void AddRowToItemDetails(string productID, string name, string qty, string rate, string total)
+        private void AddRowToItemDetails(string productID, string name, string qty, string rate, string total, 
+            string BarCode, string SizeID, string Size, string ColorID, string Color)
         {
             DataRow dRow = dtItemDetails.NewRow();
             dRow["ProductID"] = productID;
@@ -67,15 +79,25 @@ namespace IMS.Sales
             dRow["Total"] = total;
             dRow["Delete"] = "Delete";
 
+
+            dRow["ColorID"] = ColorID;
+            dRow["Color"] = Color;
+
+            dRow["SizeID"] = SizeID;
+            dRow["Size"] = Size;
+
+
+            dRow["BarcodeNo"] = BarCode;
+
             dtItemDetails.Rows.Add(dRow);
             dtItemDetails.AcceptChanges();
 
             dgvProductDetails.DataSource = dtItemDetails;
 
         }
-        private bool IsItemExist(string pID)
+        private bool IsItemExist(string barCode)
         {
-            DataRow [] dRow=  dtItemDetails.Select("ProductID='" + pID + "'");
+            DataRow [] dRow=  dtItemDetails.Select("BarcodeNo='" + barCode + "'");
             if (dRow.Length==0)
             {
                 return false;
@@ -85,16 +107,16 @@ namespace IMS.Sales
                 return true;
             }
         }
-        private void UpdateQTYByOne(string pID, decimal rate)
+        private void UpdateQTYByOne(string barCode, decimal rate)
         {
            
             
-            DataRow[] dRow = dtItemDetails.Select("ProductID='" + pID + "'");
+            DataRow[] dRow = dtItemDetails.Select("BarcodeNo='" + barCode + "'");
             
             // add one qty
             decimal NewQTY= Convert.ToDecimal(dRow[0]["QTY"]) + 1;
 
-            if (CheckProductQTY(Convert.ToInt32(pID), Convert.ToDecimal(NewQTY)))
+            if (CheckProductQTY(barCode, Convert.ToDecimal(NewQTY)))
             {
                 // set to col
                 dRow[0]["QTY"] = NewQTY.ToString();
@@ -304,7 +326,8 @@ namespace IMS.Sales
             DataGridView dgv = (DataGridView)sender;
             if (dgv.DataSource != null)
             {
-                GetItemDetailsByProductID(txtProductID.Text);
+                // 
+                //GetItemDetailsByProductID(txtProductID.Text);
             }
 
 
@@ -315,9 +338,9 @@ namespace IMS.Sales
 
 
         }
-        private bool CheckProductQTY(int ProductID, decimal CurQTY)
+        private bool CheckProductQTY(string _BarCoeNumber, decimal CurQTY)
         {
-            string strSQL = "select QTY from  " + clsUtility.DBName + ".[dbo].[ProductStockMaster] where ProductID="+ ProductID + " and StoreID="+cmbShop.SelectedValue.ToString();
+            string strSQL = "select QTY from  " + clsUtility.DBName + ".[dbo].[ProductStockColorSizeMaster] where BarcodeNo=" + _BarCoeNumber + " and StoreID="+cmbShop.SelectedValue.ToString();
 
    
             decimal TotalQTY =  Convert.ToDecimal(ObjDAL.ExecuteScalar(strSQL));
@@ -333,33 +356,48 @@ namespace IMS.Sales
             }
 
         }
-        private void GetItemDetailsByProductID(string _productID)
+        private void GetItemDetailsByProductID(string _BarCodeValue)
         {
-            string strQ = "select p1.ProductID, p1.ProductName,p1.Rate,p2.QTY from " + clsUtility.DBName + ".dbo.ProductMaster p1 join " +
-                          clsUtility.DBName + " .dbo.ProductStockMaster p2 on p1.ProductID = p2.ProductID " +
-                           " where p2.StoreID = " + cmbShop.SelectedValue + " and p1.ProductID = " + _productID;
-            DataTable dt = ObjDAL.ExecuteSelectStatement(strQ);
+        
+
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC GetProductDetailsByBarCode " + cmbShop.SelectedValue + ", "+ _BarCodeValue );
             if (ObjUtil.ValidateTable(dt))
             {
 
+                string pID= dt.Rows[0]["ProductID"].ToString();
                 string name = dt.Rows[0]["ProductName"].ToString();
                 string rate = dt.Rows[0]["Rate"].ToString();
+                string barCode= dt.Rows[0]["BarcodeNo"].ToString();
                 string qty = "1";
+
+                string SizeID= dt.Rows[0]["SizeID"].ToString();
+                string Size = dt.Rows[0]["Size"].ToString();
+
+
+                string ColorID = dt.Rows[0]["ColorID"].ToString();
+                string ColorName = dt.Rows[0]["ColorName"].ToString();
+
+
+
 
                 decimal total = Convert.ToDecimal(rate) * Convert.ToDecimal(qty);
 
-                if (CheckProductQTY(Convert.ToInt32(_productID), Convert.ToDecimal(qty)))
+                if (CheckProductQTY(barCode, Convert.ToDecimal(qty)))
                 {
                     // if Item already there in the grid, then just increase the QTY
-                    if (IsItemExist(_productID))
+                    if (IsItemExist(barCode))
                     {
-                        UpdateQTYByOne(_productID.ToString(), Convert.ToDecimal(rate));
-                        picProduct.Image = GetProductPhoto(Convert.ToInt32(_productID));
+                        UpdateQTYByOne(barCode.ToString(), Convert.ToDecimal(rate));
+
+
+                        picProduct.Image = GetProductPhoto(Convert.ToInt32(pID));
                     }
                     else
                     {
-                        AddRowToItemDetails(_productID, name, qty, rate, total.ToString());
-                     picProduct.Image=   GetProductPhoto(Convert.ToInt32(_productID));
+                        AddRowToItemDetails(pID, name, qty, rate, total.ToString(), barCode,SizeID,Size,ColorID,ColorName);
+
+
+                     picProduct.Image=   GetProductPhoto(Convert.ToInt32(pID));
                        
                     }
                     
@@ -386,6 +424,11 @@ namespace IMS.Sales
             ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.Fill);
             dgvProductDetails.Columns["ProductID"].Visible = false;
 
+            dgvProductDetails.Columns["ColoriD"].Visible = false;
+            dgvProductDetails.Columns["SizeiD"].Visible = false;
+
+           
+
             txtTotalItems.Text = dgvProductDetails.Rows.Count.ToString();
         }
 
@@ -397,8 +440,8 @@ namespace IMS.Sales
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
                 decimal Rate = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["Rate"].Value);
                 decimal Total = QTY * Rate;
-                int _ProductID = Convert.ToInt32(dgvProductDetails.Rows[e.RowIndex].Cells["ProductID"].Value);
-                if (CheckProductQTY(_ProductID,Convert.ToDecimal(QTY)))
+                string  _barNo = dgvProductDetails.Rows[e.RowIndex].Cells["Barcodeno"].Value.ToString();
+                if (CheckProductQTY(_barNo, Convert.ToDecimal(QTY)))
                 {
                     dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
                     CalculateGrandTotal();
@@ -408,7 +451,7 @@ namespace IMS.Sales
                     dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = _StartValue;
                     CalculateGrandTotal();
 
-                    clsUtility.ShowInfoMessage("QTY : "+ QTY + "NOT avaiable for the Product : " + dgvProductDetails.Rows[e.RowIndex].Cells["ProductName"].Value, clsUtility.strProjectTitle);
+                    clsUtility.ShowInfoMessage("QTY : "+ QTY + " NOT avaiable for the Product : " + dgvProductDetails.Rows[e.RowIndex].Cells["ProductName"].Value, clsUtility.strProjectTitle);
                 }
                 
                 
@@ -487,7 +530,7 @@ namespace IMS.Sales
         {
             if (txtCustomerID.Text.Trim().Length==0)
             {
-                clsUtility.ShowInfoMessage("Please Enter Customer Name.", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Please Enter Customer Mobile No.", clsUtility.strProjectTitle);
                 txtCustomerMobile.Focus();
                 return false;
             }
@@ -514,7 +557,7 @@ namespace IMS.Sales
                 dgvProductDetails.EndEdit();
 
                 // Before sales invocing make sure you have available qty for particular store
-
+                GenerateInvoiceNumber();
                 #region SalesInvoiceDetails
                 ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
                 ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -539,6 +582,8 @@ namespace IMS.Sales
                     string ProductID = dgvProductDetails.Rows[i].Cells["ProductID"].Value.ToString();
                     string QTY = dgvProductDetails.Rows[i].Cells["QTY"].Value.ToString();
                     string Rate = dgvProductDetails.Rows[i].Cells["Rate"].Value.ToString();
+                    string ColorID = dgvProductDetails.Rows[i].Cells["ColorID"].Value.ToString();
+                    string SizeID = dgvProductDetails.Rows[i].Cells["SizeID"].Value.ToString();
 
                     ObjDAL.SetColumnData("InvoiceID", SqlDbType.Int, InvoiceID);
                     ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
@@ -547,9 +592,10 @@ namespace IMS.Sales
                     ObjDAL.SetColumnData("Rate", SqlDbType.Decimal, Rate);
                     ObjDAL.InsertData(clsUtility.DBName + ".dbo.SalesDetails", false);
 
-                    ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockMaster SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString());
+                    ObjDAL.ExecuteNonQuery("UPDATE " + clsUtility.DBName + ".dbo.ProductStockColorSizeMaster "+
+                                            "SET QTY=QTY-" + QTY + " WHERE ProductID=" + ProductID + " and StoreID=" + cmbShop.SelectedValue.ToString() +" AND ColorID="+ColorID+" AND Size="+SizeID);
                 }
-                clsUtility.ShowInfoMessage("Record has been saved successfully.", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Data has been saved successfully.", clsUtility.strProjectTitle);
                 ClearAll();
 
 
@@ -611,10 +657,10 @@ namespace IMS.Sales
             {
                 if (e.KeyData==Keys.Enter)
                 {
-                    
 
 
 
+                    //txtProductName contains barcode.
                     GetItemDetailsByProductID(txtProductName.Text);
                 }
                

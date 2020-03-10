@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.txtInvoiceNumber = new System.Windows.Forms.TextBox();
             this.cmbShop = new System.Windows.Forms.ComboBox();
@@ -40,7 +41,9 @@
             this.rdShowAll = new System.Windows.Forms.RadioButton();
             this.rdSearchByStoreName = new System.Windows.Forms.RadioButton();
             this.dgvProductDetails = new System.Windows.Forms.DataGridView();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
@@ -72,27 +75,41 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.dtpSalesDate);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.txtInvoiceNumber);
+            this.groupBox1.Controls.Add(this.rdSearchByStoreName);
             this.groupBox1.Controls.Add(this.cmbShop);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.dtpSalesDate);
             this.groupBox1.Controls.Add(this.rdShowAll);
-            this.groupBox1.Controls.Add(this.rdSearchByStoreName);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(960, 116);
+            this.groupBox1.Size = new System.Drawing.Size(960, 154);
             this.groupBox1.TabIndex = 203;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3.Location = new System.Drawing.Point(18, 64);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(103, 21);
+            this.radioButton3.TabIndex = 201;
+            this.radioButton3.Text = "By Salsman :";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(18, 68);
+            this.radioButton2.Location = new System.Drawing.Point(18, 27);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(97, 21);
             this.radioButton2.TabIndex = 200;
@@ -103,9 +120,9 @@
             // 
             this.txtInvoiceNumber.BackColor = System.Drawing.Color.White;
             this.txtInvoiceNumber.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceNumber.Location = new System.Drawing.Point(121, 64);
+            this.txtInvoiceNumber.Location = new System.Drawing.Point(121, 25);
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
-            this.txtInvoiceNumber.Size = new System.Drawing.Size(190, 25);
+            this.txtInvoiceNumber.Size = new System.Drawing.Size(238, 25);
             this.txtInvoiceNumber.TabIndex = 199;
             // 
             // cmbShop
@@ -117,16 +134,16 @@
             this.cmbShop.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbShop.Location = new System.Drawing.Point(424, 24);
+            this.cmbShop.Location = new System.Drawing.Point(509, 23);
             this.cmbShop.Name = "cmbShop";
-            this.cmbShop.Size = new System.Drawing.Size(181, 27);
+            this.cmbShop.Size = new System.Drawing.Size(168, 27);
             this.cmbShop.TabIndex = 198;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(328, 24);
+            this.radioButton1.Location = new System.Drawing.Point(413, 26);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(90, 21);
             this.radioButton1.TabIndex = 197;
@@ -137,9 +154,9 @@
             // 
             this.dtpSalesDate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSalesDate.Location = new System.Drawing.Point(121, 20);
+            this.dtpSalesDate.Location = new System.Drawing.Point(121, 104);
             this.dtpSalesDate.Name = "dtpSalesDate";
-            this.dtpSalesDate.Size = new System.Drawing.Size(190, 25);
+            this.dtpSalesDate.Size = new System.Drawing.Size(96, 25);
             this.dtpSalesDate.TabIndex = 196;
             // 
             // rdShowAll
@@ -147,7 +164,7 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(667, 20);
+            this.rdShowAll.Location = new System.Drawing.Point(804, 25);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
@@ -160,7 +177,7 @@
             // 
             this.rdSearchByStoreName.AutoSize = true;
             this.rdSearchByStoreName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchByStoreName.Location = new System.Drawing.Point(18, 20);
+            this.rdSearchByStoreName.Location = new System.Drawing.Point(18, 104);
             this.rdSearchByStoreName.Name = "rdSearchByStoreName";
             this.rdSearchByStoreName.Size = new System.Drawing.Size(83, 21);
             this.rdSearchByStoreName.TabIndex = 6;
@@ -174,23 +191,41 @@
             this.dgvProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductDetails.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductDetails.Location = new System.Drawing.Point(12, 178);
+            this.dgvProductDetails.Location = new System.Drawing.Point(12, 247);
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.ReadOnly = true;
-            this.dgvProductDetails.Size = new System.Drawing.Size(960, 332);
+            this.dgvProductDetails.Size = new System.Drawing.Size(960, 263);
             this.dgvProductDetails.TabIndex = 204;
             this.dgvProductDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProductDetails_DataBindingComplete);
             // 
-            // radioButton3
+            // textBox1
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(328, 65);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(103, 21);
-            this.radioButton3.TabIndex = 201;
-            this.radioButton3.Text = "By Salsman :";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(121, 64);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(238, 25);
+            this.textBox1.TabIndex = 202;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(263, 106);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(96, 25);
+            this.dateTimePicker1.TabIndex = 246;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(223, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 17);
+            this.label1.TabIndex = 247;
+            this.label1.Text = "To : ";
             // 
             // Sales_Bill_Details
             // 
@@ -232,5 +267,8 @@
         private System.Windows.Forms.TextBox txtInvoiceNumber;
         private System.Windows.Forms.DataGridView dgvProductDetails;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

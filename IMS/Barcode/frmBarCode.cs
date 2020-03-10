@@ -64,7 +64,8 @@ namespace IMS.Barcode
                 dgvProductDetails.Columns[i].ReadOnly = true;
             }
 
-
+            dgvProductDetails.Columns["ProductStockID"].Visible = false;
+            dgvProductDetails.Columns["StoreID"].Visible = false;
         }
         Form1 obj;
         private void btnAdd_Click(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace IMS.Barcode
             }
             else if (objLable.Tag.ToString().Trim() == "BarcodeNo")
             {
-                objLable.Text = selectedRow.Cells["ColBarCodeNo"].Value.ToString();
+                objLable.Text = selectedRow.Cells["barcodeno"].Value.ToString();
             }
         }
         private void LoadTemplate(DataGridViewRow _Row)
@@ -347,26 +348,38 @@ namespace IMS.Barcode
 
                         int PID= Convert.ToInt32(dgvProductDetails.Rows[i].Cells["ColProductID"].Value);
                         int QTY = Convert.ToInt32(dgvProductDetails.Rows[i].Cells["ColQTY"].Value);
-                        int Size = Convert.ToInt32(dgvProductDetails.Rows[i].Cells["ColSize"].Value);
+                        
+                        int SizeID = Convert.ToInt32(dgvProductDetails.Rows[i].Cells["SizeID"].Value);
                         int ColorID = Convert.ToInt32(dgvProductDetails.Rows[i].Cells["ColColorID"].Value);
 
                         
                         // check if barcode number exist
-                        DataTable dtBarCodeNumber= ObjCon.ExecuteSelectStatement("select BarcodeNo from  " + clsUtility.DBName + ".dbo.ProductStockColorSizeMaster where ProductID=" + PID + " and ColorID=" + ColorID + " and Size=" + Size);
+                        DataTable dtBarCodeNumber= ObjCon.ExecuteSelectStatement("select BarcodeNo from  " + clsUtility.DBName + ".dbo.ProductStockColorSizeMaster where ProductID=" + PID + " and ColorID=" + ColorID + " and Size=" + SizeID);
                         if (dtBarCodeNumber!=null && dtBarCodeNumber.Rows.Count>0)
                         {
                             if (dtBarCodeNumber.Rows[0]["BarcodeNo"]!=DBNull.Value && dtBarCodeNumber.Rows[0]["BarcodeNo"].ToString().Length>=0)
                             {
-                                _Current_BarCodeNumber = dtBarCodeNumber.Rows[i]["BarcodeNo"].ToString();
+                                _Current_BarCodeNumber = dtBarCodeNumber.Rows[0]["BarcodeNo"].ToString();
                             }
                             else
                             {
                                 _Current_BarCodeNumber = GetBarcodeNumber();
 
+                                // update the bar code in  ProductStockColorSizeMaster ( main stock table)
                                 string strUpdat = "update  " + clsUtility.DBName + ".dbo.ProductStockColorSizeMaster " +
-                                    " set BarcodeNo='" + _Current_BarCodeNumber + "' where ProductID=" + PID + " and ColorID=" + ColorID + " and Size=" + Size;
+                                    " set BarcodeNo='" + _Current_BarCodeNumber + "' where ProductID=" + PID + " and ColorID=" + ColorID + " and Size=" + SizeID;
 
                                 ObjCon.ExecuteNonQuery(strUpdat);
+
+
+                                // update the bar code in [ProductStockMaster]
+                                string strUpdate2= "update " + clsUtility.DBName + ".[dbo].[ProductStockMaster] set BarcodeNo='"+ _Current_BarCodeNumber + "' where ProductID="+ PID + " and PurchaseInvoiceID="+ CurrentPurchaseInvoiceID+
+                                                            " and Size=" + SizeID + " AND ColorID=" + ColorID;
+
+                                ObjCon.ExecuteNonQuery(strUpdate2);
+
+
+
                             }
                            
                         }
@@ -375,7 +388,7 @@ namespace IMS.Barcode
                             _Current_BarCodeNumber= GetBarcodeNumber();
 
                             string strUpdat = "update  " + clsUtility.DBName + ".dbo.ProductStockColorSizeMaster " +
-                                " set BarcodeNo='" + _Current_BarCodeNumber + "' where ProductID=" + PID + " and ColorID=" + ColorID + " and Size=" + Size;
+                                " set BarcodeNo='" + _Current_BarCodeNumber + "' where ProductID=" + PID + " and ColorID=" + ColorID + " and Size=" + SizeID;
 
                             ObjCon.ExecuteNonQuery(strUpdat);
                         }
@@ -651,16 +664,23 @@ namespace IMS.Barcode
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            DataTable dtPurchaseInvDetails= ObjCon.ExecuteSelectStatement("exec "+clsUtility.DBName+".dbo.Get_PurchaseInvoice_BulkPrint_Color_Size '"+txtPurchaseInvoice.Text+"'");
-            if (dtPurchaseInvDetails!=null && dtPurchaseInvDetails.Rows.Count>0)
+            LoadData();
+        }
+        private void LoadData()
+        {
+            DataTable dtPurchaseInvDetails = ObjCon.ExecuteSelectStatement("exec " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_BulkPrint_Color_Size '" + txtPurchaseID.Text + "'");
+            if (dtPurchaseInvDetails != null && dtPurchaseInvDetails.Rows.Count > 0)
             {
                 dgvProductDetails.DataSource = dtPurchaseInvDetails;
+                CurrentPurchaseInvoiceID = txtPurchaseID.Text;
+                txtPurchaseID.Text = "";
             }
             else
             {
                 dgvProductDetails.DataSource = dtPurchaseInvDetails;
                 chkAll.Visible = false;
-
+                CurrentPurchaseInvoiceID = "";
+                txtPurchaseID.Clear();
                 clsUtility.ShowInfoMessage("No purchase invoice found for the given purhcase number.", clsUtility.strProjectTitle);
             }
             chkAll.Visible = true;
@@ -687,10 +707,66 @@ namespace IMS.Barcode
 
             dgvProductDetails.EndEdit();
         }
-
+        string CurrentPurchaseInvoiceID = "";
         private void txtPurchaseInvoice_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                DataTable dt = ObjCon.ExecuteSelectStatement("exec  " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_Popup '"+txtPurchaseInvoice.Text+"', 1");
+                if (dt != null && dt.Rows.Count > 0)
+                {
 
+
+                    ObjUtil.SetControlData(txtPurchaseInvoice, "SupplierBillNo");
+
+                    ObjUtil.SetControlData(txtPurchaseID, "PurchaseInvoiceID");
+
+
+
+                    ObjUtil.ShowDataPopup(dt, txtPurchaseInvoice, this, this);
+
+                    if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
+                    {
+                        // if there is only one column                
+                        ObjUtil.GetDataPopup().AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        if (ObjUtil.GetDataPopup().ColumnCount > 0)
+                        {
+                            ObjUtil.GetDataPopup().Columns["PurchaseInvoiceID"].Visible = false;
+                            ObjUtil.GetDataPopup().Columns["SupplierID"].Visible = false;
+                            ObjUtil.SetDataPopupSize(400, 0);
+                        }
+                    }
+                    //ObjUtil.GetDataPopup().CellClick += frmSalecounter_CellClick;
+                    //ObjUtil.GetDataPopup().KeyDown += frmSalecounter_KeyDown;
+                }
+                else
+                {
+                    ObjUtil.CloseAutoExtender();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DataTable dtPurchaseInvDetails = ObjCon.ExecuteSelectStatement("exec " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_BulkPrint_Color_Size '" + CurrentPurchaseInvoiceID + "'");
+            if (dtPurchaseInvDetails != null && dtPurchaseInvDetails.Rows.Count > 0)
+            {
+                dgvProductDetails.DataSource = dtPurchaseInvDetails;
+              
+            }
+            else
+            {
+                dgvProductDetails.DataSource = dtPurchaseInvDetails;
+                chkAll.Visible = false;
+
+                clsUtility.ShowInfoMessage("No purchase invoice found for the given purhcase number.", clsUtility.strProjectTitle);
+            }
+            chkAll.Visible = true;
         }
     }
 }

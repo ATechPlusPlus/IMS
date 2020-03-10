@@ -81,13 +81,16 @@
             this.picVisa = new System.Windows.Forms.PictureBox();
             this.picCash = new System.Windows.Forms.PictureBox();
             this.picKnet = new System.Windows.Forms.PictureBox();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BarcodeNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
@@ -292,8 +295,11 @@
             this.dgvProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductID,
             this.ProductName,
+            this.BarcodeNo,
             this.Rate,
             this.QTY,
+            this.Color,
+            this.Size,
             this.Total,
             this.ColDelete});
             this.dgvProductDetails.Location = new System.Drawing.Point(6, 51);
@@ -744,6 +750,16 @@
             this.picKnet.TabStop = false;
             this.picKnet.Click += new System.EventHandler(this.picKnet_Click);
             // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.BackColor = System.Drawing.Color.White;
+            this.txtCustomerName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerName.Location = new System.Drawing.Point(517, 45);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(54, 25);
+            this.txtCustomerName.TabIndex = 255;
+            this.txtCustomerName.Visible = false;
+            // 
             // ProductID
             // 
             this.ProductID.DataPropertyName = "ProductID";
@@ -756,6 +772,12 @@
             this.ProductName.HeaderText = "ProductName";
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
+            // 
+            // BarcodeNo
+            // 
+            this.BarcodeNo.DataPropertyName = "BarcodeNo";
+            this.BarcodeNo.HeaderText = "BarcodeNo";
+            this.BarcodeNo.Name = "BarcodeNo";
             // 
             // Rate
             // 
@@ -770,6 +792,18 @@
             this.QTY.HeaderText = "QTY";
             this.QTY.Name = "QTY";
             // 
+            // Color
+            // 
+            this.Color.DataPropertyName = "Color";
+            this.Color.HeaderText = "Color";
+            this.Color.Name = "Color";
+            // 
+            // Size
+            // 
+            this.Size.DataPropertyName = "Size";
+            this.Size.HeaderText = "Size";
+            this.Size.Name = "Size";
+            // 
             // Total
             // 
             this.Total.DataPropertyName = "Total";
@@ -782,16 +816,6 @@
             this.ColDelete.DataPropertyName = "Delete";
             this.ColDelete.HeaderText = "Delete";
             this.ColDelete.Name = "ColDelete";
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.BackColor = System.Drawing.Color.White;
-            this.txtCustomerName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerName.Location = new System.Drawing.Point(517, 45);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(54, 25);
-            this.txtCustomerName.TabIndex = 255;
-            this.txtCustomerName.Visible = false;
             // 
             // Sales_Invoice
             // 
@@ -910,12 +934,15 @@
         private System.Windows.Forms.Label lblPMode;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rate;
         private System.Windows.Forms.DataGridViewTextBoxColumn QTY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Size;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewButtonColumn ColDelete;
-        private System.Windows.Forms.TextBox txtCustomerName;
     }
 }
