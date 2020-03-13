@@ -19,18 +19,26 @@ namespace IMS.Barcode
         clsConnection_DAL ObjCon = new clsConnection_DAL(true);
         clsUtility ObjUtil = new clsUtility();
         Form1 obj;
-        private void aDDToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        Control pageControl;
+        Point DragStart = Point.Empty;
+        Control tgSelectedControl;
+        Control SelectedControl;
+        Direction direction;
+        Point newLocation;
+        Size newSize;
 
-        }
+        string strTemplate;
+        const int DRAG_HANDLE_SIZE = 7;
+        int mouseX, mouseY;
+        bool Dragging = false;
         bool isLoad = false;
+
         void obj_Paint(object sender, PaintEventArgs e)
         {
             //ControlPaint.DrawBorder(e.Graphics, obj.ClientRectangle, Color.Black, ButtonBorderStyle.Dashed);
             //base.OnPaint(e);
-
         }
-        Control tgSelectedControl;
+        
         private void SaveBarCodeSettings(string BarCodeData)
         {
             int count = ObjCon.CountRecords(clsUtility.DBName + ".dbo.DefaultStoreSetting", "MachineName='" + Environment.MachineName + "'");
@@ -48,7 +56,7 @@ namespace IMS.Barcode
         private string GetBarCodeSettings()
         {
             string strBarCodeSettings = null;
-            DataTable dataTable = ObjCon.ExecuteSelectStatement("SELECT BarCodeSetting FROM " + clsUtility.DBName + ".dbo.DefaultStoreSetting WHERE MachineName='"+ Environment.MachineName + "'");
+            DataTable dataTable = ObjCon.ExecuteSelectStatement("SELECT BarCodeSetting FROM " + clsUtility.DBName + ".dbo.DefaultStoreSetting WITH(NOLOCK) WHERE MachineName='"+ Environment.MachineName + "'");
             if (ObjUtil.ValidateTable(dataTable))
             {
                 if (dataTable.Rows[0]["BarCodeSetting"] != DBNull.Value)
@@ -73,9 +81,7 @@ namespace IMS.Barcode
             SE,
             None
         }
-        Control pageControl;
-        bool Dragging = false;
-        Point DragStart = Point.Empty;
+
         public void Init(Control control, Control container, Direction direction)
         {
             pageControl = control;
@@ -90,13 +96,6 @@ namespace IMS.Barcode
         {
             obj.MouseMove -= new MouseEventHandler(control_MouseMove);
         }
-
-        const int DRAG_HANDLE_SIZE = 7;
-        int mouseX, mouseY;
-        Control SelectedControl;
-        Direction direction;
-        Point newLocation;
-        Size newSize;
 
         public void UnRegisterAll(Object tgctr = null)
         {
@@ -124,7 +123,6 @@ namespace IMS.Barcode
             pageControl.Capture = true;
 
             DrawControlBorder(pageControl);
-
             pageControl.Invalidate();
 
         }
@@ -203,7 +201,6 @@ namespace IMS.Barcode
                 this.Refresh();
 
                 DrawControlBorder(pageControl);
-
                 pageControl.Invalidate();
             }
         }
@@ -214,7 +211,6 @@ namespace IMS.Barcode
             pageControl.Capture = false;
 
             DrawControlBorder(pageControl);
-
             pageControl.Invalidate();
         }
 
@@ -322,13 +318,11 @@ namespace IMS.Barcode
             else
             {
                 obj.Size = new Size((int)numericUpDown1.Value, (int)numericUpDown2.Value);
-
                 this.Refresh();
                 Dragging = false;
                 pageControl.Capture = false;
 
                 DrawControlBorder(pageControl);
-
                 pageControl.Invalidate();
             }
         }
@@ -515,7 +509,7 @@ namespace IMS.Barcode
                 }
             }
         }
-        string strTemplate;
+
         private void WriteToLog(string s)
         {
             strTemplate = strTemplate + s + Environment.NewLine;
@@ -729,8 +723,7 @@ namespace IMS.Barcode
                                 }
                             }
                         }
-
-                        MessageBox.Show("Template Loaded Successfully.", "Designer Tool");
+                        clsUtility.ShowInfoMessage("Template Loaded Successfully.", "Designer Tool");
                     }
                 }
             }
@@ -773,10 +766,7 @@ namespace IMS.Barcode
                 }
 
                 WriteToLog(type + "@" + b + "@" + family + "@" + arbg + "@" + fsize + "@" + w + "@" + h + "@" + x + "@" + y + "@" + text + "@" + backColor + "@" + RecBorderStyle + "@" + borderStyle + "@" + borderColor + "@" + strtag);
-
-
             }
-
             SaveBarCodeSettings(strTemplate);
             clsUtility.ShowInfoMessage("Barcode Template has been saved.", CoreApp.clsUtility.strProjectTitle);
             //SaveFileDialog Obj = new SaveFileDialog();
@@ -832,8 +822,8 @@ namespace IMS.Barcode
         {
             if (CoreApp.clsUtility.ShowQuestionMessage("Are you sure, you want to delete the bar code settings", CoreApp.clsUtility.strProjectTitle))
             {
-                ObjCon.ExecuteNonQuery("update "+clsUtility.DBName+".dbo.DefaultStoreSetting set BarCodeSetting=null where MachineName='" + Environment.MachineName + "'");
-                CoreApp.clsUtility.ShowInfoMessage("Barcode setting deleted.", CoreApp.clsUtility.strProjectTitle);
+                ObjCon.ExecuteNonQuery("UPDATE "+clsUtility.DBName+".dbo.DefaultStoreSetting SET BarCodeSetting=NULL WHERE MachineName='" + Environment.MachineName + "'");
+                clsUtility.ShowInfoMessage("Barcode setting deleted.", clsUtility.strProjectTitle);
             }
         }
 

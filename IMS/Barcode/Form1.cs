@@ -613,9 +613,5 @@ namespace IMS.Barcode
             SelectedControl.Text = richTextBox1.Text;
             pnlPopup.Visible = false;
         }
-
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-        }
     }
 }

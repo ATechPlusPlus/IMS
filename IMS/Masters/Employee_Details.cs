@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using CoreApp;
 
-
 namespace IMS.Masters
 {
     public partial class Employee_Details : Form
@@ -21,11 +20,10 @@ namespace IMS.Masters
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
 
-        int EmployeeID = 0;
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+        Image B_Leave = IMS.Properties.Resources.B_click;
+        Image B_Enter = IMS.Properties.Resources.B_on;
 
-        }
+        int EmployeeID = 0;
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -34,15 +32,10 @@ namespace IMS.Masters
             {
                 PicEmployee.Image = Image.FromFile(openFileDialog.FileName);
             }
-
         }
 
-
-        Image B_Leave = IMS.Properties.Resources.B_click;
-        Image B_Enter = IMS.Properties.Resources.B_on;
         private void Employee_Details_Load(object sender, EventArgs e)
         {
-
             clsUtility.IsAdmin = true;
 
             btnAdd.BackgroundImage = B_Leave;
@@ -51,7 +44,6 @@ namespace IMS.Masters
             btnUpdate.BackgroundImage = B_Leave;
             btnDelete.BackgroundImage = B_Leave;
             btnCancel.BackgroundImage = B_Leave;
-
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
@@ -75,7 +67,6 @@ namespace IMS.Masters
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
             grpEmployee.Enabled = true;
             txtEmployeeCode.Focus();
-
         }
         private void FillStoreDetails()
         {
@@ -99,9 +90,8 @@ namespace IMS.Masters
             PicEmployee.Image = null;
             cmbShop.SelectedIndex = -1;
             EmployeeID = 0;
-
             txtEmail.Clear();
-
+            dtpDOB.Value = DateTime.Now;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -109,12 +99,10 @@ namespace IMS.Masters
             if (ValidateEmployee())
             {
                 SaveEmployee();
-
             }
         }
         private void CreateNewUser(int EmployeeID)
         {
-
             ObjDAL.SetColumnData("UserName", SqlDbType.NVarChar, txtUsername.Text.Trim());
             ObjDAL.SetColumnData("Password", SqlDbType.NVarChar, ObjUtil.Encrypt(txtPass.Text.Trim(), true));
             ObjDAL.SetColumnData("EmailID", SqlDbType.NVarChar, txtEmail.Text.Trim());
@@ -135,52 +123,56 @@ namespace IMS.Masters
                 clsUtility.ShowInfoMessage("Failed to add the User.", clsUtility.strProjectTitle);
                 ObjDAL.ResetData();
             }
-
-
         }
 
         private bool ValidateEmployee()
         {
-            if (txtEmployeeCode.Text.Trim().Length == 0)
+            if (ObjUtil.IsControlTextEmpty(txtEmployeeCode))
             {
                 clsUtility.ShowInfoMessage("Please Enter Employee Code.", clsUtility.strProjectTitle);
                 txtEmployeeCode.Focus();
                 return false;
             }
 
-            if (txtName.Text.Trim().Length == 0)
+            else if (ObjUtil.IsControlTextEmpty(txtName))
             {
                 clsUtility.ShowInfoMessage("Please Enter Employee Name.", clsUtility.strProjectTitle);
                 txtName.Focus();
                 return false;
             }
-            if (cmbShop.Text.Trim().Length == 0)
+
+            else if (ObjUtil.IsControlTextEmpty(cmbShop))
             {
                 clsUtility.ShowInfoMessage("Please Select Shop.", clsUtility.strProjectTitle);
                 cmbShop.Focus();
                 return false;
             }
 
-            int result = ObjDAL.ExecuteScalarInt("select count(1) from "+clsUtility.DBName+".dbo.EmployeeDetails where EmployeeCode='" + txtEmployeeCode.Text + "' and EMPID<>" + EmployeeID);
+            else if (ObjUtil.IsControlTextEmpty(radMale) && ObjUtil.IsControlTextEmpty(radFemale))
+            {
+                clsUtility.ShowInfoMessage("Please Select Gender.", clsUtility.strProjectTitle);
+                radMale.Focus();
+                return false;
+            }
+
+            int result = ObjDAL.ExecuteScalarInt("SELECT COUNT(1) FROM " + clsUtility.DBName + ".dbo.EmployeeDetails WHERE EmployeeCode='" + txtEmployeeCode.Text + "' AND EMPID<>" + EmployeeID);
             if (result > 0)
             {
                 clsUtility.ShowInfoMessage("The Employee already exist with the given employee code. Please Enter different employee code.", clsUtility.strProjectTitle);
                 txtEmployeeCode.Focus();
                 return false;
-
             }
 
             if (txtUsername.Text.Trim().Length > 0) // if user name is entered
             {
-
-                if (txtPass.Text.Trim().Length == 0)
+                if (ObjUtil.IsControlTextEmpty(txtPass))
                 {
                     clsUtility.ShowInfoMessage("Please Enter Password.", clsUtility.strProjectTitle);
                     txtPass.Focus();
                     return false;
                 }
 
-                int countuser = ObjDAL.ExecuteScalarInt("select count(1) from "+clsUtility.DBName+".dbo.UserManagement where UserName='" + txtUsername.Text + "' and EmployeeID<>" + EmployeeID);
+                int countuser = ObjDAL.ExecuteScalarInt("SELECT COUNT(1) FROM " + clsUtility.DBName + ".dbo.UserManagement WHERE UserName='" + txtUsername.Text + "' AND EmployeeID<>" + EmployeeID);
                 if (countuser > 0)
                 {
                     clsUtility.ShowInfoMessage("The user name already exist.Please enter different user name.", clsUtility.strProjectTitle);
@@ -202,7 +194,7 @@ namespace IMS.Masters
             }
             else if (radFemale.Checked)
             {
-                ObjDAL.SetColumnData("Gender", SqlDbType.Bit, true);
+                ObjDAL.SetColumnData("Gender", SqlDbType.Bit, false);
             }
             ObjDAL.SetColumnData("DOB", SqlDbType.DateTime, dtpDOB.Value.ToString("yyyy-MM-dd"));
             ObjDAL.SetColumnData("Address", SqlDbType.NVarChar, txtAdd.Text.Trim());
@@ -223,7 +215,6 @@ namespace IMS.Masters
                 {
                     CreateNewUser(EmployeeID);
                 }
-
                 ClearAll();
                 LoadData();
                 grpEmployee.Enabled = false;
@@ -237,11 +228,10 @@ namespace IMS.Masters
 
         private void LoadData()
         {
-
-            string q = " select e1.EmpID,EmployeeCode,Name,ShopID,Gender,DOB,[Address],Photo, s1.StoreName from " + clsUtility.DBName + ".dbo.EmployeeDetails e1 join " + clsUtility.DBName + ".dbo.StoreMaster s1" +
-                        " on e1.ShopID=s1.StoreID order by EmpID desc";
+            string q = " select e1.EmpID,EmployeeCode,Name,ShopID,(CASE WHEN e1.Gender =1 THEN 'Male' WHEN e1.Gender =0 THEN 'Female' END) Gender,DOB,[Address],Photo, s1.StoreName FROM " + clsUtility.DBName + ".dbo.EmployeeDetails e1 join " + clsUtility.DBName + ".dbo.StoreMaster s1" +
+              " ON e1.ShopID=s1.StoreID ORDER BY EmpID DESC";
             DataTable dataTable = ObjDAL.ExecuteSelectStatement(q);
-            if (dataTable.Rows.Count > 0)
+            if (ObjUtil.ValidateTable(dataTable))
             {
                 dgvEmployee.DataSource = dataTable;
                 lblTotalRecords.Text = "Total Employee Count : " + dgvEmployee.Rows.Count.ToString();
@@ -250,7 +240,6 @@ namespace IMS.Masters
             {
                 dgvEmployee.DataSource = null;
                 lblTotalRecords.Text = "Total Employee Count : 0";
-
             }
         }
 
@@ -259,8 +248,6 @@ namespace IMS.Masters
             ObjUtil.SetRowNumber(dgvEmployee);
             ObjUtil.SetDataGridProperty(dgvEmployee, DataGridViewAutoSizeColumnsMode.Fill);
             dgvEmployee.Columns["ShopID"].Visible = false;
-
-            dgvEmployee.Columns["Gender"].Visible = false;
             dgvEmployee.Columns["Photo"].Visible = false;
             dgvEmployee.Columns["EmpID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dgvEmployee.Rows.Count;
@@ -275,12 +262,6 @@ namespace IMS.Masters
         {
             txtPass.UseSystemPasswordChar = false;
         }
-
-        private void txtPass_MouseDown(object sender, MouseEventArgs e)
-        {}
-
-        private void txtPass_MouseUp(object sender, MouseEventArgs e)
-        {}
 
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
@@ -301,7 +282,7 @@ namespace IMS.Masters
 
         private void BindUserDetails()
         {
-            DataTable dt = ObjDAL.ExecuteSelectStatement("select * from " + clsUtility.DBName + ".[dbo].[UserManagement] where EmployeeID=" + EmployeeID);
+            DataTable dt = ObjDAL.ExecuteSelectStatement("SELECT * FROM " + clsUtility.DBName + ".[dbo].[UserManagement] WHERE EmployeeID=" + EmployeeID);
             if (ObjUtil.ValidateTable(dt))
             {
                 txtUsername.Text = dt.Rows[0]["UserName"].ToString();
@@ -322,21 +303,21 @@ namespace IMS.Masters
                     txtName.Text = dgvEmployee.SelectedRows[0].Cells["Name"].Value.ToString();
                     cmbShop.SelectedValue = Convert.ToInt32(dgvEmployee.SelectedRows[0].Cells["ShopID"].Value);
 
-                    if (dgvEmployee.SelectedRows[0].Cells["Gender"].Value != DBNull.Value && Convert.ToBoolean(dgvEmployee.SelectedRows[0].Cells["Gender"].Value))
+                    if (dgvEmployee.SelectedRows[0].Cells["Gender"].Value != DBNull.Value && dgvEmployee.SelectedRows[0].Cells["Gender"].Value.ToString() == "Male")
                     {
                         radMale.Checked = true;
-                        radFemale.Checked = false;
+                        //radFemale.Checked = false;
                     }
-                    else if (dgvEmployee.SelectedRows[0].Cells["Gender"].Value != DBNull.Value && !Convert.ToBoolean(dgvEmployee.SelectedRows[0].Cells["Gender"].Value))
+                    else if (dgvEmployee.SelectedRows[0].Cells["Gender"].Value != DBNull.Value && dgvEmployee.SelectedRows[0].Cells["Gender"].Value.ToString() == "Female")
                     {
                         radFemale.Checked = true;
-                        radMale.Checked = false;
+                        //radMale.Checked = false;
                     }
-                    else
-                    {
-                        radMale.Checked = false;
-                        radFemale.Checked = false;
-                    }
+                    //else
+                    //{
+                    //    radMale.Checked = false;
+                    //    radFemale.Checked = false;
+                    //}
 
                     if (dgvEmployee.SelectedRows[0].Cells["DOB"].Value != DBNull.Value)
                     {
@@ -385,7 +366,7 @@ namespace IMS.Masters
             }
             else if (radFemale.Checked)
             {
-                ObjDAL.UpdateColumnData("Gender", SqlDbType.Bit, true);
+                ObjDAL.UpdateColumnData("Gender", SqlDbType.Bit, false);
             }
             ObjDAL.UpdateColumnData("DOB", SqlDbType.DateTime, dtpDOB.Value.ToString("yyyy-MM-dd"));
             ObjDAL.UpdateColumnData("Address", SqlDbType.NVarChar, txtAdd.Text.Trim());
@@ -398,7 +379,6 @@ namespace IMS.Masters
             ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
             ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-
             if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.EmployeeDetails", "EMPID = " + EmployeeID + "") > 0)
             {
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
@@ -408,7 +388,6 @@ namespace IMS.Masters
                 {
                     UpdateUserDetails();
                 }
-
                 LoadData();
                 ClearAll();
                 grpEmployee.Enabled = false;
@@ -426,9 +405,10 @@ namespace IMS.Masters
             ObjDAL.UpdateColumnData("UserName", SqlDbType.NVarChar, txtUsername.Text.Trim());
             ObjDAL.UpdateColumnData("Password", SqlDbType.NVarChar, ObjUtil.Encrypt(txtPass.Text.Trim(), true));
             ObjDAL.UpdateColumnData("EmailID", SqlDbType.NVarChar, txtEmail.Text.Trim());
-            ObjDAL.UpdateColumnData("IsAdmin", SqlDbType.Bit, false);
-            ObjDAL.UpdateColumnData("IsBlock", SqlDbType.Bit, false);
+            //ObjDAL.UpdateColumnData("IsAdmin", SqlDbType.Bit, false); 
+            //if user is blocked then if his details will update from this form then could be auto unblock
 
+            //ObjDAL.UpdateColumnData("IsBlock", SqlDbType.Bit, false);
             if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.UserManagement", "EmployeeID = " + EmployeeID + "") > 0)
             {
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);

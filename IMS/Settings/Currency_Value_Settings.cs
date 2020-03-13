@@ -29,7 +29,6 @@ namespace IMS.Settings
         {
             DataTable dt = null;
             dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_CurrencyRate");
-
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -45,7 +44,6 @@ namespace IMS.Settings
             cmbCountry.SelectedIndex = -1;
             txtCurrencyRate.Clear();
             cmbCountry.Focus();
-
         }
         private void FillCountryData()
         {
@@ -71,7 +69,6 @@ namespace IMS.Settings
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
-
             LoadData();
             FillCountryData();
         }
@@ -162,15 +159,14 @@ namespace IMS.Settings
                     else
                     {
                         clsUtility.ShowInfoMessage("Currency Rate for '" + cmbCountry.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.Text + "' is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                     cmbCountry.Focus();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -201,20 +197,18 @@ namespace IMS.Settings
                         LoadData();
                         ClearAll();
                         grpCurrencyValue.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowInfoMessage("Currency Rate for '" + cmbCountry.Text + "' is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("Currency Rate for '" + cmbCountry.Text + "' is already exist..", clsUtility.strProjectTitle);
                     cmbCountry.Focus();
-                    ObjDAL.ResetData();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -264,7 +258,8 @@ namespace IMS.Settings
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ObjUtil.SetRowNumber(dataGridView1);
-            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
+            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.ColumnHeader);
+            //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["CurrencyRateID"].Visible = false;
             dataGridView1.Columns["CountryID"].Visible = false;
         }
@@ -285,7 +280,10 @@ namespace IMS.Settings
                     cmbCountry.Focus();
                 }
 
-                catch (Exception ex) { clsUtility.ShowInfoMessage(ex.ToString(), clsUtility.strProjectTitle); }
+                catch (Exception ex)
+                {
+                    clsUtility.ShowInfoMessage(ex.ToString(), clsUtility.strProjectTitle);
+                }
             }
         }
 

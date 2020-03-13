@@ -36,8 +36,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grpProduct = new System.Windows.Forms.GroupBox();
-            this.cmbBrand = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnCategoryPopup = new System.Windows.Forms.Button();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
@@ -58,8 +57,6 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicProductMaster = new System.Windows.Forms.PictureBox();
             this.btnImport = new System.Windows.Forms.Button();
-            this.btnCategoryPopup = new System.Windows.Forms.Button();
-            this.btnBrandPopup = new System.Windows.Forms.Button();
             this.grpProduct.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -168,10 +165,7 @@
             // grpProduct
             // 
             this.grpProduct.BackColor = System.Drawing.Color.Transparent;
-            this.grpProduct.Controls.Add(this.btnBrandPopup);
             this.grpProduct.Controls.Add(this.btnCategoryPopup);
-            this.grpProduct.Controls.Add(this.cmbBrand);
-            this.grpProduct.Controls.Add(this.label1);
             this.grpProduct.Controls.Add(this.cmbCategory);
             this.grpProduct.Controls.Add(this.lblCategory);
             this.grpProduct.Controls.Add(this.lblProductName);
@@ -180,40 +174,34 @@
             this.grpProduct.Controls.Add(this.cmbActiveStatus);
             this.grpProduct.Enabled = false;
             this.grpProduct.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpProduct.Location = new System.Drawing.Point(45, 96);
+            this.grpProduct.Location = new System.Drawing.Point(19, 96);
             this.grpProduct.Name = "grpProduct";
             this.grpProduct.Size = new System.Drawing.Size(486, 196);
             this.grpProduct.TabIndex = 215;
             this.grpProduct.TabStop = false;
             this.grpProduct.Text = "Product Details";
             // 
-            // cmbBrand
+            // btnCategoryPopup
             // 
-            this.cmbBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBrand.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBrand.FormattingEnabled = true;
-            this.cmbBrand.Location = new System.Drawing.Point(159, 107);
-            this.cmbBrand.Name = "cmbBrand";
-            this.cmbBrand.Size = new System.Drawing.Size(206, 27);
-            this.cmbBrand.TabIndex = 198;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
-            this.label1.TabIndex = 197;
-            this.label1.Text = "Brand :";
+            this.btnCategoryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCategoryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCategoryPopup.BackgroundImage")));
+            this.btnCategoryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoryPopup.Location = new System.Drawing.Point(371, 75);
+            this.btnCategoryPopup.Name = "btnCategoryPopup";
+            this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCategoryPopup.TabIndex = 280;
+            this.btnCategoryPopup.UseVisualStyleBackColor = false;
+            this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
             // 
             // cmbCategory
             // 
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(159, 66);
+            this.cmbCategory.Location = new System.Drawing.Point(159, 75);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(206, 27);
             this.cmbCategory.TabIndex = 196;
@@ -223,7 +211,7 @@
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
             this.lblCategory.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(18, 69);
+            this.lblCategory.Location = new System.Drawing.Point(18, 79);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(85, 17);
             this.lblCategory.TabIndex = 195;
@@ -245,7 +233,7 @@
             this.lblActiveStatus.AutoSize = true;
             this.lblActiveStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveStatus.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveStatus.Location = new System.Drawing.Point(18, 153);
+            this.lblActiveStatus.Location = new System.Drawing.Point(18, 131);
             this.lblActiveStatus.Name = "lblActiveStatus";
             this.lblActiveStatus.Size = new System.Drawing.Size(94, 17);
             this.lblActiveStatus.TabIndex = 189;
@@ -254,6 +242,7 @@
             // txtProductName
             // 
             this.txtProductName.BackColor = System.Drawing.Color.White;
+            this.txtProductName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductName.Location = new System.Drawing.Point(159, 27);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(206, 25);
@@ -270,7 +259,7 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 148);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 125);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
@@ -282,9 +271,9 @@
             this.groupBox1.Controls.Add(this.rdSearchByProduct);
             this.groupBox1.Controls.Add(this.txtSearchByProduct);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(45, 298);
+            this.groupBox1.Location = new System.Drawing.Point(19, 298);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(689, 51);
+            this.groupBox1.Size = new System.Drawing.Size(738, 51);
             this.groupBox1.TabIndex = 214;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -333,9 +322,9 @@
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(45, 362);
+            this.grpGridview.Location = new System.Drawing.Point(19, 362);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(695, 175);
+            this.grpGridview.Size = new System.Drawing.Size(738, 175);
             this.grpGridview.TabIndex = 213;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Products";
@@ -350,7 +339,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(683, 145);
+            this.dataGridView1.Size = new System.Drawing.Size(715, 145);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -383,7 +372,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(42, 547);
+            this.lblTotalRecords.Location = new System.Drawing.Point(22, 544);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 217;
@@ -445,43 +434,13 @@
             this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnImport.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.Location = new System.Drawing.Point(204, 540);
+            this.btnImport.Location = new System.Drawing.Point(576, 542);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(164, 25);
             this.btnImport.TabIndex = 219;
             this.btnImport.Text = "Import data From Excel";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // btnCategoryPopup
-            // 
-            this.btnCategoryPopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnCategoryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCategoryPopup.BackgroundImage")));
-            this.btnCategoryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategoryPopup.Location = new System.Drawing.Point(371, 66);
-            this.btnCategoryPopup.Name = "btnCategoryPopup";
-            this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCategoryPopup.TabIndex = 280;
-            this.btnCategoryPopup.UseVisualStyleBackColor = false;
-            this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
-            // 
-            // btnBrandPopup
-            // 
-            this.btnBrandPopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnBrandPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBrandPopup.BackgroundImage")));
-            this.btnBrandPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBrandPopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBrandPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBrandPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrandPopup.Location = new System.Drawing.Point(371, 107);
-            this.btnBrandPopup.Name = "btnBrandPopup";
-            this.btnBrandPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnBrandPopup.TabIndex = 281;
-            this.btnBrandPopup.UseVisualStyleBackColor = false;
-            this.btnBrandPopup.Click += new System.EventHandler(this.btnBrandPopup_Click);
             // 
             // Product_Master
             // 
@@ -553,10 +512,7 @@
         private System.Windows.Forms.PictureBox PicProductMaster;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.ComboBox cmbBrand;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.Button btnBrandPopup;
         private System.Windows.Forms.Button btnCategoryPopup;
     }
 }

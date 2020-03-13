@@ -35,7 +35,10 @@ namespace IMS.Sales
         private void Sales_Bill_Details_Load(object sender, EventArgs e)
         {
             LoadData();
+            FillStoreData();
+            dtpToDate.MaxDate = DateTime.Now;
         }
+
         private void LoadData()
         {
             string strQ = "select s1.id, s1.InvoiceNumber,s1.InvoiceDate,s1.SubTotal, s1.Discount,s1.Tax, s1.GrandTotal,s1.SalesMan, s1.ShopeID, e1.Name,s2.StoreName from " + clsUtility.DBName+".dbo.SalesInvoiceDetails s1 Left join " +
@@ -45,12 +48,34 @@ namespace IMS.Sales
             dgvProductDetails.DataSource = ObjDAL.ExecuteSelectStatement(strQ);
         }
 
+        private void FillStoreData()
+        {
+            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".[dbo].[StoreMaster]", "StoreID,StoreName", "ISNULL(ActiveStatus,1)=1", "StoreName ASC");
+            if (ObjUtil.ValidateTable(dt))
+            {
+                cmbShop.DataSource = dt;
+                cmbShop.DisplayMember = "StoreName";
+                cmbShop.ValueMember = "StoreID";
+                cmbShop.SelectedIndex = -1;
+            }
+        }
+
         private void rdShowAll_CheckedChanged(object sender, EventArgs e)
         {
             if (rdShowAll.Checked)
             {
                 LoadData();
             }
+        }
+
+        private void txtInvoiceNumber_Enter(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender);
+        }
+
+        private void txtInvoiceNumber_Leave(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender, Color.White);
         }
     }
 }

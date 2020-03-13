@@ -83,7 +83,6 @@ namespace IMS.Masters
 
         private void LoadData()
         {
-            ObjUtil.SetDataGridProperty(dgvCustomerMaster, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
             dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CustomerMaster", "CustomerID,Name,Address,PhoneNo,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "Name");
             
@@ -127,15 +126,14 @@ namespace IMS.Masters
                     else
                     {
                         clsUtility.ShowInfoMessage("Customer Name : '" + txtCustomerName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtCustomerName.Text + "' Customer is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                     txtCustomerName.Focus();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -168,20 +166,18 @@ namespace IMS.Masters
                         LoadData();
                         ClearAll();
                         grpCustomer.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowErrorMessage("'" + txtCustomerName.Text + "' Customer is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtCustomerName.Text + "' Customer is already exist..", clsUtility.strProjectTitle);
                     txtCustomerName.Focus();
-                    ObjDAL.ResetData();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -234,14 +230,12 @@ namespace IMS.Masters
             {
                 try
                 {
-                    ID = Convert.ToInt32(dgvCustomerMaster.SelectedRows[0].Cells["CustomerID"].Value);
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
-
+                    ID = Convert.ToInt32(dgvCustomerMaster.SelectedRows[0].Cells["CustomerID"].Value);
                     txtCustomerName.Text = dgvCustomerMaster.SelectedRows[0].Cells["Name"].Value.ToString();
                     txtCustomerAddress.Text = dgvCustomerMaster.SelectedRows[0].Cells["Address"].Value.ToString();
                     txtCustomerPhoneNo.Text = dgvCustomerMaster.SelectedRows[0].Cells["PhoneNo"].Value.ToString();
                     cmbCustomerActiveStatus.SelectedItem = dgvCustomerMaster.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
-
                     grpCustomer.Enabled = false;
                     txtCustomerName.Focus();
                 }
@@ -260,7 +254,6 @@ namespace IMS.Masters
 
         private void Customer_Master_Load(object sender, EventArgs e)
         {
-            
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
             btnEdit.BackgroundImage = B_Leave;
@@ -274,7 +267,6 @@ namespace IMS.Masters
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             LoadData();
-
             grpCustomer.Enabled = false;
         }
 
@@ -282,7 +274,6 @@ namespace IMS.Masters
         {
             Button btn = (Button)sender;
             btn.BackgroundImage = B_Enter;
-
         }
 
         private void btnAdd_MouseLeave(object sender, EventArgs e)

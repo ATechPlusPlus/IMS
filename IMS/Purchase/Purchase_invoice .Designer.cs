@@ -217,7 +217,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(15, 399);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(908, 51);
+            this.groupBox1.Size = new System.Drawing.Size(951, 51);
             this.groupBox1.TabIndex = 235;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -268,7 +268,7 @@
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpGridview.Location = new System.Drawing.Point(15, 455);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(926, 175);
+            this.grpGridview.Size = new System.Drawing.Size(951, 175);
             this.grpGridview.TabIndex = 234;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Purchases Invoice";
@@ -283,7 +283,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(902, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(939, 147);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -376,7 +376,7 @@
             // txtBillValue
             // 
             this.txtBillValue.BackColor = System.Drawing.Color.White;
-            this.txtBillValue.Location = new System.Drawing.Point(481, 67);
+            this.txtBillValue.Location = new System.Drawing.Point(486, 67);
             this.txtBillValue.Name = "txtBillValue";
             this.txtBillValue.Size = new System.Drawing.Size(206, 25);
             this.txtBillValue.TabIndex = 236;
@@ -442,7 +442,7 @@
             // txtShipmentNo
             // 
             this.txtShipmentNo.BackColor = System.Drawing.Color.White;
-            this.txtShipmentNo.Location = new System.Drawing.Point(481, 28);
+            this.txtShipmentNo.Location = new System.Drawing.Point(486, 28);
             this.txtShipmentNo.Name = "txtShipmentNo";
             this.txtShipmentNo.Size = new System.Drawing.Size(206, 25);
             this.txtShipmentNo.TabIndex = 230;
@@ -483,7 +483,7 @@
             this.grpCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpCurrencyRate.Location = new System.Drawing.Point(20, 203);
             this.grpCurrencyRate.Name = "grpCurrencyRate";
-            this.grpCurrencyRate.Size = new System.Drawing.Size(686, 51);
+            this.grpCurrencyRate.Size = new System.Drawing.Size(709, 51);
             this.grpCurrencyRate.TabIndex = 238;
             this.grpCurrencyRate.TabStop = false;
             this.grpCurrencyRate.Text = "Currency";
@@ -493,7 +493,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(366, 23);
+            this.label2.Location = new System.Drawing.Point(381, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 17);
             this.label2.TabIndex = 242;
@@ -515,7 +515,7 @@
             // 
             this.txtCurrencyRate.BackColor = System.Drawing.Color.White;
             this.txtCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrencyRate.Location = new System.Drawing.Point(469, 19);
+            this.txtCurrencyRate.Location = new System.Drawing.Point(486, 19);
             this.txtCurrencyRate.Name = "txtCurrencyRate";
             this.txtCurrencyRate.ReadOnly = true;
             this.txtCurrencyRate.Size = new System.Drawing.Size(206, 25);

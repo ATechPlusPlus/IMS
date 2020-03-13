@@ -240,5 +240,11 @@ namespace IMS
             Purchase.Posting_Delivery obj = new Purchase.Posting_Delivery();
             obj.Show();
         }
+
+        private void diffBwPurchaseReceivedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Purchase.frmDiffPurchaseReceived Obj = new Purchase.frmDiffPurchaseReceived();
+            Obj.Show();
+        }
     }
 }

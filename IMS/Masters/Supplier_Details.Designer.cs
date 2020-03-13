@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.grpSupplier = new System.Windows.Forms.GroupBox();
+            this.btnCountryPopup = new System.Windows.Forms.Button();
             this.lblBankAccNo = new System.Windows.Forms.Label();
             this.txtBankAccNo = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCountryPopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.grpSupplier.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -79,7 +79,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(633, 40);
+            this.panel2.Size = new System.Drawing.Size(817, 40);
             this.panel2.TabIndex = 110;
             // 
             // label12
@@ -118,19 +118,34 @@
             this.grpSupplier.Controls.Add(this.lblBankAdd);
             this.grpSupplier.Enabled = false;
             this.grpSupplier.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpSupplier.Location = new System.Drawing.Point(30, 91);
+            this.grpSupplier.Location = new System.Drawing.Point(17, 91);
             this.grpSupplier.Name = "grpSupplier";
-            this.grpSupplier.Size = new System.Drawing.Size(486, 377);
+            this.grpSupplier.Size = new System.Drawing.Size(788, 236);
             this.grpSupplier.TabIndex = 203;
             this.grpSupplier.TabStop = false;
             this.grpSupplier.Text = "Supplier Details";
+            // 
+            // btnCountryPopup
+            // 
+            this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCountryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCountryPopup.BackgroundImage")));
+            this.btnCountryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCountryPopup.Location = new System.Drawing.Point(742, 27);
+            this.btnCountryPopup.Name = "btnCountryPopup";
+            this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCountryPopup.TabIndex = 279;
+            this.btnCountryPopup.UseVisualStyleBackColor = false;
+            this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
             // 
             // lblBankAccNo
             // 
             this.lblBankAccNo.AutoSize = true;
             this.lblBankAccNo.BackColor = System.Drawing.Color.Transparent;
             this.lblBankAccNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBankAccNo.Location = new System.Drawing.Point(18, 243);
+            this.lblBankAccNo.Location = new System.Drawing.Point(394, 113);
             this.lblBankAccNo.Name = "lblBankAccNo";
             this.lblBankAccNo.Size = new System.Drawing.Size(121, 17);
             this.lblBankAccNo.TabIndex = 201;
@@ -139,7 +154,8 @@
             // txtBankAccNo
             // 
             this.txtBankAccNo.BackColor = System.Drawing.Color.White;
-            this.txtBankAccNo.Location = new System.Drawing.Point(159, 243);
+            this.txtBankAccNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBankAccNo.Location = new System.Drawing.Point(532, 105);
             this.txtBankAccNo.Name = "txtBankAccNo";
             this.txtBankAccNo.Size = new System.Drawing.Size(206, 25);
             this.txtBankAccNo.TabIndex = 200;
@@ -152,7 +168,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblEmail.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(18, 171);
+            this.lblEmail.Location = new System.Drawing.Point(18, 147);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(55, 17);
             this.lblEmail.TabIndex = 199;
@@ -161,7 +177,8 @@
             // txtEmail
             // 
             this.txtEmail.BackColor = System.Drawing.Color.White;
-            this.txtEmail.Location = new System.Drawing.Point(159, 171);
+            this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(141, 147);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(206, 25);
             this.txtEmail.TabIndex = 198;
@@ -174,7 +191,7 @@
             this.lblBankName.AutoSize = true;
             this.lblBankName.BackColor = System.Drawing.Color.Transparent;
             this.lblBankName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBankName.Location = new System.Drawing.Point(19, 207);
+            this.lblBankName.Location = new System.Drawing.Point(394, 67);
             this.lblBankName.Name = "lblBankName";
             this.lblBankName.Size = new System.Drawing.Size(86, 17);
             this.lblBankName.TabIndex = 197;
@@ -183,7 +200,8 @@
             // txtBankName
             // 
             this.txtBankName.BackColor = System.Drawing.Color.White;
-            this.txtBankName.Location = new System.Drawing.Point(160, 207);
+            this.txtBankName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBankName.Location = new System.Drawing.Point(532, 67);
             this.txtBankName.Name = "txtBankName";
             this.txtBankName.Size = new System.Drawing.Size(206, 25);
             this.txtBankName.TabIndex = 196;
@@ -196,7 +214,7 @@
             this.lblFax.AutoSize = true;
             this.lblFax.BackColor = System.Drawing.Color.Transparent;
             this.lblFax.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFax.Location = new System.Drawing.Point(18, 135);
+            this.lblFax.Location = new System.Drawing.Point(18, 107);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(37, 17);
             this.lblFax.TabIndex = 195;
@@ -205,7 +223,8 @@
             // txtFax
             // 
             this.txtFax.BackColor = System.Drawing.Color.White;
-            this.txtFax.Location = new System.Drawing.Point(159, 135);
+            this.txtFax.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFax.Location = new System.Drawing.Point(141, 107);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(206, 25);
             this.txtFax.TabIndex = 194;
@@ -218,7 +237,7 @@
             this.lblPhone.AutoSize = true;
             this.lblPhone.BackColor = System.Drawing.Color.Transparent;
             this.lblPhone.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(18, 99);
+            this.lblPhone.Location = new System.Drawing.Point(18, 67);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(52, 17);
             this.lblPhone.TabIndex = 193;
@@ -227,7 +246,8 @@
             // txtPhone
             // 
             this.txtPhone.BackColor = System.Drawing.Color.White;
-            this.txtPhone.Location = new System.Drawing.Point(159, 99);
+            this.txtPhone.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.Location = new System.Drawing.Point(141, 67);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(206, 25);
             this.txtPhone.TabIndex = 192;
@@ -240,7 +260,7 @@
             this.lblCountry.AutoSize = true;
             this.lblCountry.BackColor = System.Drawing.Color.Transparent;
             this.lblCountry.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.Location = new System.Drawing.Point(18, 63);
+            this.lblCountry.Location = new System.Drawing.Point(394, 27);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(62, 17);
             this.lblCountry.TabIndex = 191;
@@ -254,7 +274,7 @@
             this.cmbCountry.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbCountry.Location = new System.Drawing.Point(159, 63);
+            this.cmbCountry.Location = new System.Drawing.Point(532, 27);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(206, 27);
             this.cmbCountry.TabIndex = 190;
@@ -273,10 +293,11 @@
             // txtBankAdd
             // 
             this.txtBankAdd.BackColor = System.Drawing.Color.White;
-            this.txtBankAdd.Location = new System.Drawing.Point(159, 283);
+            this.txtBankAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBankAdd.Location = new System.Drawing.Point(532, 147);
             this.txtBankAdd.Multiline = true;
             this.txtBankAdd.Name = "txtBankAdd";
-            this.txtBankAdd.Size = new System.Drawing.Size(206, 46);
+            this.txtBankAdd.Size = new System.Drawing.Size(206, 71);
             this.txtBankAdd.TabIndex = 185;
             this.txtBankAdd.UseSystemPasswordChar = true;
             this.txtBankAdd.Enter += new System.EventHandler(this.txtSupplierName_Enter);
@@ -288,7 +309,7 @@
             this.lblActiveStatus.AutoSize = true;
             this.lblActiveStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveStatus.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveStatus.Location = new System.Drawing.Point(19, 338);
+            this.lblActiveStatus.Location = new System.Drawing.Point(18, 187);
             this.lblActiveStatus.Name = "lblActiveStatus";
             this.lblActiveStatus.Size = new System.Drawing.Size(94, 17);
             this.lblActiveStatus.TabIndex = 189;
@@ -297,7 +318,8 @@
             // txtSupplierName
             // 
             this.txtSupplierName.BackColor = System.Drawing.Color.White;
-            this.txtSupplierName.Location = new System.Drawing.Point(159, 27);
+            this.txtSupplierName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierName.Location = new System.Drawing.Point(141, 27);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(206, 25);
             this.txtSupplierName.TabIndex = 184;
@@ -313,7 +335,7 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(160, 338);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(141, 187);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
@@ -323,7 +345,7 @@
             this.lblBankAdd.AutoSize = true;
             this.lblBankAdd.BackColor = System.Drawing.Color.Transparent;
             this.lblBankAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBankAdd.Location = new System.Drawing.Point(18, 298);
+            this.lblBankAdd.Location = new System.Drawing.Point(394, 147);
             this.lblBankAdd.Name = "lblBankAdd";
             this.lblBankAdd.Size = new System.Drawing.Size(98, 17);
             this.lblBankAdd.TabIndex = 188;
@@ -336,9 +358,9 @@
             this.groupBox1.Controls.Add(this.rdSearchBySupplier);
             this.groupBox1.Controls.Add(this.txtSearchBySupplier);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(30, 474);
+            this.groupBox1.Location = new System.Drawing.Point(17, 352);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 51);
+            this.groupBox1.Size = new System.Drawing.Size(788, 51);
             this.groupBox1.TabIndex = 202;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -348,7 +370,7 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(457, 19);
+            this.rdShowAll.Location = new System.Drawing.Point(659, 20);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
@@ -387,7 +409,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(27, 709);
+            this.lblTotalRecords.Location = new System.Drawing.Point(20, 615);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 201;
@@ -398,9 +420,9 @@
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(30, 529);
+            this.grpGridview.Location = new System.Drawing.Point(17, 431);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(575, 175);
+            this.grpGridview.Size = new System.Drawing.Size(788, 175);
             this.grpGridview.TabIndex = 200;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Suppliers";
@@ -415,7 +437,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(562, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 147);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -426,7 +448,7 @@
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(281, 57);
+            this.btnUpdate.Location = new System.Drawing.Point(370, 52);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
             this.btnUpdate.TabIndex = 197;
@@ -442,7 +464,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(445, 57);
+            this.btnCancel.Location = new System.Drawing.Point(534, 52);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
             this.btnCancel.TabIndex = 199;
@@ -458,7 +480,7 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(363, 57);
+            this.btnDelete.Location = new System.Drawing.Point(452, 52);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
             this.btnDelete.TabIndex = 198;
@@ -474,7 +496,7 @@
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(201, 57);
+            this.btnEdit.Location = new System.Drawing.Point(290, 52);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
             this.btnEdit.TabIndex = 196;
@@ -490,7 +512,7 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(119, 57);
+            this.btnSave.Location = new System.Drawing.Point(208, 52);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
             this.btnSave.TabIndex = 195;
@@ -506,7 +528,7 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(30, 57);
+            this.btnAdd.Location = new System.Drawing.Point(119, 52);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
             this.btnAdd.TabIndex = 194;
@@ -516,28 +538,13 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
-            // btnCountryPopup
-            // 
-            this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnCountryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCountryPopup.BackgroundImage")));
-            this.btnCountryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCountryPopup.Location = new System.Drawing.Point(370, 63);
-            this.btnCountryPopup.Name = "btnCountryPopup";
-            this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCountryPopup.TabIndex = 279;
-            this.btnCountryPopup.UseVisualStyleBackColor = false;
-            this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
-            // 
             // Supplier_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 727);
+            this.ClientSize = new System.Drawing.Size(817, 639);
             this.Controls.Add(this.grpSupplier);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTotalRecords);

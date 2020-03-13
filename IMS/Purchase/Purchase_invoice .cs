@@ -196,15 +196,14 @@ namespace IMS.Purchase
                     else
                     {
                         clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                     cmbSupplier.Focus();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -254,20 +253,18 @@ namespace IMS.Purchase
                         grpPurchaseInvoice.Enabled = false;
                         grpForeignCurrency.Enabled = false;
                         grpLocalCurrency.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
                     cmbSupplier.Focus();
-                    ObjDAL.ResetData();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -344,7 +341,10 @@ namespace IMS.Purchase
                     grpPurchaseInvoice.Enabled = false;
                     txtSupplierBillNo.Focus();
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
+                }
             }
         }
 
@@ -466,7 +466,8 @@ namespace IMS.Purchase
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ObjUtil.SetRowNumber(dataGridView1);
-            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
+            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.ColumnHeader);
+            //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["PurchaseInvoiceID"].Visible = false;
             //dataGridView1.Columns["SupplierID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
@@ -477,7 +478,7 @@ namespace IMS.Purchase
             decimal CurrencyRate = 0.0M;
             decimal BillValue = 0.0M;
             decimal LocalValue = 0.0M;
-            //int TotalQTY = 0;
+
             decimal ForeignExp = 0.0M;
             decimal ForeignDiscount = 0.0M;
             decimal ForeignNetValue = 0.0M;
@@ -486,25 +487,14 @@ namespace IMS.Purchase
             decimal LocalNewPriceRate = 0.0M;
             decimal LocalBillValue = 0.0M;
 
-            //if (ObjUtil.IsControlTextEmpty(cmbCountry))
-            //{
-            //    clsUtility.ShowInfoMessage("Please Select Supplier Country..", clsUtility.strProjectTitle);
-            //    return;
-            //}
-            //else if (ObjUtil.IsControlTextEmpty(txtCurrencyRate))
-            //{
-            //    clsUtility.ShowInfoMessage("Currency Rate is not found for Country " + cmbCountry.Text, clsUtility.strProjectTitle);
-            //    return;
-            //}
             try
             {
                 CurrencyRate = txtCurrencyRate.Text.Length > 0 ? Convert.ToDecimal(txtCurrencyRate.Text) : 0;
                 BillValue = txtBillValue.Text.Length > 0 ? Convert.ToDecimal(txtBillValue.Text) : 0;
                 ForeignExp = txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0;
                 ForeignDiscount = txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0;
-                //TotalQTY = txtTotalQTY.Text.Length > 0 ? Convert.ToInt32(txtTotalQTY.Text) : 0;
-                LocalExp = txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0;
 
+                LocalExp = txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0;
                 LocalValue = (BillValue * CurrencyRate);
                 txtLocalValue.Text = Math.Round(LocalValue, 2).ToString();
 
@@ -513,24 +503,33 @@ namespace IMS.Purchase
 
                 LocalBillValue = Math.Round((ForeignNetValue * CurrencyRate) + LocalExp, 2);
                 txtLocalBillValue.Text = Math.Round(LocalBillValue, 2).ToString();
-                LocalNewPriceRate = Math.Round((LocalBillValue / BillValue), 2);
+                if (BillValue > 0)
+                {
+                    LocalNewPriceRate = Math.Round((LocalBillValue / BillValue), 2);
+                }
                 txtNewPriceRate.Text = LocalNewPriceRate.ToString();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
+            }
         }
 
         private void cmbCountry_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmbCountry.SelectedIndex >= 0)
             {
-                object ob = ObjDAL.ExecuteScalar("SELECT CurrencyRate FROM " + clsUtility.DBName + ".dbo.CurrencyRateSetting WHERE CountryID = " + cmbCountry.SelectedValue);
+                object ob = ObjDAL.ExecuteScalar("SELECT CurrencyRate FROM " + clsUtility.DBName + ".dbo.CurrencyRateSetting WITH(NOLOCK) WHERE CountryID = " + cmbCountry.SelectedValue);
                 txtCurrencyRate.Text = Convert.ToDecimal(ob).ToString();
             }
         }
 
         private void txtBillValue_TextChanged(object sender, EventArgs e)
         {
-            CalculateTotalBill();
+            if (txtBillValue.Text.Length > 0)
+            {
+                CalculateTotalBill();
+            }
         }
 
         private void cmbSupplier_SelectionChangeCommitted(object sender, EventArgs e)
@@ -557,9 +556,9 @@ namespace IMS.Purchase
         private void txtCurrencyRate_TextChanged(object sender, EventArgs e)
         {
             if (txtCurrencyRate.TextLength > 0)
+            {
                 CalculateTotalBill();
+            }
         }
     }
 }
-
-

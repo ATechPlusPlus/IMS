@@ -78,7 +78,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 70);
+            this.groupBox1.Size = new System.Drawing.Size(776, 114);
             this.groupBox1.TabIndex = 206;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -86,13 +86,15 @@
             // txtSearchByProductName
             // 
             this.txtSearchByProductName.BackColor = System.Drawing.Color.White;
-            this.txtSearchByProductName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSearchByProductName.Enabled = false;
+            this.txtSearchByProductName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchByProductName.Location = new System.Drawing.Point(452, 24);
             this.txtSearchByProductName.Name = "txtSearchByProductName";
             this.txtSearchByProductName.Size = new System.Drawing.Size(181, 25);
             this.txtSearchByProductName.TabIndex = 229;
-            this.txtSearchByProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
+            this.txtSearchByProductName.TextChanged += new System.EventHandler(this.txtSearchByProductName_TextChanged);
+            this.txtSearchByProductName.Enter += new System.EventHandler(this.txtSearchByProductName_Enter);
+            this.txtSearchByProductName.Leave += new System.EventHandler(this.txtSearchByProductName_Leave);
             // 
             // rdSearchByItem
             // 
@@ -151,17 +153,16 @@
             this.dgvProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductDetails.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductDetails.Location = new System.Drawing.Point(12, 140);
+            this.dgvProductDetails.Location = new System.Drawing.Point(12, 178);
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.ReadOnly = true;
-            this.dgvProductDetails.Size = new System.Drawing.Size(776, 309);
+            this.dgvProductDetails.Size = new System.Drawing.Size(776, 271);
             this.dgvProductDetails.TabIndex = 207;
             this.dgvProductDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProductDetails_DataBindingComplete);
             // 
             // txtProductID
             // 
             this.txtProductID.BackColor = System.Drawing.Color.White;
-            this.txtProductID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtProductID.Location = new System.Drawing.Point(744, 40);
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.Size = new System.Drawing.Size(38, 20);

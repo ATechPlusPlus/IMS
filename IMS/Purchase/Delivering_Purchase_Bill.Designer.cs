@@ -318,7 +318,7 @@
             this.dgvQtycolor.Location = new System.Drawing.Point(7, 312);
             this.dgvQtycolor.Name = "dgvQtycolor";
             this.dgvQtycolor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvQtycolor.Size = new System.Drawing.Size(932, 147);
+            this.dgvQtycolor.Size = new System.Drawing.Size(959, 147);
             this.dgvQtycolor.TabIndex = 258;
             this.dgvQtycolor.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvQtycolor_CellBeginEdit);
             this.dgvQtycolor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellClick);
@@ -427,7 +427,7 @@
             this.lblDiffQty.AutoSize = true;
             this.lblDiffQty.BackColor = System.Drawing.Color.Transparent;
             this.lblDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiffQty.Location = new System.Drawing.Point(674, 473);
+            this.lblDiffQty.Location = new System.Drawing.Point(701, 472);
             this.lblDiffQty.Name = "lblDiffQty";
             this.lblDiffQty.Size = new System.Drawing.Size(113, 17);
             this.lblDiffQty.TabIndex = 270;
@@ -437,7 +437,7 @@
             // 
             this.txtDiffQty.BackColor = System.Drawing.Color.White;
             this.txtDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtDiffQty.Location = new System.Drawing.Point(806, 466);
+            this.txtDiffQty.Location = new System.Drawing.Point(832, 468);
             this.txtDiffQty.Name = "txtDiffQty";
             this.txtDiffQty.ReadOnly = true;
             this.txtDiffQty.Size = new System.Drawing.Size(133, 25);
@@ -449,7 +449,7 @@
             this.lblTotalQtyBill.AutoSize = true;
             this.lblTotalQtyBill.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalQtyBill.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalQtyBill.Location = new System.Drawing.Point(324, 473);
+            this.lblTotalQtyBill.Location = new System.Drawing.Point(324, 472);
             this.lblTotalQtyBill.Name = "lblTotalQtyBill";
             this.lblTotalQtyBill.Size = new System.Drawing.Size(134, 17);
             this.lblTotalQtyBill.TabIndex = 268;
@@ -459,7 +459,7 @@
             // 
             this.txtTotalQTYBill.BackColor = System.Drawing.Color.White;
             this.txtTotalQTYBill.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtTotalQTYBill.Location = new System.Drawing.Point(463, 468);
+            this.txtTotalQTYBill.Location = new System.Drawing.Point(486, 468);
             this.txtTotalQTYBill.Name = "txtTotalQTYBill";
             this.txtTotalQTYBill.ReadOnly = true;
             this.txtTotalQTYBill.Size = new System.Drawing.Size(133, 25);
@@ -471,7 +471,7 @@
             this.lblTotalEnteredQty.AutoSize = true;
             this.lblTotalEnteredQty.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalEnteredQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalEnteredQty.Location = new System.Drawing.Point(4, 473);
+            this.lblTotalEnteredQty.Location = new System.Drawing.Point(4, 472);
             this.lblTotalEnteredQty.Name = "lblTotalEnteredQty";
             this.lblTotalEnteredQty.Size = new System.Drawing.Size(130, 17);
             this.lblTotalEnteredQty.TabIndex = 266;
@@ -499,7 +499,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(7, 504);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(932, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(959, 147);
             this.dataGridView1.TabIndex = 271;
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 

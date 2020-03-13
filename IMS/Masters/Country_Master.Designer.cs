@@ -69,7 +69,7 @@
             this.grpCountry.Controls.Add(this.lblCountryName);
             this.grpCountry.Enabled = false;
             this.grpCountry.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpCountry.Location = new System.Drawing.Point(33, 95);
+            this.grpCountry.Location = new System.Drawing.Point(17, 95);
             this.grpCountry.Name = "grpCountry";
             this.grpCountry.Size = new System.Drawing.Size(486, 159);
             this.grpCountry.TabIndex = 1;
@@ -91,6 +91,7 @@
             // 
             this.txtCountryName.BackColor = System.Drawing.Color.White;
             this.txtCountryName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCountryName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountryName.Location = new System.Drawing.Point(159, 65);
             this.txtCountryName.Name = "txtCountryName";
             this.txtCountryName.Size = new System.Drawing.Size(206, 25);
@@ -114,6 +115,7 @@
             // 
             this.txtCountryCode.BackColor = System.Drawing.Color.White;
             this.txtCountryCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCountryCode.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountryCode.Location = new System.Drawing.Point(159, 24);
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.Size = new System.Drawing.Size(206, 25);
@@ -193,9 +195,9 @@
             this.groupBox1.Controls.Add(this.rdSearchByCountry);
             this.groupBox1.Controls.Add(this.txtSearchByCountry);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(33, 252);
+            this.groupBox1.Location = new System.Drawing.Point(17, 252);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 51);
+            this.groupBox1.Size = new System.Drawing.Size(591, 51);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -210,7 +212,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(562, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(579, 147);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -220,7 +222,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(30, 487);
+            this.lblTotalRecords.Location = new System.Drawing.Point(20, 486);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 202;
@@ -231,9 +233,9 @@
             this.grpGridview.BackColor = System.Drawing.Color.Transparent;
             this.grpGridview.Controls.Add(this.dataGridView1);
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGridview.Location = new System.Drawing.Point(33, 307);
+            this.grpGridview.Location = new System.Drawing.Point(17, 307);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(575, 175);
+            this.grpGridview.Size = new System.Drawing.Size(591, 175);
             this.grpGridview.TabIndex = 201;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "List of Countries";

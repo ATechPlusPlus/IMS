@@ -87,8 +87,8 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName");
-
+            //dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName");
+            dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Brand_Master");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -137,7 +137,6 @@ namespace IMS.Masters
                 {
                     ObjDAL.SetColumnData("BrandName", SqlDbType.NVarChar, txtBrandName.Text.Trim());
                     ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
-                    ObjDAL.SetColumnData("CountryID", SqlDbType.Int, cmbCountry.SelectedValue);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.BrandMaster", true) > 0)
@@ -179,12 +178,11 @@ namespace IMS.Masters
                 {
                     ObjDAL.UpdateColumnData("BrandName", SqlDbType.NVarChar, txtBrandName.Text.Trim());
                     ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
-                    ObjDAL.UpdateColumnData("CountryID", SqlDbType.Int, cmbCountry.SelectedValue);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.BrandMaster", "BrandID = " + ID + "") > 0)
+                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.BrandMaster", "BrandID = " + ID) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
@@ -192,20 +190,18 @@ namespace IMS.Masters
                         LoadData();
                         ClearAll();
                         grpBrand.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowErrorMessage("'" + txtBrandName.Text + "' Brand is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtBrandName.Text + "' Brand is already exist..", clsUtility.strProjectTitle);
                     txtBrandName.Focus();
-                    ObjDAL.ResetData();
                 }
+                ObjDAL.ResetData();
             }
         }
 
@@ -214,7 +210,7 @@ namespace IMS.Masters
             DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtBrandName.Text + "' Brand ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.BrandMaster", "BrandName='" + txtBrandName.Text.Trim() + "'") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.BrandMaster", "BrandID = " + ID) > 0)
                 {
                     clsUtility.ShowInfoMessage("'" + txtBrandName.Text + "' Brand is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
@@ -265,7 +261,6 @@ namespace IMS.Masters
                     cmbSupplier.SelectedValue = dataGridView1.SelectedRows[0].Cells["SupplierID"].Value.ToString();
                     cmbCountry.SelectedValue = dataGridView1.SelectedRows[0].Cells["CountryID"].Value.ToString();
                     cmbActiveStatus.SelectedItem = dataGridView1.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
-
                     grpBrand.Enabled = false;
                     txtBrandName.Focus();
                 }
@@ -345,7 +340,8 @@ namespace IMS.Masters
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName LIKE '%" + txtSearchByBrand.Text + "%'", "BrandName");
+            //DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName LIKE '%" + txtSearchByBrand.Text + "%'", "BrandName");
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Brand_Master '" + txtSearchByBrand.Text.Trim() + "'");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -371,6 +367,26 @@ namespace IMS.Masters
             Masters.Supplier_Details Obj = new Supplier_Details();
             Obj.ShowDialog();
             FillSupplierData();
+        }
+
+        private void cmbSupplier_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                int a = ObjDAL.ExecuteScalarInt("SELECT CountryID FROM " + clsUtility.DBName + ".[dbo].[SupplierMaster] WITH(NOLOCK) WHERE SupplierID=" + cmbSupplier.SelectedValue);
+                if (a > 0)
+                {
+                    cmbCountry.SelectedValue = a;
+                }
+                else
+                {
+                    cmbCountry.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
+            }
         }
     }
 }

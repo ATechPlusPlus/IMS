@@ -44,11 +44,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbCountry = new System.Windows.Forms.ComboBox();
             this.grpCurrencyValue = new System.Windows.Forms.GroupBox();
+            this.btnCountryPopup = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCurrencyName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCurrencyCode = new System.Windows.Forms.TextBox();
-            this.btnCountryPopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.grpCountry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -231,7 +231,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(504, 166);
+            this.dataGridView1.Size = new System.Drawing.Size(520, 166);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -269,6 +269,21 @@
             this.grpCurrencyValue.TabIndex = 216;
             this.grpCurrencyValue.TabStop = false;
             this.grpCurrencyValue.Text = "Currency Value Settings";
+            // 
+            // btnCountryPopup
+            // 
+            this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCountryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCountryPopup.BackgroundImage")));
+            this.btnCountryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCountryPopup.Location = new System.Drawing.Point(370, 28);
+            this.btnCountryPopup.Name = "btnCountryPopup";
+            this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCountryPopup.TabIndex = 279;
+            this.btnCountryPopup.UseVisualStyleBackColor = false;
+            this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
             // 
             // label4
             // 
@@ -313,21 +328,6 @@
             this.txtCurrencyCode.TabIndex = 217;
             this.txtCurrencyCode.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
             this.txtCurrencyCode.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
-            // 
-            // btnCountryPopup
-            // 
-            this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnCountryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCountryPopup.BackgroundImage")));
-            this.btnCountryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCountryPopup.Location = new System.Drawing.Point(370, 28);
-            this.btnCountryPopup.Name = "btnCountryPopup";
-            this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCountryPopup.TabIndex = 279;
-            this.btnCountryPopup.UseVisualStyleBackColor = false;
-            this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
             // 
             // Currency_Value_Settings
             // 

@@ -138,6 +138,7 @@
             // txtFax
             // 
             this.txtFax.BackColor = System.Drawing.Color.White;
+            this.txtFax.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFax.Location = new System.Drawing.Point(159, 150);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(206, 25);
@@ -160,6 +161,7 @@
             // txtTel
             // 
             this.txtTel.BackColor = System.Drawing.Color.White;
+            this.txtTel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTel.Location = new System.Drawing.Point(159, 108);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(206, 25);
@@ -193,6 +195,7 @@
             // txtPlace
             // 
             this.txtPlace.BackColor = System.Drawing.Color.White;
+            this.txtPlace.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPlace.Location = new System.Drawing.Point(159, 66);
             this.txtPlace.Name = "txtPlace";
             this.txtPlace.Size = new System.Drawing.Size(206, 25);
@@ -215,6 +218,7 @@
             // txtStoreName
             // 
             this.txtStoreName.BackColor = System.Drawing.Color.White;
+            this.txtStoreName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStoreName.Location = new System.Drawing.Point(159, 24);
             this.txtStoreName.Name = "txtStoreName";
             this.txtStoreName.Size = new System.Drawing.Size(206, 25);

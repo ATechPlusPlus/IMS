@@ -22,11 +22,13 @@ namespace IMS.Purchase
 
         DataTable dtPurchaseQTYColor = new DataTable();
         DataTable dtPurchaseInvoice = new DataTable();
+        DataTable dtSize = new DataTable();
 
         int ID = 0;
         int flag = 0;
         int pPurchaseInvoiceID = 0;
         int ProductID = 0;
+        int OldSize = 0;
         string OldColorName = string.Empty;
 
         Image B_Leave = IMS.Properties.Resources.B_click;
@@ -165,6 +167,7 @@ namespace IMS.Purchase
                 txtItemName.Text = dRow[0]["ProductName"].ToString();
                 txtTotalQTYBill.Text = dRow[0]["QTY"].ToString();
                 cmbSizeType.SelectedValue = dRow[0]["SizeTypeID"].ToString();
+                cmbStore.SelectedValue = dRow[0]["StoreID"].ToString();
                 Load_Color_SizeData();
             }
         }
@@ -172,7 +175,8 @@ namespace IMS.Purchase
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ObjUtil.SetRowNumber(dataGridView1);
-            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
+            ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.ColumnHeader);
+            //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["PurchaseInvoiceDetailsID"].Visible = false;
             dataGridView1.Columns["PurchaseInvoiceID"].Visible = false;
             dataGridView1.Columns["DeliveryPurchaseID1"].Visible = false;
@@ -181,26 +185,25 @@ namespace IMS.Purchase
             dataGridView1.Columns["SupplierID"].Visible = false;
             dataGridView1.Columns["CategoryID"].Visible = false;
             dataGridView1.Columns["CountryID"].Visible = false;
+            dataGridView1.Columns["SizeTypeID"].Visible = false;
+            dataGridView1.Columns["StoreID"].Visible = false;
             //lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
 
         private void cmbSizeType_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeMaster", "SizeID,Size,SizeTypeID", "ISNULL(ActiveStatus,1) = 1 AND SizeTypeID = " + cmbSizeType.SelectedValue, null);
-            if (ObjUtil.ValidateTable(dt))
+            dtSize = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeMaster", "SizeID,Size,SizeTypeID", "ISNULL(ActiveStatus,1) = 1 AND SizeTypeID = " + cmbSizeType.SelectedValue, null);
+            if (ObjUtil.ValidateTable(dtSize))
             {
                 InitItemTable();
                 dgvQtycolor.Enabled = true;
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 0; i < dtSize.Rows.Count; i++)
                 {
-                    dtPurchaseQTYColor.Columns.Add(dt.Rows[i]["Size"].ToString());
+                    dtPurchaseQTYColor.Columns.Add(dtSize.Rows[i]["Size"].ToString());
                 }
                 dtPurchaseQTYColor.Columns.Add("Total", typeof(int));
-                //if (dgvQtycolor.Rows.Count == 0)
-                //{
                 DataRow dRow = dtPurchaseQTYColor.NewRow();
                 dtPurchaseQTYColor.Rows.Add(dRow);
-                ///}
                 dtPurchaseQTYColor.AcceptChanges();
                 dgvQtycolor.DataSource = dtPurchaseQTYColor;
                 //Load_Color_SizeData();
@@ -209,14 +212,14 @@ namespace IMS.Purchase
 
         private void Load_Color_SizeData()
         {
-            //DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.[Get_PurchaseInvoice_Color_Size] '" + txtSupplierBillNo.Text + "', " + listBoxModelNo.SelectedItem + "");
-
             dtPurchaseQTYColor = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".[dbo].[Get_PurchaseInvoice_Color_Size] '" + txtSupplierBillNo.Text + "', " + listBoxModelNo.SelectedItem + "");
             if (ObjUtil.ValidateTable(dtPurchaseQTYColor))
             {
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
-                dgvQtycolor.ReadOnly = true;
+                dgvQtycolor.DataSource = null;
                 dgvQtycolor.DataSource = dtPurchaseQTYColor;
+                dgvQtycolor.Refresh();
+                dgvQtycolor.ReadOnly = true;
                 cmbSizeType.Enabled = false;
             }
             else
@@ -242,6 +245,7 @@ namespace IMS.Purchase
                 txtItemName.Text = dRow[0]["ProductName"].ToString();
                 txtTotalQTYBill.Text = dRow[0]["QTY"].ToString();
                 cmbSizeType.SelectedValue = dRow[0]["SizeTypeID"].ToString();
+                cmbStore.SelectedValue = dRow[0]["StoreID"].ToString();
                 Load_Color_SizeData();
             }
             else
@@ -269,24 +273,25 @@ namespace IMS.Purchase
             }
             else
             {
-                DataRow[] dRow = dtPurchaseQTYColor.Select("Color= '" + dgvQtycolor.Rows[e.RowIndex].Cells["Color"].Value + "'");
-                if (dRow.Length > 0)
+                for (int i = 3; i < dtPurchaseQTYColor.Columns.Count - 1; i++)
                 {
-                    for (int i = 3; i < dtPurchaseQTYColor.Columns.Count - 1; i++)
-                    {
-                        pTotalEnteredQTY += dRow[0][dtPurchaseQTYColor.Columns[i]] != DBNull.Value ?
-                            Convert.ToInt32(dRow[0][dtPurchaseQTYColor.Columns[i]]) : 0;
-                    }
-                    dgvQtycolor.Rows[e.RowIndex].Cells["Total"].Value = pTotalEnteredQTY;
-                    txtTotalQTYEntered.Text = pTotalEnteredQTY.ToString();
-                    CalcTotalColorQTY();
-                    if (e.RowIndex + 1 == dgvQtycolor.Rows.Count)
-                    {
-                        DataRow Row = dtPurchaseQTYColor.NewRow();
-                        dtPurchaseQTYColor.Rows.Add(Row);
-                        dtPurchaseQTYColor.AcceptChanges();
-                        dgvQtycolor.DataSource = dtPurchaseQTYColor;
-                    }
+                    pTotalEnteredQTY += dtPurchaseQTYColor.Rows[e.RowIndex][i] != DBNull.Value ?
+                        Convert.ToInt32(dtPurchaseQTYColor.Rows[e.RowIndex][i]) : 0;
+                }
+                dgvQtycolor.Rows[e.RowIndex].Cells["Total"].Value = pTotalEnteredQTY;
+                txtTotalQTYEntered.Text = pTotalEnteredQTY.ToString();
+                CalcTotalColorQTY();
+                if (Convert.ToInt32(txtTotalQTYEntered.Text) > Convert.ToInt32(txtTotalQTYBill.Text))
+                {
+                    clsUtility.ShowInfoMessage("Entered QTY can't be greater then QTY Bill", clsUtility.strProjectTitle);
+                    dgvQtycolor.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = OldSize;
+                }
+                if (e.RowIndex + 1 == dgvQtycolor.Rows.Count)
+                {
+                    DataRow Row = dtPurchaseQTYColor.NewRow();
+                    dtPurchaseQTYColor.Rows.Add(Row);
+                    dtPurchaseQTYColor.AcceptChanges();
+                    dgvQtycolor.DataSource = dtPurchaseQTYColor;
                 }
             }
         }
@@ -313,23 +318,16 @@ namespace IMS.Purchase
 
         private void Clear_ColorSize()
         {
-            //txtSupplierBillNo.Clear();
             txtPurchaseInvoiceID.Clear();
             txtItemName.Clear();
             txtDiffQty.Text = "0";
             txtTotalQTY.Text = "0";
             txtTotalQTYBill.Text = "0";
             txtTotalQTYEntered.Text = "0";
-            //cmbBrand.SelectedIndex = -1;
-            //cmbCountry.SelectedIndex = -1;
-            //cmbDepartment.SelectedIndex = -1;
             cmbSizeType.SelectedIndex = -1;
-            //cmbStore.SelectedIndex = -1;
-            //listBoxModelNo.Items.Clear();
             dtPurchaseQTYColor.Clear();
-            //dtPurchaseInvoice.Clear();
             dgvQtycolor.DataSource = null;
-            //dataGridView1.DataSource = null;
+            listBoxModelNo.ClearSelected();
         }
         private bool Validateform()
         {
@@ -374,7 +372,7 @@ namespace IMS.Purchase
                 dtPurchaseQTYColor.AcceptChanges();
                 return true;
             }
-            else if (Convert.ToInt32(txtDiffQty) < 0)
+            if (Convert.ToInt32(txtDiffQty) < 0)
             {
                 clsUtility.ShowInfoMessage("Entered QTY can't be greater then Billed QTY", clsUtility.strProjectTitle);
                 dgvQtycolor.Focus();
@@ -412,10 +410,6 @@ namespace IMS.Purchase
                 object ob = dtPurchaseQTYColor.Compute("SUM(Total)", null);
                 txtTotalQTYEntered.Text = ob.ToString();
             }
-            if (Convert.ToInt32(txtTotalQTYEntered.Text) > Convert.ToInt32(txtTotalQTYBill.Text))
-            {
-                clsUtility.ShowInfoMessage("Entered QTY can't be greater then QTY Bill", clsUtility.strProjectTitle);
-            }
             int pTotal = txtTotalQTYEntered.Text.Length > 0 ? Convert.ToInt32(txtTotalQTYEntered.Text) : 0;
             txtDiffQty.Text = (Convert.ToInt32(txtTotalQTYBill.Text) - pTotal).ToString();
         }
@@ -424,7 +418,14 @@ namespace IMS.Purchase
             ObjDAL.SetColumnData("DeliveryPurchaseID1", SqlDbType.Int, ID);
             for (int i = 3; i < dtPurchaseQTYColor.Columns.Count - 1; i++)
             {
-                ObjDAL.SetColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
+                //ObjDAL.SetColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
+                string col = dtPurchaseQTYColor.Columns[i].ColumnName.ToString();
+                DataRow[] drow = dtSize.Select("Size = '" + col + "' AND SizeTypeID=" + cmbSizeType.SelectedValue);
+                if (drow.Length > 0)
+                {
+                    ObjDAL.SetColumnData("Col" + (i - 2), SqlDbType.Int, drow[0]["SizeID"].ToString());
+                }
+                //ObjDAL.SetColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
             }
             ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
             return ObjDAL.InsertData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill2", true);
@@ -440,7 +441,7 @@ namespace IMS.Purchase
                 ObjDAL.SetColumnData("ColorID", SqlDbType.Int, Convert.ToInt32(dtPurchaseQTYColor.Rows[i]["ColorID"]));
                 for (int j = 3; j < dtPurchaseQTYColor.Columns.Count - 1; j++)
                 {
-                    ObjDAL.SetColumnData("Col" + (j - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Rows[i][j].ToString());
+                    ObjDAL.SetColumnData("Col" + (j - 2), SqlDbType.Int, dtPurchaseQTYColor.Rows[i][j].ToString());
                 }
                 ObjDAL.SetColumnData("Total", SqlDbType.Int, Convert.ToInt32(dtPurchaseQTYColor.Rows[i]["Total"]));
                 ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
@@ -451,9 +452,16 @@ namespace IMS.Purchase
 
         private int DataUpdateDeliveryPurchaseBill2(int ID)
         {
+            dtSize = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeMaster", "SizeID,Size,SizeTypeID", "ISNULL(ActiveStatus,1) = 1 AND SizeTypeID = " + cmbSizeType.SelectedValue, null);
             for (int i = 3; i < dtPurchaseQTYColor.Columns.Count - 1; i++)
             {
-                ObjDAL.UpdateColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
+                //ObjDAL.UpdateColumnData("Col" + (i - 2), SqlDbType.VarChar, dtPurchaseQTYColor.Columns[i].ColumnName);
+                string col = dtPurchaseQTYColor.Columns[i].ColumnName.ToString();
+                DataRow[] drow = dtSize.Select("Size = '" + col + "' AND SizeTypeID=" + cmbSizeType.SelectedValue);
+                if (drow.Length > 0)
+                {
+                    ObjDAL.UpdateColumnData("Col" + (i - 2), SqlDbType.Int, drow[0]["SizeID"].ToString());
+                }
             }
             ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
             ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
@@ -540,8 +548,8 @@ namespace IMS.Purchase
             txtSupplierBillNo.Focus();
             txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
             dgvQtycolor.ReadOnly = false;
-            //dgvQtycolor.Enabled = true;
-            dgvQtycolor.AllowUserToAddRows = true;
+            dgvQtycolor.Enabled = true;
+            //dgvQtycolor.AllowUserToAddRows = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -562,8 +570,8 @@ namespace IMS.Purchase
                     DeliveryPurchaseBillID = ObjDAL.UpdateData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", "DeliveryPurchaseID1=" + ID);
                     if (DeliveryPurchaseBillID > 0)
                     {
-                        int DeliveryPurchaseBillID2 = DataUpdateDeliveryPurchaseBill2(DeliveryPurchaseBillID);
-                        int DeliveryPurchaseBillID3 = DataUpdateDeliveryPurchaseBill3(DeliveryPurchaseBillID, DeliveryPurchaseBillID2);
+                        int DeliveryPurchaseBillID2 = DataUpdateDeliveryPurchaseBill2(ID);
+                        int DeliveryPurchaseBillID3 = DataUpdateDeliveryPurchaseBill3(ID, ID);
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
                         clsUtility.ShowInfoMessage(clsUtility.MsgDataUpdated, clsUtility.strProjectTitle);
                         //ClearAll();
@@ -624,6 +632,7 @@ namespace IMS.Purchase
 
         private void dgvQtycolor_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            //ObjUtil.SetDataGridProperty(dgvQtycolor, DataGridViewAutoSizeColumnsMode.ColumnHeader);
             ObjUtil.SetDataGridProperty(dgvQtycolor, DataGridViewAutoSizeColumnsMode.Fill);
             if (dgvQtycolor.Columns.Contains("ColorID"))
             {
@@ -642,7 +651,6 @@ namespace IMS.Purchase
             dgvQtycolor.AllowUserToResizeColumns = false;
             dgvQtycolor.AllowUserToResizeRows = false;
             dgvQtycolor.AllowUserToDeleteRows = false;
-
         }
 
         private void dgvQtycolor_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -655,7 +663,10 @@ namespace IMS.Purchase
                 }
                 CalcTotalColorQTY();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
+            }
         }
 
         private void LoadData()
@@ -692,7 +703,7 @@ namespace IMS.Purchase
             {
                 if (txtSupplierBillNo.Text.Length > 0)
                 {
-                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_Popup " + txtSupplierBillNo.Text);
+                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_Popup " + txtSupplierBillNo.Text + ",0");
                     if (ObjUtil.ValidateTable(dt))
                     {
                         ObjUtil.SetControlData(txtSupplierBillNo, "SupplierBillNo");
@@ -707,6 +718,7 @@ namespace IMS.Purchase
                             if (ObjUtil.GetDataPopup().ColumnCount > 0)
                             {
                                 ObjUtil.GetDataPopup().Columns["PurchaseInvoiceID"].Visible = false;
+                                ObjUtil.GetDataPopup().Columns["SupplierID"].Visible = false;
                                 ObjUtil.SetDataPopupSize(300, 0);
                             }
                         }
@@ -720,12 +732,13 @@ namespace IMS.Purchase
                 }
                 else
                 {
+                    txtPurchaseInvoiceID.Clear();
                     ObjUtil.CloseAutoExtender();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
             }
         }
 
@@ -735,7 +748,6 @@ namespace IMS.Purchase
             DataGridView dgv = (DataGridView)sender;
             if (dgv.DataSource != null)
             {
-                //GetItemDetailsByProductID(txtPurchaseInvoiceID.Text);
                 txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
                 txtSupplierBillNo.Focus();
 
@@ -761,6 +773,11 @@ namespace IMS.Purchase
         private void dgvQtycolor_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             OldColorName = dgvQtycolor.Rows[e.RowIndex].Cells["Color"].Value.ToString();
+            if (e.ColumnIndex > 2)
+            {
+                OldSize = dgvQtycolor.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != DBNull.Value ?
+                    Convert.ToInt32(dgvQtycolor.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) : 0;
+            }
         }
 
         private void dgvQtycolor_ColumnAdded(object sender, DataGridViewColumnEventArgs e)

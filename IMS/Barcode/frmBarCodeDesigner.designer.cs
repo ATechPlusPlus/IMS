@@ -347,7 +347,6 @@
             this.aDDToolStripMenuItem.Name = "aDDToolStripMenuItem";
             this.aDDToolStripMenuItem.Size = new System.Drawing.Size(41, 21);
             this.aDDToolStripMenuItem.Text = "File";
-            this.aDDToolStripMenuItem.Click += new System.EventHandler(this.aDDToolStripMenuItem_Click);
             // 
             // newPageToolStripMenuItem
             // 

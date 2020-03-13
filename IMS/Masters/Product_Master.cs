@@ -27,7 +27,6 @@ namespace IMS.Masters
         {
             txtProductName.Clear();
             cmbCategory.SelectedIndex = -1;
-            cmbBrand.SelectedIndex = -1;
             cmbActiveStatus.SelectedIndex = -1;
             txtProductName.Focus();
             PicProductMaster.Image = null;
@@ -87,7 +86,8 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,CategoryID,BrandID,Photo", "ProductName");
+            //dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,CategoryID,BrandID,Photo", "ProductName");
+            dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Product_Master");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -110,17 +110,6 @@ namespace IMS.Masters
             cmbCategory.SelectedIndex = -1;
         }
 
-        private void FillBrandData()
-        {
-            DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName", "ISNULL(ActiveStatus,1)=1", "BrandName ASC");
-            cmbBrand.DataSource = dt;
-            cmbBrand.DisplayMember = "BrandName";
-            cmbBrand.ValueMember = "BrandID";
-
-            cmbBrand.SelectedIndex = -1;
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
@@ -137,7 +126,6 @@ namespace IMS.Masters
                 {
                     ObjDAL.SetColumnData("ProductName", SqlDbType.NVarChar, txtProductName.Text.Trim());
                     ObjDAL.SetColumnData("CategoryID", SqlDbType.Int, cmbCategory.SelectedValue);
-                    ObjDAL.SetColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (PicProductMaster.Image != null)
@@ -183,7 +171,6 @@ namespace IMS.Masters
                 {
                     ObjDAL.UpdateColumnData("ProductName", SqlDbType.NVarChar, txtProductName.Text.Trim());
                     ObjDAL.UpdateColumnData("CategoryID", SqlDbType.Int, cmbCategory.SelectedValue);
-                    ObjDAL.UpdateColumnData("BrandID", SqlDbType.Int, cmbBrand.SelectedValue);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
@@ -265,10 +252,10 @@ namespace IMS.Masters
             {
                 try
                 {
-                    ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ProductID"].Value);
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
-
+                    ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ProductID"].Value);
                     txtProductName.Text = dataGridView1.SelectedRows[0].Cells["ProductName"].Value.ToString();
+                    cmbCategory.SelectedValue = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryID"].Value);
                     cmbActiveStatus.SelectedItem = dataGridView1.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
                     if (dataGridView1.SelectedRows[0].Cells["Photo"].Value != DBNull.Value)
                     {
@@ -277,7 +264,10 @@ namespace IMS.Masters
                     grpProduct.Enabled = false;
                     txtProductName.Focus();
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
+                }
             }
         }
 
@@ -306,7 +296,6 @@ namespace IMS.Masters
 
             LoadData();
             FillDepartmentData();
-            FillBrandData();
         }
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
@@ -353,7 +342,7 @@ namespace IMS.Masters
                 LoadData();
                 return;
             }
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,CategoryID,BrandID,Photo", "ProductName LIKE '%" + txtSearchByProduct.Text + "%'", "ProductName");
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Product_Master '" + txtSearchByProduct.Text.Trim() + "'");
             if (ObjUtil.ValidateTable(dt))
             {
                 dataGridView1.DataSource = dt;
@@ -369,6 +358,7 @@ namespace IMS.Masters
             ObjUtil.SetRowNumber(dataGridView1);
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["ProductID"].Visible = false;
+            dataGridView1.Columns["CategoryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
 
@@ -397,13 +387,6 @@ namespace IMS.Masters
             Masters.Category_Master Obj = new Category_Master();
             Obj.ShowDialog();
             FillDepartmentData();
-        }
-
-        private void btnBrandPopup_Click(object sender, EventArgs e)
-        {
-            Masters.Brand_Master Obj = new Brand_Master();
-            Obj.ShowDialog();
-            FillBrandData();
         }
     }
 }

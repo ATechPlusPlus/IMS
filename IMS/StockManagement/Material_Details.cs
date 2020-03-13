@@ -16,7 +16,6 @@ namespace IMS.StockManagement
         {
             InitializeComponent();
         }
-        string query = string.Empty;
 
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
@@ -33,21 +32,94 @@ namespace IMS.StockManagement
             }
         }
 
-        private void txtProductName_TextChanged(object sender, EventArgs e)
+        private void txtSearchByProductName_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (txtSearchByProductName.Text.Length > 0) // if manual entry
+                if (txtSearchByProductName.Text.Length > 0)
                 {
-                    DataTable dt = ObjDAL.ExecuteSelectStatement(query + " WHERE pm.ProductName Like '" + txtSearchByProductName.Text + "%'");
+                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_ProductDetails_Popup '" + txtSearchByProductName.Text + "'");
                     if (ObjUtil.ValidateTable(dt))
                     {
-                        dgvProductDetails.DataSource = dt;
+                        ObjUtil.SetControlData(txtSearchByProductName, "ProductName");
+                        ObjUtil.SetControlData(txtProductID, "ProductID");
+                        ObjUtil.ShowDataPopup(dt, txtSearchByProductName, this, groupBox1);
+
+                        if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
+                        {
+                            ObjUtil.GetDataPopup().AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                            if (ObjUtil.GetDataPopup().ColumnCount > 0)
+                            {
+                                ObjUtil.GetDataPopup().Columns["ProductID"].Visible = false;
+                                ObjUtil.GetDataPopup().Columns["CategoryID"].Visible = false;
+                                ObjUtil.SetDataPopupSize(300, 0);
+                            }
+                        }
+                        ObjUtil.GetDataPopup().CellClick += Material_Details_SearchByProductName_CellClick;
+                        ObjUtil.GetDataPopup().KeyDown += Material_Details_SearchByProductName_KeyDown;
                     }
+                    else
+                    {
+
+                        ObjUtil.CloseAutoExtender();
+                    }
+                }
+                else
+                {
+                    txtProductID.Clear();
+                    ObjUtil.CloseAutoExtender();
                 }
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void Material_Details_SearchByProductName_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            if (dgv.DataSource != null)
+            {
+                txtSearchByProductName.SelectionStart = txtSearchByProductName.MaxLength;
+                txtSearchByProductName.Focus();
+                SearchByProductID();
+            }
+        }
+
+        private void Material_Details_SearchByProductName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                txtSearchByProductName.SelectionStart = txtSearchByProductName.MaxLength;
+                txtSearchByProductName.Focus();
+                SearchByProductID();
+            }
+        }
+
+        private void SearchByProductID()
+        {
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Material_Details " + txtProductID.Text + ",NULL");
+            if (ObjUtil.ValidateTable(dt))
+            {
+                dgvProductDetails.DataSource = dt;
+            }
+            else
+            {
+                dgvProductDetails.DataSource = null;
+            }
+        }
+
+        private void SearchByShopID()
+        {
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Material_Details NULL," + cmbShop.SelectedValue);
+            if (ObjUtil.ValidateTable(dt))
+            {
+                dgvProductDetails.DataSource = dt;
+            }
+            else
+            {
+                dgvProductDetails.DataSource = null;
             }
         }
 
@@ -59,19 +131,25 @@ namespace IMS.StockManagement
         private void Material_Details_Load(object sender, EventArgs e)
         {
             FillStoreData();
-            query = "SELECT pm.ProductID,pm.ProductName,pm.CategoryID,cm.CategoryName [Department] " +
-                    ", psm.StoreID,sm.StoreName,ISNULL(psm.QTY, 0)QTY " +
-                    " FROM ProductMaster pm" +
-                    " LEFT JOIN ProductStockMaster psm ON pm.ProductID = psm.ProductID " +
-                    " LEFT JOIN StoreMaster sm ON psm.StoreID = sm.StoreID " +
-                    " LEFT JOIN CategoryMaster cm ON pm.CategoryID = cm.CategoryID ";
+            LoadData();
             rdShowAll.Checked = true;
+        }
+        private void LoadData()
+        {
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Material_Details 0,0");
+            if (ObjUtil.ValidateTable(dt))
+            {
+                dgvProductDetails.DataSource = dt;
+            }
+            else
+            {
+                dgvProductDetails.DataSource = null;
+            }
         }
 
         private void cmbShop_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            DataTable dt = ObjDAL.ExecuteSelectStatement(query + " WHERE ISNULL(psm.StoreID,0) = " + cmbShop.SelectedValue);
-            dgvProductDetails.DataSource = dt;
+            SearchByShopID();
         }
 
         private void rdSearchByStore_CheckedChanged(object sender, EventArgs e)
@@ -106,8 +184,7 @@ namespace IMS.StockManagement
         {
             if (rdShowAll.Checked)
             {
-                DataTable dt = ObjDAL.ExecuteSelectStatement(query);
-                dgvProductDetails.DataSource = dt;
+                LoadData();
             }
             else
             {
@@ -119,10 +196,23 @@ namespace IMS.StockManagement
         private void dgvProductDetails_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ObjUtil.SetRowNumber(dgvProductDetails);
-            ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.Fill);
+            ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.ColumnHeader);
+            //ObjUtil.SetDataGridProperty(dgvProductDetails, DataGridViewAutoSizeColumnsMode.Fill);
             dgvProductDetails.Columns["ProductID"].Visible = false;
             dgvProductDetails.Columns["StoreID"].Visible = false;
             dgvProductDetails.Columns["CategoryID"].Visible = false;
+            dgvProductDetails.Columns["SizeTypeID"].Visible = false;
+            dgvProductDetails.Columns["SizeID"].Visible = false;
+        }
+
+        private void txtSearchByProductName_Enter(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender);
+        }
+
+        private void txtSearchByProductName_Leave(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender, Color.White);
         }
     }
 }

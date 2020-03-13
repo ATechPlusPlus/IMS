@@ -173,7 +173,7 @@
             this.grpBrand.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBrand.Location = new System.Drawing.Point(21, 96);
             this.grpBrand.Name = "grpBrand";
-            this.grpBrand.Size = new System.Drawing.Size(486, 196);
+            this.grpBrand.Size = new System.Drawing.Size(510, 196);
             this.grpBrand.TabIndex = 215;
             this.grpBrand.TabStop = false;
             this.grpBrand.Text = "Brand Details";
@@ -205,6 +205,7 @@
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(206, 27);
             this.cmbSupplier.TabIndex = 194;
+            this.cmbSupplier.SelectionChangeCommitted += new System.EventHandler(this.cmbSupplier_SelectionChangeCommitted);
             // 
             // lblSupplier
             // 
@@ -231,6 +232,7 @@
             // cmbCountry
             // 
             this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCountry.Enabled = false;
             this.cmbCountry.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Items.AddRange(new object[] {
@@ -266,6 +268,7 @@
             // txtBrandName
             // 
             this.txtBrandName.BackColor = System.Drawing.Color.White;
+            this.txtBrandName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrandName.Location = new System.Drawing.Point(159, 27);
             this.txtBrandName.Name = "txtBrandName";
             this.txtBrandName.Size = new System.Drawing.Size(206, 25);
@@ -296,7 +299,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 298);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 51);
+            this.groupBox1.Size = new System.Drawing.Size(595, 51);
             this.groupBox1.TabIndex = 214;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";

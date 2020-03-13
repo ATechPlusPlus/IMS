@@ -56,6 +56,19 @@
             this.btnLoadfrmXLS = new System.Windows.Forms.Button();
             this.grpGridview = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModelNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrandID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddedRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SuppossedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SalesPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTotalValueEntered = new System.Windows.Forms.Label();
             this.txtTotalValueEntered = new System.Windows.Forms.TextBox();
             this.lblTotalValueBill = new System.Windows.Forms.Label();
@@ -77,19 +90,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNewRate = new System.Windows.Forms.TextBox();
             this.txtPurchaseInvoiceID = new System.Windows.Forms.TextBox();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModelNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrandID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddedRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SuppossedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SalesPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2.SuspendLayout();
             this.grpPurchaseBillDetail.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -122,6 +122,7 @@
             // grpPurchaseBillDetail
             // 
             this.grpPurchaseBillDetail.BackColor = System.Drawing.Color.Transparent;
+            this.grpPurchaseBillDetail.Controls.Add(this.txtPurchaseInvoiceID);
             this.grpPurchaseBillDetail.Controls.Add(this.label2);
             this.grpPurchaseBillDetail.Controls.Add(this.txtSalesPrice);
             this.grpPurchaseBillDetail.Controls.Add(this.linkAddPurchaseBillItems);
@@ -136,11 +137,12 @@
             this.grpPurchaseBillDetail.Controls.Add(this.txtModelNo);
             this.grpPurchaseBillDetail.Controls.Add(this.lblProductName);
             this.grpPurchaseBillDetail.Controls.Add(this.txtProductName);
+            this.grpPurchaseBillDetail.Controls.Add(this.btnSearch);
             this.grpPurchaseBillDetail.Enabled = false;
             this.grpPurchaseBillDetail.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPurchaseBillDetail.Location = new System.Drawing.Point(15, 139);
             this.grpPurchaseBillDetail.Name = "grpPurchaseBillDetail";
-            this.grpPurchaseBillDetail.Size = new System.Drawing.Size(882, 173);
+            this.grpPurchaseBillDetail.Size = new System.Drawing.Size(942, 173);
             this.grpPurchaseBillDetail.TabIndex = 238;
             this.grpPurchaseBillDetail.TabStop = false;
             this.grpPurchaseBillDetail.Text = "Item Details";
@@ -370,7 +372,7 @@
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(903, 151);
+            this.btnSearch.Location = new System.Drawing.Point(804, 13);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(63, 25);
             this.btnSearch.TabIndex = 242;
@@ -402,7 +404,7 @@
             this.grpGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpGridview.Location = new System.Drawing.Point(15, 318);
             this.grpGridview.Name = "grpGridview";
-            this.grpGridview.Size = new System.Drawing.Size(882, 225);
+            this.grpGridview.Size = new System.Drawing.Size(942, 236);
             this.grpGridview.TabIndex = 244;
             this.grpGridview.TabStop = false;
             this.grpGridview.Text = "Purchases Bill Items";
@@ -431,253 +433,11 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 21);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(870, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(930, 209);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
-            // 
-            // lblTotalValueEntered
-            // 
-            this.lblTotalValueEntered.AutoSize = true;
-            this.lblTotalValueEntered.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalValueEntered.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalValueEntered.Location = new System.Drawing.Point(18, 560);
-            this.lblTotalValueEntered.Name = "lblTotalValueEntered";
-            this.lblTotalValueEntered.Size = new System.Drawing.Size(131, 17);
-            this.lblTotalValueEntered.TabIndex = 246;
-            this.lblTotalValueEntered.Text = "Total  value entered :";
-            // 
-            // txtTotalValueEntered
-            // 
-            this.txtTotalValueEntered.BackColor = System.Drawing.Color.White;
-            this.txtTotalValueEntered.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtTotalValueEntered.Location = new System.Drawing.Point(159, 560);
-            this.txtTotalValueEntered.Name = "txtTotalValueEntered";
-            this.txtTotalValueEntered.ReadOnly = true;
-            this.txtTotalValueEntered.Size = new System.Drawing.Size(133, 25);
-            this.txtTotalValueEntered.TabIndex = 245;
-            this.txtTotalValueEntered.Text = "0";
-            // 
-            // lblTotalValueBill
-            // 
-            this.lblTotalValueBill.AutoSize = true;
-            this.lblTotalValueBill.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalValueBill.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalValueBill.Location = new System.Drawing.Point(18, 589);
-            this.lblTotalValueBill.Name = "lblTotalValueBill";
-            this.lblTotalValueBill.Size = new System.Drawing.Size(135, 17);
-            this.lblTotalValueBill.TabIndex = 248;
-            this.lblTotalValueBill.Text = "Total  value with Bill :";
-            // 
-            // txtTotalValueBill
-            // 
-            this.txtTotalValueBill.BackColor = System.Drawing.Color.White;
-            this.txtTotalValueBill.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtTotalValueBill.Location = new System.Drawing.Point(159, 588);
-            this.txtTotalValueBill.Name = "txtTotalValueBill";
-            this.txtTotalValueBill.ReadOnly = true;
-            this.txtTotalValueBill.Size = new System.Drawing.Size(133, 25);
-            this.txtTotalValueBill.TabIndex = 247;
-            // 
-            // lblDiff
-            // 
-            this.lblDiff.AutoSize = true;
-            this.lblDiff.BackColor = System.Drawing.Color.Transparent;
-            this.lblDiff.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiff.Location = new System.Drawing.Point(17, 618);
-            this.lblDiff.Name = "lblDiff";
-            this.lblDiff.Size = new System.Drawing.Size(114, 17);
-            this.lblDiff.TabIndex = 250;
-            this.lblDiff.Text = "Difference value :";
-            // 
-            // txtDiffValue
-            // 
-            this.txtDiffValue.BackColor = System.Drawing.Color.White;
-            this.txtDiffValue.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtDiffValue.Location = new System.Drawing.Point(159, 616);
-            this.txtDiffValue.Name = "txtDiffValue";
-            this.txtDiffValue.ReadOnly = true;
-            this.txtDiffValue.Size = new System.Drawing.Size(133, 25);
-            this.txtDiffValue.TabIndex = 249;
-            this.txtDiffValue.Text = "0";
-            // 
-            // lblDiffQty
-            // 
-            this.lblDiffQty.AutoSize = true;
-            this.lblDiffQty.BackColor = System.Drawing.Color.Transparent;
-            this.lblDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiffQty.Location = new System.Drawing.Point(531, 618);
-            this.lblDiffQty.Name = "lblDiffQty";
-            this.lblDiffQty.Size = new System.Drawing.Size(113, 17);
-            this.lblDiffQty.TabIndex = 256;
-            this.lblDiffQty.Text = "Difference QTY :";
-            // 
-            // txtDiffQty
-            // 
-            this.txtDiffQty.BackColor = System.Drawing.Color.White;
-            this.txtDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtDiffQty.Location = new System.Drawing.Point(672, 618);
-            this.txtDiffQty.Name = "txtDiffQty";
-            this.txtDiffQty.ReadOnly = true;
-            this.txtDiffQty.Size = new System.Drawing.Size(133, 25);
-            this.txtDiffQty.TabIndex = 255;
-            this.txtDiffQty.Text = "0";
-            // 
-            // lblTotalQtyBill
-            // 
-            this.lblTotalQtyBill.AutoSize = true;
-            this.lblTotalQtyBill.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalQtyBill.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalQtyBill.Location = new System.Drawing.Point(531, 589);
-            this.lblTotalQtyBill.Name = "lblTotalQtyBill";
-            this.lblTotalQtyBill.Size = new System.Drawing.Size(134, 17);
-            this.lblTotalQtyBill.TabIndex = 254;
-            this.lblTotalQtyBill.Text = "Total  QTY with Bill :";
-            // 
-            // txtTotalQTYBill
-            // 
-            this.txtTotalQTYBill.BackColor = System.Drawing.Color.White;
-            this.txtTotalQTYBill.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtTotalQTYBill.Location = new System.Drawing.Point(672, 589);
-            this.txtTotalQTYBill.Name = "txtTotalQTYBill";
-            this.txtTotalQTYBill.ReadOnly = true;
-            this.txtTotalQTYBill.Size = new System.Drawing.Size(133, 25);
-            this.txtTotalQTYBill.TabIndex = 253;
-            // 
-            // lblTotalEnteredQty
-            // 
-            this.lblTotalEnteredQty.AutoSize = true;
-            this.lblTotalEnteredQty.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalEnteredQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalEnteredQty.Location = new System.Drawing.Point(531, 560);
-            this.lblTotalEnteredQty.Name = "lblTotalEnteredQty";
-            this.lblTotalEnteredQty.Size = new System.Drawing.Size(130, 17);
-            this.lblTotalEnteredQty.TabIndex = 252;
-            this.lblTotalEnteredQty.Text = "Total  QTY entered :";
-            // 
-            // txtTotalQTYEntered
-            // 
-            this.txtTotalQTYEntered.BackColor = System.Drawing.Color.White;
-            this.txtTotalQTYEntered.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtTotalQTYEntered.Location = new System.Drawing.Point(672, 560);
-            this.txtTotalQTYEntered.Name = "txtTotalQTYEntered";
-            this.txtTotalQTYEntered.ReadOnly = true;
-            this.txtTotalQTYEntered.Size = new System.Drawing.Size(133, 25);
-            this.txtTotalQTYEntered.TabIndex = 251;
-            this.txtTotalQTYEntered.Text = "0";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(811, 618);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 258;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            this.btnCancel.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
-            this.btnCancel.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Enabled = false;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(811, 560);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 257;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            this.btnSave.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
-            this.btnSave.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(612, 63);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 17);
-            this.label1.TabIndex = 247;
-            this.label1.Text = "Add Ratio to Suggested Price :";
-            // 
-            // cmbAddRatio
-            // 
-            this.cmbAddRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAddRatio.Enabled = false;
-            this.cmbAddRatio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAddRatio.FormattingEnabled = true;
-            this.cmbAddRatio.Items.AddRange(new object[] {
-            "200",
-            "300"});
-            this.cmbAddRatio.Location = new System.Drawing.Point(810, 61);
-            this.cmbAddRatio.Name = "cmbAddRatio";
-            this.cmbAddRatio.Size = new System.Drawing.Size(147, 27);
-            this.cmbAddRatio.TabIndex = 248;
-            this.cmbAddRatio.SelectionChangeCommitted += new System.EventHandler(this.cmbAddRatio_SelectionChangeCommitted);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(395, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 17);
-            this.label3.TabIndex = 252;
-            this.label3.Text = "Rate :";
-            // 
-            // txtCurrencyRate
-            // 
-            this.txtCurrencyRate.BackColor = System.Drawing.Color.White;
-            this.txtCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtCurrencyRate.Location = new System.Drawing.Point(482, 106);
-            this.txtCurrencyRate.Name = "txtCurrencyRate";
-            this.txtCurrencyRate.ReadOnly = true;
-            this.txtCurrencyRate.Size = new System.Drawing.Size(111, 25);
-            this.txtCurrencyRate.TabIndex = 251;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(612, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 17);
-            this.label4.TabIndex = 260;
-            this.label4.Text = "New Rate :";
-            // 
-            // txtNewRate
-            // 
-            this.txtNewRate.BackColor = System.Drawing.Color.White;
-            this.txtNewRate.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtNewRate.Location = new System.Drawing.Point(690, 106);
-            this.txtNewRate.Name = "txtNewRate";
-            this.txtNewRate.ReadOnly = true;
-            this.txtNewRate.Size = new System.Drawing.Size(111, 25);
-            this.txtNewRate.TabIndex = 259;
-            // 
-            // txtPurchaseInvoiceID
-            // 
-            this.txtPurchaseInvoiceID.BackColor = System.Drawing.Color.White;
-            this.txtPurchaseInvoiceID.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtPurchaseInvoiceID.Location = new System.Drawing.Point(903, 182);
-            this.txtPurchaseInvoiceID.Name = "txtPurchaseInvoiceID";
-            this.txtPurchaseInvoiceID.ReadOnly = true;
-            this.txtPurchaseInvoiceID.Size = new System.Drawing.Size(51, 25);
-            this.txtPurchaseInvoiceID.TabIndex = 261;
-            this.txtPurchaseInvoiceID.Visible = false;
             // 
             // ProductID
             // 
@@ -769,6 +529,248 @@
             this.ColDelete.Text = "Delete";
             this.ColDelete.UseColumnTextForButtonValue = true;
             // 
+            // lblTotalValueEntered
+            // 
+            this.lblTotalValueEntered.AutoSize = true;
+            this.lblTotalValueEntered.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalValueEntered.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalValueEntered.Location = new System.Drawing.Point(18, 568);
+            this.lblTotalValueEntered.Name = "lblTotalValueEntered";
+            this.lblTotalValueEntered.Size = new System.Drawing.Size(131, 17);
+            this.lblTotalValueEntered.TabIndex = 246;
+            this.lblTotalValueEntered.Text = "Total  value entered :";
+            // 
+            // txtTotalValueEntered
+            // 
+            this.txtTotalValueEntered.BackColor = System.Drawing.Color.White;
+            this.txtTotalValueEntered.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtTotalValueEntered.Location = new System.Drawing.Point(159, 568);
+            this.txtTotalValueEntered.Name = "txtTotalValueEntered";
+            this.txtTotalValueEntered.ReadOnly = true;
+            this.txtTotalValueEntered.Size = new System.Drawing.Size(133, 25);
+            this.txtTotalValueEntered.TabIndex = 245;
+            this.txtTotalValueEntered.Text = "0";
+            // 
+            // lblTotalValueBill
+            // 
+            this.lblTotalValueBill.AutoSize = true;
+            this.lblTotalValueBill.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalValueBill.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalValueBill.Location = new System.Drawing.Point(18, 597);
+            this.lblTotalValueBill.Name = "lblTotalValueBill";
+            this.lblTotalValueBill.Size = new System.Drawing.Size(135, 17);
+            this.lblTotalValueBill.TabIndex = 248;
+            this.lblTotalValueBill.Text = "Total  value with Bill :";
+            // 
+            // txtTotalValueBill
+            // 
+            this.txtTotalValueBill.BackColor = System.Drawing.Color.White;
+            this.txtTotalValueBill.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtTotalValueBill.Location = new System.Drawing.Point(159, 596);
+            this.txtTotalValueBill.Name = "txtTotalValueBill";
+            this.txtTotalValueBill.ReadOnly = true;
+            this.txtTotalValueBill.Size = new System.Drawing.Size(133, 25);
+            this.txtTotalValueBill.TabIndex = 247;
+            // 
+            // lblDiff
+            // 
+            this.lblDiff.AutoSize = true;
+            this.lblDiff.BackColor = System.Drawing.Color.Transparent;
+            this.lblDiff.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiff.Location = new System.Drawing.Point(17, 626);
+            this.lblDiff.Name = "lblDiff";
+            this.lblDiff.Size = new System.Drawing.Size(114, 17);
+            this.lblDiff.TabIndex = 250;
+            this.lblDiff.Text = "Difference value :";
+            // 
+            // txtDiffValue
+            // 
+            this.txtDiffValue.BackColor = System.Drawing.Color.White;
+            this.txtDiffValue.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtDiffValue.Location = new System.Drawing.Point(159, 624);
+            this.txtDiffValue.Name = "txtDiffValue";
+            this.txtDiffValue.ReadOnly = true;
+            this.txtDiffValue.Size = new System.Drawing.Size(133, 25);
+            this.txtDiffValue.TabIndex = 249;
+            this.txtDiffValue.Text = "0";
+            // 
+            // lblDiffQty
+            // 
+            this.lblDiffQty.AutoSize = true;
+            this.lblDiffQty.BackColor = System.Drawing.Color.Transparent;
+            this.lblDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiffQty.Location = new System.Drawing.Point(531, 626);
+            this.lblDiffQty.Name = "lblDiffQty";
+            this.lblDiffQty.Size = new System.Drawing.Size(113, 17);
+            this.lblDiffQty.TabIndex = 256;
+            this.lblDiffQty.Text = "Difference QTY :";
+            // 
+            // txtDiffQty
+            // 
+            this.txtDiffQty.BackColor = System.Drawing.Color.White;
+            this.txtDiffQty.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtDiffQty.Location = new System.Drawing.Point(672, 626);
+            this.txtDiffQty.Name = "txtDiffQty";
+            this.txtDiffQty.ReadOnly = true;
+            this.txtDiffQty.Size = new System.Drawing.Size(133, 25);
+            this.txtDiffQty.TabIndex = 255;
+            this.txtDiffQty.Text = "0";
+            // 
+            // lblTotalQtyBill
+            // 
+            this.lblTotalQtyBill.AutoSize = true;
+            this.lblTotalQtyBill.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalQtyBill.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalQtyBill.Location = new System.Drawing.Point(531, 597);
+            this.lblTotalQtyBill.Name = "lblTotalQtyBill";
+            this.lblTotalQtyBill.Size = new System.Drawing.Size(134, 17);
+            this.lblTotalQtyBill.TabIndex = 254;
+            this.lblTotalQtyBill.Text = "Total  QTY with Bill :";
+            // 
+            // txtTotalQTYBill
+            // 
+            this.txtTotalQTYBill.BackColor = System.Drawing.Color.White;
+            this.txtTotalQTYBill.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtTotalQTYBill.Location = new System.Drawing.Point(672, 597);
+            this.txtTotalQTYBill.Name = "txtTotalQTYBill";
+            this.txtTotalQTYBill.ReadOnly = true;
+            this.txtTotalQTYBill.Size = new System.Drawing.Size(133, 25);
+            this.txtTotalQTYBill.TabIndex = 253;
+            // 
+            // lblTotalEnteredQty
+            // 
+            this.lblTotalEnteredQty.AutoSize = true;
+            this.lblTotalEnteredQty.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalEnteredQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalEnteredQty.Location = new System.Drawing.Point(531, 568);
+            this.lblTotalEnteredQty.Name = "lblTotalEnteredQty";
+            this.lblTotalEnteredQty.Size = new System.Drawing.Size(130, 17);
+            this.lblTotalEnteredQty.TabIndex = 252;
+            this.lblTotalEnteredQty.Text = "Total  QTY entered :";
+            // 
+            // txtTotalQTYEntered
+            // 
+            this.txtTotalQTYEntered.BackColor = System.Drawing.Color.White;
+            this.txtTotalQTYEntered.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtTotalQTYEntered.Location = new System.Drawing.Point(672, 568);
+            this.txtTotalQTYEntered.Name = "txtTotalQTYEntered";
+            this.txtTotalQTYEntered.ReadOnly = true;
+            this.txtTotalQTYEntered.Size = new System.Drawing.Size(133, 25);
+            this.txtTotalQTYEntered.TabIndex = 251;
+            this.txtTotalQTYEntered.Text = "0";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(811, 626);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(71, 25);
+            this.btnCancel.TabIndex = 258;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Enabled = false;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(811, 568);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(71, 25);
+            this.btnSave.TabIndex = 257;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(612, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 17);
+            this.label1.TabIndex = 247;
+            this.label1.Text = "Add Ratio to Suggested Price :";
+            // 
+            // cmbAddRatio
+            // 
+            this.cmbAddRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAddRatio.Enabled = false;
+            this.cmbAddRatio.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddRatio.FormattingEnabled = true;
+            this.cmbAddRatio.Items.AddRange(new object[] {
+            "200",
+            "300"});
+            this.cmbAddRatio.Location = new System.Drawing.Point(810, 61);
+            this.cmbAddRatio.Name = "cmbAddRatio";
+            this.cmbAddRatio.Size = new System.Drawing.Size(147, 27);
+            this.cmbAddRatio.TabIndex = 248;
+            this.cmbAddRatio.SelectionChangeCommitted += new System.EventHandler(this.cmbAddRatio_SelectionChangeCommitted);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(395, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 17);
+            this.label3.TabIndex = 252;
+            this.label3.Text = "Rate :";
+            // 
+            // txtCurrencyRate
+            // 
+            this.txtCurrencyRate.BackColor = System.Drawing.Color.White;
+            this.txtCurrencyRate.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtCurrencyRate.Location = new System.Drawing.Point(482, 106);
+            this.txtCurrencyRate.Name = "txtCurrencyRate";
+            this.txtCurrencyRate.ReadOnly = true;
+            this.txtCurrencyRate.Size = new System.Drawing.Size(111, 25);
+            this.txtCurrencyRate.TabIndex = 251;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(612, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 17);
+            this.label4.TabIndex = 260;
+            this.label4.Text = "New Rate :";
+            // 
+            // txtNewRate
+            // 
+            this.txtNewRate.BackColor = System.Drawing.Color.White;
+            this.txtNewRate.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtNewRate.Location = new System.Drawing.Point(690, 106);
+            this.txtNewRate.Name = "txtNewRate";
+            this.txtNewRate.ReadOnly = true;
+            this.txtNewRate.Size = new System.Drawing.Size(111, 25);
+            this.txtNewRate.TabIndex = 259;
+            // 
+            // txtPurchaseInvoiceID
+            // 
+            this.txtPurchaseInvoiceID.BackColor = System.Drawing.Color.White;
+            this.txtPurchaseInvoiceID.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtPurchaseInvoiceID.Location = new System.Drawing.Point(804, 44);
+            this.txtPurchaseInvoiceID.Name = "txtPurchaseInvoiceID";
+            this.txtPurchaseInvoiceID.ReadOnly = true;
+            this.txtPurchaseInvoiceID.Size = new System.Drawing.Size(51, 25);
+            this.txtPurchaseInvoiceID.TabIndex = 261;
+            this.txtPurchaseInvoiceID.Visible = false;
+            // 
             // Purchase_Bill_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,7 +778,6 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(978, 658);
-            this.Controls.Add(this.txtPurchaseInvoiceID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNewRate);
             this.Controls.Add(this.label1);
@@ -799,7 +800,6 @@
             this.Controls.Add(this.txtTotalValueEntered);
             this.Controls.Add(this.grpGridview);
             this.Controls.Add(this.btnLoadfrmXLS);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSupplierBillNo);
             this.Controls.Add(this.txtSupplierBillNo);
             this.Controls.Add(this.grpPurchaseBillDetail);

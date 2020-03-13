@@ -241,6 +241,7 @@
             // txtSizeTypeName
             // 
             this.txtSizeTypeName.BackColor = System.Drawing.Color.White;
+            this.txtSizeTypeName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSizeTypeName.Location = new System.Drawing.Point(159, 27);
             this.txtSizeTypeName.Name = "txtSizeTypeName";
             this.txtSizeTypeName.Size = new System.Drawing.Size(206, 25);

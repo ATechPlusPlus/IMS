@@ -308,8 +308,6 @@
             this.txtPass.UseSystemPasswordChar = true;
             this.txtPass.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtPass.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
-            this.txtPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtPass_MouseDown);
-            this.txtPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.txtPass_MouseUp);
             // 
             // label7
             // 

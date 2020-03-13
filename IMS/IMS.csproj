@@ -254,6 +254,18 @@
     <Compile Include="Purchase\Delivering_Purchase_Bill.Designer.cs">
       <DependentUpon>Delivering_Purchase_Bill.cs</DependentUpon>
     </Compile>
+    <Compile Include="Purchase\frmDiffPurchaseReceived.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\frmDiffPurchaseReceived.Designer.cs">
+      <DependentUpon>frmDiffPurchaseReceived.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\frmDiffPurchaseReceviedDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\frmDiffPurchaseReceviedDetails.Designer.cs">
+      <DependentUpon>frmDiffPurchaseReceviedDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchase\Posting_Delivery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -408,6 +420,12 @@
     </Compile>
     <EmbeddedResource Include="Purchase\Delivering_Purchase_Bill.resx">
       <DependentUpon>Delivering_Purchase_Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\frmDiffPurchaseReceived.resx">
+      <DependentUpon>frmDiffPurchaseReceived.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\frmDiffPurchaseReceviedDetails.resx">
+      <DependentUpon>frmDiffPurchaseReceviedDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Purchase\Posting_Delivery.resx">
       <DependentUpon>Posting_Delivery.cs</DependentUpon>
