@@ -82,13 +82,17 @@
             this.picCash = new System.Windows.Forms.PictureBox();
             this.picKnet = new System.Windows.Forms.PictureBox();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.txtColorID = new System.Windows.Forms.TextBox();
+            this.txtSizeID = new System.Windows.Forms.TextBox();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarcodeNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SizeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2.SuspendLayout();
@@ -162,6 +166,7 @@
             this.txtInvoiceNumber.ReadOnly = true;
             this.txtInvoiceNumber.Size = new System.Drawing.Size(171, 25);
             this.txtInvoiceNumber.TabIndex = 190;
+            this.txtInvoiceNumber.TextChanged += new System.EventHandler(this.txtInvoiceNumber_TextChanged);
             // 
             // cmbShop
             // 
@@ -298,8 +303,10 @@
             this.BarcodeNo,
             this.Rate,
             this.QTY,
+            this.ColorID,
             this.Color,
             this.Size,
+            this.SizeID,
             this.Total,
             this.ColDelete});
             this.dgvProductDetails.Location = new System.Drawing.Point(6, 51);
@@ -452,6 +459,7 @@
             this.cboEntryMode.Name = "cboEntryMode";
             this.cboEntryMode.Size = new System.Drawing.Size(171, 25);
             this.cboEntryMode.TabIndex = 245;
+            this.cboEntryMode.SelectionChangeCommitted += new System.EventHandler(this.cboEntryMode_SelectionChangeCommitted);
             // 
             // label156
             // 
@@ -511,7 +519,7 @@
             // 
             this.txtEmpID.BackColor = System.Drawing.Color.White;
             this.txtEmpID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpID.Location = new System.Drawing.Point(679, 47);
+            this.txtEmpID.Location = new System.Drawing.Point(731, 47);
             this.txtEmpID.Name = "txtEmpID";
             this.txtEmpID.Size = new System.Drawing.Size(54, 25);
             this.txtEmpID.TabIndex = 249;
@@ -543,7 +551,7 @@
             // 
             this.txtCustomerID.BackColor = System.Drawing.Color.White;
             this.txtCustomerID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerID.Location = new System.Drawing.Point(738, 45);
+            this.txtCustomerID.Location = new System.Drawing.Point(801, 47);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(54, 25);
             this.txtCustomerID.TabIndex = 253;
@@ -754,11 +762,31 @@
             // 
             this.txtCustomerName.BackColor = System.Drawing.Color.White;
             this.txtCustomerName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerName.Location = new System.Drawing.Point(517, 45);
+            this.txtCustomerName.Location = new System.Drawing.Point(673, 45);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(54, 25);
             this.txtCustomerName.TabIndex = 255;
             this.txtCustomerName.Visible = false;
+            // 
+            // txtColorID
+            // 
+            this.txtColorID.BackColor = System.Drawing.Color.White;
+            this.txtColorID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtColorID.Location = new System.Drawing.Point(548, 47);
+            this.txtColorID.Name = "txtColorID";
+            this.txtColorID.Size = new System.Drawing.Size(54, 25);
+            this.txtColorID.TabIndex = 256;
+            this.txtColorID.Visible = false;
+            // 
+            // txtSizeID
+            // 
+            this.txtSizeID.BackColor = System.Drawing.Color.White;
+            this.txtSizeID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSizeID.Location = new System.Drawing.Point(608, 47);
+            this.txtSizeID.Name = "txtSizeID";
+            this.txtSizeID.Size = new System.Drawing.Size(54, 25);
+            this.txtSizeID.TabIndex = 257;
+            this.txtSizeID.Visible = false;
             // 
             // ProductID
             // 
@@ -792,6 +820,13 @@
             this.QTY.HeaderText = "QTY";
             this.QTY.Name = "QTY";
             // 
+            // ColorID
+            // 
+            this.ColorID.DataPropertyName = "ColorID";
+            this.ColorID.HeaderText = "ColorID";
+            this.ColorID.Name = "ColorID";
+            this.ColorID.Visible = false;
+            // 
             // Color
             // 
             this.Color.DataPropertyName = "Color";
@@ -803,6 +838,13 @@
             this.Size.DataPropertyName = "Size";
             this.Size.HeaderText = "Size";
             this.Size.Name = "Size";
+            // 
+            // SizeID
+            // 
+            this.SizeID.DataPropertyName = "SizeID";
+            this.SizeID.HeaderText = "SizeID";
+            this.SizeID.Name = "SizeID";
+            this.SizeID.Visible = false;
             // 
             // Total
             // 
@@ -824,6 +866,8 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(905, 704);
+            this.Controls.Add(this.txtSizeID);
+            this.Controls.Add(this.txtColorID);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel1);
@@ -935,13 +979,17 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.TextBox txtColorID;
+        private System.Windows.Forms.TextBox txtSizeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rate;
         private System.Windows.Forms.DataGridViewTextBoxColumn QTY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Size;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SizeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewButtonColumn ColDelete;
     }
