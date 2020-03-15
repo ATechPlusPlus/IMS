@@ -721,10 +721,13 @@ namespace IMS.Sales
                 dgvProductDetails.EndEdit();
 
                 // Before sales invocing make sure you have available qty for particular store
+
+                string InvoiceDateTime = dtpSalesDate.Value.ToString("yyyy-MM-dd") + " " + DateTime.Now.ToString("HH:mm:ss");
+
                 GenerateInvoiceNumber();
                 #region SalesInvoiceDetails
                 ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
-                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, InvoiceDateTime);
                 ObjDAL.SetColumnData("SubTotal", SqlDbType.Decimal, txtSubTotal.Text);
                 ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtDiscount.Text);
                 ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtDeliveryCharges.Text);
