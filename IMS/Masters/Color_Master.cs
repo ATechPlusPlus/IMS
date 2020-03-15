@@ -35,14 +35,6 @@ namespace IMS.Masters
 
         private bool ValidateForm()
         {
-            //int isExist = ObjDAL.ExecuteScalarInt("Select count(*) from [IMS_DB].[dbo].[ColorMaster] where ColorName='"+txtColorName.Text.Trim()+"'");
-            //if (isExist > 0)
-            //{
-            //    clsUtility.ShowInfoMessage(txtColorName.Text+" already Exists     ", clsUtility.strProjectTitle);
-            //    txtColorName.Focus();
-            //    return false;
-            //}
-           
             if (ObjUtil.IsControlTextEmpty(txtColorName))
             {
                 clsUtility.ShowInfoMessage("Enter Color Name       ", clsUtility.strProjectTitle);

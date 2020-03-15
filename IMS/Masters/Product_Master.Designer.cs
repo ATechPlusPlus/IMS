@@ -57,6 +57,9 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicProductMaster = new System.Windows.Forms.PictureBox();
             this.btnImport = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.grpProduct.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -165,6 +168,9 @@
             // grpProduct
             // 
             this.grpProduct.BackColor = System.Drawing.Color.Transparent;
+            this.grpProduct.Controls.Add(this.label3);
+            this.grpProduct.Controls.Add(this.label1);
+            this.grpProduct.Controls.Add(this.label2);
             this.grpProduct.Controls.Add(this.btnCategoryPopup);
             this.grpProduct.Controls.Add(this.cmbCategory);
             this.grpProduct.Controls.Add(this.lblCategory);
@@ -189,7 +195,7 @@
             this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategoryPopup.Location = new System.Drawing.Point(371, 75);
+            this.btnCategoryPopup.Location = new System.Drawing.Point(383, 75);
             this.btnCategoryPopup.Name = "btnCategoryPopup";
             this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
             this.btnCategoryPopup.TabIndex = 280;
@@ -296,7 +302,7 @@
             // 
             this.rdSearchByProduct.AutoSize = true;
             this.rdSearchByProduct.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchByProduct.Location = new System.Drawing.Point(18, 20);
+            this.rdSearchByProduct.Location = new System.Drawing.Point(13, 20);
             this.rdSearchByProduct.Name = "rdSearchByProduct";
             this.rdSearchByProduct.Size = new System.Drawing.Size(140, 21);
             this.rdSearchByProduct.TabIndex = 6;
@@ -309,7 +315,7 @@
             this.txtSearchByProduct.BackColor = System.Drawing.Color.White;
             this.txtSearchByProduct.Enabled = false;
             this.txtSearchByProduct.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByProduct.Location = new System.Drawing.Point(167, 18);
+            this.txtSearchByProduct.Location = new System.Drawing.Point(159, 19);
             this.txtSearchByProduct.Name = "txtSearchByProduct";
             this.txtSearchByProduct.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByProduct.TabIndex = 5;
@@ -442,6 +448,42 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(368, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 17);
+            this.label2.TabIndex = 285;
+            this.label2.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(368, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 17);
+            this.label1.TabIndex = 286;
+            this.label1.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(368, 125);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 17);
+            this.label3.TabIndex = 287;
+            this.label3.Text = "*";
+            // 
             // Product_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,5 +556,8 @@
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnCategoryPopup;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

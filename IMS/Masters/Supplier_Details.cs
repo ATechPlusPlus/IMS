@@ -19,7 +19,7 @@ namespace IMS.Masters
 
         clsUtility ObjUtil = new clsUtility();
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
-        
+
         int ID = 0;
 
         Image B_Leave = IMS.Properties.Resources.B_click;
@@ -157,13 +157,12 @@ namespace IMS.Masters
                     else
                     {
                         clsUtility.ShowInfoMessage("Supplier : '" + txtSupplierName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
+                    ObjDAL.ResetData();
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtSupplierName.Text + "' Supplier is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                     txtSupplierName.Focus();
                 }
             }
@@ -194,7 +193,7 @@ namespace IMS.Masters
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierID = " + ID + "") > 0)
+                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierID = " + ID) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
@@ -202,19 +201,17 @@ namespace IMS.Masters
                         LoadData();
                         ClearAll();
                         grpSupplier.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowErrorMessage("'" + txtSupplierName.Text + "' Supplier is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
+                    ObjDAL.ResetData();
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtSupplierName.Text + "' Supplier is already exist..", clsUtility.strProjectTitle);
                     txtSupplierName.Focus();
-                    ObjDAL.ResetData();
                 }
             }
         }
@@ -224,7 +221,7 @@ namespace IMS.Masters
             DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtSupplierName.Text + "' Supplier ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierName='" + txtSupplierName.Text.Trim() + "'") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.SupplierMaster", "SupplierID = " + ID) > 0)
                 {
                     clsUtility.ShowInfoMessage("'" + txtSupplierName.Text + "' Supplier is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();

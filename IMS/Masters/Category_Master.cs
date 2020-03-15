@@ -38,13 +38,13 @@ namespace IMS.Masters
         {
             if (ObjUtil.IsControlTextEmpty(txtCategoryName))
             {
-                clsUtility.ShowInfoMessage("Enter Category Name           ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Enter Department Name           ", clsUtility.strProjectTitle);
                 txtCategoryName.Focus();
                 return false;
             }
             else if (ObjUtil.IsControlTextEmpty(txtCategoryDescription))
             {
-                clsUtility.ShowInfoMessage("Enter Category Description            ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Enter Department Description            ", clsUtility.strProjectTitle);
                 txtCategoryDescription.Focus();
                 return false;
             }

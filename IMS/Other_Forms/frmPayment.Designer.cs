@@ -122,6 +122,8 @@
             this.txtPaymentAutoID.Name = "txtPaymentAutoID";
             this.txtPaymentAutoID.Size = new System.Drawing.Size(191, 25);
             this.txtPaymentAutoID.TabIndex = 222;
+            this.txtPaymentAutoID.Enter += new System.EventHandler(this.txtPaymentAutoID_Enter);
+            this.txtPaymentAutoID.Leave += new System.EventHandler(this.txtPaymentAutoID_Leave);
             // 
             // panel1
             // 

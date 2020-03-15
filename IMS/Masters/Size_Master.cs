@@ -151,20 +151,18 @@ namespace IMS.Masters
                     LoadData();
                     ClearAll();
                     grpSizeType.Enabled = false;
-                    ObjDAL.ResetData();
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage(clsUtility.MsgDatanotUpdated, clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                 }
             }
             else
             {
                 //clsUtility.ShowErrorMessage("'" + txtSize.Text + "' Size is already exist..", clsUtility.strProjectTitle);
                 txtSize.Focus();
-                ObjDAL.ResetData();
             }
+            ObjDAL.ResetData();
             //}
         }
 

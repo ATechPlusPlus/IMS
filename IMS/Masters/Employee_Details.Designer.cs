@@ -38,6 +38,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicEmployee = new System.Windows.Forms.PictureBox();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
+            this.btnStorePopup = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.radFemale = new System.Windows.Forms.RadioButton();
             this.radMale = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbShop = new System.Windows.Forms.ComboBox();
@@ -68,7 +68,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnStorePopup = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.grpGender = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
             this.lblTotalRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
@@ -77,6 +78,7 @@
             this.grpEmployee.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.grpGender.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -181,14 +183,13 @@
             // grpEmployee
             // 
             this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.grpGender);
+            this.grpEmployee.Controls.Add(this.label13);
             this.grpEmployee.Controls.Add(this.btnStorePopup);
             this.grpEmployee.Controls.Add(this.label10);
             this.grpEmployee.Controls.Add(this.label9);
             this.grpEmployee.Controls.Add(this.label8);
             this.grpEmployee.Controls.Add(this.groupBox3);
-            this.grpEmployee.Controls.Add(this.radFemale);
-            this.grpEmployee.Controls.Add(this.radMale);
-            this.grpEmployee.Controls.Add(this.label5);
             this.grpEmployee.Controls.Add(this.dtpDOB);
             this.grpEmployee.Controls.Add(this.label4);
             this.grpEmployee.Controls.Add(this.cmbShop);
@@ -209,13 +210,28 @@
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee Details";
             // 
+            // btnStorePopup
+            // 
+            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
+            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStorePopup.Location = new System.Drawing.Point(662, 35);
+            this.btnStorePopup.Name = "btnStorePopup";
+            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnStorePopup.TabIndex = 279;
+            this.btnStorePopup.UseVisualStyleBackColor = false;
+            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 11.25F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label10.Location = new System.Drawing.Point(650, 35);
+            this.label10.Location = new System.Drawing.Point(648, 35);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 17);
             this.label10.TabIndex = 236;
@@ -288,7 +304,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(321, 73);
+            this.pictureBox2.Location = new System.Drawing.Point(320, 73);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -347,7 +363,7 @@
             this.radFemale.AutoSize = true;
             this.radFemale.BackColor = System.Drawing.Color.Transparent;
             this.radFemale.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radFemale.Location = new System.Drawing.Point(515, 89);
+            this.radFemale.Location = new System.Drawing.Point(128, 21);
             this.radFemale.Name = "radFemale";
             this.radFemale.Size = new System.Drawing.Size(69, 21);
             this.radFemale.TabIndex = 232;
@@ -360,24 +376,13 @@
             this.radMale.AutoSize = true;
             this.radMale.BackColor = System.Drawing.Color.Transparent;
             this.radMale.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radMale.Location = new System.Drawing.Point(438, 89);
+            this.radMale.Location = new System.Drawing.Point(20, 21);
             this.radMale.Name = "radMale";
             this.radMale.Size = new System.Drawing.Size(56, 21);
             this.radMale.TabIndex = 231;
             this.radMale.TabStop = true;
             this.radMale.Text = "Male";
             this.radMale.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label5.Location = new System.Drawing.Point(369, 91);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 17);
-            this.label5.TabIndex = 230;
-            this.label5.Text = "Gender :";
             // 
             // dtpDOB
             // 
@@ -438,7 +443,7 @@
             // 
             this.txtAdd.BackColor = System.Drawing.Color.White;
             this.txtAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.txtAdd.Location = new System.Drawing.Point(133, 178);
+            this.txtAdd.Location = new System.Drawing.Point(133, 169);
             this.txtAdd.Multiline = true;
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(206, 81);
@@ -586,20 +591,32 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
-            // btnStorePopup
+            // label13
             // 
-            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
-            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStorePopup.Location = new System.Drawing.Point(664, 35);
-            this.btnStorePopup.Name = "btnStorePopup";
-            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
-            this.btnStorePopup.TabIndex = 279;
-            this.btnStorePopup.UseVisualStyleBackColor = false;
-            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(648, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 17);
+            this.label13.TabIndex = 280;
+            this.label13.Text = "*";
+            // 
+            // grpGender
+            // 
+            this.grpGender.BackColor = System.Drawing.Color.Transparent;
+            this.grpGender.Controls.Add(this.radMale);
+            this.grpGender.Controls.Add(this.radFemale);
+            this.grpGender.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpGender.Location = new System.Drawing.Point(438, 67);
+            this.grpGender.Margin = new System.Windows.Forms.Padding(2);
+            this.grpGender.Name = "grpGender";
+            this.grpGender.Padding = new System.Windows.Forms.Padding(2);
+            this.grpGender.Size = new System.Drawing.Size(206, 49);
+            this.grpGender.TabIndex = 281;
+            this.grpGender.TabStop = false;
+            this.grpGender.Text = "Gender";
             // 
             // Employee_Details
             // 
@@ -636,6 +653,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.grpGender.ResumeLayout(false);
+            this.grpGender.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -659,7 +678,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.RadioButton radFemale;
         private System.Windows.Forms.RadioButton radMale;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbShop;
@@ -682,5 +700,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnStorePopup;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox grpGender;
     }
 }

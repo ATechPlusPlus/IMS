@@ -68,6 +68,10 @@
             this.txtPurchaseInvoiceID = new System.Windows.Forms.TextBox();
             this.btnStorePopup = new System.Windows.Forms.Button();
             this.btnSizeTypePopup = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.grpPurchaseBillDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQtycolor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -144,6 +148,7 @@
             // grpPurchaseBillDetail
             // 
             this.grpPurchaseBillDetail.BackColor = System.Drawing.Color.Transparent;
+            this.grpPurchaseBillDetail.Controls.Add(this.label5);
             this.grpPurchaseBillDetail.Controls.Add(this.txtItemName);
             this.grpPurchaseBillDetail.Controls.Add(this.listBoxModelNo);
             this.grpPurchaseBillDetail.Controls.Add(this.cmbCountry);
@@ -217,9 +222,6 @@
             this.cmbDepartment.Enabled = false;
             this.cmbDepartment.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Items.AddRange(new object[] {
-            "Active",
-            "InActive"});
             this.cmbDepartment.Location = new System.Drawing.Point(118, 96);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(206, 27);
@@ -567,7 +569,7 @@
             this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStorePopup.Location = new System.Drawing.Point(813, 100);
+            this.btnStorePopup.Location = new System.Drawing.Point(827, 100);
             this.btnStorePopup.Name = "btnStorePopup";
             this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
             this.btnStorePopup.TabIndex = 276;
@@ -582,12 +584,60 @@
             this.btnSizeTypePopup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSizeTypePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSizeTypePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSizeTypePopup.Location = new System.Drawing.Point(815, 272);
+            this.btnSizeTypePopup.Location = new System.Drawing.Point(829, 272);
             this.btnSizeTypePopup.Name = "btnSizeTypePopup";
             this.btnSizeTypePopup.Size = new System.Drawing.Size(27, 27);
             this.btnSizeTypePopup.TabIndex = 277;
             this.btnSizeTypePopup.UseVisualStyleBackColor = false;
             this.btnSizeTypePopup.Click += new System.EventHandler(this.btnSizeTypePopup_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label10.Location = new System.Drawing.Point(335, 98);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(15, 17);
+            this.label10.TabIndex = 293;
+            this.label10.Text = "*";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(327, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 17);
+            this.label5.TabIndex = 294;
+            this.label5.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(810, 98);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(15, 17);
+            this.label6.TabIndex = 295;
+            this.label6.Text = "*";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label7.Location = new System.Drawing.Point(810, 272);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 17);
+            this.label7.TabIndex = 296;
+            this.label7.Text = "*";
             // 
             // Delivering_Purchase_Bill
             // 
@@ -596,6 +646,9 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(978, 692);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnSizeTypePopup);
             this.Controls.Add(this.btnStorePopup);
             this.Controls.Add(this.txtPurchaseInvoiceID);
@@ -683,5 +736,9 @@
         private System.Windows.Forms.TextBox txtPurchaseInvoiceID;
         private System.Windows.Forms.Button btnStorePopup;
         private System.Windows.Forms.Button btnSizeTypePopup;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

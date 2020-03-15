@@ -267,17 +267,46 @@ namespace IMS.Purchase
             //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["ProductID"].Visible = false;
             dataGridView1.Columns["BrandID"].Visible = false;
+            if (dataGridView1.Columns.Contains("PurchaseInvoiceID"))
+            {
+                dataGridView1.Columns["PurchaseInvoiceID"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("SupplierID"))
+            {
+                dataGridView1.Columns["SupplierID"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("BillDate"))
+            {
+                dataGridView1.Columns["BillDate"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("BillValue"))
+            {
+                dataGridView1.Columns["BillValue"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("TotalQTY"))
+            {
+                dataGridView1.Columns["TotalQTY"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("LocalValue"))
+            {
+                dataGridView1.Columns["LocalValue"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("LocalBillValue"))
+            {
+                dataGridView1.Columns["LocalBillValue"].Visible = false;
+            }
         }
 
         private void LoadData()
         {
-            DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,LocalValue,LocalExp,LocalBillValue", " ISNULL(IsInvoiceDone,0) = 0 AND SupplierBillNo = '" + txtSupplierBillNo.Text.Trim() + "'", "BillDate");
+            //DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID,SupplierBillNo,SupplierID,ShipmentNo,BillDate,BillValue,TotalQTY,LocalValue,LocalExp,LocalBillValue", " ISNULL(IsInvoiceDone,0) = 0 AND PurchaseInvoiceID = " + txtPurchaseInvoiceID.Text + "", "BillDate");
+
+            DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_PurchaseInvoice_BillDetails " + txtPurchaseInvoiceID.Text);
 
             if (ObjUtil.ValidateTable(dt))
             {
                 double TotalValueBill = 0, TotalQTYBill = 0, LocalValue = 0;
 
-                grpPurchaseBillDetail.Enabled = true;
                 dtpBillDate.Value = dt.Rows[0]["BillDate"] != DBNull.Value ? Convert.ToDateTime(dt.Rows[0]["BillDate"]) : DateTime.Now;
                 cmbSupplier.SelectedValue = Convert.ToInt32(dt.Rows[0]["SupplierID"]);
                 TotalValueBill = Convert.ToDouble(dt.Rows[0]["BillValue"]);
@@ -295,6 +324,17 @@ namespace IMS.Purchase
                 txtNewRate.Text = Math.Round((LocalBillValue / TotalValueBill), 3).ToString();
 
                 txtProductName.Focus();
+                if (Convert.ToInt32(dt.Rows[0]["ProductID"]) > 0)
+                {
+                    grpPurchaseBillDetail.Enabled = false;
+                    dataGridView1.DataSource = dt;
+                    CalculateSubTotal();
+                }
+                else
+                {
+                    grpPurchaseBillDetail.Enabled = true;
+                    dataGridView1.DataSource = null;
+                }
             }
             else
             {
@@ -332,8 +372,8 @@ namespace IMS.Purchase
             {
                 if (txtProductName.Text.Length > 0) // if manual entry
                 {
-                    string query = "SELECT ProductID, ProductName FROM " + clsUtility.DBName + ".dbo.ProductMaster WITH(NOLOCK)";
-                    DataTable dt = ObjDAL.ExecuteSelectStatement(query + " WHERE ISNULL(ActiveStatus,1)=1 AND ProductName Like '" + txtProductName.Text + "%'");
+                    string query = "SELECT ProductID, ProductName FROM " + clsUtility.DBName + ".dbo.ProductMaster WITH(NOLOCK) WHERE ISNULL(ActiveStatus,1)=1 AND ProductName Like '" + txtProductName.Text + "%'";
+                    DataTable dt = ObjDAL.ExecuteSelectStatement(query);
                     if (ObjUtil.ValidateTable(dt))
                     {
                         linkAddPurchaseBillItems.Enabled = true;
@@ -358,7 +398,11 @@ namespace IMS.Purchase
                     else
                     {
                         ObjUtil.CloseAutoExtender();
-                        clsUtility.ShowInfoMessage("Item Name " + txtProductName.Text + " is not available in Item Master.", clsUtility.strProjectTitle);
+                        if (ObjUtil.IsControlTextEmpty(txtProductID))
+                        {
+                            clsUtility.ShowInfoMessage("Item Name " + txtProductName.Text + " is not available in Item Master.", clsUtility.strProjectTitle);
+                            txtProductName.Focus();
+                        }
                         linkAddPurchaseBillItems.Enabled = false;
                     }
                 }
@@ -525,6 +569,7 @@ namespace IMS.Purchase
                             if (ObjUtil.GetDataPopup().ColumnCount > 0)
                             {
                                 ObjUtil.GetDataPopup().Columns["PurchaseInvoiceID"].Visible = false;
+                                ObjUtil.GetDataPopup().Columns["SupplierID"].Visible = false;
                                 ObjUtil.SetDataPopupSize(300, 0);
                             }
                         }
@@ -559,6 +604,19 @@ namespace IMS.Purchase
                 cmbAddRatio.Enabled = true;
                 cmbAddRatio.SelectedIndex = 0;
                 LoadData();
+            }
+        }
+
+        private void cmbSupplier_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int a = ObjDAL.ExecuteScalarInt("SELECT BrandID FROM " + clsUtility.DBName + ".dbo.[dbo].[BrandMaster] WITH(NOLOCK) WHERE SupplierID=" + cmbSupplier.SelectedValue);
+            if (a > 0)
+            {
+                cmbBrand.SelectedValue = a;
+            }
+            else
+            {
+                cmbBrand.SelectedIndex = -1;
             }
         }
 
