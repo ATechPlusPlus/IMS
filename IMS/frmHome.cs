@@ -246,5 +246,11 @@ namespace IMS
             Purchase.frmDiffPurchaseReceived Obj = new Purchase.frmDiffPurchaseReceived();
             Obj.Show();
         }
+
+        private void SalesReport_ToolStrip_Click(object sender, EventArgs e)
+        {
+            Report.frmSalesReport frmSalesReport = new Report.frmSalesReport();
+            frmSalesReport.Show();
+        }
     }
 }

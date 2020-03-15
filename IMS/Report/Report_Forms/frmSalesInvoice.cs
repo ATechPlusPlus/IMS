@@ -24,8 +24,11 @@ namespace IMS.Report
         public bool IsDirectPrint = false;
         private void frmSalesInvoice_Load(object sender, EventArgs e)
         {
-            string query = "select p1.ProductName,s1.QTY,s1.Rate, (s1.Qty*s1.Rate) as Total from " + clsUtility.DBName + ".[dbo].[SalesDetails] s1 join " + clsUtility.DBName + ".dbo.ProductMaster p1 " +
-               " on s1.ProductID = p1.ProductID where s1.InvoiceID = " + InvoiceID;
+            string query = "select p1.ProductName,s1.QTY,s1.Rate, (s1.Qty*s1.Rate) as Total,ps.barcodeNo as BarNumber from " + clsUtility.DBName + ".[dbo].[SalesDetails] s1 join " + clsUtility.DBName + ".dbo.ProductMaster p1 " +
+               " on s1.ProductID = p1.ProductID "+
+               "  join "+ clsUtility.DBName + ".dbo.ProductStockMaster ps"+
+               "  on ps.colorID=s1.ColorID and ps.SizeID=s1.SizeID "+
+               " where s1.InvoiceID = " + InvoiceID;
 
             DataTable dtSalesDetails = ObjCon.ExecuteSelectStatement(query);
 
