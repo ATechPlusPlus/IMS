@@ -571,22 +571,45 @@ namespace IMS.Sales
             //dgvProductDetails.Columns[e.ColumnIndex].Name == "Rate" ||
             if (dgvProductDetails.Columns[e.ColumnIndex].Name == "QTY")
             {
+                string pID = dgvProductDetails.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
+                string sizeid = dgvProductDetails.Rows[e.RowIndex].Cells["SizeID"].Value.ToString();
+                string colorid= dgvProductDetails.Rows[e.RowIndex].Cells["ColorID"].Value.ToString();
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
                 decimal Rate = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["Rate"].Value);
                 decimal Total = QTY * Rate;
                 string  _barNo = dgvProductDetails.Rows[e.RowIndex].Cells["Barcodeno"].Value.ToString();
-                if (CheckProductQTY(_barNo, Convert.ToDecimal(QTY)))
+
+                if (_barNo.Trim().Length==0) // if barcode not found
                 {
-                    dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
-                    CalculateGrandTotal();
+                    if (CheckProductQTY_Non_BarCode(pID, sizeid, colorid, QTY))
+                    {
+                        dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
+                        CalculateGrandTotal();
+                    }
+                    else
+                    {
+                        dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = _StartValue;
+                        CalculateGrandTotal();
+
+                        clsUtility.ShowInfoMessage("QTY : " + QTY + " NOT avaiable for the Product : " + dgvProductDetails.Rows[e.RowIndex].Cells["ProductName"].Value, clsUtility.strProjectTitle);
+                    }
                 }
                 else
                 {
-                    dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = _StartValue;
-                    CalculateGrandTotal();
+                    if (CheckProductQTY(_barNo, Convert.ToDecimal(QTY)))
+                    {
+                        dgvProductDetails.Rows[e.RowIndex].Cells["Total"].Value = Total.ToString();
+                        CalculateGrandTotal();
+                    }
+                    else
+                    {
+                        dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = _StartValue;
+                        CalculateGrandTotal();
 
-                    clsUtility.ShowInfoMessage("QTY : "+ QTY + " NOT avaiable for the Product : " + dgvProductDetails.Rows[e.RowIndex].Cells["ProductName"].Value, clsUtility.strProjectTitle);
+                        clsUtility.ShowInfoMessage("QTY : " + QTY + " NOT avaiable for the Product : " + dgvProductDetails.Rows[e.RowIndex].Cells["ProductName"].Value, clsUtility.strProjectTitle);
+                    }
                 }
+             
                 
                 
             }
@@ -698,10 +721,13 @@ namespace IMS.Sales
                 dgvProductDetails.EndEdit();
 
                 // Before sales invocing make sure you have available qty for particular store
+
+                string InvoiceDateTime = dtpSalesDate.Value.ToString("yyyy-MM-dd") + " " + DateTime.Now.ToString("HH:mm:ss");
+
                 GenerateInvoiceNumber();
                 #region SalesInvoiceDetails
                 ObjDAL.SetColumnData("InvoiceNumber", SqlDbType.NVarChar, txtInvoiceNumber.Text);
-                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, dtpSalesDate.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+                ObjDAL.SetColumnData("InvoiceDate", SqlDbType.DateTime, InvoiceDateTime);
                 ObjDAL.SetColumnData("SubTotal", SqlDbType.Decimal, txtSubTotal.Text);
                 ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtDiscount.Text);
                 ObjDAL.SetColumnData("Tax", SqlDbType.Decimal, txtDeliveryCharges.Text);
