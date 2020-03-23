@@ -969,5 +969,15 @@ namespace IMS.Sales
                 label4.Text = "Barcode :";
             }
         }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            e.Handled = ObjUtil.IsDecimal(txt, e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Numbers...", clsUtility.strProjectTitle);
+            }
+        }
     }
 }

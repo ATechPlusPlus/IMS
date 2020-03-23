@@ -476,5 +476,14 @@ namespace IMS.Masters
             Obj.ShowDialog();
             FillCountryData();
         }
+
+        private void txtBankAccNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsNumeric(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+            }
+        }
     }
 }

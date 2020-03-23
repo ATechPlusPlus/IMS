@@ -87,7 +87,7 @@ namespace IMS.Purchase
                 clsUtility.ShowInfoMessage("Local Value can't be empty           ", clsUtility.strProjectTitle);
                 return false;
             }
-            else if (ObjUtil.IsNumeric(txtLocalValue.Text) && Convert.ToInt32(txtLocalValue.Text) == 0)
+            else if (ObjUtil.IsNumeric(txtLocalValue.Text) && Convert.ToDecimal(txtLocalValue.Text) == 0.0M)
             {
                 clsUtility.ShowInfoMessage("Local Value can't be 0           ", clsUtility.strProjectTitle);
                 return false;
@@ -558,6 +558,34 @@ namespace IMS.Purchase
             if (txtCurrencyRate.TextLength > 0)
             {
                 CalculateTotalBill();
+            }
+        }
+
+        private void txtTotalQTY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsNumeric(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Numbers...", clsUtility.strProjectTitle);
+            }
+        }
+
+        private void txtBillValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsDecimal(txtBillValue, e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Numbers...", clsUtility.strProjectTitle);
+            }
+        }
+
+        private void txtForeignExp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            e.Handled = ObjUtil.IsDecimal(txt, e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Numbers...", clsUtility.strProjectTitle);
             }
         }
     }

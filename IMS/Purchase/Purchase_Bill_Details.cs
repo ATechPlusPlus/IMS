@@ -21,6 +21,7 @@ namespace IMS.Purchase
         clsConnection_DAL ObjDAL = new clsConnection_DAL(true);
 
         DataTable dtPurchaseInvoice = new DataTable();
+        DataTable dtDefaultBillDetails = new DataTable();
 
         int pTotalQTY = 0;
         double pTotalAmt = 0, LocalBillValue = 0, pAddRatio = 0;
@@ -43,7 +44,8 @@ namespace IMS.Purchase
             cmbBrand.SelectedIndex = -1;
 
             dtPurchaseInvoice.Clear();
-            dataGridView1.DataSource = dtPurchaseInvoice;
+            //dataGridView1.DataSource = dtPurchaseInvoice;
+            dataGridView1.DataSource = dtDefaultBillDetails;
 
             txtTotalQTYBill.Text = "0";
             txtTotalQTYEntered.Text = "0";
@@ -193,8 +195,8 @@ namespace IMS.Purchase
                 else
                 {
                     clsUtility.ShowInfoMessage("Purchase Invoice is not Saved Successfully..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                 }
+                ObjDAL.ResetData();
             }
             else
             {
@@ -246,6 +248,7 @@ namespace IMS.Purchase
             FillSupplierData();
             FillBrandData();
             InitItemTable();
+            dtDefaultBillDetails = (DataTable)dataGridView1.DataSource;
         }
 
         private void btnSearch_MouseEnter(object sender, EventArgs e)
@@ -327,13 +330,19 @@ namespace IMS.Purchase
                 if (Convert.ToInt32(dt.Rows[0]["ProductID"]) > 0)
                 {
                     grpPurchaseBillDetail.Enabled = false;
+                    dataGridView1.DataSource = null;
                     dataGridView1.DataSource = dt;
                     CalculateSubTotal();
                 }
                 else
                 {
                     grpPurchaseBillDetail.Enabled = true;
-                    dataGridView1.DataSource = null;
+                    if (ObjUtil.ValidateTable((DataTable)dataGridView1.DataSource))
+                    {
+                        //dataGridView1.Rows.Clear();
+                        dataGridView1.DataSource = dtDefaultBillDetails;
+                    }
+                    //dataGridView1.DataSource = null;
                 }
             }
             else
@@ -604,12 +613,15 @@ namespace IMS.Purchase
                 cmbAddRatio.Enabled = true;
                 cmbAddRatio.SelectedIndex = 0;
                 LoadData();
+                cmbSupplier_SelectionChangeCommitted(sender, e);
             }
         }
 
         private void cmbSupplier_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            int a = ObjDAL.ExecuteScalarInt("SELECT BrandID FROM " + clsUtility.DBName + ".dbo.[dbo].[BrandMaster] WITH(NOLOCK) WHERE SupplierID=" + cmbSupplier.SelectedValue);
+            int a = 0;
+            if (cmbSupplier.SelectedIndex >= 0)
+                a = ObjDAL.ExecuteScalarInt("SELECT BrandID FROM " + clsUtility.DBName + ".[dbo].[BrandMaster] WITH(NOLOCK) WHERE SupplierID=" + cmbSupplier.SelectedValue);
             if (a > 0)
             {
                 cmbBrand.SelectedValue = a;
@@ -617,6 +629,33 @@ namespace IMS.Purchase
             else
             {
                 cmbBrand.SelectedIndex = -1;
+            }
+        }
+
+        private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled =ObjUtil.IsNumeric(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+            }
+        }
+
+        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsDecimal(txtRate, e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+            }
+        }
+
+        private void txtSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsDecimal(txtSalesPrice, e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
             }
         }
 
@@ -630,6 +669,7 @@ namespace IMS.Purchase
                 cmbAddRatio.Enabled = true;
                 cmbAddRatio.SelectedIndex = 0;
                 LoadData();
+                cmbSupplier_SelectionChangeCommitted(sender, e);
             }
         }
 
