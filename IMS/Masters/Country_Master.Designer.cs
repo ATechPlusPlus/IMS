@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Country_Master));
             this.grpCountry = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lblCountryCode = new System.Windows.Forms.Label();
             this.txtCountryName = new System.Windows.Forms.TextBox();
             this.lblActiveStatus = new System.Windows.Forms.Label();
@@ -51,9 +54,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.grpCountry.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,6 +82,42 @@
             this.grpCountry.TabStop = false;
             this.grpCountry.Text = "Country Details";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(368, 106);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 17);
+            this.label2.TabIndex = 283;
+            this.label2.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(368, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 17);
+            this.label1.TabIndex = 282;
+            this.label1.Text = "*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label8.Location = new System.Drawing.Point(368, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 17);
+            this.label8.TabIndex = 281;
+            this.label8.Text = "*";
+            // 
             // lblCountryCode
             // 
             this.lblCountryCode.AutoSize = true;
@@ -104,6 +140,7 @@
             this.txtCountryName.TabIndex = 1;
             this.txtCountryName.Enter += new System.EventHandler(this.txtCountryCode_Enter);
             this.txtCountryName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCountryName_KeyDown);
+            this.txtCountryName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountryCode_KeyPress);
             this.txtCountryName.Leave += new System.EventHandler(this.txtCountryCode_Leave);
             // 
             // lblActiveStatus
@@ -128,6 +165,7 @@
             this.txtCountryCode.TabIndex = 0;
             this.txtCountryCode.Enter += new System.EventHandler(this.txtCountryCode_Enter);
             this.txtCountryCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCountryCode_KeyDown);
+            this.txtCountryCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountryCode_KeyPress);
             this.txtCountryCode.Leave += new System.EventHandler(this.txtCountryCode_Leave);
             // 
             // cmbActiveStatus
@@ -192,6 +230,7 @@
             this.txtSearchByCountry.TabIndex = 5;
             this.txtSearchByCountry.TextChanged += new System.EventHandler(this.txtSearchByCountry_TextChanged);
             this.txtSearchByCountry.Enter += new System.EventHandler(this.txtCountryCode_Enter);
+            this.txtSearchByCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountryCode_KeyPress);
             this.txtSearchByCountry.Leave += new System.EventHandler(this.txtCountryCode_Leave);
             // 
             // groupBox1
@@ -364,42 +403,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(633, 40);
             this.panel2.TabIndex = 194;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(368, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 17);
-            this.label8.TabIndex = 281;
-            this.label8.Text = "*";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(368, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 17);
-            this.label1.TabIndex = 282;
-            this.label1.Text = "*";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(368, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 17);
-            this.label2.TabIndex = 283;
-            this.label2.Text = "*";
             // 
             // Country_Master
             // 

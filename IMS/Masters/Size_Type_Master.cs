@@ -352,9 +352,28 @@ namespace IMS.Masters
 
         private void btnCategoryPopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbDepartment.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbDepartment.SelectedValue);
+            }
             Masters.Category_Master Obj = new Category_Master();
             Obj.ShowDialog();
             FillDepartmentData();
+            if (a > 0)
+            {
+                cmbDepartment.SelectedValue = a;
+            }
+        }
+
+        private void txtSizeTypeName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtSizeTypeName.Focus();
+            }
         }
     }
 }

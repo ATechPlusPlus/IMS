@@ -39,9 +39,15 @@ namespace IMS.Purchase
             txtProductName.Clear();
             txtQTY.Clear();
             txtRate.Clear();
+            txtCurrencyRate.Clear();
+            txtNewRate.Clear();
             txtProductID.Clear();
             cmbSupplier.SelectedIndex = -1;
             cmbBrand.SelectedIndex = -1;
+            cmbAddRatio.SelectedIndex = -1;
+
+            dtpBillDate.Format = DateTimePickerFormat.Custom;
+            dtpBillDate.CustomFormat = " ";
 
             dtPurchaseInvoice.Clear();
             //dataGridView1.DataSource = dtPurchaseInvoice;
@@ -63,7 +69,7 @@ namespace IMS.Purchase
             txtQTY.Clear();
             txtRate.Clear();
             txtProductID.Clear();
-            cmbBrand.SelectedIndex = -1;
+            //cmbBrand.SelectedIndex = -1;
 
             txtNewRate.Clear();
             txtSalesPrice.Clear();
@@ -634,7 +640,7 @@ namespace IMS.Purchase
 
         private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled =ObjUtil.IsNumeric(e);
+            e.Handled = ObjUtil.IsNumeric(e);
             if (e.Handled == true)
             {
                 clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
@@ -656,6 +662,7 @@ namespace IMS.Purchase
             if (e.Handled == true)
             {
                 clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+                txtSalesPrice.Focus();
             }
         }
 

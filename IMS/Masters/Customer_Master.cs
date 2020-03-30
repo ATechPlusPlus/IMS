@@ -46,14 +46,14 @@ namespace IMS.Masters
 
             else if (ObjUtil.IsControlTextEmpty(txtCustomerPhoneNo))
             {
-                clsUtility.ShowErrorMessage("Enter Customer Address      ", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Enter Customer Phone No.      ", clsUtility.strProjectTitle);
                 txtCustomerPhoneNo.Focus();
                 return false;
             }
 
             else if(ObjUtil.IsControlTextEmpty(cmbCustomerActiveStatus))
             {
-                clsUtility.ShowErrorMessage("Select Active Status.", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
                 cmbCustomerActiveStatus.Focus();
                 return false;
             }
@@ -333,6 +333,16 @@ namespace IMS.Masters
             ObjUtil.SetDataGridProperty(dgvCustomerMaster, DataGridViewAutoSizeColumnsMode.Fill);
             dgvCustomerMaster.Columns["CustomerID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dgvCustomerMaster.Rows.Count;
+        }
+
+        private void txtCustomerName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtCustomerName.Focus();
+            }
         }
     }
 }

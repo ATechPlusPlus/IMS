@@ -348,5 +348,15 @@ namespace IMS.Masters
             dataGridView1.Columns["CountryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
+
+        private void txtCountryCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtCountryCode.Focus();
+            }
+        }
     }
 }

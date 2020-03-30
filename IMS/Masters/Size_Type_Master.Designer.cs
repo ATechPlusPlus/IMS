@@ -38,6 +38,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grpSizeTypeDetails = new System.Windows.Forms.GroupBox();
+            this.btnCategoryPopup = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.lblTotalRecords = new System.Windows.Forms.Label();
             this.grpGridview = new System.Windows.Forms.GroupBox();
             this.dgvSizeTypeMaster = new System.Windows.Forms.DataGridView();
-            this.btnCategoryPopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.grpSizeTypeDetails.SuspendLayout();
             this.grpSearch.SuspendLayout();
@@ -203,6 +203,21 @@
             this.grpSizeTypeDetails.TabStop = false;
             this.grpSizeTypeDetails.Text = "Size Type Details";
             // 
+            // btnCategoryPopup
+            // 
+            this.btnCategoryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCategoryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCategoryPopup.BackgroundImage")));
+            this.btnCategoryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoryPopup.Location = new System.Drawing.Point(389, 66);
+            this.btnCategoryPopup.Name = "btnCategoryPopup";
+            this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCategoryPopup.TabIndex = 290;
+            this.btnCategoryPopup.UseVisualStyleBackColor = false;
+            this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -292,6 +307,7 @@
             this.txtSizeTypeName.TabIndex = 184;
             this.txtSizeTypeName.Enter += new System.EventHandler(this.txtSizeTypeName_Enter);
             this.txtSizeTypeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSizeTypeName_KeyDown);
+            this.txtSizeTypeName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSizeTypeName_KeyPress);
             this.txtSizeTypeName.Leave += new System.EventHandler(this.txtSizeTypeName_Leave);
             // 
             // cmbActiveStatus
@@ -358,6 +374,7 @@
             this.txtSearchBySizeType.TabIndex = 5;
             this.txtSearchBySizeType.TextChanged += new System.EventHandler(this.txtSearchBySizeType_TextChanged);
             this.txtSearchBySizeType.Enter += new System.EventHandler(this.txtSizeTypeName_Enter);
+            this.txtSearchBySizeType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSizeTypeName_KeyPress);
             this.txtSearchBySizeType.Leave += new System.EventHandler(this.txtSizeTypeName_Leave);
             // 
             // lblTotalRecords
@@ -397,21 +414,6 @@
             this.dgvSizeTypeMaster.TabIndex = 0;
             this.dgvSizeTypeMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSizeTypeMaster_CellDoubleClick);
             this.dgvSizeTypeMaster.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvSizeTypeMaster_DataBindingComplete);
-            // 
-            // btnCategoryPopup
-            // 
-            this.btnCategoryPopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnCategoryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCategoryPopup.BackgroundImage")));
-            this.btnCategoryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategoryPopup.Location = new System.Drawing.Point(389, 66);
-            this.btnCategoryPopup.Name = "btnCategoryPopup";
-            this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCategoryPopup.TabIndex = 290;
-            this.btnCategoryPopup.UseVisualStyleBackColor = false;
-            this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
             // 
             // Size_Type_Master
             // 

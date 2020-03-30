@@ -55,7 +55,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.lblTotalRecords = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpPhoto = new System.Windows.Forms.GroupBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicProductMaster = new System.Windows.Forms.PictureBox();
@@ -65,7 +65,7 @@
             this.grpGridview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpPhoto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicProductMaster)).BeginInit();
             this.SuspendLayout();
             // 
@@ -291,6 +291,7 @@
             this.txtProductName.TabIndex = 184;
             this.txtProductName.Enter += new System.EventHandler(this.txtProductName_Enter);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
+            this.txtProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductName_KeyPress);
             this.txtProductName.Leave += new System.EventHandler(this.txtProductName_Leave);
             // 
             // cmbActiveStatus
@@ -357,6 +358,7 @@
             this.txtSearchByProduct.TabIndex = 5;
             this.txtSearchByProduct.TextChanged += new System.EventHandler(this.txtSearchByProduct_TextChanged);
             this.txtSearchByProduct.Enter += new System.EventHandler(this.txtProductName_Enter);
+            this.txtSearchByProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductName_KeyPress);
             this.txtSearchByProduct.Leave += new System.EventHandler(this.txtProductName_Leave);
             // 
             // grpGridview
@@ -420,19 +422,20 @@
             this.lblTotalRecords.TabIndex = 217;
             this.lblTotalRecords.Text = "Total Records : 0";
             // 
-            // groupBox2
+            // grpPhoto
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.linkLabel2);
-            this.groupBox2.Controls.Add(this.linkLabel1);
-            this.groupBox2.Controls.Add(this.PicProductMaster);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(538, 55);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(219, 237);
-            this.groupBox2.TabIndex = 218;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Photo";
+            this.grpPhoto.BackColor = System.Drawing.Color.Transparent;
+            this.grpPhoto.Controls.Add(this.linkLabel2);
+            this.grpPhoto.Controls.Add(this.linkLabel1);
+            this.grpPhoto.Controls.Add(this.PicProductMaster);
+            this.grpPhoto.Enabled = false;
+            this.grpPhoto.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpPhoto.Location = new System.Drawing.Point(538, 55);
+            this.grpPhoto.Name = "grpPhoto";
+            this.grpPhoto.Size = new System.Drawing.Size(219, 237);
+            this.grpPhoto.TabIndex = 218;
+            this.grpPhoto.TabStop = false;
+            this.grpPhoto.Text = "Photo";
             // 
             // linkLabel2
             // 
@@ -492,7 +495,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(769, 569);
             this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpPhoto);
             this.Controls.Add(this.lblTotalRecords);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.grpProduct);
@@ -519,8 +522,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpPhoto.ResumeLayout(false);
+            this.grpPhoto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicProductMaster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -548,7 +551,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblTotalRecords;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpPhoto;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox PicProductMaster;

@@ -347,5 +347,15 @@ namespace IMS.Masters
             dataGridView1.Columns["CategoryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
+
+        private void txtCategoryName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtCategoryName.Focus();
+            }
+        }
     }
 }
