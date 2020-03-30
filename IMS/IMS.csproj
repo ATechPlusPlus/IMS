@@ -297,6 +297,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ds_SalesDetails.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\RDLC_DataSets\ds_SalesInvoiceReport.cs">
+      <DependentUpon>ds_SalesInvoiceReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RDLC_DataSets\ds_SalesInvoiceReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_SalesInvoiceReport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportPrinting.cs" />
     <Compile Include="Report\Report_Forms\frmSalesInvoice.cs">
       <SubType>Form</SubType>
@@ -436,6 +444,7 @@
     <EmbeddedResource Include="Purchase\Purchase_Invoice .resx">
       <DependentUpon>Purchase_Invoice .cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\RDLC_Files\SalesInoviceReport.rdlc" />
     <EmbeddedResource Include="Report\RDLC_Files\Sales_Invoice.rdlc" />
     <EmbeddedResource Include="Report\Report_Forms\frmSalesInvoice.resx">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>
@@ -500,6 +509,17 @@
     </None>
     <None Include="Report\RDLC_DataSets\ds_SalesDetails.xss">
       <DependentUpon>ds_SalesDetails.xsd</DependentUpon>
+    </None>
+    <None Include="Report\RDLC_DataSets\ds_SalesInvoiceReport.xsc">
+      <DependentUpon>ds_SalesInvoiceReport.xsd</DependentUpon>
+    </None>
+    <None Include="Report\RDLC_DataSets\ds_SalesInvoiceReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_SalesInvoiceReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\RDLC_DataSets\ds_SalesInvoiceReport.xss">
+      <DependentUpon>ds_SalesInvoiceReport.xsd</DependentUpon>
     </None>
     <None Include="Resources\b_click.png" />
   </ItemGroup>

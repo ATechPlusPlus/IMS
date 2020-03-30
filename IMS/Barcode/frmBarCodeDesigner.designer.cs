@@ -71,6 +71,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbProperty = new System.Windows.Forms.ComboBox();
+            this.exportAsImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportAsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -340,6 +343,7 @@
             this.aDDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newPageToolStripMenuItem,
             this.exportToolStripMenuItem,
+            this.importTemplateToolStripMenuItem,
             this.saveTemplateToolStripMenuItem,
             this.loadTemplateToolStripMenuItem,
             this.clearToolStripMenuItem,
@@ -357,9 +361,12 @@
             // 
             // exportToolStripMenuItem
             // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportAsImageToolStripMenuItem,
+            this.exportAsFileToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Text = "Export Template";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // saveTemplateToolStripMenuItem
@@ -466,6 +473,27 @@
             this.cmbProperty.TabIndex = 12;
             this.cmbProperty.SelectionChangeCommitted += new System.EventHandler(this.cmbProperty_SelectionChangeCommitted);
             // 
+            // exportAsImageToolStripMenuItem
+            // 
+            this.exportAsImageToolStripMenuItem.Name = "exportAsImageToolStripMenuItem";
+            this.exportAsImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportAsImageToolStripMenuItem.Text = "Export as Image";
+            this.exportAsImageToolStripMenuItem.Click += new System.EventHandler(this.exportAsImageToolStripMenuItem_Click);
+            // 
+            // exportAsFileToolStripMenuItem
+            // 
+            this.exportAsFileToolStripMenuItem.Name = "exportAsFileToolStripMenuItem";
+            this.exportAsFileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.exportAsFileToolStripMenuItem.Text = "Export as Data File";
+            this.exportAsFileToolStripMenuItem.Click += new System.EventHandler(this.exportAsFileToolStripMenuItem_Click);
+            // 
+            // importTemplateToolStripMenuItem
+            // 
+            this.importTemplateToolStripMenuItem.Name = "importTemplateToolStripMenuItem";
+            this.importTemplateToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.importTemplateToolStripMenuItem.Text = "Import Template";
+            this.importTemplateToolStripMenuItem.Click += new System.EventHandler(this.importTemplateToolStripMenuItem_Click);
+            // 
             // DefaultStoreSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,5 +565,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteBarcodeSettingsToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbProperty;
+        private System.Windows.Forms.ToolStripMenuItem exportAsImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportAsFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importTemplateToolStripMenuItem;
     }
 }

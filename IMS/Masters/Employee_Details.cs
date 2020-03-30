@@ -37,6 +37,8 @@ namespace IMS.Masters
         private void Employee_Details_Load(object sender, EventArgs e)
         {
             clsUtility.IsAdmin = true;
+            dtpDOB.ShowCheckBox = true;
+            dtpDOB.Checked = false;
 
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;
@@ -92,6 +94,8 @@ namespace IMS.Masters
             EmployeeID = 0;
             txtEmail.Clear();
             dtpDOB.Value = DateTime.Now;
+            dtpDOB.Checked = false;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -148,7 +152,7 @@ namespace IMS.Masters
                 return false;
             }
 
-            else if (ObjUtil.IsControlTextEmpty(radMale) && ObjUtil.IsControlTextEmpty(radFemale))
+            else if (radFemale.Checked==false && radMale.Checked==false)
             {
                 clsUtility.ShowInfoMessage("Please Select Gender.", clsUtility.strProjectTitle);
                 radMale.Focus();
@@ -196,7 +200,15 @@ namespace IMS.Masters
             {
                 ObjDAL.SetColumnData("Gender", SqlDbType.Bit, false);
             }
-            ObjDAL.SetColumnData("DOB", SqlDbType.DateTime, dtpDOB.Value.ToString("yyyy-MM-dd"));
+            if (dtpDOB.Checked)
+            {
+                ObjDAL.SetColumnData("DOB", SqlDbType.DateTime, dtpDOB.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                ObjDAL.SetColumnData("DOB", SqlDbType.DateTime, DBNull.Value);
+            }
+         
             ObjDAL.SetColumnData("Address", SqlDbType.NVarChar, txtAdd.Text.Trim());
 
             if (PicEmployee.Image != null)
@@ -368,7 +380,16 @@ namespace IMS.Masters
             {
                 ObjDAL.UpdateColumnData("Gender", SqlDbType.Bit, false);
             }
-            ObjDAL.UpdateColumnData("DOB", SqlDbType.DateTime, dtpDOB.Value.ToString("yyyy-MM-dd"));
+            if (dtpDOB.Checked)
+            {
+                ObjDAL.UpdateColumnData("DOB", SqlDbType.DateTime, dtpDOB.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                ObjDAL.UpdateColumnData("DOB", SqlDbType.DateTime, DBNull.Value);
+            }
+
+               
             ObjDAL.UpdateColumnData("Address", SqlDbType.NVarChar, txtAdd.Text.Trim());
 
             if (PicEmployee.Image != null)

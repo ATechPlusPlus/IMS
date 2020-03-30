@@ -199,6 +199,13 @@ namespace IMS.Sales
 
             int deafultStoreID = ObjDAL.ExecuteScalarInt("SELECT Storeid FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting] WHERE MachineName = '" + Environment.MachineName + "'");
             cmbShop.SelectedValue = deafultStoreID;
+            if (deafultStoreID==0)
+            {
+                MessageBox.Show("Please select the default shop for this client.",clsUtility.strProjectTitle);
+                this.Close();
+            }
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -249,7 +256,7 @@ namespace IMS.Sales
                         if (ObjUtil.GetDataPopup().ColumnCount > 0)
                         {
                             ObjUtil.GetDataPopup().Columns["Empid"].Visible = false;
-                            ObjUtil.SetDataPopupSize(450, 0);
+                            ObjUtil.SetDataPopupSize(200, 0);
                         }
                     }
                     //ObjUtil.GetDataPopup().CellClick += frmSalecounter_CellClick;
@@ -511,6 +518,10 @@ namespace IMS.Sales
                 }
                
             }
+            else
+            {
+                clsUtility.ShowInfoMessage("No Product Found for the barcode value : "+ _BarCodeValue, clsUtility.strProjectTitle);
+            }
         }
 
         private void GetItemDetailsBy_Non_BarCode(string pID,string name, string rate, string barCode, string SizeID, string Size, string ColorID, string ColorName)
@@ -575,6 +586,12 @@ namespace IMS.Sales
                 string sizeid = dgvProductDetails.Rows[e.RowIndex].Cells["SizeID"].Value.ToString();
                 string colorid= dgvProductDetails.Rows[e.RowIndex].Cells["ColorID"].Value.ToString();
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
+                if (QTY<0)
+                {
+                    clsUtility.ShowInfoMessage("The QTY can not be negative. Default 1 QTY will be set.", clsUtility.strProjectTitle);
+                    dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = "1";
+                    QTY = 1;
+                }
                 decimal Rate = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["Rate"].Value);
                 decimal Total = QTY * Rate;
                 string  _barNo = dgvProductDetails.Rows[e.RowIndex].Cells["Barcodeno"].Value.ToString();
