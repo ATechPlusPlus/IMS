@@ -772,7 +772,12 @@ namespace IMS.Barcode
                         ObjCon.ExecuteNonQuery(strUpdat);
                     }
 
-                    doc.Print();
+                    for (int i = 0; i < numericUpDown1.Value; i++)
+                    {
+                        doc.Print();
+
+                    }
+                   
                 }
             }
             clsUtility.ShowInfoMessage("Operation completed !", clsUtility.strProjectTitle);
