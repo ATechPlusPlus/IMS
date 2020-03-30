@@ -38,6 +38,9 @@
             this.pnlPopup = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtSupplierBillNo = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnEXIT = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.pnlPopup.SuspendLayout();
             this.SuspendLayout();
@@ -121,18 +124,56 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txtSupplierBillNo
+            // 
+            this.txtSupplierBillNo.BackColor = System.Drawing.Color.White;
+            this.txtSupplierBillNo.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.txtSupplierBillNo.Location = new System.Drawing.Point(188, 38);
+            this.txtSupplierBillNo.MaxLength = 50;
+            this.txtSupplierBillNo.Name = "txtSupplierBillNo";
+            this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
+            this.txtSupplierBillNo.TabIndex = 241;
+            this.txtSupplierBillNo.Visible = false;
+            this.txtSupplierBillNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierBillNo_KeyPress);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(335, 69);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(59, 25);
+            this.btnOK.TabIndex = 3;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Visible = false;
+            this.btnOK.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnEXIT
+            // 
+            this.btnEXIT.Location = new System.Drawing.Point(400, 69);
+            this.btnEXIT.Name = "btnEXIT";
+            this.btnEXIT.Size = new System.Drawing.Size(59, 25);
+            this.btnEXIT.TabIndex = 242;
+            this.btnEXIT.Text = "Exit";
+            this.btnEXIT.UseVisualStyleBackColor = true;
+            this.btnEXIT.Visible = false;
+            this.btnEXIT.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(365, 375);
+            this.ClientSize = new System.Drawing.Size(503, 375);
+            this.Controls.Add(this.btnEXIT);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.txtSupplierBillNo);
             this.Controls.Add(this.pnlPopup);
             this.Controls.Add(this.toolStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -157,6 +198,9 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Panel pnlPopup;
+        private System.Windows.Forms.TextBox txtSupplierBillNo;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnEXIT;
     }
 }
 

@@ -37,6 +37,7 @@
             this.txtSupplierBillNo = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtPurchaseInvoiceID = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -147,6 +148,18 @@
             this.txtPurchaseInvoiceID.TabIndex = 248;
             this.txtPurchaseInvoiceID.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(333, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(15, 17);
+            this.label6.TabIndex = 296;
+            this.label6.Text = "*";
+            // 
             // frmDiffPurchaseReceived
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +167,7 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(704, 326);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPurchaseInvoiceID);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblSupplierBillNo);
@@ -186,5 +200,6 @@
         private System.Windows.Forms.TextBox txtSupplierBillNo;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtPurchaseInvoiceID;
+        private System.Windows.Forms.Label label6;
     }
 }

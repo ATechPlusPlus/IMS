@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CoreApp;
 
 namespace IMS.Other_Forms
 {
@@ -19,6 +20,8 @@ namespace IMS.Other_Forms
 
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
+        
+        clsUtility ObjUtil = new clsUtility();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,6 +51,25 @@ namespace IMS.Other_Forms
         {
             Button btn = (Button)sender;
             btn.BackgroundImage = B_Leave;
+        }
+
+        private void txtPaymentAutoID_Enter(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender);
+        }
+
+        private void txtPaymentAutoID_Leave(object sender, EventArgs e)
+        {
+            ObjUtil.SetTextHighlightColor(sender, Color.White);
+        }
+
+        private void txtPaymentAutoID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsNumeric(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+            }
         }
     }
 }

@@ -46,12 +46,6 @@ namespace IMS.Masters
                 cmbCategory.Focus();
                 return false;
             }
-            //else if (ObjUtil.IsControlTextEmpty(cmbBrand))
-            //{
-            //    clsUtility.ShowInfoMessage("Select Brand for " + txtProductName.Text, clsUtility.strProjectTitle);
-            //    cmbBrand.Focus();
-            //    return false;
-            //}
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
@@ -86,8 +80,7 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            //dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.ProductMaster", "ProductID,ProductName,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,CategoryID,BrandID,Photo", "ProductName");
-            dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Product_Master");
+            dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Product_Master '0'");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -254,7 +247,7 @@ namespace IMS.Masters
                 {
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ProductID"].Value);
-                    txtProductName.Text = dataGridView1.SelectedRows[0].Cells["ProductName"].Value.ToString();
+                    txtProductName.Text = dataGridView1.SelectedRows[0].Cells["ItemName"].Value.ToString();
                     cmbCategory.SelectedValue = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryID"].Value);
                     cmbActiveStatus.SelectedItem = dataGridView1.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
                     if (dataGridView1.SelectedRows[0].Cells["Photo"].Value != DBNull.Value)
@@ -359,6 +352,7 @@ namespace IMS.Masters
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["ProductID"].Visible = false;
             dataGridView1.Columns["CategoryID"].Visible = false;
+            dataGridView1.Columns["Photo"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
 

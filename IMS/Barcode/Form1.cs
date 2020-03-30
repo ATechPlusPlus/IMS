@@ -26,6 +26,7 @@ namespace IMS.Barcode
         {
             //start the timer that will be monitoring the mouse movement every 500 ms.
             timer1.Start();
+            txtSupplierBillNo.Focus();
         }
 
         public void control_MouseEnter(object sender, EventArgs e)
@@ -608,6 +609,88 @@ namespace IMS.Barcode
             None
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            decimal number3 = 0;
+            bool canConvert = false;
+            try
+            {
+                canConvert = decimal.TryParse(txtSupplierBillNo.Text, out number3);
+                if (canConvert == true)
+                    MessageBox.Show("number3 now " + number3);
+                else
+                    MessageBox.Show("number3 is not a valid decimal");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "false");
+
+            }
+            txtSupplierBillNo.Focus();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void txtSupplierBillNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = IsDecimal(txtSupplierBillNo, e);
+            if (e.Handled == true)
+            {
+                CoreApp.clsUtility.ShowInfoMessage("Enter Only Numbers...", CoreApp.clsUtility.strProjectTitle);
+            }
+            //if (e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == 8 || e.KeyChar == 46)
+            //{
+            //    if (txtSupplierBillNo.SelectionStart == 0 && e.KeyChar != 46 && !txtSupplierBillNo.Text.Contains("."))
+            //        e.Handled = false;
+            //    else
+            //        e.Handled = true;
+
+            //    if (txtSupplierBillNo.SelectionStart >= 1 && e.KeyChar == 46 && !txtSupplierBillNo.Text.Contains("."))
+            //        e.Handled = false;
+
+            //    else if (txtSupplierBillNo.SelectionStart >= 1 && e.KeyChar != 46)
+            //        e.Handled = false;
+            //}
+            //else
+            //{
+            //    e.Handled = true;
+            //    CoreApp.clsUtility.ShowInfoMessage("Enter Only Numbers...", CoreApp.clsUtility.strProjectTitle);
+            //}
+        }
+
+        public bool IsDecimal(Control c, KeyPressEventArgs e)
+        {
+            bool b = false;
+            try
+            {
+                TextBox txt = (TextBox)c;
+                if (e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == 8 || e.KeyChar == 46)
+                {
+                    if (txt.SelectionStart == 0 && e.KeyChar != 46 && !txt.Text.Contains("."))
+                        b = false;
+                    else
+                        b = true;
+
+                    if (txt.SelectionStart >= 1 && e.KeyChar == 46 && !txt.Text.Contains("."))
+                        b = false;
+
+                    else if (txt.SelectionStart >= 1 && e.KeyChar != 46)
+                        b = false;
+                }
+                else
+                {
+                    b = true;
+                }
+                return b;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             SelectedControl.Text = richTextBox1.Text;

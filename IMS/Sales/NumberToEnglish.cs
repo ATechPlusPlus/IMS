@@ -38,7 +38,7 @@ namespace IMS.Sales
                     if (Convert.ToInt32(points) > 0)
                     {
                         andStr = (isCurrency) ? ("and") : ("point");// just to separate whole numbers from points/cents
-                        endStr = (isCurrency) ? ("Cents " + endStr) : ("");
+                        endStr = (isCurrency) ? ("Fils " + endStr) : ("");
                         pointStr = translateCents(points);
                     }
                 }

@@ -127,13 +127,12 @@ namespace IMS.Masters
                     else
                     {
                         clsUtility.ShowInfoMessage("Country Name : '" + txtCountryName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
+                    ObjDAL.ResetData();
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtCountryName.Text + "' Country Name OR Country Code is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                     txtCountryName.Focus();
                 }
             }
@@ -166,13 +165,12 @@ namespace IMS.Masters
                         LoadData();
                         ClearAll();
                         grpCountry.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowErrorMessage("'" + txtCountryName.Text + "' Country Name is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
+                    ObjDAL.ResetData();
                 }
                 else
                 {

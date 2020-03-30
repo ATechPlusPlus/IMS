@@ -32,6 +32,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.grpSupplier = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnCountryPopup = new System.Windows.Forms.Button();
             this.lblBankAccNo = new System.Windows.Forms.Label();
             this.txtBankAccNo = new System.Windows.Forms.TextBox();
@@ -97,6 +100,9 @@
             // grpSupplier
             // 
             this.grpSupplier.BackColor = System.Drawing.Color.Transparent;
+            this.grpSupplier.Controls.Add(this.label3);
+            this.grpSupplier.Controls.Add(this.label1);
+            this.grpSupplier.Controls.Add(this.label2);
             this.grpSupplier.Controls.Add(this.btnCountryPopup);
             this.grpSupplier.Controls.Add(this.lblBankAccNo);
             this.grpSupplier.Controls.Add(this.txtBankAccNo);
@@ -120,10 +126,46 @@
             this.grpSupplier.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpSupplier.Location = new System.Drawing.Point(17, 91);
             this.grpSupplier.Name = "grpSupplier";
-            this.grpSupplier.Size = new System.Drawing.Size(788, 236);
+            this.grpSupplier.Size = new System.Drawing.Size(795, 236);
             this.grpSupplier.TabIndex = 203;
             this.grpSupplier.TabStop = false;
             this.grpSupplier.Text = "Supplier Details";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(740, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 17);
+            this.label3.TabIndex = 291;
+            this.label3.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(350, 187);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 17);
+            this.label1.TabIndex = 290;
+            this.label1.Text = "*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(350, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 17);
+            this.label2.TabIndex = 289;
+            this.label2.Text = "*";
             // 
             // btnCountryPopup
             // 
@@ -133,7 +175,7 @@
             this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCountryPopup.Location = new System.Drawing.Point(742, 27);
+            this.btnCountryPopup.Location = new System.Drawing.Point(757, 27);
             this.btnCountryPopup.Name = "btnCountryPopup";
             this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
             this.btnCountryPopup.TabIndex = 279;
@@ -161,6 +203,7 @@
             this.txtBankAccNo.TabIndex = 200;
             this.txtBankAccNo.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtBankAccNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBankAccNo_KeyDown);
+            this.txtBankAccNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBankAccNo_KeyPress);
             this.txtBankAccNo.Leave += new System.EventHandler(this.txtSupplierName_Leave);
             // 
             // lblEmail
@@ -383,7 +426,7 @@
             // 
             this.rdSearchBySupplier.AutoSize = true;
             this.rdSearchBySupplier.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchBySupplier.Location = new System.Drawing.Point(18, 20);
+            this.rdSearchBySupplier.Location = new System.Drawing.Point(16, 20);
             this.rdSearchBySupplier.Name = "rdSearchBySupplier";
             this.rdSearchBySupplier.Size = new System.Drawing.Size(141, 21);
             this.rdSearchBySupplier.TabIndex = 6;
@@ -613,5 +656,8 @@
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Button btnCountryPopup;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

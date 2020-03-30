@@ -45,6 +45,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblTotalRecords = new System.Windows.Forms.Label();
             this.grpPurchaseInvoice = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnSupplierPopup = new System.Windows.Forms.Button();
             this.lblTotalQty = new System.Windows.Forms.Label();
             this.txtTotalQTY = new System.Windows.Forms.TextBox();
@@ -302,6 +307,11 @@
             // grpPurchaseInvoice
             // 
             this.grpPurchaseInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.grpPurchaseInvoice.Controls.Add(this.label15);
+            this.grpPurchaseInvoice.Controls.Add(this.label14);
+            this.grpPurchaseInvoice.Controls.Add(this.label13);
+            this.grpPurchaseInvoice.Controls.Add(this.label11);
+            this.grpPurchaseInvoice.Controls.Add(this.label10);
             this.grpPurchaseInvoice.Controls.Add(this.btnSupplierPopup);
             this.grpPurchaseInvoice.Controls.Add(this.lblTotalQty);
             this.grpPurchaseInvoice.Controls.Add(this.txtTotalQTY);
@@ -319,10 +329,70 @@
             this.grpPurchaseInvoice.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPurchaseInvoice.Location = new System.Drawing.Point(20, 92);
             this.grpPurchaseInvoice.Name = "grpPurchaseInvoice";
-            this.grpPurchaseInvoice.Size = new System.Drawing.Size(946, 106);
+            this.grpPurchaseInvoice.Size = new System.Drawing.Size(950, 106);
             this.grpPurchaseInvoice.TabIndex = 237;
             this.grpPurchaseInvoice.TabStop = false;
             this.grpPurchaseInvoice.Text = "Purchase Invoice";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label15.Location = new System.Drawing.Point(332, 67);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(15, 17);
+            this.label15.TabIndex = 294;
+            this.label15.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label14.Location = new System.Drawing.Point(931, 68);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(15, 17);
+            this.label14.TabIndex = 293;
+            this.label14.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(699, 67);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 17);
+            this.label13.TabIndex = 292;
+            this.label13.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label11.Location = new System.Drawing.Point(699, 28);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(15, 17);
+            this.label11.TabIndex = 291;
+            this.label11.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label10.Location = new System.Drawing.Point(332, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(15, 17);
+            this.label10.TabIndex = 290;
+            this.label10.Text = "*";
             // 
             // btnSupplierPopup
             // 
@@ -332,7 +402,7 @@
             this.btnSupplierPopup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSupplierPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSupplierPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupplierPopup.Location = new System.Drawing.Point(337, 67);
+            this.btnSupplierPopup.Location = new System.Drawing.Point(350, 67);
             this.btnSupplierPopup.Name = "btnSupplierPopup";
             this.btnSupplierPopup.Size = new System.Drawing.Size(27, 27);
             this.btnSupplierPopup.TabIndex = 277;
@@ -344,7 +414,7 @@
             this.lblTotalQty.AutoSize = true;
             this.lblTotalQty.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalQty.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalQty.Location = new System.Drawing.Point(708, 72);
+            this.lblTotalQty.Location = new System.Drawing.Point(720, 67);
             this.lblTotalQty.Name = "lblTotalQty";
             this.lblTotalQty.Size = new System.Drawing.Size(78, 17);
             this.lblTotalQty.TabIndex = 239;
@@ -360,6 +430,7 @@
             this.txtTotalQTY.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtTotalQTY.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtTotalQTY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalQTY_KeyDown);
+            this.txtTotalQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalQTY_KeyPress);
             this.txtTotalQTY.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // lblBillValue
@@ -367,7 +438,7 @@
             this.lblBillValue.AutoSize = true;
             this.lblBillValue.BackColor = System.Drawing.Color.Transparent;
             this.lblBillValue.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillValue.Location = new System.Drawing.Point(382, 70);
+            this.lblBillValue.Location = new System.Drawing.Point(386, 67);
             this.lblBillValue.Name = "lblBillValue";
             this.lblBillValue.Size = new System.Drawing.Size(71, 17);
             this.lblBillValue.TabIndex = 237;
@@ -376,13 +447,14 @@
             // txtBillValue
             // 
             this.txtBillValue.BackColor = System.Drawing.Color.White;
-            this.txtBillValue.Location = new System.Drawing.Point(486, 67);
+            this.txtBillValue.Location = new System.Drawing.Point(491, 67);
             this.txtBillValue.Name = "txtBillValue";
             this.txtBillValue.Size = new System.Drawing.Size(206, 25);
             this.txtBillValue.TabIndex = 236;
             this.txtBillValue.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtBillValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillValue_KeyDown);
+            this.txtBillValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBillValue_KeyPress);
             this.txtBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // cmbSupplier
@@ -390,7 +462,7 @@
             this.cmbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSupplier.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSupplier.FormattingEnabled = true;
-            this.cmbSupplier.Location = new System.Drawing.Point(128, 67);
+            this.cmbSupplier.Location = new System.Drawing.Point(125, 67);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(206, 27);
             this.cmbSupplier.Sorted = true;
@@ -402,7 +474,7 @@
             this.lblSupplier.AutoSize = true;
             this.lblSupplier.BackColor = System.Drawing.Color.Transparent;
             this.lblSupplier.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplier.Location = new System.Drawing.Point(10, 69);
+            this.lblSupplier.Location = new System.Drawing.Point(10, 67);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(62, 17);
             this.lblSupplier.TabIndex = 234;
@@ -422,7 +494,7 @@
             this.lblBillDate.AutoSize = true;
             this.lblBillDate.BackColor = System.Drawing.Color.Transparent;
             this.lblBillDate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillDate.Location = new System.Drawing.Point(708, 28);
+            this.lblBillDate.Location = new System.Drawing.Point(720, 28);
             this.lblBillDate.Name = "lblBillDate";
             this.lblBillDate.Size = new System.Drawing.Size(67, 17);
             this.lblBillDate.TabIndex = 232;
@@ -433,7 +505,7 @@
             this.lblShipmentNo.AutoSize = true;
             this.lblShipmentNo.BackColor = System.Drawing.Color.Transparent;
             this.lblShipmentNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShipmentNo.Location = new System.Drawing.Point(381, 28);
+            this.lblShipmentNo.Location = new System.Drawing.Point(386, 28);
             this.lblShipmentNo.Name = "lblShipmentNo";
             this.lblShipmentNo.Size = new System.Drawing.Size(91, 17);
             this.lblShipmentNo.TabIndex = 231;
@@ -442,7 +514,7 @@
             // txtShipmentNo
             // 
             this.txtShipmentNo.BackColor = System.Drawing.Color.White;
-            this.txtShipmentNo.Location = new System.Drawing.Point(486, 28);
+            this.txtShipmentNo.Location = new System.Drawing.Point(491, 28);
             this.txtShipmentNo.Name = "txtShipmentNo";
             this.txtShipmentNo.Size = new System.Drawing.Size(206, 25);
             this.txtShipmentNo.TabIndex = 230;
@@ -455,7 +527,7 @@
             this.lblSupplierBillNo.AutoSize = true;
             this.lblSupplierBillNo.BackColor = System.Drawing.Color.Transparent;
             this.lblSupplierBillNo.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplierBillNo.Location = new System.Drawing.Point(10, 28);
+            this.lblSupplierBillNo.Location = new System.Drawing.Point(11, 28);
             this.lblSupplierBillNo.Name = "lblSupplierBillNo";
             this.lblSupplierBillNo.Size = new System.Drawing.Size(111, 17);
             this.lblSupplierBillNo.TabIndex = 229;
@@ -464,7 +536,7 @@
             // txtSupplierBillNo
             // 
             this.txtSupplierBillNo.BackColor = System.Drawing.Color.White;
-            this.txtSupplierBillNo.Location = new System.Drawing.Point(128, 28);
+            this.txtSupplierBillNo.Location = new System.Drawing.Point(125, 28);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
             this.txtSupplierBillNo.TabIndex = 228;
@@ -576,6 +648,7 @@
             this.txtForeignExp.Text = "0";
             this.txtForeignExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtForeignExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtForeignExp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtForeignExp_KeyPress);
             this.txtForeignExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // label5
@@ -600,6 +673,7 @@
             this.txtForeignDiscount.Text = "0";
             this.txtForeignDiscount.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtForeignDiscount.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtForeignDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtForeignExp_KeyPress);
             this.txtForeignDiscount.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // txtNetValue
@@ -668,6 +742,7 @@
             this.txtLocalValue.TabIndex = 240;
             this.txtLocalValue.Text = "0";
             this.txtLocalValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtLocalValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtForeignExp_KeyPress);
             this.txtLocalValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // label4
@@ -692,6 +767,7 @@
             this.txtLocalExp.Text = "0";
             this.txtLocalExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtLocalExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
+            this.txtLocalExp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtForeignExp_KeyPress);
             this.txtLocalExp.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
             // label7
@@ -841,5 +917,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtLocalValue;
         private System.Windows.Forms.Button btnSupplierPopup;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
     }
 }

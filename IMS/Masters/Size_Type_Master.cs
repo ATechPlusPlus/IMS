@@ -42,12 +42,12 @@ namespace IMS.Masters
                 txtSizeTypeName.Focus();
                 return false;
             }
-            //else if (ObjUtil.IsControlTextEmpty(cmbDepartment))
-            //{
-            //    clsUtility.ShowInfoMessage("Select Department for " + txtSizeTypeName.Text, clsUtility.strProjectTitle);
-            //    cmbDepartment.Focus();
-            //    return false;
-            //}
+            else if (ObjUtil.IsControlTextEmpty(cmbDepartment))
+            {
+                clsUtility.ShowInfoMessage("Select Department for " + txtSizeTypeName.Text, clsUtility.strProjectTitle);
+                cmbDepartment.Focus();
+                return false;
+            }
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
@@ -82,8 +82,8 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dgvSizeTypeMaster, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            dt = ObjDAL.ExecuteSelectStatement("SELECT sm.SizeTypeID,sm.SizeTypeName,cm.CategoryID,cm.CategoryName"+
-                    ", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) "+   "ActiveStatus FROM SizeTypeMaster sm "+
+            dt = ObjDAL.ExecuteSelectStatement("SELECT sm.SizeTypeID,sm.SizeTypeName,cm.CategoryID,cm.CategoryName" +
+                    ", (CASE WHEN sm.ActiveStatus = 1 THEN 'Active' WHEN sm.ActiveStatus = 0 THEN 'InActive' END) " + "ActiveStatus FROM SizeTypeMaster sm " +
                     " LEFT JOIN CategoryMaster cm ON sm.CategoryID = cm.CategoryID");
 
             if (ObjUtil.ValidateTable(dt))
@@ -122,10 +122,10 @@ namespace IMS.Masters
                 if (DuplicateUser(0))
                 {
                     ObjDAL.SetColumnData("SizeTypeName", SqlDbType.NVarChar, txtSizeTypeName.Text.Trim());
-                    if (cmbDepartment.SelectedIndex >= 0)
-                    {
-                        ObjDAL.SetColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
-                    }
+                    //if (cmbDepartment.SelectedIndex >= 0)
+                    //{
+                    ObjDAL.SetColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
+                    //}
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.SizeTypeMaster", true) > 0)
@@ -139,13 +139,12 @@ namespace IMS.Masters
                     else
                     {
                         clsUtility.ShowInfoMessage("Size Type Name : '" + txtSizeTypeName.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
+                    ObjDAL.ResetData();
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtSizeTypeName.Text + "' Size Type is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
                     txtSizeTypeName.Focus();
                 }
             }
@@ -166,15 +165,15 @@ namespace IMS.Masters
                 if (DuplicateUser(ID))
                 {
                     ObjDAL.UpdateColumnData("SizeTypeName", SqlDbType.NVarChar, txtSizeTypeName.Text.Trim());
-                    if (cmbDepartment.SelectedIndex >= 0)
-                    {
-                        ObjDAL.UpdateColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
-                    }
+                    //if (cmbDepartment.SelectedIndex >= 0)
+                    //{
+                    ObjDAL.UpdateColumnData("CategoryID", SqlDbType.Int, cmbDepartment.SelectedValue);
+                    //}
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
 
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID = " + ID + "") > 0)
+                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID = " + ID) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
@@ -182,19 +181,17 @@ namespace IMS.Masters
                         LoadData();
                         ClearAll();
                         grpSizeTypeDetails.Enabled = false;
-                        ObjDAL.ResetData();
                     }
                     else
                     {
                         clsUtility.ShowErrorMessage("'" + txtSizeTypeName.Text + "' Size Type is not Updated", clsUtility.strProjectTitle);
-                        ObjDAL.ResetData();
                     }
+                    ObjDAL.ResetData();
                 }
                 else
                 {
                     clsUtility.ShowErrorMessage("'" + txtSizeTypeName.Text + "' Size Type is already exist..", clsUtility.strProjectTitle);
                     txtSizeTypeName.Focus();
-                    ObjDAL.ResetData();
                 }
             }
         }
@@ -204,7 +201,7 @@ namespace IMS.Masters
             DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtSizeTypeName.Text + "' Size Type ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeName='" + txtSizeTypeName.Text.Trim() + "'") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID=" + ID) > 0)
                 {
                     clsUtility.ShowInfoMessage("'" + txtSizeTypeName.Text + "' Size Type is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
@@ -351,6 +348,13 @@ namespace IMS.Masters
             dgvSizeTypeMaster.Columns["SizeTypeID"].Visible = false;
             dgvSizeTypeMaster.Columns["CategoryID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dgvSizeTypeMaster.Rows.Count;
+        }
+
+        private void btnCategoryPopup_Click(object sender, EventArgs e)
+        {
+            Masters.Category_Master Obj = new Category_Master();
+            Obj.ShowDialog();
+            FillDepartmentData();
         }
     }
 }

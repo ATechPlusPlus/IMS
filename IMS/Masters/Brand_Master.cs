@@ -47,12 +47,6 @@ namespace IMS.Masters
                 cmbSupplier.Focus();
                 return false;
             }
-            else if (ObjUtil.IsControlTextEmpty(cmbCountry))
-            {
-                clsUtility.ShowInfoMessage("Select Country for " + txtBrandName.Text, clsUtility.strProjectTitle);
-                cmbCountry.Focus();
-                return false;
-            }
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
@@ -87,7 +81,6 @@ namespace IMS.Masters
         {
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             DataTable dt = null;
-            //dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName,SupplierID,CountryID,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus", "BrandName");
             dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Get_Brand_Master");
             if (ObjUtil.ValidateTable(dt))
             {

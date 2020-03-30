@@ -38,6 +38,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grpSizeTypeDetails = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.lblDepartment = new System.Windows.Forms.Label();
             this.lblSizeTypeName = new System.Windows.Forms.Label();
@@ -51,6 +54,7 @@
             this.lblTotalRecords = new System.Windows.Forms.Label();
             this.grpGridview = new System.Windows.Forms.GroupBox();
             this.dgvSizeTypeMaster = new System.Windows.Forms.DataGridView();
+            this.btnCategoryPopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.grpSizeTypeDetails.SuspendLayout();
             this.grpSearch.SuspendLayout();
@@ -180,6 +184,10 @@
             // grpSizeTypeDetails
             // 
             this.grpSizeTypeDetails.BackColor = System.Drawing.Color.Transparent;
+            this.grpSizeTypeDetails.Controls.Add(this.btnCategoryPopup);
+            this.grpSizeTypeDetails.Controls.Add(this.label3);
+            this.grpSizeTypeDetails.Controls.Add(this.label1);
+            this.grpSizeTypeDetails.Controls.Add(this.label2);
             this.grpSizeTypeDetails.Controls.Add(this.cmbDepartment);
             this.grpSizeTypeDetails.Controls.Add(this.lblDepartment);
             this.grpSizeTypeDetails.Controls.Add(this.lblSizeTypeName);
@@ -195,12 +203,48 @@
             this.grpSizeTypeDetails.TabStop = false;
             this.grpSizeTypeDetails.Text = "Size Type Details";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(371, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 17);
+            this.label3.TabIndex = 289;
+            this.label3.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(371, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 17);
+            this.label1.TabIndex = 288;
+            this.label1.Text = "*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(371, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 17);
+            this.label2.TabIndex = 287;
+            this.label2.Text = "*";
+            // 
             // cmbDepartment
             // 
             this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartment.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(159, 66);
+            this.cmbDepartment.Location = new System.Drawing.Point(162, 66);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(206, 27);
             this.cmbDepartment.TabIndex = 194;
@@ -242,7 +286,7 @@
             // 
             this.txtSizeTypeName.BackColor = System.Drawing.Color.White;
             this.txtSizeTypeName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSizeTypeName.Location = new System.Drawing.Point(159, 27);
+            this.txtSizeTypeName.Location = new System.Drawing.Point(162, 27);
             this.txtSizeTypeName.Name = "txtSizeTypeName";
             this.txtSizeTypeName.Size = new System.Drawing.Size(206, 25);
             this.txtSizeTypeName.TabIndex = 184;
@@ -258,7 +302,7 @@
             this.cmbActiveStatus.Items.AddRange(new object[] {
             "Active",
             "InActive"});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(159, 108);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(162, 108);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
             this.cmbActiveStatus.TabIndex = 186;
@@ -282,7 +326,7 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(440, 19);
+            this.rdShowAll.Location = new System.Drawing.Point(442, 19);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
@@ -295,7 +339,7 @@
             // 
             this.rdSearchBySizeType.AutoSize = true;
             this.rdSearchBySizeType.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSearchBySizeType.Location = new System.Drawing.Point(13, 20);
+            this.rdSearchBySizeType.Location = new System.Drawing.Point(18, 19);
             this.rdSearchBySizeType.Name = "rdSearchBySizeType";
             this.rdSearchBySizeType.Size = new System.Drawing.Size(151, 21);
             this.rdSearchBySizeType.TabIndex = 6;
@@ -308,7 +352,7 @@
             this.txtSearchBySizeType.BackColor = System.Drawing.Color.White;
             this.txtSearchBySizeType.Enabled = false;
             this.txtSearchBySizeType.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBySizeType.Location = new System.Drawing.Point(183, 18);
+            this.txtSearchBySizeType.Location = new System.Drawing.Point(176, 19);
             this.txtSearchBySizeType.Name = "txtSearchBySizeType";
             this.txtSearchBySizeType.Size = new System.Drawing.Size(206, 25);
             this.txtSearchBySizeType.TabIndex = 5;
@@ -321,7 +365,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(-1, 488);
+            this.lblTotalRecords.Location = new System.Drawing.Point(11, 488);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 222;
@@ -353,6 +397,21 @@
             this.dgvSizeTypeMaster.TabIndex = 0;
             this.dgvSizeTypeMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSizeTypeMaster_CellDoubleClick);
             this.dgvSizeTypeMaster.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvSizeTypeMaster_DataBindingComplete);
+            // 
+            // btnCategoryPopup
+            // 
+            this.btnCategoryPopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnCategoryPopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCategoryPopup.BackgroundImage")));
+            this.btnCategoryPopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCategoryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCategoryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCategoryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoryPopup.Location = new System.Drawing.Point(389, 66);
+            this.btnCategoryPopup.Name = "btnCategoryPopup";
+            this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
+            this.btnCategoryPopup.TabIndex = 290;
+            this.btnCategoryPopup.UseVisualStyleBackColor = false;
+            this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
             // 
             // Size_Type_Master
             // 
@@ -416,5 +475,9 @@
         private System.Windows.Forms.Label lblTotalRecords;
         private System.Windows.Forms.GroupBox grpGridview;
         private System.Windows.Forms.DataGridView dgvSizeTypeMaster;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCategoryPopup;
     }
 }

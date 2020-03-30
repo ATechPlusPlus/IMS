@@ -57,6 +57,9 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.grpStore.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,6 +93,9 @@
             // grpStore
             // 
             this.grpStore.BackColor = System.Drawing.Color.Transparent;
+            this.grpStore.Controls.Add(this.label4);
+            this.grpStore.Controls.Add(this.label3);
+            this.grpStore.Controls.Add(this.label2);
             this.grpStore.Controls.Add(this.label1);
             this.grpStore.Controls.Add(this.cmbStoreCat);
             this.grpStore.Controls.Add(this.txtFax);
@@ -106,7 +112,7 @@
             this.grpStore.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpStore.Location = new System.Drawing.Point(30, 93);
             this.grpStore.Name = "grpStore";
-            this.grpStore.Size = new System.Drawing.Size(486, 295);
+            this.grpStore.Size = new System.Drawing.Size(520, 295);
             this.grpStore.TabIndex = 203;
             this.grpStore.TabStop = false;
             this.grpStore.Text = "Store Details";
@@ -260,7 +266,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(30, 394);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 51);
+            this.groupBox1.Size = new System.Drawing.Size(520, 51);
             this.groupBox1.TabIndex = 202;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -270,7 +276,7 @@
             this.rdShowAll.AutoSize = true;
             this.rdShowAll.Checked = true;
             this.rdShowAll.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdShowAll.Location = new System.Drawing.Point(457, 19);
+            this.rdShowAll.Location = new System.Drawing.Point(430, 20);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
             this.rdShowAll.TabIndex = 106;
@@ -296,7 +302,7 @@
             this.txtSearchByStoreName.BackColor = System.Drawing.Color.White;
             this.txtSearchByStoreName.Enabled = false;
             this.txtSearchByStoreName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByStoreName.Location = new System.Drawing.Point(167, 18);
+            this.txtSearchByStoreName.Location = new System.Drawing.Point(159, 18);
             this.txtSearchByStoreName.Name = "txtSearchByStoreName";
             this.txtSearchByStoreName.Size = new System.Drawing.Size(206, 25);
             this.txtSearchByStoreName.TabIndex = 5;
@@ -309,7 +315,7 @@
             this.lblTotalRecords.AutoSize = true;
             this.lblTotalRecords.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecords.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecords.Location = new System.Drawing.Point(27, 631);
+            this.lblTotalRecords.Location = new System.Drawing.Point(33, 629);
             this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Size = new System.Drawing.Size(121, 17);
             this.lblTotalRecords.TabIndex = 201;
@@ -348,7 +354,7 @@
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(281, 59);
+            this.btnUpdate.Location = new System.Drawing.Point(315, 56);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
             this.btnUpdate.TabIndex = 197;
@@ -364,7 +370,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(445, 59);
+            this.btnCancel.Location = new System.Drawing.Point(479, 56);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
             this.btnCancel.TabIndex = 199;
@@ -380,7 +386,7 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(363, 59);
+            this.btnDelete.Location = new System.Drawing.Point(397, 56);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
             this.btnDelete.TabIndex = 198;
@@ -396,7 +402,7 @@
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(201, 59);
+            this.btnEdit.Location = new System.Drawing.Point(235, 56);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
             this.btnEdit.TabIndex = 196;
@@ -412,7 +418,7 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(119, 59);
+            this.btnSave.Location = new System.Drawing.Point(153, 56);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
             this.btnSave.TabIndex = 195;
@@ -428,7 +434,7 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(30, 59);
+            this.btnAdd.Location = new System.Drawing.Point(64, 56);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
             this.btnAdd.TabIndex = 194;
@@ -438,13 +444,49 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(368, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 17);
+            this.label2.TabIndex = 288;
+            this.label2.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(368, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 17);
+            this.label3.TabIndex = 289;
+            this.label3.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(368, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 17);
+            this.label4.TabIndex = 290;
+            this.label4.Text = "*";
+            // 
             // Store_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 661);
+            this.ClientSize = new System.Drawing.Size(633, 646);
             this.Controls.Add(this.grpStore);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTotalRecords);
@@ -505,5 +547,8 @@
         private System.Windows.Forms.Label lblFax;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStoreCat;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
