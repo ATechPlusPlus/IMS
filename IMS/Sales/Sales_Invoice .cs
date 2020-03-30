@@ -586,6 +586,12 @@ namespace IMS.Sales
                 string sizeid = dgvProductDetails.Rows[e.RowIndex].Cells["SizeID"].Value.ToString();
                 string colorid= dgvProductDetails.Rows[e.RowIndex].Cells["ColorID"].Value.ToString();
                 decimal QTY = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value);
+                if (QTY<0)
+                {
+                    clsUtility.ShowInfoMessage("The QTY can not be negative. Default 1 QTY will be set.", clsUtility.strProjectTitle);
+                    dgvProductDetails.Rows[e.RowIndex].Cells["QTY"].Value = "1";
+                    QTY = 1;
+                }
                 decimal Rate = Convert.ToDecimal(dgvProductDetails.Rows[e.RowIndex].Cells["Rate"].Value);
                 decimal Total = QTY * Rate;
                 string  _barNo = dgvProductDetails.Rows[e.RowIndex].Cells["Barcodeno"].Value.ToString();
