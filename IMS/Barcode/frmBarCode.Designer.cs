@@ -29,23 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarCode));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.grpGridview = new System.Windows.Forms.GroupBox();
             this.chkAll = new System.Windows.Forms.CheckBox();
             this.dgvProductDetails = new System.Windows.Forms.DataGridView();
-            this.btnPrintBarcode = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPurchaseInvoice = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtPurchaseID = new System.Windows.Forms.TextBox();
             this.colCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,10 +54,18 @@
             this.BarcodeNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SizeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseInvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPrintBarcode = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPurchaseInvoice = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtPurchaseID = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel2.SuspendLayout();
             this.grpGridview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -117,14 +120,14 @@
             this.dgvProductDetails.AllowUserToAddRows = false;
             this.dgvProductDetails.AllowUserToDeleteRows = false;
             this.dgvProductDetails.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCheck,
@@ -147,17 +150,113 @@
             this.dgvProductDetails.TabIndex = 0;
             this.dgvProductDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProductDetails_DataBindingComplete);
             // 
+            // colCheck
+            // 
+            this.colCheck.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colCheck.HeaderText = "";
+            this.colCheck.Name = "colCheck";
+            this.colCheck.Width = 40;
+            // 
+            // ColItemName
+            // 
+            this.ColItemName.DataPropertyName = "ProductName";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColItemName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColItemName.HeaderText = "ItemName";
+            this.ColItemName.Name = "ColItemName";
+            // 
+            // colQTY
+            // 
+            this.colQTY.DataPropertyName = "QTY";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colQTY.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colQTY.HeaderText = "QTY";
+            this.colQTY.Name = "colQTY";
+            // 
+            // Rate
+            // 
+            this.Rate.DataPropertyName = "Rate";
+            this.Rate.HeaderText = "Rate";
+            this.Rate.Name = "Rate";
+            // 
+            // ColColorID
+            // 
+            this.ColColorID.DataPropertyName = "ColorID";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColColorID.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColColorID.HeaderText = "ColorID";
+            this.ColColorID.Name = "ColColorID";
+            this.ColColorID.Visible = false;
+            // 
+            // ColColor
+            // 
+            this.ColColor.DataPropertyName = "Color";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColColor.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColColor.HeaderText = "Color";
+            this.ColColor.Name = "ColColor";
+            // 
+            // colProductID
+            // 
+            this.colProductID.DataPropertyName = "ProductID";
+            this.colProductID.HeaderText = "ProductID";
+            this.colProductID.Name = "colProductID";
+            this.colProductID.Visible = false;
+            // 
+            // ColModelNo
+            // 
+            this.ColModelNo.DataPropertyName = "ModelNo";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColModelNo.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColModelNo.HeaderText = "Model No";
+            this.ColModelNo.Name = "ColModelNo";
+            // 
+            // ColSize
+            // 
+            this.ColSize.DataPropertyName = "Size";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColSize.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColSize.HeaderText = "Size";
+            this.ColSize.Name = "ColSize";
+            // 
+            // ColorID
+            // 
+            this.ColorID.DataPropertyName = "ColorID";
+            this.ColorID.HeaderText = "ColorID";
+            this.ColorID.Name = "ColorID";
+            this.ColorID.Visible = false;
+            // 
+            // BarcodeNo
+            // 
+            this.BarcodeNo.DataPropertyName = "BarcodeNo";
+            this.BarcodeNo.HeaderText = "Barcode No";
+            this.BarcodeNo.Name = "BarcodeNo";
+            // 
+            // SizeID
+            // 
+            this.SizeID.DataPropertyName = "SizeID";
+            this.SizeID.HeaderText = "SizeID";
+            this.SizeID.Name = "SizeID";
+            this.SizeID.Visible = false;
+            // 
+            // PurchaseInvoiceID
+            // 
+            this.PurchaseInvoiceID.DataPropertyName = "PurchaseInvoiceID";
+            this.PurchaseInvoiceID.HeaderText = "PurchaseInvoiceID";
+            this.PurchaseInvoiceID.Name = "PurchaseInvoiceID";
+            this.PurchaseInvoiceID.Visible = false;
+            // 
             // btnPrintBarcode
             // 
             this.btnPrintBarcode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrintBarcode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrintBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrintBarcode.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintBarcode.Location = new System.Drawing.Point(785, 94);
+            this.btnPrintBarcode.Location = new System.Drawing.Point(762, 87);
             this.btnPrintBarcode.Name = "btnPrintBarcode";
-            this.btnPrintBarcode.Size = new System.Drawing.Size(110, 25);
+            this.btnPrintBarcode.Size = new System.Drawing.Size(133, 25);
             this.btnPrintBarcode.TabIndex = 218;
-            this.btnPrintBarcode.Text = "Print Barcode";
+            this.btnPrintBarcode.Text = "Print All Barcode";
             this.btnPrintBarcode.UseVisualStyleBackColor = true;
             this.btnPrintBarcode.Click += new System.EventHandler(this.button1_Click);
             this.btnPrintBarcode.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
@@ -204,120 +303,46 @@
             // 
             this.txtPurchaseID.BackColor = System.Drawing.Color.White;
             this.txtPurchaseID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPurchaseID.Location = new System.Drawing.Point(528, 46);
+            this.txtPurchaseID.Location = new System.Drawing.Point(477, 46);
             this.txtPurchaseID.Name = "txtPurchaseID";
             this.txtPurchaseID.Size = new System.Drawing.Size(50, 25);
             this.txtPurchaseID.TabIndex = 227;
             this.txtPurchaseID.Visible = false;
-            // 
-            // colCheck
-            // 
-            this.colCheck.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colCheck.HeaderText = "";
-            this.colCheck.Name = "colCheck";
-            this.colCheck.Width = 40;
-            // 
-            // ColItemName
-            // 
-            this.ColItemName.DataPropertyName = "ProductName";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColItemName.DefaultCellStyle = dataGridViewCellStyle23;
-            this.ColItemName.HeaderText = "ItemName";
-            this.ColItemName.Name = "ColItemName";
-            // 
-            // colQTY
-            // 
-            this.colQTY.DataPropertyName = "QTY";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colQTY.DefaultCellStyle = dataGridViewCellStyle24;
-            this.colQTY.HeaderText = "QTY";
-            this.colQTY.Name = "colQTY";
-            // 
-            // Rate
-            // 
-            this.Rate.DataPropertyName = "Rate";
-            this.Rate.HeaderText = "Rate";
-            this.Rate.Name = "Rate";
-            // 
-            // ColColorID
-            // 
-            this.ColColorID.DataPropertyName = "ColorID";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColColorID.DefaultCellStyle = dataGridViewCellStyle25;
-            this.ColColorID.HeaderText = "ColorID";
-            this.ColColorID.Name = "ColColorID";
-            this.ColColorID.Visible = false;
-            // 
-            // ColColor
-            // 
-            this.ColColor.DataPropertyName = "Color";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColColor.DefaultCellStyle = dataGridViewCellStyle26;
-            this.ColColor.HeaderText = "Color";
-            this.ColColor.Name = "ColColor";
-            // 
-            // colProductID
-            // 
-            this.colProductID.DataPropertyName = "ProductID";
-            this.colProductID.HeaderText = "ProductID";
-            this.colProductID.Name = "colProductID";
-            this.colProductID.Visible = false;
-            // 
-            // ColModelNo
-            // 
-            this.ColModelNo.DataPropertyName = "ModelNo";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColModelNo.DefaultCellStyle = dataGridViewCellStyle27;
-            this.ColModelNo.HeaderText = "Model No";
-            this.ColModelNo.Name = "ColModelNo";
-            // 
-            // ColSize
-            // 
-            this.ColSize.DataPropertyName = "Size";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColSize.DefaultCellStyle = dataGridViewCellStyle28;
-            this.ColSize.HeaderText = "Size";
-            this.ColSize.Name = "ColSize";
-            // 
-            // ColorID
-            // 
-            this.ColorID.DataPropertyName = "ColorID";
-            this.ColorID.HeaderText = "ColorID";
-            this.ColorID.Name = "ColorID";
-            this.ColorID.Visible = false;
-            // 
-            // BarcodeNo
-            // 
-            this.BarcodeNo.DataPropertyName = "BarcodeNo";
-            this.BarcodeNo.HeaderText = "Barcode No";
-            this.BarcodeNo.Name = "BarcodeNo";
-            // 
-            // SizeID
-            // 
-            this.SizeID.DataPropertyName = "SizeID";
-            this.SizeID.HeaderText = "SizeID";
-            this.SizeID.Name = "SizeID";
-            this.SizeID.Visible = false;
-            // 
-            // PurchaseInvoiceID
-            // 
-            this.PurchaseInvoiceID.DataPropertyName = "PurchaseInvoiceID";
-            this.PurchaseInvoiceID.HeaderText = "PurchaseInvoiceID";
-            this.PurchaseInvoiceID.Name = "PurchaseInvoiceID";
-            this.PurchaseInvoiceID.Visible = false;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(697, 93);
+            this.linkLabel1.Location = new System.Drawing.Point(23, 93);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(63, 19);
+            this.linkLabel1.Size = new System.Drawing.Size(100, 19);
             this.linkLabel1.TabIndex = 228;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Refresh";
+            this.linkLabel1.Text = "Refresh Data";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(762, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 25);
+            this.button1.TabIndex = 229;
+            this.button1.Text = "Print Manual QTY";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(685, 50);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(71, 25);
+            this.numericUpDown1.TabIndex = 230;
             // 
             // frmBarCode
             // 
@@ -327,6 +352,8 @@
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(907, 588);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.txtPurchaseID);
             this.Controls.Add(this.btnSearch);
@@ -347,6 +374,7 @@
             this.grpGridview.ResumeLayout(false);
             this.grpGridview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,5 +406,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SizeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseInvoiceID;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

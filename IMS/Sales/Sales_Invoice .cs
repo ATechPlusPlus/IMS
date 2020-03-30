@@ -199,6 +199,13 @@ namespace IMS.Sales
 
             int deafultStoreID = ObjDAL.ExecuteScalarInt("SELECT Storeid FROM " + clsUtility.DBName + ".[dbo].[DefaultStoreSetting] WHERE MachineName = '" + Environment.MachineName + "'");
             cmbShop.SelectedValue = deafultStoreID;
+            if (deafultStoreID==0)
+            {
+                MessageBox.Show("Please select the default shop for this client.",clsUtility.strProjectTitle);
+                this.Close();
+            }
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -249,7 +256,7 @@ namespace IMS.Sales
                         if (ObjUtil.GetDataPopup().ColumnCount > 0)
                         {
                             ObjUtil.GetDataPopup().Columns["Empid"].Visible = false;
-                            ObjUtil.SetDataPopupSize(450, 0);
+                            ObjUtil.SetDataPopupSize(200, 0);
                         }
                     }
                     //ObjUtil.GetDataPopup().CellClick += frmSalecounter_CellClick;
@@ -510,6 +517,10 @@ namespace IMS.Sales
                     clsUtility.ShowInfoMessage("No QTY avaiable for the Product : "+txtProductName.Text,clsUtility.strProjectTitle);
                 }
                
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("No Product Found for the barcode value : "+ _BarCodeValue, clsUtility.strProjectTitle);
             }
         }
 

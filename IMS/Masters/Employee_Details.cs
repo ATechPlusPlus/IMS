@@ -92,6 +92,8 @@ namespace IMS.Masters
             EmployeeID = 0;
             txtEmail.Clear();
             dtpDOB.Value = DateTime.Now;
+            dtpDOB.Checked = false;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -148,7 +150,7 @@ namespace IMS.Masters
                 return false;
             }
 
-            else if (ObjUtil.IsControlTextEmpty(radMale) && ObjUtil.IsControlTextEmpty(radFemale))
+            else if (radFemale.Checked==false && radMale.Checked==false)
             {
                 clsUtility.ShowInfoMessage("Please Select Gender.", clsUtility.strProjectTitle);
                 radMale.Focus();

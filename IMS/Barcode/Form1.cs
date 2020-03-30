@@ -515,7 +515,7 @@ namespace IMS.Barcode
             PictureBox ctrl = new PictureBox();
 
             ctrl.Location = new Point(43, 26);
-            ctrl.Size = new System.Drawing.Size(200, 79);
+            ctrl.Size = new System.Drawing.Size(180, 60);
             ctrl.BorderStyle = BorderStyle.FixedSingle;
             ctrl.MouseEnter += new EventHandler(control_MouseEnter);
             ctrl.MouseLeave += new EventHandler(control_MouseLeave);

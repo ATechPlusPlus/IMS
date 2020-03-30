@@ -38,6 +38,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicEmployee = new System.Windows.Forms.PictureBox();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
+            this.btnStorePopup = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -68,7 +69,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnStorePopup = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.lblTotalRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
@@ -181,6 +182,7 @@
             // grpEmployee
             // 
             this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.label13);
             this.grpEmployee.Controls.Add(this.btnStorePopup);
             this.grpEmployee.Controls.Add(this.label10);
             this.grpEmployee.Controls.Add(this.label9);
@@ -208,6 +210,21 @@
             this.grpEmployee.TabIndex = 213;
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee Details";
+            // 
+            // btnStorePopup
+            // 
+            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
+            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStorePopup.Location = new System.Drawing.Point(664, 35);
+            this.btnStorePopup.Name = "btnStorePopup";
+            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnStorePopup.TabIndex = 279;
+            this.btnStorePopup.UseVisualStyleBackColor = false;
+            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
             // 
             // label10
             // 
@@ -381,10 +398,13 @@
             // 
             // dtpDOB
             // 
+            this.dtpDOB.Checked = false;
+            this.dtpDOB.CustomFormat = "";
             this.dtpDOB.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDOB.Location = new System.Drawing.Point(133, 121);
             this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.ShowCheckBox = true;
             this.dtpDOB.Size = new System.Drawing.Size(206, 25);
             this.dtpDOB.TabIndex = 229;
             // 
@@ -586,20 +606,17 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
-            // btnStorePopup
+            // label13
             // 
-            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
-            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStorePopup.Location = new System.Drawing.Point(664, 35);
-            this.btnStorePopup.Name = "btnStorePopup";
-            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
-            this.btnStorePopup.TabIndex = 279;
-            this.btnStorePopup.UseVisualStyleBackColor = false;
-            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(590, 91);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 17);
+            this.label13.TabIndex = 280;
+            this.label13.Text = "*";
             // 
             // Employee_Details
             // 
@@ -682,5 +699,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnStorePopup;
+        private System.Windows.Forms.Label label13;
     }
 }

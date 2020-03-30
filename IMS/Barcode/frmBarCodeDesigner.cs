@@ -41,28 +41,37 @@ namespace IMS.Barcode
         
         private void SaveBarCodeSettings(string BarCodeData)
         {
-            int count = ObjCon.CountRecords(clsUtility.DBName + ".dbo.DefaultStoreSetting", "MachineName='" + Environment.MachineName + "'");
+            int count = ObjCon.CountRecords(clsUtility.DBName + ".dbo.tblBarCodeSettings");
             if (count == 0)
             {
                 ObjCon.SetColumnData("BarCodeSetting", SqlDbType.NVarChar, BarCodeData);
-                ObjCon.InsertData(clsUtility.DBName + ".dbo.DefaultStoreSetting", false);
+                ObjCon.InsertData(clsUtility.DBName + ".dbo.tblBarCodeSettings", false);
             }
             else
             {
-                ObjCon.UpdateColumnData("BarCodeSetting", SqlDbType.NVarChar, BarCodeData);
-                ObjCon.UpdateData(clsUtility.DBName + ".dbo.DefaultStoreSetting", "MachineName='" + Environment.MachineName + "'");
+
+               int r= ObjCon.ExecuteNonQuery("Update " + clsUtility.DBName + ".dbo.tblBarCodeSettings set BarCodeSetting='" + BarCodeData + "'");
+              
             }
+        }
+        private void GetBarCodeSettingFromFile()
+        {
+
         }
         private string GetBarCodeSettings()
         {
             string strBarCodeSettings = null;
-            DataTable dataTable = ObjCon.ExecuteSelectStatement("SELECT BarCodeSetting FROM " + clsUtility.DBName + ".dbo.DefaultStoreSetting WITH(NOLOCK) WHERE MachineName='"+ Environment.MachineName + "'");
+            DataTable dataTable = ObjCon.ExecuteSelectStatement("SELECT BarCodeSetting FROM " + clsUtility.DBName + ".dbo.tblBarCodeSettings WITH(NOLOCK)");
             if (ObjUtil.ValidateTable(dataTable))
             {
                 if (dataTable.Rows[0]["BarCodeSetting"] != DBNull.Value)
                 {
                     strBarCodeSettings = dataTable.Rows[0]["BarCodeSetting"].ToString();
                 }
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("No Barcode Template found.", clsUtility.strProjectTitle);
             }
             return strBarCodeSettings;
         }
@@ -489,34 +498,29 @@ namespace IMS.Barcode
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int Width = obj.Size.Width;
-            int Height = obj.Size.Height;
-
-            Bitmap bm = new Bitmap(Width, Height);
-
-            obj.DrawToBitmap(bm, new Rectangle(0, 0, Width, Height));
-
-            SaveFileDialog Obj = new SaveFileDialog();
-            Obj.Filter = "Png Image File (*.png)|*.png|All files (*.*)|*.*";
-            Obj.FileName = "Default Image";
-            if (Obj.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                bm.Save(Obj.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                DialogResult d = MessageBox.Show("Exported Succesfully.Do you want to open?", "Designer Tool", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (d == System.Windows.Forms.DialogResult.Yes)
-                {
-                    System.Diagnostics.Process.Start(Obj.FileName);
-                }
-            }
+           
         }
 
         private void WriteToLog(string s)
         {
             strTemplate = strTemplate + s + Environment.NewLine;
         }
-        private void LoadTemplate()
+        private void LoadTemplate(bool IsFromFile)
         {
-            string strBarCodeSettingValue = GetBarCodeSettings();
+            string strBarCodeSettingValue = "";
+            if (IsFromFile)
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog()==DialogResult.OK)
+                {
+                    strBarCodeSettingValue= File.ReadAllText(openFileDialog.FileName);
+                }
+            }
+            else
+            {
+                 strBarCodeSettingValue = GetBarCodeSettings();
+            }
+      
             if (strBarCodeSettingValue != null)
             {
                 string[] strfiles = strBarCodeSettingValue.Split('\n');
@@ -723,6 +727,9 @@ namespace IMS.Barcode
                                 }
                             }
                         }
+                        this.Focus();
+                        this.Activate();
+
                         clsUtility.ShowInfoMessage("Template Loaded Successfully.", "Designer Tool");
                     }
                 }
@@ -784,7 +791,7 @@ namespace IMS.Barcode
 
         private void loadTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadTemplate();
+            LoadTemplate(false);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -822,7 +829,7 @@ namespace IMS.Barcode
         {
             if (CoreApp.clsUtility.ShowQuestionMessage("Are you sure, you want to delete the bar code settings", CoreApp.clsUtility.strProjectTitle))
             {
-                ObjCon.ExecuteNonQuery("UPDATE "+clsUtility.DBName+".dbo.DefaultStoreSetting SET BarCodeSetting=NULL WHERE MachineName='" + Environment.MachineName + "'");
+                ObjCon.ExecuteNonQuery("UPDATE "+clsUtility.DBName+ ".dbo.tblBarCodeSettings SET BarCodeSetting=NULL ");
                 clsUtility.ShowInfoMessage("Barcode setting deleted.", clsUtility.strProjectTitle);
             }
         }
@@ -838,6 +845,86 @@ namespace IMS.Barcode
             {
                 clsUtility.ShowInfoMessage("Please select a control in design area", clsUtility.strProjectTitle);
             }
+        }
+
+        private void exportAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int Width = obj.Size.Width;
+            int Height = obj.Size.Height;
+
+            Bitmap bm = new Bitmap(Width, Height);
+
+            obj.DrawToBitmap(bm, new Rectangle(0, 0, Width, Height));
+
+            SaveFileDialog Obj = new SaveFileDialog();
+            Obj.Filter = "Png Image File (*.png)|*.png|All files (*.*)|*.*";
+            Obj.FileName = "Default Image";
+            if (Obj.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                bm.Save(Obj.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                DialogResult d = MessageBox.Show("Exported Succesfully.Do you want to open?", "Designer Tool", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (d == System.Windows.Forms.DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(Obj.FileName);
+                }
+            }
+        }
+        string _exportDatafile = "";
+        private void exportAsFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            strTemplate = "";
+            //Type-IsBold-Family-argb(int)-fsize(float)-w-h-x-y-text-backColor(int)-RecBorderStyle-borderStyle-borderColor
+            WriteToLog(obj.BackColor.ToArgb().ToString() + "@" + obj.Size.Width + "@" + obj.Size.Height);
+
+            for (int i = 0; i < obj.Controls.Count; i++)
+            {
+                string type = obj.Controls[i].GetType().Name;
+                bool b = obj.Controls[i].Font.Bold;
+                string family = obj.Controls[i].Font.FontFamily.Name;
+                int arbg = obj.Controls[i].ForeColor.ToArgb();
+                float fsize = obj.Controls[i].Font.Size;
+                int w = obj.Controls[i].Size.Width;
+                int h = obj.Controls[i].Size.Height;
+                int x = obj.Controls[i].Location.X;
+                int y = obj.Controls[i].Location.Y;
+                string strtag = "";
+                if (obj.Controls[i].Tag != null)
+                {
+                    strtag = obj.Controls[i].Tag.ToString();
+                }
+
+                string text = obj.Controls[i].Text;
+                int backColor = obj.Controls[i].BackColor.ToArgb();
+                string RecBorderStyle = "";
+                string borderStyle = "";
+                int borderColor = 0;
+
+                if (obj.Controls[i].GetType() == typeof(uRectangle))
+                {
+                    uRectangle rc = (uRectangle)obj.Controls[i];
+                    RecBorderStyle = rc.RectangleBorderStyle.ToString();
+                    borderStyle = rc.BorderStyle.ToString();
+                    borderColor = rc.BorderColor.ToArgb();
+                }
+
+                WriteToLog(type + "@" + b + "@" + family + "@" + arbg + "@" + fsize + "@" + w + "@" + h + "@" + x + "@" + y + "@" + text + "@" + backColor + "@" + RecBorderStyle + "@" + borderStyle + "@" + borderColor + "@" + strtag);
+            }
+            SaveFileDialog Obj = new SaveFileDialog();
+            Obj.Filter = ".dat Data File (*.dat)|*.dat|All files (*.*)|*.*";
+            Obj.FileName = "Template 01";
+            if (Obj.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                StreamWriter sw = new StreamWriter(Obj.FileName);
+                sw.WriteLine(strTemplate);
+                sw.Close();
+                MessageBox.Show("Template Saved Successfully.", "Designer Tool");
+            }
+        }
+
+        private void importTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadTemplate(true);
         }
 
         private void lineToolStripMenuItem_Click_1(object sender, EventArgs e)
