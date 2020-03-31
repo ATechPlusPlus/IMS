@@ -846,5 +846,21 @@ namespace IMS.Purchase
                 cmbSizeType.SelectedValue = a;
             }
         }
+
+        private void dgvQtycolor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex >= 3)
+            {
+                dataGridView1.Rows[e.RowIndex].ErrorText = "";
+                int newInteger = 0;
+                if (dataGridView1.Rows[e.RowIndex].IsNewRow) { return; }
+                if (!int.TryParse(e.FormattedValue.ToString(),
+                    out newInteger) || newInteger < 0)
+                {
+                    e.Cancel = true;
+                    dataGridView1.Rows[e.RowIndex].ErrorText = "Size must be a Positive integer";
+                }
+            }
+        }
     }
 }

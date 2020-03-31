@@ -546,15 +546,18 @@ namespace IMS.Purchase
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "ColDelete")
+            if (e.ColumnIndex >= 0 && dataGridView1.Rows.Count > 0)
             {
-                DialogResult d = MessageBox.Show("Are you sure want to delete ? ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (d == DialogResult.Yes)
+                if (dataGridView1.Columns[e.ColumnIndex].Name == "ColDelete")
                 {
-                    dataGridView1.Rows.RemoveAt(e.RowIndex);
-                    dataGridView1.EndEdit();
-                    CalculateSubTotal();
-                    txtProductName.Focus();
+                    DialogResult d = MessageBox.Show("Are you sure want to delete ? ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (d == DialogResult.Yes)
+                    {
+                        dataGridView1.Rows.RemoveAt(e.RowIndex);
+                        dataGridView1.EndEdit();
+                        CalculateSubTotal();
+                        txtProductName.Focus();
+                    }
                 }
             }
         }

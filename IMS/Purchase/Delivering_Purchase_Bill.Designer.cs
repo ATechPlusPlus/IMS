@@ -35,6 +35,7 @@
             this.lblSupplier = new System.Windows.Forms.Label();
             this.cmbStore = new System.Windows.Forms.ComboBox();
             this.grpPurchaseBillDetail = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.listBoxModelNo = new System.Windows.Forms.ListBox();
             this.cmbCountry = new System.Windows.Forms.ComboBox();
@@ -69,7 +70,6 @@
             this.btnStorePopup = new System.Windows.Forms.Button();
             this.btnSizeTypePopup = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.grpPurchaseBillDetail.SuspendLayout();
@@ -167,6 +167,18 @@
             this.grpPurchaseBillDetail.TabIndex = 248;
             this.grpPurchaseBillDetail.TabStop = false;
             this.grpPurchaseBillDetail.Text = "Item Details";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(327, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 17);
+            this.label5.TabIndex = 294;
+            this.label5.Text = "*";
             // 
             // txtItemName
             // 
@@ -325,6 +337,7 @@
             this.dgvQtycolor.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvQtycolor_CellBeginEdit);
             this.dgvQtycolor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellClick);
             this.dgvQtycolor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQtycolor_CellEndEdit);
+            this.dgvQtycolor.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvQtycolor_CellValidating);
             this.dgvQtycolor.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvQtycolor_ColumnAdded);
             this.dgvQtycolor.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvQtycolor_DataBindingComplete);
             // 
@@ -602,18 +615,6 @@
             this.label10.Size = new System.Drawing.Size(15, 17);
             this.label10.TabIndex = 293;
             this.label10.Text = "*";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(327, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 17);
-            this.label5.TabIndex = 294;
-            this.label5.Text = "*";
             // 
             // label6
             // 

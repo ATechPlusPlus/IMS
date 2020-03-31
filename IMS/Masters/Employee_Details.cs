@@ -155,7 +155,7 @@ namespace IMS.Masters
             else if (radFemale.Checked==false && radMale.Checked==false)
             {
                 clsUtility.ShowInfoMessage("Please Select Gender.", clsUtility.strProjectTitle);
-                radMale.Focus();
+                grpGender.Focus();
                 return false;
             }
 
