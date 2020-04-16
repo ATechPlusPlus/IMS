@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtEmpID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.txtSalesMan = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.radByShope = new System.Windows.Forms.RadioButton();
             this.rdShowAll = new System.Windows.Forms.RadioButton();
             this.dgvProductDetails = new System.Windows.Forms.DataGridView();
-            this.txtEmpID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCOunt = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -94,9 +94,21 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(960, 154);
-            this.groupBox1.TabIndex = 203;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
+            // 
+            // txtEmpID
+            // 
+            this.txtEmpID.BackColor = System.Drawing.Color.White;
+            this.txtEmpID.Enabled = false;
+            this.txtEmpID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpID.Location = new System.Drawing.Point(822, 108);
+            this.txtEmpID.Name = "txtEmpID";
+            this.txtEmpID.Size = new System.Drawing.Size(75, 25);
+            this.txtEmpID.TabIndex = 248;
+            this.txtEmpID.Visible = false;
+            this.txtEmpID.TextChanged += new System.EventHandler(this.txtEmpID_TextChanged);
             // 
             // label1
             // 
@@ -116,7 +128,7 @@
             this.dtpToDate.Location = new System.Drawing.Point(265, 104);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(109, 25);
-            this.dtpToDate.TabIndex = 246;
+            this.dtpToDate.TabIndex = 9;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             this.dtpToDate.Validating += new System.ComponentModel.CancelEventHandler(this.dtpToDate_Validating);
             // 
@@ -128,7 +140,7 @@
             this.txtSalesMan.Location = new System.Drawing.Point(121, 64);
             this.txtSalesMan.Name = "txtSalesMan";
             this.txtSalesMan.Size = new System.Drawing.Size(251, 25);
-            this.txtSalesMan.TabIndex = 202;
+            this.txtSalesMan.TabIndex = 6;
             this.txtSalesMan.TextChanged += new System.EventHandler(this.txtSalesMan_TextChanged);
             this.txtSalesMan.Enter += new System.EventHandler(this.txtInvoiceNumber_Enter);
             this.txtSalesMan.Leave += new System.EventHandler(this.txtInvoiceNumber_Leave);
@@ -140,7 +152,7 @@
             this.radBySalesMan.Location = new System.Drawing.Point(18, 64);
             this.radBySalesMan.Name = "radBySalesMan";
             this.radBySalesMan.Size = new System.Drawing.Size(103, 21);
-            this.radBySalesMan.TabIndex = 201;
+            this.radBySalesMan.TabIndex = 5;
             this.radBySalesMan.Text = "By Salsman :";
             this.radBySalesMan.UseVisualStyleBackColor = true;
             this.radBySalesMan.CheckedChanged += new System.EventHandler(this.radBySalesMan_CheckedChanged);
@@ -152,7 +164,7 @@
             this.dtpFromDate.Location = new System.Drawing.Point(121, 104);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(107, 25);
-            this.dtpFromDate.TabIndex = 196;
+            this.dtpFromDate.TabIndex = 8;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // radByInvoice
@@ -162,7 +174,7 @@
             this.radByInvoice.Location = new System.Drawing.Point(18, 27);
             this.radByInvoice.Name = "radByInvoice";
             this.radByInvoice.Size = new System.Drawing.Size(97, 21);
-            this.radByInvoice.TabIndex = 200;
+            this.radByInvoice.TabIndex = 0;
             this.radByInvoice.Text = "By Invoice :";
             this.radByInvoice.UseVisualStyleBackColor = true;
             this.radByInvoice.CheckedChanged += new System.EventHandler(this.radByInvoice_CheckedChanged);
@@ -175,7 +187,7 @@
             this.txtInvoiceNumber.Location = new System.Drawing.Point(121, 25);
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.Size = new System.Drawing.Size(251, 25);
-            this.txtInvoiceNumber.TabIndex = 199;
+            this.txtInvoiceNumber.TabIndex = 1;
             this.txtInvoiceNumber.TextChanged += new System.EventHandler(this.txtInvoiceNumber_TextChanged);
             this.txtInvoiceNumber.Enter += new System.EventHandler(this.txtInvoiceNumber_Enter);
             this.txtInvoiceNumber.Leave += new System.EventHandler(this.txtInvoiceNumber_Leave);
@@ -187,7 +199,7 @@
             this.radByDate.Location = new System.Drawing.Point(18, 104);
             this.radByDate.Name = "radByDate";
             this.radByDate.Size = new System.Drawing.Size(83, 21);
-            this.radByDate.TabIndex = 6;
+            this.radByDate.TabIndex = 7;
             this.radByDate.Text = "By Date :";
             this.radByDate.UseVisualStyleBackColor = true;
             this.radByDate.CheckedChanged += new System.EventHandler(this.radByDate_CheckedChanged);
@@ -204,7 +216,7 @@
             this.cmbShop.Location = new System.Drawing.Point(523, 23);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(168, 27);
-            this.cmbShop.TabIndex = 198;
+            this.cmbShop.TabIndex = 3;
             this.cmbShop.SelectionChangeCommitted += new System.EventHandler(this.cmbShop_SelectionChangeCommitted);
             // 
             // radByShope
@@ -214,7 +226,7 @@
             this.radByShope.Location = new System.Drawing.Point(427, 26);
             this.radByShope.Name = "radByShope";
             this.radByShope.Size = new System.Drawing.Size(90, 21);
-            this.radByShope.TabIndex = 197;
+            this.radByShope.TabIndex = 2;
             this.radByShope.Text = "By Shope :";
             this.radByShope.UseVisualStyleBackColor = true;
             this.radByShope.CheckedChanged += new System.EventHandler(this.radByShope_CheckedChanged);
@@ -227,7 +239,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(804, 25);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 106;
+            this.rdShowAll.TabIndex = 4;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -246,18 +258,6 @@
             this.dgvProductDetails.Size = new System.Drawing.Size(960, 296);
             this.dgvProductDetails.TabIndex = 204;
             this.dgvProductDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProductDetails_DataBindingComplete);
-            // 
-            // txtEmpID
-            // 
-            this.txtEmpID.BackColor = System.Drawing.Color.White;
-            this.txtEmpID.Enabled = false;
-            this.txtEmpID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpID.Location = new System.Drawing.Point(822, 108);
-            this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(75, 25);
-            this.txtEmpID.TabIndex = 248;
-            this.txtEmpID.Visible = false;
-            this.txtEmpID.TextChanged += new System.EventHandler(this.txtEmpID_TextChanged);
             // 
             // label4
             // 

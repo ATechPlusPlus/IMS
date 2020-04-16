@@ -59,7 +59,7 @@
             this.cmbEntryType.Name = "cmbEntryType";
             this.cmbEntryType.Size = new System.Drawing.Size(240, 27);
             this.cmbEntryType.Sorted = true;
-            this.cmbEntryType.TabIndex = 239;
+            this.cmbEntryType.TabIndex = 0;
             // 
             // lblSupplier
             // 
@@ -90,7 +90,7 @@
             this.txtSupplierBillNo.Location = new System.Drawing.Point(141, 175);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
-            this.txtSupplierBillNo.TabIndex = 236;
+            this.txtSupplierBillNo.TabIndex = 1;
             this.txtSupplierBillNo.TextChanged += new System.EventHandler(this.txtSupplierBillNo_TextChanged);
             this.txtSupplierBillNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -104,7 +104,7 @@
             this.btnCancel.Location = new System.Drawing.Point(276, 278);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 241;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -120,7 +120,7 @@
             this.btnPost.Location = new System.Drawing.Point(141, 278);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(76, 25);
-            this.btnPost.TabIndex = 240;
+            this.btnPost.TabIndex = 4;
             this.btnPost.Text = "Post";
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
@@ -181,7 +181,7 @@
             this.txtTotalQTY.Name = "txtTotalQTY";
             this.txtTotalQTY.ReadOnly = true;
             this.txtTotalQTY.Size = new System.Drawing.Size(206, 25);
-            this.txtTotalQTY.TabIndex = 243;
+            this.txtTotalQTY.TabIndex = 3;
             this.txtTotalQTY.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtTotalQTY.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -195,7 +195,7 @@
             this.cmbStore.Name = "cmbStore";
             this.cmbStore.Size = new System.Drawing.Size(206, 27);
             this.cmbStore.Sorted = true;
-            this.cmbStore.TabIndex = 246;
+            this.cmbStore.TabIndex = 2;
             // 
             // label3
             // 

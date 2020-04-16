@@ -115,7 +115,7 @@
             this.txtSupplierBillNo.Location = new System.Drawing.Point(125, 98);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(207, 25);
-            this.txtSupplierBillNo.TabIndex = 243;
+            this.txtSupplierBillNo.TabIndex = 0;
             this.txtSupplierBillNo.TextChanged += new System.EventHandler(this.txtSupplierBillNo_TextChanged);
             this.txtSupplierBillNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -143,7 +143,7 @@
             this.cmbStore.Location = new System.Drawing.Point(603, 100);
             this.cmbStore.Name = "cmbStore";
             this.cmbStore.Size = new System.Drawing.Size(206, 27);
-            this.cmbStore.TabIndex = 247;
+            this.cmbStore.TabIndex = 1;
             // 
             // grpPurchaseBillDetail
             // 
@@ -164,7 +164,7 @@
             this.grpPurchaseBillDetail.Location = new System.Drawing.Point(8, 129);
             this.grpPurchaseBillDetail.Name = "grpPurchaseBillDetail";
             this.grpPurchaseBillDetail.Size = new System.Drawing.Size(882, 136);
-            this.grpPurchaseBillDetail.TabIndex = 248;
+            this.grpPurchaseBillDetail.TabIndex = 3;
             this.grpPurchaseBillDetail.TabStop = false;
             this.grpPurchaseBillDetail.Text = "Item Details";
             // 
@@ -188,7 +188,7 @@
             this.txtItemName.Location = new System.Drawing.Point(596, 63);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(206, 25);
-            this.txtItemName.TabIndex = 265;
+            this.txtItemName.TabIndex = 3;
             this.txtItemName.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtItemName.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -199,7 +199,7 @@
             this.listBoxModelNo.Location = new System.Drawing.Point(118, 29);
             this.listBoxModelNo.Name = "listBoxModelNo";
             this.listBoxModelNo.Size = new System.Drawing.Size(206, 55);
-            this.listBoxModelNo.TabIndex = 256;
+            this.listBoxModelNo.TabIndex = 0;
             this.listBoxModelNo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxModelNo_MouseClick);
             this.listBoxModelNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxModelNo_KeyDown);
             // 
@@ -215,7 +215,7 @@
             this.cmbCountry.Location = new System.Drawing.Point(596, 100);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(206, 27);
-            this.cmbCountry.TabIndex = 255;
+            this.cmbCountry.TabIndex = 4;
             // 
             // label2
             // 
@@ -237,7 +237,7 @@
             this.cmbDepartment.Location = new System.Drawing.Point(118, 96);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(206, 27);
-            this.cmbDepartment.TabIndex = 253;
+            this.cmbDepartment.TabIndex = 1;
             // 
             // label1
             // 
@@ -273,7 +273,7 @@
             this.cmbBrand.Location = new System.Drawing.Point(596, 24);
             this.cmbBrand.Name = "cmbBrand";
             this.cmbBrand.Size = new System.Drawing.Size(206, 27);
-            this.cmbBrand.TabIndex = 244;
+            this.cmbBrand.TabIndex = 2;
             // 
             // lblProductName
             // 
@@ -306,7 +306,7 @@
             this.cmbSizeType.Location = new System.Drawing.Point(603, 272);
             this.cmbSizeType.Name = "cmbSizeType";
             this.cmbSizeType.Size = new System.Drawing.Size(206, 27);
-            this.cmbSizeType.TabIndex = 257;
+            this.cmbSizeType.TabIndex = 4;
             this.cmbSizeType.SelectionChangeCommitted += new System.EventHandler(this.cmbSizeType_SelectionChangeCommitted);
             // 
             // label3
@@ -350,7 +350,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(452, 53);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 262;
+            this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -366,7 +366,7 @@
             this.btnCancel.Location = new System.Drawing.Point(616, 53);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 264;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -382,7 +382,7 @@
             this.btnDelete.Location = new System.Drawing.Point(534, 53);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 263;
+            this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -398,7 +398,7 @@
             this.btnEdit.Location = new System.Drawing.Point(372, 53);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 261;
+            this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -414,7 +414,7 @@
             this.btnSave.Location = new System.Drawing.Point(290, 53);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 260;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -430,7 +430,7 @@
             this.btnAdd.Location = new System.Drawing.Point(201, 53);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 259;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -585,7 +585,7 @@
             this.btnStorePopup.Location = new System.Drawing.Point(827, 100);
             this.btnStorePopup.Name = "btnStorePopup";
             this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
-            this.btnStorePopup.TabIndex = 276;
+            this.btnStorePopup.TabIndex = 2;
             this.btnStorePopup.UseVisualStyleBackColor = false;
             this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
             // 
@@ -600,7 +600,7 @@
             this.btnSizeTypePopup.Location = new System.Drawing.Point(829, 272);
             this.btnSizeTypePopup.Name = "btnSizeTypePopup";
             this.btnSizeTypePopup.Size = new System.Drawing.Size(27, 27);
-            this.btnSizeTypePopup.TabIndex = 277;
+            this.btnSizeTypePopup.TabIndex = 5;
             this.btnSizeTypePopup.UseVisualStyleBackColor = false;
             this.btnSizeTypePopup.Click += new System.EventHandler(this.btnSizeTypePopup_Click);
             // 

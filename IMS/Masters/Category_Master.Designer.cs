@@ -92,7 +92,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(284, 53);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 114;
+            this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -108,7 +108,7 @@
             this.btnCancel.Location = new System.Drawing.Point(448, 53);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 116;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -124,7 +124,7 @@
             this.btnDelete.Location = new System.Drawing.Point(366, 53);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 115;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -140,7 +140,7 @@
             this.btnEdit.Location = new System.Drawing.Point(204, 53);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 113;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -156,7 +156,7 @@
             this.btnSave.Location = new System.Drawing.Point(122, 53);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 112;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -172,7 +172,7 @@
             this.btnAdd.Location = new System.Drawing.Point(33, 53);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 111;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -190,7 +190,7 @@
             this.cmbActiveStatus.Location = new System.Drawing.Point(183, 125);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
-            this.cmbActiveStatus.TabIndex = 186;
+            this.cmbActiveStatus.TabIndex = 2;
             // 
             // lblCategoryName
             // 
@@ -233,7 +233,7 @@
             this.txtCategoryDescription.Multiline = true;
             this.txtCategoryDescription.Name = "txtCategoryDescription";
             this.txtCategoryDescription.Size = new System.Drawing.Size(206, 46);
-            this.txtCategoryDescription.TabIndex = 185;
+            this.txtCategoryDescription.TabIndex = 1;
             this.txtCategoryDescription.UseSystemPasswordChar = true;
             this.txtCategoryDescription.Enter += new System.EventHandler(this.txtCategoryName_Enter);
             this.txtCategoryDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategoryDescription_KeyDown);
@@ -287,7 +287,7 @@
             this.groupBox1.Location = new System.Drawing.Point(33, 249);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(568, 51);
-            this.groupBox1.TabIndex = 192;
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -299,7 +299,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(457, 19);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 106;
+            this.rdShowAll.TabIndex = 2;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -312,7 +312,7 @@
             this.rdSearchByCategory.Location = new System.Drawing.Point(13, 20);
             this.rdSearchByCategory.Name = "rdSearchByCategory";
             this.rdSearchByCategory.Size = new System.Drawing.Size(164, 21);
-            this.rdSearchByCategory.TabIndex = 6;
+            this.rdSearchByCategory.TabIndex = 0;
             this.rdSearchByCategory.Text = "By Department Name :";
             this.rdSearchByCategory.UseVisualStyleBackColor = true;
             this.rdSearchByCategory.CheckedChanged += new System.EventHandler(this.rdSearchByCategory_CheckedChanged);
@@ -325,7 +325,7 @@
             this.txtSearchByCategory.Location = new System.Drawing.Point(183, 18);
             this.txtSearchByCategory.Name = "txtSearchByCategory";
             this.txtSearchByCategory.Size = new System.Drawing.Size(206, 25);
-            this.txtSearchByCategory.TabIndex = 5;
+            this.txtSearchByCategory.TabIndex = 1;
             this.txtSearchByCategory.TextChanged += new System.EventHandler(this.txtSearchByCategory_TextChanged);
             this.txtSearchByCategory.Enter += new System.EventHandler(this.txtCategoryName_Enter);
             this.txtSearchByCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCategoryName_KeyPress);
@@ -338,7 +338,7 @@
             this.txtCategoryName.Location = new System.Drawing.Point(183, 24);
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(206, 25);
-            this.txtCategoryName.TabIndex = 184;
+            this.txtCategoryName.TabIndex = 0;
             this.txtCategoryName.Enter += new System.EventHandler(this.txtCategoryName_Enter);
             this.txtCategoryName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategoryName_KeyDown);
             this.txtCategoryName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCategoryName_KeyPress);
@@ -360,7 +360,7 @@
             this.grpCategory.Location = new System.Drawing.Point(33, 91);
             this.grpCategory.Name = "grpCategory";
             this.grpCategory.Size = new System.Drawing.Size(486, 159);
-            this.grpCategory.TabIndex = 193;
+            this.grpCategory.TabIndex = 0;
             this.grpCategory.TabStop = false;
             this.grpCategory.Text = "Department Details";
             // 

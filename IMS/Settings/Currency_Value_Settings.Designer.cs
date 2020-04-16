@@ -108,7 +108,7 @@
             this.txtCurrencyRate.Location = new System.Drawing.Point(159, 135);
             this.txtCurrencyRate.Name = "txtCurrencyRate";
             this.txtCurrencyRate.Size = new System.Drawing.Size(206, 25);
-            this.txtCurrencyRate.TabIndex = 207;
+            this.txtCurrencyRate.TabIndex = 4;
             this.txtCurrencyRate.Text = "0";
             this.txtCurrencyRate.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
             this.txtCurrencyRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrencyRate_KeyPress);
@@ -123,7 +123,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(283, 53);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 211;
+            this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -139,7 +139,7 @@
             this.btnCancel.Location = new System.Drawing.Point(447, 53);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 213;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -155,7 +155,7 @@
             this.btnDelete.Location = new System.Drawing.Point(365, 53);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 212;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -171,7 +171,7 @@
             this.btnEdit.Location = new System.Drawing.Point(203, 53);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 210;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -187,7 +187,7 @@
             this.btnSave.Location = new System.Drawing.Point(121, 53);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 209;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -203,7 +203,7 @@
             this.btnAdd.Location = new System.Drawing.Point(32, 53);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 208;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -249,7 +249,7 @@
             this.cmbCountry.Location = new System.Drawing.Point(159, 28);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(206, 27);
-            this.cmbCountry.TabIndex = 215;
+            this.cmbCountry.TabIndex = 0;
             // 
             // grpCurrencyValue
             // 
@@ -269,7 +269,7 @@
             this.grpCurrencyValue.Location = new System.Drawing.Point(14, 93);
             this.grpCurrencyValue.Name = "grpCurrencyValue";
             this.grpCurrencyValue.Size = new System.Drawing.Size(471, 182);
-            this.grpCurrencyValue.TabIndex = 216;
+            this.grpCurrencyValue.TabIndex = 0;
             this.grpCurrencyValue.TabStop = false;
             this.grpCurrencyValue.Text = "Currency Value Settings";
             // 
@@ -296,7 +296,7 @@
             this.btnCountryPopup.Location = new System.Drawing.Point(386, 28);
             this.btnCountryPopup.Name = "btnCountryPopup";
             this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCountryPopup.TabIndex = 279;
+            this.btnCountryPopup.TabIndex = 1;
             this.btnCountryPopup.UseVisualStyleBackColor = false;
             this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
             // 
@@ -318,7 +318,7 @@
             this.txtCurrencyName.Location = new System.Drawing.Point(159, 100);
             this.txtCurrencyName.Name = "txtCurrencyName";
             this.txtCurrencyName.Size = new System.Drawing.Size(206, 25);
-            this.txtCurrencyName.TabIndex = 219;
+            this.txtCurrencyName.TabIndex = 3;
             this.txtCurrencyName.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
             this.txtCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrencyName_KeyPress);
             this.txtCurrencyName.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
@@ -341,7 +341,7 @@
             this.txtCurrencyCode.Location = new System.Drawing.Point(159, 65);
             this.txtCurrencyCode.Name = "txtCurrencyCode";
             this.txtCurrencyCode.Size = new System.Drawing.Size(206, 25);
-            this.txtCurrencyCode.TabIndex = 217;
+            this.txtCurrencyCode.TabIndex = 2;
             this.txtCurrencyCode.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
             this.txtCurrencyCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrencyCode_KeyPress);
             this.txtCurrencyCode.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);

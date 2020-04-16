@@ -78,7 +78,7 @@
             this.grpCountry.Location = new System.Drawing.Point(17, 95);
             this.grpCountry.Name = "grpCountry";
             this.grpCountry.Size = new System.Drawing.Size(486, 159);
-            this.grpCountry.TabIndex = 1;
+            this.grpCountry.TabIndex = 0;
             this.grpCountry.TabStop = false;
             this.grpCountry.Text = "Country Details";
             // 
@@ -200,7 +200,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(458, 20);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 1;
+            this.rdShowAll.TabIndex = 2;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -227,7 +227,7 @@
             this.txtSearchByCountry.Location = new System.Drawing.Point(159, 18);
             this.txtSearchByCountry.Name = "txtSearchByCountry";
             this.txtSearchByCountry.Size = new System.Drawing.Size(206, 25);
-            this.txtSearchByCountry.TabIndex = 5;
+            this.txtSearchByCountry.TabIndex = 1;
             this.txtSearchByCountry.TextChanged += new System.EventHandler(this.txtSearchByCountry_TextChanged);
             this.txtSearchByCountry.Enter += new System.EventHandler(this.txtCountryCode_Enter);
             this.txtSearchByCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCountryCode_KeyPress);
@@ -243,7 +243,7 @@
             this.groupBox1.Location = new System.Drawing.Point(17, 252);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(591, 51);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -294,7 +294,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(284, 55);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 198;
+            this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -310,7 +310,7 @@
             this.btnCancel.Location = new System.Drawing.Point(448, 55);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 200;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -326,7 +326,7 @@
             this.btnDelete.Location = new System.Drawing.Point(366, 55);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 199;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -342,7 +342,7 @@
             this.btnEdit.Location = new System.Drawing.Point(204, 55);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 197;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -386,7 +386,7 @@
             this.btnAdd.Location = new System.Drawing.Point(33, 55);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 0;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

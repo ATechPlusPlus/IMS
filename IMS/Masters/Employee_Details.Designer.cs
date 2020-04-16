@@ -140,7 +140,7 @@
             this.groupBox2.Location = new System.Drawing.Point(732, 35);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(231, 247);
-            this.groupBox2.TabIndex = 210;
+            this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Photo";
             // 
@@ -152,7 +152,7 @@
             this.linkLabel2.Location = new System.Drawing.Point(80, 207);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(49, 17);
-            this.linkLabel2.TabIndex = 212;
+            this.linkLabel2.TabIndex = 1;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Cancel";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
@@ -165,7 +165,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(8, 207);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(66, 17);
-            this.linkLabel1.TabIndex = 211;
+            this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Browse...";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -206,7 +206,7 @@
             this.grpEmployee.Location = new System.Drawing.Point(8, 72);
             this.grpEmployee.Name = "grpEmployee";
             this.grpEmployee.Size = new System.Drawing.Size(969, 282);
-            this.grpEmployee.TabIndex = 213;
+            this.grpEmployee.TabIndex = 0;
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee Details";
             // 
@@ -221,7 +221,7 @@
             this.grpGender.Name = "grpGender";
             this.grpGender.Padding = new System.Windows.Forms.Padding(2);
             this.grpGender.Size = new System.Drawing.Size(206, 49);
-            this.grpGender.TabIndex = 281;
+            this.grpGender.TabIndex = 6;
             this.grpGender.TabStop = false;
             this.grpGender.Text = "Gender";
             // 
@@ -233,7 +233,7 @@
             this.radMale.Location = new System.Drawing.Point(20, 21);
             this.radMale.Name = "radMale";
             this.radMale.Size = new System.Drawing.Size(56, 21);
-            this.radMale.TabIndex = 231;
+            this.radMale.TabIndex = 0;
             this.radMale.TabStop = true;
             this.radMale.Text = "Male";
             this.radMale.UseVisualStyleBackColor = false;
@@ -246,7 +246,7 @@
             this.radFemale.Location = new System.Drawing.Point(128, 21);
             this.radFemale.Name = "radFemale";
             this.radFemale.Size = new System.Drawing.Size(69, 21);
-            this.radFemale.TabIndex = 232;
+            this.radFemale.TabIndex = 1;
             this.radFemale.TabStop = true;
             this.radFemale.Text = "Female";
             this.radFemale.UseVisualStyleBackColor = false;
@@ -274,7 +274,7 @@
             this.btnStorePopup.Location = new System.Drawing.Point(662, 35);
             this.btnStorePopup.Name = "btnStorePopup";
             this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
-            this.btnStorePopup.TabIndex = 279;
+            this.btnStorePopup.TabIndex = 5;
             this.btnStorePopup.UseVisualStyleBackColor = false;
             this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
             // 
@@ -328,7 +328,7 @@
             this.groupBox3.Location = new System.Drawing.Point(361, 121);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(365, 155);
-            this.groupBox3.TabIndex = 233;
+            this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Login Details";
             // 
@@ -339,7 +339,7 @@
             this.txtEmail.Location = new System.Drawing.Point(112, 108);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(206, 25);
-            this.txtEmail.TabIndex = 219;
+            this.txtEmail.TabIndex = 2;
             this.txtEmail.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
@@ -373,7 +373,7 @@
             this.txtPass.Location = new System.Drawing.Point(112, 73);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(206, 25);
-            this.txtPass.TabIndex = 217;
+            this.txtPass.TabIndex = 1;
             this.txtPass.UseSystemPasswordChar = true;
             this.txtPass.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtPass.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
@@ -407,7 +407,7 @@
             this.txtUsername.Location = new System.Drawing.Point(112, 32);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(206, 25);
-            this.txtUsername.TabIndex = 214;
+            this.txtUsername.TabIndex = 0;
             this.txtUsername.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtUsername.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
@@ -418,7 +418,7 @@
             this.dtpDOB.Location = new System.Drawing.Point(133, 121);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(206, 25);
-            this.dtpDOB.TabIndex = 229;
+            this.dtpDOB.TabIndex = 2;
             // 
             // label4
             // 
@@ -442,7 +442,7 @@
             this.cmbShop.Location = new System.Drawing.Point(438, 35);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(206, 27);
-            this.cmbShop.TabIndex = 227;
+            this.cmbShop.TabIndex = 4;
             // 
             // label3
             // 
@@ -474,7 +474,7 @@
             this.txtAdd.Multiline = true;
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(206, 81);
-            this.txtAdd.TabIndex = 224;
+            this.txtAdd.TabIndex = 3;
             this.txtAdd.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtAdd.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
@@ -496,7 +496,7 @@
             this.txtName.Location = new System.Drawing.Point(133, 75);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(206, 25);
-            this.txtName.TabIndex = 222;
+            this.txtName.TabIndex = 1;
             this.txtName.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             this.txtName.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
@@ -519,7 +519,7 @@
             this.txtEmployeeCode.Location = new System.Drawing.Point(133, 35);
             this.txtEmployeeCode.Name = "txtEmployeeCode";
             this.txtEmployeeCode.Size = new System.Drawing.Size(206, 25);
-            this.txtEmployeeCode.TabIndex = 220;
+            this.txtEmployeeCode.TabIndex = 0;
             this.txtEmployeeCode.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtEmployeeCode.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
@@ -532,7 +532,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(495, 46);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 237;
+            this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -548,7 +548,7 @@
             this.btnCancel.Location = new System.Drawing.Point(659, 46);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 239;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -564,7 +564,7 @@
             this.btnDelete.Location = new System.Drawing.Point(577, 46);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 238;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -580,7 +580,7 @@
             this.btnEdit.Location = new System.Drawing.Point(415, 46);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 236;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -596,7 +596,7 @@
             this.btnSave.Location = new System.Drawing.Point(333, 46);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 235;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -612,7 +612,7 @@
             this.btnAdd.Location = new System.Drawing.Point(244, 46);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 234;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

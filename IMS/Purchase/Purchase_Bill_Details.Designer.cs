@@ -154,7 +154,7 @@
             this.grpPurchaseBillDetail.Location = new System.Drawing.Point(15, 139);
             this.grpPurchaseBillDetail.Name = "grpPurchaseBillDetail";
             this.grpPurchaseBillDetail.Size = new System.Drawing.Size(942, 173);
-            this.grpPurchaseBillDetail.TabIndex = 238;
+            this.grpPurchaseBillDetail.TabIndex = 6;
             this.grpPurchaseBillDetail.TabStop = false;
             this.grpPurchaseBillDetail.Text = "Item Details";
             // 
@@ -246,7 +246,7 @@
             this.txtSalesPrice.Location = new System.Drawing.Point(482, 120);
             this.txtSalesPrice.Name = "txtSalesPrice";
             this.txtSalesPrice.Size = new System.Drawing.Size(206, 25);
-            this.txtSalesPrice.TabIndex = 249;
+            this.txtSalesPrice.TabIndex = 5;
             this.txtSalesPrice.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesPrice_KeyPress);
             this.txtSalesPrice.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -257,7 +257,7 @@
             this.linkAddPurchaseBillItems.Location = new System.Drawing.Point(724, 80);
             this.linkAddPurchaseBillItems.Name = "linkAddPurchaseBillItems";
             this.linkAddPurchaseBillItems.Size = new System.Drawing.Size(123, 34);
-            this.linkAddPurchaseBillItems.TabIndex = 246;
+            this.linkAddPurchaseBillItems.TabIndex = 6;
             this.linkAddPurchaseBillItems.TabStop = true;
             this.linkAddPurchaseBillItems.Text = "Add to \r\nPurchase Bill Items";
             this.linkAddPurchaseBillItems.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddPurchaseBillItems_LinkClicked);
@@ -295,7 +295,7 @@
             this.cmbBrand.Location = new System.Drawing.Point(147, 118);
             this.cmbBrand.Name = "cmbBrand";
             this.cmbBrand.Size = new System.Drawing.Size(206, 27);
-            this.cmbBrand.TabIndex = 244;
+            this.cmbBrand.TabIndex = 2;
             // 
             // lblQty
             // 
@@ -314,7 +314,7 @@
             this.txtQTY.Location = new System.Drawing.Point(147, 77);
             this.txtQTY.Name = "txtQTY";
             this.txtQTY.Size = new System.Drawing.Size(206, 25);
-            this.txtQTY.TabIndex = 238;
+            this.txtQTY.TabIndex = 1;
             this.txtQTY.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQTY_KeyPress);
             this.txtQTY.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -336,7 +336,7 @@
             this.txtRate.Location = new System.Drawing.Point(482, 80);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(206, 25);
-            this.txtRate.TabIndex = 236;
+            this.txtRate.TabIndex = 4;
             this.txtRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             this.txtRate.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -358,7 +358,7 @@
             this.txtModelNo.Location = new System.Drawing.Point(482, 36);
             this.txtModelNo.Name = "txtModelNo";
             this.txtModelNo.Size = new System.Drawing.Size(206, 25);
-            this.txtModelNo.TabIndex = 230;
+            this.txtModelNo.TabIndex = 3;
             this.txtModelNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtModelNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
             // 
@@ -380,7 +380,7 @@
             this.txtProductName.Location = new System.Drawing.Point(147, 39);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(206, 25);
-            this.txtProductName.TabIndex = 228;
+            this.txtProductName.TabIndex = 0;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             this.txtProductName.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtProductName.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -414,7 +414,7 @@
             this.cmbSupplier.Location = new System.Drawing.Point(162, 106);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(206, 27);
-            this.cmbSupplier.TabIndex = 235;
+            this.cmbSupplier.TabIndex = 3;
             this.cmbSupplier.SelectionChangeCommitted += new System.EventHandler(this.cmbSupplier_SelectionChangeCommitted);
             // 
             // lblSupplier
@@ -436,7 +436,7 @@
             this.dtpBillDate.Location = new System.Drawing.Point(482, 60);
             this.dtpBillDate.Name = "dtpBillDate";
             this.dtpBillDate.Size = new System.Drawing.Size(111, 25);
-            this.dtpBillDate.TabIndex = 233;
+            this.dtpBillDate.TabIndex = 1;
             // 
             // lblBillDate
             // 
@@ -468,7 +468,7 @@
             this.txtSupplierBillNo.MaxLength = 50;
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
-            this.txtSupplierBillNo.TabIndex = 240;
+            this.txtSupplierBillNo.TabIndex = 0;
             this.txtSupplierBillNo.TextChanged += new System.EventHandler(this.txtSupplierBillNo_TextChanged);
             this.txtSupplierBillNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -759,7 +759,7 @@
             this.btnCancel.Location = new System.Drawing.Point(811, 626);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 258;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -776,7 +776,7 @@
             this.btnSave.Location = new System.Drawing.Point(811, 568);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 257;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -806,7 +806,7 @@
             this.cmbAddRatio.Location = new System.Drawing.Point(810, 61);
             this.cmbAddRatio.Name = "cmbAddRatio";
             this.cmbAddRatio.Size = new System.Drawing.Size(147, 27);
-            this.cmbAddRatio.TabIndex = 248;
+            this.cmbAddRatio.TabIndex = 2;
             this.cmbAddRatio.SelectionChangeCommitted += new System.EventHandler(this.cmbAddRatio_SelectionChangeCommitted);
             // 
             // label3
@@ -828,7 +828,7 @@
             this.txtCurrencyRate.Name = "txtCurrencyRate";
             this.txtCurrencyRate.ReadOnly = true;
             this.txtCurrencyRate.Size = new System.Drawing.Size(111, 25);
-            this.txtCurrencyRate.TabIndex = 251;
+            this.txtCurrencyRate.TabIndex = 4;
             // 
             // label4
             // 
@@ -849,7 +849,7 @@
             this.txtNewRate.Name = "txtNewRate";
             this.txtNewRate.ReadOnly = true;
             this.txtNewRate.Size = new System.Drawing.Size(111, 25);
-            this.txtNewRate.TabIndex = 259;
+            this.txtNewRate.TabIndex = 5;
             // 
             // label10
             // 

@@ -127,7 +127,7 @@
             this.grpSupplier.Location = new System.Drawing.Point(17, 91);
             this.grpSupplier.Name = "grpSupplier";
             this.grpSupplier.Size = new System.Drawing.Size(795, 236);
-            this.grpSupplier.TabIndex = 203;
+            this.grpSupplier.TabIndex = 0;
             this.grpSupplier.TabStop = false;
             this.grpSupplier.Text = "Supplier Details";
             // 
@@ -140,7 +140,7 @@
             this.label3.Location = new System.Drawing.Point(740, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 17);
-            this.label3.TabIndex = 291;
+            this.label3.TabIndex = 6;
             this.label3.Text = "*";
             // 
             // label1
@@ -178,7 +178,7 @@
             this.btnCountryPopup.Location = new System.Drawing.Point(757, 27);
             this.btnCountryPopup.Name = "btnCountryPopup";
             this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCountryPopup.TabIndex = 279;
+            this.btnCountryPopup.TabIndex = 9;
             this.btnCountryPopup.UseVisualStyleBackColor = false;
             this.btnCountryPopup.Click += new System.EventHandler(this.btnCountryPopup_Click);
             // 
@@ -200,7 +200,7 @@
             this.txtBankAccNo.Location = new System.Drawing.Point(532, 105);
             this.txtBankAccNo.Name = "txtBankAccNo";
             this.txtBankAccNo.Size = new System.Drawing.Size(206, 25);
-            this.txtBankAccNo.TabIndex = 200;
+            this.txtBankAccNo.TabIndex = 8;
             this.txtBankAccNo.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtBankAccNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBankAccNo_KeyDown);
             this.txtBankAccNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBankAccNo_KeyPress);
@@ -224,7 +224,7 @@
             this.txtEmail.Location = new System.Drawing.Point(141, 147);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(206, 25);
-            this.txtEmail.TabIndex = 198;
+            this.txtEmail.TabIndex = 3;
             this.txtEmail.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             this.txtEmail.Leave += new System.EventHandler(this.txtSupplierName_Leave);
@@ -247,7 +247,7 @@
             this.txtBankName.Location = new System.Drawing.Point(532, 67);
             this.txtBankName.Name = "txtBankName";
             this.txtBankName.Size = new System.Drawing.Size(206, 25);
-            this.txtBankName.TabIndex = 196;
+            this.txtBankName.TabIndex = 7;
             this.txtBankName.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtBankName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBankName_KeyDown);
             this.txtBankName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierName_KeyPress);
@@ -271,7 +271,7 @@
             this.txtFax.Location = new System.Drawing.Point(141, 107);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(206, 25);
-            this.txtFax.TabIndex = 194;
+            this.txtFax.TabIndex = 2;
             this.txtFax.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtFax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFax_KeyDown);
             this.txtFax.Leave += new System.EventHandler(this.txtSupplierName_Leave);
@@ -294,7 +294,7 @@
             this.txtPhone.Location = new System.Drawing.Point(141, 67);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(206, 25);
-            this.txtPhone.TabIndex = 192;
+            this.txtPhone.TabIndex = 1;
             this.txtPhone.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPhone_KeyDown);
             this.txtPhone.Leave += new System.EventHandler(this.txtSupplierName_Leave);
@@ -321,7 +321,7 @@
             this.cmbCountry.Location = new System.Drawing.Point(532, 27);
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(206, 27);
-            this.cmbCountry.TabIndex = 190;
+            this.cmbCountry.TabIndex = 5;
             // 
             // lblSupplierName
             // 
@@ -342,7 +342,7 @@
             this.txtBankAdd.Multiline = true;
             this.txtBankAdd.Name = "txtBankAdd";
             this.txtBankAdd.Size = new System.Drawing.Size(206, 71);
-            this.txtBankAdd.TabIndex = 185;
+            this.txtBankAdd.TabIndex = 9;
             this.txtBankAdd.UseSystemPasswordChar = true;
             this.txtBankAdd.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtBankAdd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBankAdd_KeyDown);
@@ -366,7 +366,7 @@
             this.txtSupplierName.Location = new System.Drawing.Point(141, 27);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(206, 25);
-            this.txtSupplierName.TabIndex = 184;
+            this.txtSupplierName.TabIndex = 0;
             this.txtSupplierName.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtSupplierName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplierName_KeyDown);
             this.txtSupplierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierName_KeyPress);
@@ -383,7 +383,7 @@
             this.cmbActiveStatus.Location = new System.Drawing.Point(141, 187);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
-            this.cmbActiveStatus.TabIndex = 186;
+            this.cmbActiveStatus.TabIndex = 4;
             // 
             // lblBankAdd
             // 
@@ -406,7 +406,7 @@
             this.groupBox1.Location = new System.Drawing.Point(17, 352);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(788, 51);
-            this.groupBox1.TabIndex = 202;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -418,7 +418,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(659, 20);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 106;
+            this.rdShowAll.TabIndex = 2;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -431,7 +431,7 @@
             this.rdSearchBySupplier.Location = new System.Drawing.Point(16, 20);
             this.rdSearchBySupplier.Name = "rdSearchBySupplier";
             this.rdSearchBySupplier.Size = new System.Drawing.Size(141, 21);
-            this.rdSearchBySupplier.TabIndex = 6;
+            this.rdSearchBySupplier.TabIndex = 0;
             this.rdSearchBySupplier.Text = "By Supplier Name :";
             this.rdSearchBySupplier.UseVisualStyleBackColor = true;
             this.rdSearchBySupplier.CheckedChanged += new System.EventHandler(this.rdSearchBySupplier_CheckedChanged);
@@ -444,7 +444,7 @@
             this.txtSearchBySupplier.Location = new System.Drawing.Point(167, 18);
             this.txtSearchBySupplier.Name = "txtSearchBySupplier";
             this.txtSearchBySupplier.Size = new System.Drawing.Size(206, 25);
-            this.txtSearchBySupplier.TabIndex = 5;
+            this.txtSearchBySupplier.TabIndex = 1;
             this.txtSearchBySupplier.TextChanged += new System.EventHandler(this.txtSearchBySupplier_TextChanged);
             this.txtSearchBySupplier.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtSearchBySupplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierName_KeyPress);

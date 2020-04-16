@@ -165,7 +165,7 @@
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.ReadOnly = true;
             this.txtInvoiceNumber.Size = new System.Drawing.Size(171, 25);
-            this.txtInvoiceNumber.TabIndex = 190;
+            this.txtInvoiceNumber.TabIndex = 1;
             this.txtInvoiceNumber.TextChanged += new System.EventHandler(this.txtInvoiceNumber_TextChanged);
             // 
             // cmbShop
@@ -180,7 +180,7 @@
             this.cmbShop.Location = new System.Drawing.Point(408, 99);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(168, 27);
-            this.cmbShop.TabIndex = 191;
+            this.cmbShop.TabIndex = 3;
             // 
             // label1
             // 
@@ -200,7 +200,7 @@
             this.dtpSalesDate.Location = new System.Drawing.Point(681, 140);
             this.dtpSalesDate.Name = "dtpSalesDate";
             this.dtpSalesDate.Size = new System.Drawing.Size(183, 25);
-            this.dtpSalesDate.TabIndex = 195;
+            this.dtpSalesDate.TabIndex = 6;
             // 
             // txtCustomerMobile
             // 
@@ -209,7 +209,7 @@
             this.txtCustomerMobile.Location = new System.Drawing.Point(408, 143);
             this.txtCustomerMobile.Name = "txtCustomerMobile";
             this.txtCustomerMobile.Size = new System.Drawing.Size(153, 25);
-            this.txtCustomerMobile.TabIndex = 196;
+            this.txtCustomerMobile.TabIndex = 4;
             this.txtCustomerMobile.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // label2
@@ -241,7 +241,7 @@
             this.txtSalesMan.Location = new System.Drawing.Point(681, 98);
             this.txtSalesMan.Name = "txtSalesMan";
             this.txtSalesMan.Size = new System.Drawing.Size(181, 25);
-            this.txtSalesMan.TabIndex = 199;
+            this.txtSalesMan.TabIndex = 5;
             this.txtSalesMan.TextChanged += new System.EventHandler(this.txtSalesMan_TextChanged);
             // 
             // label4
@@ -262,7 +262,7 @@
             this.txtProductName.Location = new System.Drawing.Point(124, 143);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(171, 25);
-            this.txtProductName.TabIndex = 201;
+            this.txtProductName.TabIndex = 2;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
             // 
@@ -276,7 +276,7 @@
             this.groupBox1.Location = new System.Drawing.Point(19, 172);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(870, 310);
-            this.groupBox1.TabIndex = 202;
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details :";
             // 
@@ -531,7 +531,7 @@
             this.cboEntryMode.Location = new System.Drawing.Point(124, 52);
             this.cboEntryMode.Name = "cboEntryMode";
             this.cboEntryMode.Size = new System.Drawing.Size(171, 25);
-            this.cboEntryMode.TabIndex = 245;
+            this.cboEntryMode.TabIndex = 0;
             this.cboEntryMode.SelectionChangeCommitted += new System.EventHandler(this.cboEntryMode_SelectionChangeCommitted);
             // 
             // label156

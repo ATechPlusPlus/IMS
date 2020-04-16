@@ -157,5 +157,15 @@ namespace IMS
                 }
             }
         }
+
+        private void picIMGPass_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void picIMGPass_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
     }
 }

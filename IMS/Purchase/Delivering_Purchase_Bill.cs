@@ -712,8 +712,9 @@ namespace IMS.Purchase
 
                 if (ObjUtil.ValidateTable(dt))
                 {
-                    dtPurchaseInvoice = dt;
-                    dataGridView1.DataSource = dtPurchaseInvoice;
+                    //dtPurchaseInvoice = dt;
+                    //dataGridView1.DataSource = dtPurchaseInvoice;
+                    dataGridView1.DataSource = dt;
                 }
                 else
                 {
@@ -772,7 +773,6 @@ namespace IMS.Purchase
 
         private void Delivering_Purchase_Bill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             DataGridView dgv = (DataGridView)sender;
             if (dgv.DataSource != null)
             {
@@ -849,16 +849,16 @@ namespace IMS.Purchase
 
         private void dgvQtycolor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex >= 3)
+            if (e.ColumnIndex >= 3 && e.FormattedValue.ToString()!="")
             {
-                dataGridView1.Rows[e.RowIndex].ErrorText = "";
+                dgvQtycolor.Rows[e.RowIndex].ErrorText = "";
                 int newInteger = 0;
-                if (dataGridView1.Rows[e.RowIndex].IsNewRow) { return; }
+                if (dgvQtycolor.Rows[e.RowIndex].IsNewRow) { return; }
                 if (!int.TryParse(e.FormattedValue.ToString(),
                     out newInteger) || newInteger < 0)
                 {
                     e.Cancel = true;
-                    dataGridView1.Rows[e.RowIndex].ErrorText = "Size must be a Positive integer";
+                    dgvQtycolor.Rows[e.RowIndex].ErrorText = "Size must be a Positive integer";
                 }
             }
         }

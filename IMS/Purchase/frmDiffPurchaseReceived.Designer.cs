@@ -74,7 +74,7 @@
             this.btnCancel.Location = new System.Drawing.Point(474, 66);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 25);
-            this.btnCancel.TabIndex = 231;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -91,7 +91,7 @@
             this.btnViewDetails.Location = new System.Drawing.Point(352, 66);
             this.btnViewDetails.Name = "btnViewDetails";
             this.btnViewDetails.Size = new System.Drawing.Size(93, 25);
-            this.btnViewDetails.TabIndex = 230;
+            this.btnViewDetails.TabIndex = 0;
             this.btnViewDetails.Text = "View Detail";
             this.btnViewDetails.UseVisualStyleBackColor = true;
             this.btnViewDetails.Click += new System.EventHandler(this.btnViewDetails_Click);

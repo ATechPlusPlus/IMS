@@ -126,7 +126,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(373, 57);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 231;
+            this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -142,7 +142,7 @@
             this.btnCancel.Location = new System.Drawing.Point(537, 57);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 233;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -158,7 +158,7 @@
             this.btnDelete.Location = new System.Drawing.Point(455, 57);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 232;
+            this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -174,7 +174,7 @@
             this.btnEdit.Location = new System.Drawing.Point(293, 57);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 230;
+            this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -190,7 +190,7 @@
             this.btnSave.Location = new System.Drawing.Point(211, 57);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 229;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -206,7 +206,7 @@
             this.btnAdd.Location = new System.Drawing.Point(122, 57);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 228;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -223,7 +223,7 @@
             this.groupBox1.Location = new System.Drawing.Point(15, 399);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(951, 51);
-            this.groupBox1.TabIndex = 235;
+            this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -235,7 +235,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(474, 19);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 106;
+            this.rdShowAll.TabIndex = 2;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
             this.rdSearchByShipment.Location = new System.Drawing.Point(18, 20);
             this.rdSearchByShipment.Name = "rdSearchByShipment";
             this.rdSearchByShipment.Size = new System.Drawing.Size(130, 21);
-            this.rdSearchByShipment.TabIndex = 6;
+            this.rdSearchByShipment.TabIndex = 0;
             this.rdSearchByShipment.Text = "By Shipment No :";
             this.rdSearchByShipment.UseVisualStyleBackColor = true;
             this.rdSearchByShipment.CheckedChanged += new System.EventHandler(this.rdSearchByShipment_CheckedChanged);
@@ -261,7 +261,7 @@
             this.txtSearchByShipmentNo.Location = new System.Drawing.Point(157, 17);
             this.txtSearchByShipmentNo.Name = "txtSearchByShipmentNo";
             this.txtSearchByShipmentNo.Size = new System.Drawing.Size(183, 25);
-            this.txtSearchByShipmentNo.TabIndex = 5;
+            this.txtSearchByShipmentNo.TabIndex = 1;
             this.txtSearchByShipmentNo.TextChanged += new System.EventHandler(this.txtSearchByShipmentNo_TextChanged);
             this.txtSearchByShipmentNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSearchByShipmentNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -330,7 +330,7 @@
             this.grpPurchaseInvoice.Location = new System.Drawing.Point(20, 92);
             this.grpPurchaseInvoice.Name = "grpPurchaseInvoice";
             this.grpPurchaseInvoice.Size = new System.Drawing.Size(950, 106);
-            this.grpPurchaseInvoice.TabIndex = 237;
+            this.grpPurchaseInvoice.TabIndex = 0;
             this.grpPurchaseInvoice.TabStop = false;
             this.grpPurchaseInvoice.Text = "Purchase Invoice";
             // 
@@ -405,7 +405,7 @@
             this.btnSupplierPopup.Location = new System.Drawing.Point(350, 67);
             this.btnSupplierPopup.Name = "btnSupplierPopup";
             this.btnSupplierPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnSupplierPopup.TabIndex = 277;
+            this.btnSupplierPopup.TabIndex = 4;
             this.btnSupplierPopup.UseVisualStyleBackColor = false;
             this.btnSupplierPopup.Click += new System.EventHandler(this.btnSupplierPopup_Click);
             // 
@@ -426,7 +426,7 @@
             this.txtTotalQTY.Location = new System.Drawing.Point(804, 68);
             this.txtTotalQTY.Name = "txtTotalQTY";
             this.txtTotalQTY.Size = new System.Drawing.Size(126, 25);
-            this.txtTotalQTY.TabIndex = 238;
+            this.txtTotalQTY.TabIndex = 6;
             this.txtTotalQTY.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtTotalQTY.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtTotalQTY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalQTY_KeyDown);
@@ -450,7 +450,7 @@
             this.txtBillValue.Location = new System.Drawing.Point(491, 67);
             this.txtBillValue.Name = "txtBillValue";
             this.txtBillValue.Size = new System.Drawing.Size(206, 25);
-            this.txtBillValue.TabIndex = 236;
+            this.txtBillValue.TabIndex = 5;
             this.txtBillValue.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtBillValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillValue_KeyDown);
@@ -466,7 +466,7 @@
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(206, 27);
             this.cmbSupplier.Sorted = true;
-            this.cmbSupplier.TabIndex = 235;
+            this.cmbSupplier.TabIndex = 3;
             this.cmbSupplier.SelectionChangeCommitted += new System.EventHandler(this.cmbSupplier_SelectionChangeCommitted);
             // 
             // lblSupplier
@@ -487,7 +487,7 @@
             this.dtpBillDate.Location = new System.Drawing.Point(804, 28);
             this.dtpBillDate.Name = "dtpBillDate";
             this.dtpBillDate.Size = new System.Drawing.Size(126, 25);
-            this.dtpBillDate.TabIndex = 233;
+            this.dtpBillDate.TabIndex = 2;
             // 
             // lblBillDate
             // 
@@ -517,7 +517,7 @@
             this.txtShipmentNo.Location = new System.Drawing.Point(491, 28);
             this.txtShipmentNo.Name = "txtShipmentNo";
             this.txtShipmentNo.Size = new System.Drawing.Size(206, 25);
-            this.txtShipmentNo.TabIndex = 230;
+            this.txtShipmentNo.TabIndex = 1;
             this.txtShipmentNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtShipmentNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShipmentNo_KeyDown);
             this.txtShipmentNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -539,7 +539,7 @@
             this.txtSupplierBillNo.Location = new System.Drawing.Point(125, 28);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(206, 25);
-            this.txtSupplierBillNo.TabIndex = 228;
+            this.txtSupplierBillNo.TabIndex = 0;
             this.txtSupplierBillNo.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtSupplierBillNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplierBillNo_KeyDown);
             this.txtSupplierBillNo.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -556,7 +556,7 @@
             this.grpCurrencyRate.Location = new System.Drawing.Point(20, 203);
             this.grpCurrencyRate.Name = "grpCurrencyRate";
             this.grpCurrencyRate.Size = new System.Drawing.Size(709, 51);
-            this.grpCurrencyRate.TabIndex = 238;
+            this.grpCurrencyRate.TabIndex = 1;
             this.grpCurrencyRate.TabStop = false;
             this.grpCurrencyRate.Text = "Currency";
             // 
@@ -580,7 +580,7 @@
             this.cmbCountry.Name = "cmbCountry";
             this.cmbCountry.Size = new System.Drawing.Size(206, 27);
             this.cmbCountry.Sorted = true;
-            this.cmbCountry.TabIndex = 241;
+            this.cmbCountry.TabIndex = 0;
             this.cmbCountry.SelectionChangeCommitted += new System.EventHandler(this.cmbCountry_SelectionChangeCommitted);
             // 
             // txtCurrencyRate
@@ -591,7 +591,7 @@
             this.txtCurrencyRate.Name = "txtCurrencyRate";
             this.txtCurrencyRate.ReadOnly = true;
             this.txtCurrencyRate.Size = new System.Drawing.Size(206, 25);
-            this.txtCurrencyRate.TabIndex = 5;
+            this.txtCurrencyRate.TabIndex = 1;
             this.txtCurrencyRate.Text = "0";
             this.txtCurrencyRate.TextChanged += new System.EventHandler(this.txtCurrencyRate_TextChanged);
             this.txtCurrencyRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
@@ -622,7 +622,7 @@
             this.grpForeignCurrency.Location = new System.Drawing.Point(22, 267);
             this.grpForeignCurrency.Name = "grpForeignCurrency";
             this.grpForeignCurrency.Size = new System.Drawing.Size(342, 126);
-            this.grpForeignCurrency.TabIndex = 243;
+            this.grpForeignCurrency.TabIndex = 2;
             this.grpForeignCurrency.TabStop = false;
             this.grpForeignCurrency.Text = "Foreign Currency";
             // 
@@ -644,7 +644,7 @@
             this.txtForeignExp.Location = new System.Drawing.Point(149, 21);
             this.txtForeignExp.Name = "txtForeignExp";
             this.txtForeignExp.Size = new System.Drawing.Size(183, 25);
-            this.txtForeignExp.TabIndex = 5;
+            this.txtForeignExp.TabIndex = 0;
             this.txtForeignExp.Text = "0";
             this.txtForeignExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtForeignExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
@@ -669,7 +669,7 @@
             this.txtForeignDiscount.Location = new System.Drawing.Point(150, 54);
             this.txtForeignDiscount.Name = "txtForeignDiscount";
             this.txtForeignDiscount.Size = new System.Drawing.Size(183, 25);
-            this.txtForeignDiscount.TabIndex = 245;
+            this.txtForeignDiscount.TabIndex = 1;
             this.txtForeignDiscount.Text = "0";
             this.txtForeignDiscount.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtForeignDiscount.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
@@ -684,7 +684,7 @@
             this.txtNetValue.Name = "txtNetValue";
             this.txtNetValue.ReadOnly = true;
             this.txtNetValue.Size = new System.Drawing.Size(183, 25);
-            this.txtNetValue.TabIndex = 247;
+            this.txtNetValue.TabIndex = 2;
             this.txtNetValue.Text = "0";
             this.txtNetValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtNetValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -716,7 +716,7 @@
             this.grpLocalCurrency.Location = new System.Drawing.Point(378, 267);
             this.grpLocalCurrency.Name = "grpLocalCurrency";
             this.grpLocalCurrency.Size = new System.Drawing.Size(588, 126);
-            this.grpLocalCurrency.TabIndex = 244;
+            this.grpLocalCurrency.TabIndex = 3;
             this.grpLocalCurrency.TabStop = false;
             this.grpLocalCurrency.Text = "Local Currency";
             // 
@@ -739,7 +739,7 @@
             this.txtLocalValue.Name = "txtLocalValue";
             this.txtLocalValue.ReadOnly = true;
             this.txtLocalValue.Size = new System.Drawing.Size(183, 25);
-            this.txtLocalValue.TabIndex = 240;
+            this.txtLocalValue.TabIndex = 0;
             this.txtLocalValue.Text = "0";
             this.txtLocalValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtLocalValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtForeignExp_KeyPress);
@@ -763,7 +763,7 @@
             this.txtLocalExp.Location = new System.Drawing.Point(134, 51);
             this.txtLocalExp.Name = "txtLocalExp";
             this.txtLocalExp.Size = new System.Drawing.Size(183, 25);
-            this.txtLocalExp.TabIndex = 5;
+            this.txtLocalExp.TabIndex = 1;
             this.txtLocalExp.Text = "0";
             this.txtLocalExp.TextChanged += new System.EventHandler(this.txtBillValue_TextChanged);
             this.txtLocalExp.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
@@ -789,7 +789,7 @@
             this.txtLocalBillValue.Name = "txtLocalBillValue";
             this.txtLocalBillValue.ReadOnly = true;
             this.txtLocalBillValue.Size = new System.Drawing.Size(183, 25);
-            this.txtLocalBillValue.TabIndex = 249;
+            this.txtLocalBillValue.TabIndex = 2;
             this.txtLocalBillValue.Text = "0";
             this.txtLocalBillValue.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtLocalBillValue.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);
@@ -802,7 +802,7 @@
             this.txtNewPriceRate.Name = "txtNewPriceRate";
             this.txtNewPriceRate.ReadOnly = true;
             this.txtNewPriceRate.Size = new System.Drawing.Size(126, 25);
-            this.txtNewPriceRate.TabIndex = 251;
+            this.txtNewPriceRate.TabIndex = 3;
             this.txtNewPriceRate.Text = "0";
             this.txtNewPriceRate.Enter += new System.EventHandler(this.txtSupplierBillNo_Enter);
             this.txtNewPriceRate.Leave += new System.EventHandler(this.txtSupplierBillNo_Leave);

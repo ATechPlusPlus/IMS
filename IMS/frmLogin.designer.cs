@@ -39,7 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkForgotPassword = new System.Windows.Forms.LinkLabel();
+            this.picIMGPass = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIMGPass)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -66,17 +68,17 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "*";
             // 
-            // button1
+            // btnLogin
             // 
-            this.btnLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.btnLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogin.BackgroundImage")));
             this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogin.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(143, 348);
-            this.btnLogin.Name = "button1";
+            this.btnLogin.Location = new System.Drawing.Point(119, 344);
+            this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(109, 38);
-            this.btnLogin.TabIndex = 22;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -98,7 +100,7 @@
             this.txtPassword.Location = new System.Drawing.Point(119, 298);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(201, 26);
-            this.txtPassword.TabIndex = 20;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUserName
@@ -108,7 +110,7 @@
             this.txtUserName.Location = new System.Drawing.Point(119, 244);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(201, 26);
-            this.txtUserName.TabIndex = 19;
+            this.txtUserName.TabIndex = 0;
             // 
             // label3
             // 
@@ -144,18 +146,31 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "User Name :";
             // 
-            // linkLabel1
+            // linkForgotPassword
             // 
             this.linkForgotPassword.AutoSize = true;
             this.linkForgotPassword.BackColor = System.Drawing.Color.Transparent;
             this.linkForgotPassword.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkForgotPassword.Location = new System.Drawing.Point(139, 404);
+            this.linkForgotPassword.Location = new System.Drawing.Point(115, 398);
             this.linkForgotPassword.Name = "linkForgotPassword";
             this.linkForgotPassword.Size = new System.Drawing.Size(114, 19);
-            this.linkForgotPassword.TabIndex = 27;
+            this.linkForgotPassword.TabIndex = 3;
             this.linkForgotPassword.TabStop = true;
             this.linkForgotPassword.Text = "Forgot Password";
             this.linkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgotPassword_LinkClicked);
+            // 
+            // picIMGPass
+            // 
+            this.picIMGPass.BackColor = System.Drawing.Color.Transparent;
+            this.picIMGPass.Image = ((System.Drawing.Image)(resources.GetObject("picIMGPass.Image")));
+            this.picIMGPass.Location = new System.Drawing.Point(334, 298);
+            this.picIMGPass.Name = "picIMGPass";
+            this.picIMGPass.Size = new System.Drawing.Size(31, 25);
+            this.picIMGPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picIMGPass.TabIndex = 215;
+            this.picIMGPass.TabStop = false;
+            this.picIMGPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picIMGPass_MouseDown);
+            this.picIMGPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picIMGPass_MouseUp);
             // 
             // frmLogin
             // 
@@ -165,6 +180,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(377, 455);
+            this.Controls.Add(this.picIMGPass);
             this.Controls.Add(this.linkForgotPassword);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -184,6 +200,7 @@
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIMGPass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +218,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkForgotPassword;
-
+        private System.Windows.Forms.PictureBox picIMGPass;
     }
 }

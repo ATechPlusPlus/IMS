@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnStorePopup = new System.Windows.Forms.Button();
             this.lblmsg = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -42,11 +43,10 @@
             this.lblCategoryName = new System.Windows.Forms.Label();
             this.txtPCName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtFooterNote = new System.Windows.Forms.TextBox();
             this.btnFooterCancel = new System.Windows.Forms.Button();
             this.btnFooterSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtFooterNote = new System.Windows.Forms.TextBox();
-            this.btnStorePopup = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,9 +91,24 @@
             this.groupBox1.Location = new System.Drawing.Point(15, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(419, 208);
-            this.groupBox1.TabIndex = 112;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Default Shop/Store";
+            // 
+            // btnStorePopup
+            // 
+            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
+            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
+            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStorePopup.Location = new System.Drawing.Point(363, 82);
+            this.btnStorePopup.Name = "btnStorePopup";
+            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
+            this.btnStorePopup.TabIndex = 2;
+            this.btnStorePopup.UseVisualStyleBackColor = false;
+            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
             // 
             // lblmsg
             // 
@@ -116,7 +131,7 @@
             this.btnSave.Location = new System.Drawing.Point(286, 168);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 114;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Cancel";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -132,7 +147,7 @@
             this.btnAdd.Location = new System.Drawing.Point(151, 168);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 113;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Save";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -147,7 +162,7 @@
             this.cmbStoreName.Location = new System.Drawing.Point(151, 131);
             this.cmbStoreName.Name = "cmbStoreName";
             this.cmbStoreName.Size = new System.Drawing.Size(206, 27);
-            this.cmbStoreName.TabIndex = 193;
+            this.cmbStoreName.TabIndex = 3;
             // 
             // label2
             // 
@@ -171,7 +186,7 @@
             this.cmbStoreCategory.Location = new System.Drawing.Point(151, 82);
             this.cmbStoreCategory.Name = "cmbStoreCategory";
             this.cmbStoreCategory.Size = new System.Drawing.Size(206, 27);
-            this.cmbStoreCategory.TabIndex = 191;
+            this.cmbStoreCategory.TabIndex = 1;
             this.cmbStoreCategory.SelectionChangeCommitted += new System.EventHandler(this.cmbStoreCategory_SelectionChangeCommitted);
             // 
             // label1
@@ -202,7 +217,7 @@
             this.txtPCName.Location = new System.Drawing.Point(151, 35);
             this.txtPCName.Name = "txtPCName";
             this.txtPCName.Size = new System.Drawing.Size(206, 25);
-            this.txtPCName.TabIndex = 188;
+            this.txtPCName.TabIndex = 0;
             this.txtPCName.Enter += new System.EventHandler(this.txtPCName_Enter);
             this.txtPCName.Leave += new System.EventHandler(this.txtPCName_Leave);
             // 
@@ -216,9 +231,18 @@
             this.groupBox2.Location = new System.Drawing.Point(16, 263);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(419, 139);
-            this.groupBox2.TabIndex = 195;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sales Invoice Footer Note :";
+            // 
+            // txtFooterNote
+            // 
+            this.txtFooterNote.BackColor = System.Drawing.Color.White;
+            this.txtFooterNote.Location = new System.Drawing.Point(61, 35);
+            this.txtFooterNote.Multiline = true;
+            this.txtFooterNote.Name = "txtFooterNote";
+            this.txtFooterNote.Size = new System.Drawing.Size(352, 56);
+            this.txtFooterNote.TabIndex = 0;
             // 
             // btnFooterCancel
             // 
@@ -229,7 +253,7 @@
             this.btnFooterCancel.Location = new System.Drawing.Point(342, 97);
             this.btnFooterCancel.Name = "btnFooterCancel";
             this.btnFooterCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnFooterCancel.TabIndex = 114;
+            this.btnFooterCancel.TabIndex = 2;
             this.btnFooterCancel.Text = "Cancel";
             this.btnFooterCancel.UseVisualStyleBackColor = true;
             this.btnFooterCancel.Click += new System.EventHandler(this.btnFooterCancel_Click);
@@ -245,7 +269,7 @@
             this.btnFooterSave.Location = new System.Drawing.Point(254, 97);
             this.btnFooterSave.Name = "btnFooterSave";
             this.btnFooterSave.Size = new System.Drawing.Size(76, 25);
-            this.btnFooterSave.TabIndex = 113;
+            this.btnFooterSave.TabIndex = 1;
             this.btnFooterSave.Text = "Save";
             this.btnFooterSave.UseVisualStyleBackColor = true;
             this.btnFooterSave.Click += new System.EventHandler(this.button2_Click);
@@ -262,30 +286,6 @@
             this.label4.Size = new System.Drawing.Size(44, 17);
             this.label4.TabIndex = 192;
             this.label4.Text = "Note :";
-            // 
-            // txtFooterNote
-            // 
-            this.txtFooterNote.BackColor = System.Drawing.Color.White;
-            this.txtFooterNote.Location = new System.Drawing.Point(61, 35);
-            this.txtFooterNote.Multiline = true;
-            this.txtFooterNote.Name = "txtFooterNote";
-            this.txtFooterNote.Size = new System.Drawing.Size(352, 56);
-            this.txtFooterNote.TabIndex = 195;
-            // 
-            // btnStorePopup
-            // 
-            this.btnStorePopup.BackColor = System.Drawing.Color.Transparent;
-            this.btnStorePopup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStorePopup.BackgroundImage")));
-            this.btnStorePopup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnStorePopup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStorePopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStorePopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStorePopup.Location = new System.Drawing.Point(363, 82);
-            this.btnStorePopup.Name = "btnStorePopup";
-            this.btnStorePopup.Size = new System.Drawing.Size(27, 27);
-            this.btnStorePopup.TabIndex = 280;
-            this.btnStorePopup.UseVisualStyleBackColor = false;
-            this.btnStorePopup.Click += new System.EventHandler(this.btnStorePopup_Click);
             // 
             // frmOtherSetting
             // 

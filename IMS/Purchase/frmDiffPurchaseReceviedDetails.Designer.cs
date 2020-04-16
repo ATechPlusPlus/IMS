@@ -99,7 +99,7 @@
             this.txtSupplierBillNo.Location = new System.Drawing.Point(128, 26);
             this.txtSupplierBillNo.Name = "txtSupplierBillNo";
             this.txtSupplierBillNo.Size = new System.Drawing.Size(207, 25);
-            this.txtSupplierBillNo.TabIndex = 247;
+            this.txtSupplierBillNo.TabIndex = 0;
             // 
             // lblSupplier
             // 
@@ -124,7 +124,7 @@
             this.cmbSupplier.Location = new System.Drawing.Point(528, 27);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(206, 27);
-            this.cmbSupplier.TabIndex = 250;
+            this.cmbSupplier.TabIndex = 1;
             // 
             // label4
             // 
@@ -145,7 +145,7 @@
             this.txtNewRate.Name = "txtNewRate";
             this.txtNewRate.ReadOnly = true;
             this.txtNewRate.Size = new System.Drawing.Size(111, 25);
-            this.txtNewRate.TabIndex = 261;
+            this.txtNewRate.TabIndex = 3;
             // 
             // dtpBillDate
             // 
@@ -154,7 +154,7 @@
             this.dtpBillDate.Location = new System.Drawing.Point(128, 57);
             this.dtpBillDate.Name = "dtpBillDate";
             this.dtpBillDate.Size = new System.Drawing.Size(126, 25);
-            this.dtpBillDate.TabIndex = 264;
+            this.dtpBillDate.TabIndex = 2;
             // 
             // lblBillDate
             // 
@@ -200,7 +200,7 @@
             this.txtCurrencyName.Name = "txtCurrencyName";
             this.txtCurrencyName.ReadOnly = true;
             this.txtCurrencyName.Size = new System.Drawing.Size(126, 25);
-            this.txtCurrencyName.TabIndex = 266;
+            this.txtCurrencyName.TabIndex = 4;
             // 
             // label2
             // 
@@ -314,7 +314,7 @@
             this.grpBillDetails.Location = new System.Drawing.Point(12, 46);
             this.grpBillDetails.Name = "grpBillDetails";
             this.grpBillDetails.Size = new System.Drawing.Size(804, 123);
-            this.grpBillDetails.TabIndex = 277;
+            this.grpBillDetails.TabIndex = 0;
             this.grpBillDetails.TabStop = false;
             this.grpBillDetails.Text = "Bill Details";
             // 

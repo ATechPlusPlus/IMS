@@ -78,7 +78,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(296, 55);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 207;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -94,7 +94,7 @@
             this.btnCancel.Location = new System.Drawing.Point(460, 55);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 209;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -110,7 +110,7 @@
             this.btnDelete.Location = new System.Drawing.Point(378, 55);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 208;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -126,7 +126,7 @@
             this.btnEdit.Location = new System.Drawing.Point(216, 55);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 206;
+            this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -142,7 +142,7 @@
             this.btnSave.Location = new System.Drawing.Point(134, 55);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 205;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -158,7 +158,7 @@
             this.btnAdd.Location = new System.Drawing.Point(45, 55);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 204;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -183,7 +183,7 @@
             this.grpProduct.Location = new System.Drawing.Point(19, 96);
             this.grpProduct.Name = "grpProduct";
             this.grpProduct.Size = new System.Drawing.Size(486, 196);
-            this.grpProduct.TabIndex = 215;
+            this.grpProduct.TabIndex = 0;
             this.grpProduct.TabStop = false;
             this.grpProduct.Text = "Item Details";
             // 
@@ -208,7 +208,7 @@
             this.label1.Location = new System.Drawing.Point(368, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 17);
-            this.label1.TabIndex = 286;
+            this.label1.TabIndex = 2;
             this.label1.Text = "*";
             // 
             // label2
@@ -234,7 +234,7 @@
             this.btnCategoryPopup.Location = new System.Drawing.Point(383, 75);
             this.btnCategoryPopup.Name = "btnCategoryPopup";
             this.btnCategoryPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnCategoryPopup.TabIndex = 280;
+            this.btnCategoryPopup.TabIndex = 2;
             this.btnCategoryPopup.UseVisualStyleBackColor = false;
             this.btnCategoryPopup.Click += new System.EventHandler(this.btnCategoryPopup_Click);
             // 
@@ -246,7 +246,7 @@
             this.cmbCategory.Location = new System.Drawing.Point(159, 75);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(206, 27);
-            this.cmbCategory.TabIndex = 196;
+            this.cmbCategory.TabIndex = 1;
             // 
             // lblCategory
             // 
@@ -288,7 +288,7 @@
             this.txtProductName.Location = new System.Drawing.Point(159, 27);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(206, 25);
-            this.txtProductName.TabIndex = 184;
+            this.txtProductName.TabIndex = 0;
             this.txtProductName.Enter += new System.EventHandler(this.txtProductName_Enter);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
             this.txtProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductName_KeyPress);
@@ -305,7 +305,7 @@
             this.cmbActiveStatus.Location = new System.Drawing.Point(159, 125);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
-            this.cmbActiveStatus.TabIndex = 186;
+            this.cmbActiveStatus.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -317,7 +317,7 @@
             this.groupBox1.Location = new System.Drawing.Point(19, 298);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(738, 51);
-            this.groupBox1.TabIndex = 214;
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -329,7 +329,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(585, 20);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 106;
+            this.rdShowAll.TabIndex = 2;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -342,7 +342,7 @@
             this.rdSearchByProduct.Location = new System.Drawing.Point(13, 20);
             this.rdSearchByProduct.Name = "rdSearchByProduct";
             this.rdSearchByProduct.Size = new System.Drawing.Size(121, 21);
-            this.rdSearchByProduct.TabIndex = 6;
+            this.rdSearchByProduct.TabIndex = 0;
             this.rdSearchByProduct.Text = "By Item Name :";
             this.rdSearchByProduct.UseVisualStyleBackColor = true;
             this.rdSearchByProduct.CheckedChanged += new System.EventHandler(this.rdSearchByProduct_CheckedChanged);
@@ -355,7 +355,7 @@
             this.txtSearchByProduct.Location = new System.Drawing.Point(159, 19);
             this.txtSearchByProduct.Name = "txtSearchByProduct";
             this.txtSearchByProduct.Size = new System.Drawing.Size(206, 25);
-            this.txtSearchByProduct.TabIndex = 5;
+            this.txtSearchByProduct.TabIndex = 1;
             this.txtSearchByProduct.TextChanged += new System.EventHandler(this.txtSearchByProduct_TextChanged);
             this.txtSearchByProduct.Enter += new System.EventHandler(this.txtProductName_Enter);
             this.txtSearchByProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductName_KeyPress);
@@ -433,7 +433,7 @@
             this.grpPhoto.Location = new System.Drawing.Point(538, 55);
             this.grpPhoto.Name = "grpPhoto";
             this.grpPhoto.Size = new System.Drawing.Size(219, 237);
-            this.grpPhoto.TabIndex = 218;
+            this.grpPhoto.TabIndex = 1;
             this.grpPhoto.TabStop = false;
             this.grpPhoto.Text = "Photo";
             // 
@@ -445,7 +445,7 @@
             this.linkLabel2.Location = new System.Drawing.Point(80, 208);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(49, 17);
-            this.linkLabel2.TabIndex = 212;
+            this.linkLabel2.TabIndex = 1;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Cancel";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
@@ -458,7 +458,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(8, 208);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(66, 17);
-            this.linkLabel1.TabIndex = 211;
+            this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Browse...";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);

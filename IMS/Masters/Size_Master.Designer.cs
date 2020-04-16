@@ -50,13 +50,13 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.grpSizeType = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnSupplierPopup = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnAddMore = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.grpGridview.SuspendLayout();
@@ -98,7 +98,7 @@
             this.rdShowAll.Location = new System.Drawing.Point(611, 21);
             this.rdShowAll.Name = "rdShowAll";
             this.rdShowAll.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAll.TabIndex = 106;
+            this.rdShowAll.TabIndex = 2;
             this.rdShowAll.TabStop = true;
             this.rdShowAll.Text = "Show All";
             this.rdShowAll.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             this.rdSearchBySizeType.Location = new System.Drawing.Point(34, 22);
             this.rdSearchBySizeType.Name = "rdSearchBySizeType";
             this.rdSearchBySizeType.Size = new System.Drawing.Size(107, 21);
-            this.rdSearchBySizeType.TabIndex = 6;
+            this.rdSearchBySizeType.TabIndex = 0;
             this.rdSearchBySizeType.Text = "By SizeType :";
             this.rdSearchBySizeType.UseVisualStyleBackColor = true;
             this.rdSearchBySizeType.CheckedChanged += new System.EventHandler(this.rdSearchBySizeType_CheckedChanged);
@@ -126,7 +126,7 @@
             this.groupBox1.Location = new System.Drawing.Point(2, 253);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(702, 51);
-            this.groupBox1.TabIndex = 234;
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -139,7 +139,7 @@
             this.cmbSearchBySizeType.Location = new System.Drawing.Point(157, 18);
             this.cmbSearchBySizeType.Name = "cmbSearchBySizeType";
             this.cmbSearchBySizeType.Size = new System.Drawing.Size(206, 27);
-            this.cmbSearchBySizeType.TabIndex = 236;
+            this.cmbSearchBySizeType.TabIndex = 1;
             this.cmbSearchBySizeType.SelectionChangeCommitted += new System.EventHandler(this.cmbSearchBySizeType_SelectionChangeCommitted);
             // 
             // grpGridview
@@ -162,7 +162,7 @@
             this.cmbSizeType.Location = new System.Drawing.Point(144, 26);
             this.cmbSizeType.Name = "cmbSizeType";
             this.cmbSizeType.Size = new System.Drawing.Size(206, 27);
-            this.cmbSizeType.TabIndex = 1;
+            this.cmbSizeType.TabIndex = 0;
             // 
             // lblCategory
             // 
@@ -184,7 +184,7 @@
             this.btnSave.Location = new System.Drawing.Point(172, 51);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 226;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -200,7 +200,7 @@
             this.btnAdd.Location = new System.Drawing.Point(83, 51);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 225;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -236,7 +236,7 @@
             this.txtSize.Location = new System.Drawing.Point(144, 112);
             this.txtSize.Name = "txtSize";
             this.txtSize.Size = new System.Drawing.Size(206, 25);
-            this.txtSize.TabIndex = 184;
+            this.txtSize.TabIndex = 3;
             this.txtSize.Enter += new System.EventHandler(this.txtSize_Enter);
             this.txtSize.Leave += new System.EventHandler(this.txtSize_Leave);
             // 
@@ -251,7 +251,7 @@
             this.cmbActiveStatus.Location = new System.Drawing.Point(144, 69);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(206, 27);
-            this.cmbActiveStatus.TabIndex = 186;
+            this.cmbActiveStatus.TabIndex = 2;
             // 
             // btnUpdate
             // 
@@ -262,7 +262,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(334, 51);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 228;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -278,7 +278,7 @@
             this.btnCancel.Location = new System.Drawing.Point(498, 51);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 230;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -294,7 +294,7 @@
             this.btnDelete.Location = new System.Drawing.Point(416, 51);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 229;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -310,7 +310,7 @@
             this.btnEdit.Location = new System.Drawing.Point(254, 51);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 227;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -353,6 +353,42 @@
             this.grpSizeType.TabStop = false;
             this.grpSizeType.Text = "Size Details";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(352, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 17);
+            this.label3.TabIndex = 288;
+            this.label3.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(352, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 17);
+            this.label1.TabIndex = 287;
+            this.label1.Text = "*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(352, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "*";
+            // 
             // btnSupplierPopup
             // 
             this.btnSupplierPopup.BackColor = System.Drawing.Color.Transparent;
@@ -364,7 +400,7 @@
             this.btnSupplierPopup.Location = new System.Drawing.Point(370, 26);
             this.btnSupplierPopup.Name = "btnSupplierPopup";
             this.btnSupplierPopup.Size = new System.Drawing.Size(27, 27);
-            this.btnSupplierPopup.TabIndex = 279;
+            this.btnSupplierPopup.TabIndex = 1;
             this.btnSupplierPopup.UseVisualStyleBackColor = false;
             this.btnSupplierPopup.Click += new System.EventHandler(this.btnSizeTypePopup_Click);
             // 
@@ -376,7 +412,7 @@
             this.listBox1.Location = new System.Drawing.Point(473, 16);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(210, 123);
-            this.listBox1.TabIndex = 236;
+            this.listBox1.TabIndex = 5;
             this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
             // 
             // btnAddMore
@@ -388,7 +424,7 @@
             this.btnAddMore.Location = new System.Drawing.Point(370, 112);
             this.btnAddMore.Name = "btnAddMore";
             this.btnAddMore.Size = new System.Drawing.Size(87, 25);
-            this.btnAddMore.TabIndex = 235;
+            this.btnAddMore.TabIndex = 4;
             this.btnAddMore.Text = "Add More";
             this.btnAddMore.UseVisualStyleBackColor = true;
             this.btnAddMore.Click += new System.EventHandler(this.btnAddMore_Click);
@@ -405,42 +441,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(718, 40);
             this.panel2.TabIndex = 224;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(352, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 17);
-            this.label2.TabIndex = 286;
-            this.label2.Text = "*";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(352, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 17);
-            this.label1.TabIndex = 287;
-            this.label1.Text = "*";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(352, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 17);
-            this.label3.TabIndex = 288;
-            this.label3.Text = "*";
             // 
             // Size_Master
             // 

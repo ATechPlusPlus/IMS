@@ -95,7 +95,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 46);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(287, 579);
-            this.groupBox1.TabIndex = 112;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Report Filter";
             // 
@@ -108,7 +108,7 @@
             this.btnClear.Location = new System.Drawing.Point(156, 325);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(93, 25);
-            this.btnClear.TabIndex = 254;
+            this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -124,7 +124,7 @@
             this.btnGenerateReport.Location = new System.Drawing.Point(28, 325);
             this.btnGenerateReport.Name = "btnGenerateReport";
             this.btnGenerateReport.Size = new System.Drawing.Size(122, 25);
-            this.btnGenerateReport.TabIndex = 253;
+            this.btnGenerateReport.TabIndex = 5;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
@@ -171,7 +171,7 @@
             this.dtpToDate.Location = new System.Drawing.Point(156, 253);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(109, 25);
-            this.dtpToDate.TabIndex = 249;
+            this.dtpToDate.TabIndex = 4;
             // 
             // dtpFromDate
             // 
@@ -180,7 +180,7 @@
             this.dtpFromDate.Location = new System.Drawing.Point(14, 253);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(107, 25);
-            this.dtpFromDate.TabIndex = 248;
+            this.dtpFromDate.TabIndex = 3;
             // 
             // label2
             // 
@@ -204,7 +204,7 @@
             this.cmbShop.Location = new System.Drawing.Point(14, 188);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(251, 27);
-            this.cmbShop.TabIndex = 209;
+            this.cmbShop.TabIndex = 2;
             // 
             // label1
             // 
@@ -224,7 +224,7 @@
             this.txtSalesMan.Location = new System.Drawing.Point(14, 116);
             this.txtSalesMan.Name = "txtSalesMan";
             this.txtSalesMan.Size = new System.Drawing.Size(251, 25);
-            this.txtSalesMan.TabIndex = 207;
+            this.txtSalesMan.TabIndex = 1;
             this.txtSalesMan.TextChanged += new System.EventHandler(this.txtSalesMan_TextChanged);
             // 
             // label4
@@ -245,7 +245,7 @@
             this.txtInvoiceNumber.Location = new System.Drawing.Point(14, 58);
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.Size = new System.Drawing.Size(251, 25);
-            this.txtInvoiceNumber.TabIndex = 200;
+            this.txtInvoiceNumber.TabIndex = 0;
             this.txtInvoiceNumber.TextChanged += new System.EventHandler(this.txtInvoiceNumber_TextChanged);
             // 
             // groupBox2

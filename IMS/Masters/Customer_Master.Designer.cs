@@ -96,7 +96,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(314, 59);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 25);
-            this.btnUpdate.TabIndex = 213;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -112,7 +112,7 @@
             this.btnCancel.Location = new System.Drawing.Point(478, 59);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(71, 25);
-            this.btnCancel.TabIndex = 215;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -128,7 +128,7 @@
             this.btnDelete.Location = new System.Drawing.Point(396, 59);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 25);
-            this.btnDelete.TabIndex = 214;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -144,7 +144,7 @@
             this.btnEdit.Location = new System.Drawing.Point(234, 59);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(71, 25);
-            this.btnEdit.TabIndex = 212;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -160,7 +160,7 @@
             this.btnSave.Location = new System.Drawing.Point(152, 59);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
-            this.btnSave.TabIndex = 211;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -176,7 +176,7 @@
             this.btnAdd.Location = new System.Drawing.Point(63, 59);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 25);
-            this.btnAdd.TabIndex = 210;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -203,7 +203,7 @@
             this.grpCustomer.Name = "grpCustomer";
             this.grpCustomer.Padding = new System.Windows.Forms.Padding(2);
             this.grpCustomer.Size = new System.Drawing.Size(575, 197);
-            this.grpCustomer.TabIndex = 216;
+            this.grpCustomer.TabIndex = 0;
             this.grpCustomer.TabStop = false;
             this.grpCustomer.Text = "Customer Details";
             // 
@@ -255,7 +255,7 @@
             this.cmbCustomerActiveStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerActiveStatus.Name = "cmbCustomerActiveStatus";
             this.cmbCustomerActiveStatus.Size = new System.Drawing.Size(240, 25);
-            this.cmbCustomerActiveStatus.TabIndex = 194;
+            this.cmbCustomerActiveStatus.TabIndex = 3;
             // 
             // txtCustomerPhoneNo
             // 
@@ -264,7 +264,7 @@
             this.txtCustomerPhoneNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustomerPhoneNo.Name = "txtCustomerPhoneNo";
             this.txtCustomerPhoneNo.Size = new System.Drawing.Size(240, 25);
-            this.txtCustomerPhoneNo.TabIndex = 192;
+            this.txtCustomerPhoneNo.TabIndex = 1;
             this.txtCustomerPhoneNo.Enter += new System.EventHandler(this.txtCustomerName_Enter);
             this.txtCustomerPhoneNo.Leave += new System.EventHandler(this.txtCustomerName_Leave);
             // 
@@ -277,7 +277,7 @@
             this.txtCustomerAddress.Multiline = true;
             this.txtCustomerAddress.Name = "txtCustomerAddress";
             this.txtCustomerAddress.Size = new System.Drawing.Size(240, 50);
-            this.txtCustomerAddress.TabIndex = 193;
+            this.txtCustomerAddress.TabIndex = 2;
             this.txtCustomerAddress.Enter += new System.EventHandler(this.txtCustomerName_Enter);
             this.txtCustomerAddress.Leave += new System.EventHandler(this.txtCustomerName_Leave);
             // 
@@ -288,7 +288,7 @@
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(240, 25);
-            this.txtCustomerName.TabIndex = 191;
+            this.txtCustomerName.TabIndex = 0;
             this.txtCustomerName.Enter += new System.EventHandler(this.txtCustomerName_Enter);
             this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomerName_KeyDown);
             this.txtCustomerName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerName_KeyPress);
@@ -350,7 +350,7 @@
             this.grpCustomerSearch.Name = "grpCustomerSearch";
             this.grpCustomerSearch.Padding = new System.Windows.Forms.Padding(2);
             this.grpCustomerSearch.Size = new System.Drawing.Size(579, 55);
-            this.grpCustomerSearch.TabIndex = 217;
+            this.grpCustomerSearch.TabIndex = 8;
             this.grpCustomerSearch.TabStop = false;
             this.grpCustomerSearch.Text = "Search";
             // 
@@ -362,7 +362,7 @@
             this.txtSearchByCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearchByCustomer.Name = "txtSearchByCustomer";
             this.txtSearchByCustomer.Size = new System.Drawing.Size(240, 25);
-            this.txtSearchByCustomer.TabIndex = 2;
+            this.txtSearchByCustomer.TabIndex = 1;
             this.txtSearchByCustomer.TextChanged += new System.EventHandler(this.txtSearchByCustomer_TextChanged);
             this.txtSearchByCustomer.Enter += new System.EventHandler(this.txtCustomerName_Enter);
             this.txtSearchByCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerName_KeyPress);
@@ -377,7 +377,7 @@
             this.rdShowAllOfCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.rdShowAllOfCustomer.Name = "rdShowAllOfCustomer";
             this.rdShowAllOfCustomer.Size = new System.Drawing.Size(79, 21);
-            this.rdShowAllOfCustomer.TabIndex = 1;
+            this.rdShowAllOfCustomer.TabIndex = 2;
             this.rdShowAllOfCustomer.TabStop = true;
             this.rdShowAllOfCustomer.Text = "Show All";
             this.rdShowAllOfCustomer.UseVisualStyleBackColor = true;

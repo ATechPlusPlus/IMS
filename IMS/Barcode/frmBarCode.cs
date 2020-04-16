@@ -74,10 +74,7 @@ namespace IMS.Barcode
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (dgvProductDetails.SelectedRows.Count != 0)
-            {
-                LoadTemplate(dgvProductDetails.SelectedRows[0]);
-            }
+
         }
         private void AddNewPage()
         {
