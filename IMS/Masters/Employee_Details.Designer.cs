@@ -442,7 +442,7 @@
             this.cmbShop.Location = new System.Drawing.Point(438, 35);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(206, 27);
-            this.cmbShop.TabIndex = 4;
+            this.cmbShop.TabIndex = 227;
             // 
             // label3
             // 
@@ -519,7 +519,7 @@
             this.txtEmployeeCode.Location = new System.Drawing.Point(133, 35);
             this.txtEmployeeCode.Name = "txtEmployeeCode";
             this.txtEmployeeCode.Size = new System.Drawing.Size(206, 25);
-            this.txtEmployeeCode.TabIndex = 0;
+            this.txtEmployeeCode.TabIndex = 220;
             this.txtEmployeeCode.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtEmployeeCode.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
