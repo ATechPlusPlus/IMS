@@ -357,9 +357,18 @@ namespace IMS.Masters
 
         private void btnSupplierPopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbSupplier.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbSupplier.SelectedValue);
+            }
             Masters.Supplier_Details Obj = new Supplier_Details();
             Obj.ShowDialog();
             FillSupplierData();
+            if (a > 0)
+            {
+                cmbSupplier.SelectedValue = a;
+            }
         }
 
         private void cmbSupplier_SelectionChangeCommitted(object sender, EventArgs e)
@@ -379,6 +388,16 @@ namespace IMS.Masters
             catch (Exception ex)
             {
                 clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
+            }
+        }
+
+        private void txtBrandName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtBrandName.Focus();
             }
         }
     }

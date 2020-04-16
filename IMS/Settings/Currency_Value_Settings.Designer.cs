@@ -44,6 +44,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbCountry = new System.Windows.Forms.ComboBox();
             this.grpCurrencyValue = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnCountryPopup = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCurrencyName = new System.Windows.Forms.TextBox();
@@ -110,6 +111,7 @@
             this.txtCurrencyRate.TabIndex = 207;
             this.txtCurrencyRate.Text = "0";
             this.txtCurrencyRate.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
+            this.txtCurrencyRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrencyRate_KeyPress);
             this.txtCurrencyRate.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
             // 
             // btnUpdate
@@ -252,6 +254,7 @@
             // grpCurrencyValue
             // 
             this.grpCurrencyValue.BackColor = System.Drawing.Color.Transparent;
+            this.grpCurrencyValue.Controls.Add(this.label10);
             this.grpCurrencyValue.Controls.Add(this.btnCountryPopup);
             this.grpCurrencyValue.Controls.Add(this.label4);
             this.grpCurrencyValue.Controls.Add(this.label1);
@@ -270,6 +273,18 @@
             this.grpCurrencyValue.TabStop = false;
             this.grpCurrencyValue.Text = "Currency Value Settings";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label10.Location = new System.Drawing.Point(367, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(15, 17);
+            this.label10.TabIndex = 294;
+            this.label10.Text = "*";
+            // 
             // btnCountryPopup
             // 
             this.btnCountryPopup.BackColor = System.Drawing.Color.Transparent;
@@ -278,7 +293,7 @@
             this.btnCountryPopup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCountryPopup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCountryPopup.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCountryPopup.Location = new System.Drawing.Point(370, 28);
+            this.btnCountryPopup.Location = new System.Drawing.Point(386, 28);
             this.btnCountryPopup.Name = "btnCountryPopup";
             this.btnCountryPopup.Size = new System.Drawing.Size(27, 27);
             this.btnCountryPopup.TabIndex = 279;
@@ -305,6 +320,7 @@
             this.txtCurrencyName.Size = new System.Drawing.Size(206, 25);
             this.txtCurrencyName.TabIndex = 219;
             this.txtCurrencyName.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
+            this.txtCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrencyName_KeyPress);
             this.txtCurrencyName.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
             // 
             // label3
@@ -327,6 +343,7 @@
             this.txtCurrencyCode.Size = new System.Drawing.Size(206, 25);
             this.txtCurrencyCode.TabIndex = 217;
             this.txtCurrencyCode.Enter += new System.EventHandler(this.txtCurrencyRate_Enter);
+            this.txtCurrencyCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrencyCode_KeyPress);
             this.txtCurrencyCode.Leave += new System.EventHandler(this.txtCurrencyRate_Leave);
             // 
             // Currency_Value_Settings
@@ -384,5 +401,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCurrencyName;
         private System.Windows.Forms.Button btnCountryPopup;
+        private System.Windows.Forms.Label label10;
     }
 }

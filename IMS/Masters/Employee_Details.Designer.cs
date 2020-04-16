@@ -498,6 +498,7 @@
             this.txtName.Size = new System.Drawing.Size(206, 25);
             this.txtName.TabIndex = 222;
             this.txtName.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             this.txtName.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
             // lblCountryCode

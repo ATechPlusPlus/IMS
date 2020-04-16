@@ -637,28 +637,16 @@ namespace IMS.Barcode
         private void txtSupplierBillNo_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = IsDecimal(txtSupplierBillNo, e);
-            if (e.Handled == true)
-            {
-                CoreApp.clsUtility.ShowInfoMessage("Enter Only Numbers...", CoreApp.clsUtility.strProjectTitle);
-            }
-            //if (e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == 8 || e.KeyChar == 46)
+            //if (e.Handled == true)
             //{
-            //    if (txtSupplierBillNo.SelectionStart == 0 && e.KeyChar != 46 && !txtSupplierBillNo.Text.Contains("."))
-            //        e.Handled = false;
-            //    else
-            //        e.Handled = true;
-
-            //    if (txtSupplierBillNo.SelectionStart >= 1 && e.KeyChar == 46 && !txtSupplierBillNo.Text.Contains("."))
-            //        e.Handled = false;
-
-            //    else if (txtSupplierBillNo.SelectionStart >= 1 && e.KeyChar != 46)
-            //        e.Handled = false;
-            //}
-            //else
-            //{
-            //    e.Handled = true;
             //    CoreApp.clsUtility.ShowInfoMessage("Enter Only Numbers...", CoreApp.clsUtility.strProjectTitle);
             //}
+
+            //e.Handled = IsAlphaNumeric(e);
+            if (e.Handled == true)
+            {
+                CoreApp.clsUtility.ShowInfoMessage("Enter Only Charactor or Number...", CoreApp.clsUtility.strProjectTitle);
+            }
         }
 
         public bool IsDecimal(Control c, KeyPressEventArgs e)
@@ -666,10 +654,11 @@ namespace IMS.Barcode
             bool b = false;
             try
             {
+                label1.Text = Convert.ToInt32(e.KeyChar).ToString();
                 TextBox txt = (TextBox)c;
                 if (e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == 8 || e.KeyChar == 46)
                 {
-                    if (txt.SelectionStart == 0 && e.KeyChar != 46 && !txt.Text.Contains("."))
+                    if ( (txt.SelectionStart == 0 && e.KeyChar != 46 && !txt.Text.Contains(".") ) || e.KeyChar == 8)
                         b = false;
                     else
                         b = true;
@@ -685,6 +674,27 @@ namespace IMS.Barcode
                     b = true;
                 }
                 return b;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
+
+        private bool IsAlphaNumeric(KeyPressEventArgs e)
+        {
+            CoreApp.clsUtility ObjUtil = new CoreApp.clsUtility();
+            try
+            {
+                label1.Text = Convert.ToInt32(e.KeyChar).ToString();
+                if (ObjUtil.IsString(e) == false || ObjUtil.IsNumeric(e) == false)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             catch (Exception)
             {

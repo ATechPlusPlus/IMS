@@ -39,9 +39,15 @@ namespace IMS.Purchase
             txtProductName.Clear();
             txtQTY.Clear();
             txtRate.Clear();
+            txtCurrencyRate.Clear();
+            txtNewRate.Clear();
             txtProductID.Clear();
             cmbSupplier.SelectedIndex = -1;
             cmbBrand.SelectedIndex = -1;
+            cmbAddRatio.SelectedIndex = -1;
+
+            dtpBillDate.Format = DateTimePickerFormat.Custom;
+            dtpBillDate.CustomFormat = " ";
 
             dtPurchaseInvoice.Clear();
             //dataGridView1.DataSource = dtPurchaseInvoice;
@@ -63,7 +69,7 @@ namespace IMS.Purchase
             txtQTY.Clear();
             txtRate.Clear();
             txtProductID.Clear();
-            cmbBrand.SelectedIndex = -1;
+            //cmbBrand.SelectedIndex = -1;
 
             txtNewRate.Clear();
             txtSalesPrice.Clear();
@@ -540,15 +546,18 @@ namespace IMS.Purchase
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "ColDelete")
+            if (e.ColumnIndex >= 0 && dataGridView1.Rows.Count > 0)
             {
-                DialogResult d = MessageBox.Show("Are you sure want to delete ? ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (d == DialogResult.Yes)
+                if (dataGridView1.Columns[e.ColumnIndex].Name == "ColDelete")
                 {
-                    dataGridView1.Rows.RemoveAt(e.RowIndex);
-                    dataGridView1.EndEdit();
-                    CalculateSubTotal();
-                    txtProductName.Focus();
+                    DialogResult d = MessageBox.Show("Are you sure want to delete ? ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (d == DialogResult.Yes)
+                    {
+                        dataGridView1.Rows.RemoveAt(e.RowIndex);
+                        dataGridView1.EndEdit();
+                        CalculateSubTotal();
+                        txtProductName.Focus();
+                    }
                 }
             }
         }
@@ -634,7 +643,7 @@ namespace IMS.Purchase
 
         private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled =ObjUtil.IsNumeric(e);
+            e.Handled = ObjUtil.IsNumeric(e);
             if (e.Handled == true)
             {
                 clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
@@ -656,6 +665,7 @@ namespace IMS.Purchase
             if (e.Handled == true)
             {
                 clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+                txtSalesPrice.Focus();
             }
         }
 

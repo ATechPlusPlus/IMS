@@ -483,9 +483,28 @@ namespace IMS.Masters
 
         private void btnStorePopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbShop.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbShop.SelectedValue);
+            }
             Masters.Store_Master Obj = new Store_Master();
             Obj.ShowDialog();
             FillStoreDetails();
+            if (a > 0)
+            {
+                cmbShop.SelectedValue = a;
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtName.Focus();
+            }
         }
     }
 }

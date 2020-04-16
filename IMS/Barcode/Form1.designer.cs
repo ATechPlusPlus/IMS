@@ -41,6 +41,7 @@
             this.txtSupplierBillNo = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnEXIT = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.pnlPopup.SuspendLayout();
             this.SuspendLayout();
@@ -158,12 +159,23 @@
             this.btnEXIT.Visible = false;
             this.btnEXIT.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(188, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 243;
+            this.label1.Text = "label1";
+            this.label1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(503, 375);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEXIT);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtSupplierBillNo);
@@ -201,6 +213,7 @@
         private System.Windows.Forms.TextBox txtSupplierBillNo;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnEXIT;
+        private System.Windows.Forms.Label label1;
     }
 }
 

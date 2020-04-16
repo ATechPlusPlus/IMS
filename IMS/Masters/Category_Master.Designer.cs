@@ -51,8 +51,8 @@
             this.txtSearchByCategory = new System.Windows.Forms.TextBox();
             this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.grpCategory = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.grpGridview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -328,6 +328,7 @@
             this.txtSearchByCategory.TabIndex = 5;
             this.txtSearchByCategory.TextChanged += new System.EventHandler(this.txtSearchByCategory_TextChanged);
             this.txtSearchByCategory.Enter += new System.EventHandler(this.txtCategoryName_Enter);
+            this.txtSearchByCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCategoryName_KeyPress);
             this.txtSearchByCategory.Leave += new System.EventHandler(this.txtCategoryName_Leave);
             // 
             // txtCategoryName
@@ -340,6 +341,7 @@
             this.txtCategoryName.TabIndex = 184;
             this.txtCategoryName.Enter += new System.EventHandler(this.txtCategoryName_Enter);
             this.txtCategoryName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategoryName_KeyDown);
+            this.txtCategoryName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCategoryName_KeyPress);
             this.txtCategoryName.Leave += new System.EventHandler(this.txtCategoryName_Leave);
             // 
             // grpCategory
@@ -362,18 +364,6 @@
             this.grpCategory.TabStop = false;
             this.grpCategory.Text = "Department Details";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(389, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 17);
-            this.label8.TabIndex = 280;
-            this.label8.Text = "*";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -385,6 +375,18 @@
             this.label1.Size = new System.Drawing.Size(15, 17);
             this.label1.TabIndex = 281;
             this.label1.Text = "*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label8.Location = new System.Drawing.Point(389, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 17);
+            this.label8.TabIndex = 280;
+            this.label8.Text = "*";
             // 
             // Category_Master
             // 

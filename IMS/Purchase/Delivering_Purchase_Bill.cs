@@ -321,7 +321,7 @@ namespace IMS.Purchase
 
         private void Clear_ColorSize()
         {
-            txtPurchaseInvoiceID.Clear();
+            //txtPurchaseInvoiceID.Clear();
             txtItemName.Clear();
             txtDiffQty.Text = "0";
             txtTotalQTY.Text = "0";
@@ -706,19 +706,20 @@ namespace IMS.Purchase
         {
             if (!ObjUtil.IsControlTextEmpty(txtPurchaseInvoiceID))
             {
-                dtPurchaseInvoice = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".[dbo].[Get_Delivering_PurchaseInvoice_BillDetails] " + txtPurchaseInvoiceID.Text + ",1");
+                //dtPurchaseInvoice = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".[dbo].[Get_Delivering_PurchaseInvoice_BillDetails] " + txtPurchaseInvoiceID.Text + ",1");
 
-                if (ObjUtil.ValidateTable(dtPurchaseInvoice))
+                DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".[dbo].[Get_Delivering_PurchaseInvoice_BillDetails] " + txtPurchaseInvoiceID.Text + ",1");
+
+                if (ObjUtil.ValidateTable(dt))
                 {
+                    dtPurchaseInvoice = dt;
                     dataGridView1.DataSource = dtPurchaseInvoice;
-                    //object qty = dtPurchaseInvoice.Compute("SUM(QTY)", null);
-                    //txtTotalQTY.Text = qty.ToString();
                 }
                 else
                 {
-                    clsUtility.ShowInfoMessage("Purchase Invoice Bill is already done OR not available for Bill No. " + txtSupplierBillNo.Text, clsUtility.strProjectTitle);
-                    grpPurchaseBillDetail.Enabled = false;
-                    txtTotalQTY.Text = "0";
+                    //clsUtility.ShowInfoMessage("Purchase Invoice Bill is already done OR not available for Bill No. " + txtSupplierBillNo.Text, clsUtility.strProjectTitle);
+                    //grpPurchaseBillDetail.Enabled = false;
+                    //txtTotalQTY.Text = "0";
                     dataGridView1.DataSource = null;
                 }
             }
@@ -816,16 +817,50 @@ namespace IMS.Purchase
 
         private void btnStorePopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbStore.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbStore.SelectedValue);
+            }
             Masters.Store_Master Obj = new Masters.Store_Master();
             Obj.ShowDialog();
             FillStoreData();
+            if (a > 0)
+            {
+                cmbStore.SelectedValue = a;
+            }
         }
 
         private void btnSizeTypePopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbSizeType.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbSizeType.SelectedValue);
+            }
             Masters.Size_Type_Master Obj = new Masters.Size_Type_Master();
             Obj.ShowDialog();
             FillSizeTypeData();
+            if (a > 0)
+            {
+                cmbSizeType.SelectedValue = a;
+            }
+        }
+
+        private void dgvQtycolor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex >= 3)
+            {
+                dataGridView1.Rows[e.RowIndex].ErrorText = "";
+                int newInteger = 0;
+                if (dataGridView1.Rows[e.RowIndex].IsNewRow) { return; }
+                if (!int.TryParse(e.FormattedValue.ToString(),
+                    out newInteger) || newInteger < 0)
+                {
+                    e.Cancel = true;
+                    dataGridView1.Rows[e.RowIndex].ErrorText = "Size must be a Positive integer";
+                }
+            }
         }
     }
 }

@@ -43,6 +43,8 @@ namespace IMS.Settings
         {
             cmbCountry.SelectedIndex = -1;
             txtCurrencyRate.Clear();
+            txtCurrencyCode.Clear();
+            txtCurrencyName.Clear();
             cmbCountry.Focus();
         }
         private void FillCountryData()
@@ -289,9 +291,48 @@ namespace IMS.Settings
 
         private void btnCountryPopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbCountry.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbCountry.SelectedValue);
+            }
             Masters.Country_Master Obj = new Masters.Country_Master();
             Obj.ShowDialog();
             FillCountryData();
+            if (a > 0)
+            {
+                cmbCountry.SelectedValue = a;
+            }
+        }
+
+        private void txtCurrencyRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsDecimal(txtCurrencyRate, e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Numbers...", clsUtility.strProjectTitle);
+                txtCurrencyRate.Focus();
+            }
+        }
+
+        private void txtCurrencyCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtCurrencyCode.Focus();
+            }
+        }
+
+        private void txtCurrencyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtCurrencyName.Focus();
+            }
         }
     }
 }

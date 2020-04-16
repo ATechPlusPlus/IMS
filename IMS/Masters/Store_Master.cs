@@ -49,16 +49,16 @@ namespace IMS.Masters
                 txtPlace.Focus();
                 return false;
             }
+            else if (ObjUtil.IsControlTextEmpty(cmbStoreCat))
+            {
+                clsUtility.ShowInfoMessage("Select store category.", clsUtility.strProjectTitle);
+                cmbStoreCat.Focus();
+                return false;
+            }
             else if (ObjUtil.IsControlTextEmpty(cmbActiveStatus))
             {
                 clsUtility.ShowInfoMessage("Select Active Status.", clsUtility.strProjectTitle);
                 cmbActiveStatus.Focus();
-                return false;
-            }
-           else  if (cmbStoreCat.SelectedIndex==-1)
-            {
-                clsUtility.ShowInfoMessage("Please select store category.", clsUtility.strProjectTitle);
-                cmbStoreCat.Focus();
                 return false;
             }
             return true;
@@ -88,7 +88,7 @@ namespace IMS.Masters
         private void LoadData()
         {
             DataTable dt = null;
-            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.StoreMaster", "StoreID,StoreName,Tel,Place,Fax,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus ", "StoreName");
+            dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.StoreMaster", "StoreID,StoreName,Tel,Place,Fax,(CASE WHEN ActiveStatus =1 THEN 'Active' WHEN ActiveStatus =0 THEN 'InActive' END) ActiveStatus,StoreCategory ", "StoreName");
 
             if (ObjUtil.ValidateTable(dt))
             {
@@ -118,9 +118,9 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("Tel", SqlDbType.VarChar, txtTel.Text.Trim());
                     ObjDAL.SetColumnData("Fax", SqlDbType.VarChar, txtFax.Text.Trim());
                     ObjDAL.SetColumnData("Place", SqlDbType.NVarChar, txtPlace.Text.Trim());
+                    ObjDAL.SetColumnData("StoreCategory", SqlDbType.Int, cmbStoreCat.SelectedIndex);
                     ObjDAL.SetColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                    ObjDAL.SetColumnData("StoreCategory", SqlDbType.Int, cmbStoreCat.SelectedIndex); 
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.StoreMaster", true) > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
@@ -162,10 +162,10 @@ namespace IMS.Masters
                     ObjDAL.UpdateColumnData("Tel", SqlDbType.VarChar, txtTel.Text.Trim());
                     ObjDAL.UpdateColumnData("Fax", SqlDbType.VarChar, txtFax.Text.Trim());
                     ObjDAL.UpdateColumnData("Place", SqlDbType.NVarChar, txtPlace.Text.Trim());
+                    ObjDAL.UpdateColumnData("StoreCategory", SqlDbType.Int, cmbStoreCat.SelectedIndex);
                     ObjDAL.UpdateColumnData("ActiveStatus", SqlDbType.Bit, cmbActiveStatus.SelectedItem.ToString() == "Active" ? 1 : 0);
                     ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
                     ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
-                    ObjDAL.UpdateColumnData("StoreCategory", SqlDbType.Int, cmbStoreCat.SelectedIndex);
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.StoreMaster", "StoreID = " + ID + "") > 0)
                     {
                         ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
@@ -195,7 +195,7 @@ namespace IMS.Masters
             DialogResult d = MessageBox.Show("Are you sure want to delete '" + txtStoreName.Text + "' Store ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.StoreMaster", "StoreName='" + txtStoreName.Text.Trim() + "'") > 0)
+                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.StoreMaster", "StoreID=" + ID) > 0)
                 {
                     clsUtility.ShowInfoMessage("'" + txtStoreName.Text + "' Store is deleted  ", clsUtility.strProjectTitle);
                     ClearAll();
@@ -248,6 +248,7 @@ namespace IMS.Masters
                     txtFax.Text = dataGridView1.SelectedRows[0].Cells["Fax"].Value.ToString();
                     txtPlace.Text = dataGridView1.SelectedRows[0].Cells["Place"].Value.ToString();
                     cmbActiveStatus.SelectedItem = dataGridView1.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
+                    cmbStoreCat.SelectedIndex = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["StoreCategory"].Value);
 
                     grpStore.Enabled = false;
                     txtStoreName.Focus();
@@ -390,6 +391,16 @@ namespace IMS.Masters
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["StoreID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
+        }
+
+        private void txtStoreName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtStoreName.Focus();
+            }
         }
     }
 }

@@ -422,9 +422,18 @@ namespace IMS.Masters
 
         private void btnSizeTypePopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbSizeType.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbSizeType.SelectedValue);
+            }
             Masters.Size_Type_Master Obj = new Size_Type_Master();
             Obj.ShowDialog();
             FillSizeTypeData();
+            if (a > 0)
+            {
+                cmbSizeType.SelectedValue = a;
+            }
         }
     }
 }

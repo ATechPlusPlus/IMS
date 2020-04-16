@@ -472,9 +472,18 @@ namespace IMS.Masters
 
         private void btnCountryPopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbCountry.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbCountry.SelectedValue);
+            }
             Masters.Country_Master Obj = new Country_Master();
             Obj.ShowDialog();
             FillCountryData();
+            if (a > 0)
+            {
+                cmbCountry.SelectedValue = a;
+            }
         }
 
         private void txtBankAccNo_KeyPress(object sender, KeyPressEventArgs e)
@@ -483,6 +492,16 @@ namespace IMS.Masters
             if (e.Handled == true)
             {
                 clsUtility.ShowInfoMessage("Enter Only Number...", clsUtility.strProjectTitle);
+            }
+        }
+
+        private void txtSupplierName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtSupplierName.Focus();
             }
         }
     }

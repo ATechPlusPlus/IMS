@@ -108,6 +108,7 @@ namespace IMS.Masters
             ClearAll();
             ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
             grpProduct.Enabled = true;
+            grpPhoto.Enabled = true;
             txtProductName.Focus();
         }
 
@@ -359,6 +360,7 @@ namespace IMS.Masters
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 PicProductMaster.Image = Image.FromFile(openFileDialog.FileName);
@@ -378,9 +380,28 @@ namespace IMS.Masters
 
         private void btnCategoryPopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbCategory.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbCategory.SelectedValue);
+            }
             Masters.Category_Master Obj = new Category_Master();
             Obj.ShowDialog();
             FillDepartmentData();
+            if (a > 0)
+            {
+                cmbCategory.SelectedValue = a;
+            }
+        }
+
+        private void txtProductName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ObjUtil.IsString(e);
+            if (e.Handled == true)
+            {
+                clsUtility.ShowInfoMessage("Enter Only Charactors...", clsUtility.strProjectTitle);
+                txtProductName.Focus();
+            }
         }
     }
 }

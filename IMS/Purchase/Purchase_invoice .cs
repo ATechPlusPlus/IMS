@@ -469,7 +469,7 @@ namespace IMS.Purchase
             ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.ColumnHeader);
             //ObjUtil.SetDataGridProperty(dataGridView1, DataGridViewAutoSizeColumnsMode.Fill);
             dataGridView1.Columns["PurchaseInvoiceID"].Visible = false;
-            //dataGridView1.Columns["SupplierID"].Visible = false;
+            dataGridView1.Columns["SupplierID"].Visible = false;
             lblTotalRecords.Text = "Total Records : " + dataGridView1.Rows.Count;
         }
 
@@ -548,9 +548,18 @@ namespace IMS.Purchase
 
         private void btnSupplierPopup_Click(object sender, EventArgs e)
         {
+            int a = 0;
+            if (cmbSupplier.SelectedIndex >= 0)
+            {
+                a = Convert.ToInt32(cmbSupplier.SelectedValue);
+            }
             Masters.Supplier_Details Obj = new Masters.Supplier_Details();
             Obj.ShowDialog();
             FillSupplierData();
+            if (a > 0)
+            {
+                cmbSupplier.SelectedValue = a;
+            }
         }
 
         private void txtCurrencyRate_TextChanged(object sender, EventArgs e)

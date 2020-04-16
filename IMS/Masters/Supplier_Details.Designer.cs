@@ -250,6 +250,7 @@
             this.txtBankName.TabIndex = 196;
             this.txtBankName.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtBankName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBankName_KeyDown);
+            this.txtBankName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierName_KeyPress);
             this.txtBankName.Leave += new System.EventHandler(this.txtSupplierName_Leave);
             // 
             // lblFax
@@ -368,6 +369,7 @@
             this.txtSupplierName.TabIndex = 184;
             this.txtSupplierName.Enter += new System.EventHandler(this.txtSupplierName_Enter);
             this.txtSupplierName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplierName_KeyDown);
+            this.txtSupplierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierName_KeyPress);
             this.txtSupplierName.Leave += new System.EventHandler(this.txtSupplierName_Leave);
             // 
             // cmbActiveStatus
@@ -445,6 +447,7 @@
             this.txtSearchBySupplier.TabIndex = 5;
             this.txtSearchBySupplier.TextChanged += new System.EventHandler(this.txtSearchBySupplier_TextChanged);
             this.txtSearchBySupplier.Enter += new System.EventHandler(this.txtSupplierName_Enter);
+            this.txtSearchBySupplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSupplierName_KeyPress);
             this.txtSearchBySupplier.Leave += new System.EventHandler(this.txtSupplierName_Leave);
             // 
             // lblTotalRecords
