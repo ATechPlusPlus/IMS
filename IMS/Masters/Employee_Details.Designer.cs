@@ -38,6 +38,10 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.PicEmployee = new System.Windows.Forms.PictureBox();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
+            this.grpGender = new System.Windows.Forms.GroupBox();
+            this.radMale = new System.Windows.Forms.RadioButton();
+            this.radFemale = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
             this.btnStorePopup = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,8 +54,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.radFemale = new System.Windows.Forms.RadioButton();
-            this.radMale = new System.Windows.Forms.RadioButton();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbShop = new System.Windows.Forms.ComboBox();
@@ -68,17 +70,15 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.grpGender = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
             this.lblTotalRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicEmployee)).BeginInit();
             this.grpEmployee.SuspendLayout();
+            this.grpGender.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.grpGender.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -209,6 +209,59 @@
             this.grpEmployee.TabIndex = 213;
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee Details";
+            // 
+            // grpGender
+            // 
+            this.grpGender.BackColor = System.Drawing.Color.Transparent;
+            this.grpGender.Controls.Add(this.radMale);
+            this.grpGender.Controls.Add(this.radFemale);
+            this.grpGender.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpGender.Location = new System.Drawing.Point(438, 67);
+            this.grpGender.Margin = new System.Windows.Forms.Padding(2);
+            this.grpGender.Name = "grpGender";
+            this.grpGender.Padding = new System.Windows.Forms.Padding(2);
+            this.grpGender.Size = new System.Drawing.Size(206, 49);
+            this.grpGender.TabIndex = 281;
+            this.grpGender.TabStop = false;
+            this.grpGender.Text = "Gender";
+            // 
+            // radMale
+            // 
+            this.radMale.AutoSize = true;
+            this.radMale.BackColor = System.Drawing.Color.Transparent;
+            this.radMale.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radMale.Location = new System.Drawing.Point(20, 21);
+            this.radMale.Name = "radMale";
+            this.radMale.Size = new System.Drawing.Size(56, 21);
+            this.radMale.TabIndex = 231;
+            this.radMale.TabStop = true;
+            this.radMale.Text = "Male";
+            this.radMale.UseVisualStyleBackColor = false;
+            // 
+            // radFemale
+            // 
+            this.radFemale.AutoSize = true;
+            this.radFemale.BackColor = System.Drawing.Color.Transparent;
+            this.radFemale.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radFemale.Location = new System.Drawing.Point(128, 21);
+            this.radFemale.Name = "radFemale";
+            this.radFemale.Size = new System.Drawing.Size(69, 21);
+            this.radFemale.TabIndex = 232;
+            this.radFemale.TabStop = true;
+            this.radFemale.Text = "Female";
+            this.radFemale.UseVisualStyleBackColor = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(648, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 17);
+            this.label13.TabIndex = 280;
+            this.label13.Text = "*";
             // 
             // btnStorePopup
             // 
@@ -358,32 +411,6 @@
             this.txtUsername.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtUsername.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
-            // radFemale
-            // 
-            this.radFemale.AutoSize = true;
-            this.radFemale.BackColor = System.Drawing.Color.Transparent;
-            this.radFemale.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radFemale.Location = new System.Drawing.Point(128, 21);
-            this.radFemale.Name = "radFemale";
-            this.radFemale.Size = new System.Drawing.Size(69, 21);
-            this.radFemale.TabIndex = 232;
-            this.radFemale.TabStop = true;
-            this.radFemale.Text = "Female";
-            this.radFemale.UseVisualStyleBackColor = false;
-            // 
-            // radMale
-            // 
-            this.radMale.AutoSize = true;
-            this.radMale.BackColor = System.Drawing.Color.Transparent;
-            this.radMale.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radMale.Location = new System.Drawing.Point(20, 21);
-            this.radMale.Name = "radMale";
-            this.radMale.Size = new System.Drawing.Size(56, 21);
-            this.radMale.TabIndex = 231;
-            this.radMale.TabStop = true;
-            this.radMale.Text = "Male";
-            this.radMale.UseVisualStyleBackColor = false;
-            // 
             // dtpDOB
             // 
             this.dtpDOB.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -415,7 +442,7 @@
             this.cmbShop.Location = new System.Drawing.Point(438, 35);
             this.cmbShop.Name = "cmbShop";
             this.cmbShop.Size = new System.Drawing.Size(206, 27);
-            this.cmbShop.TabIndex = 227;
+            this.cmbShop.TabIndex = 2;
             // 
             // label3
             // 
@@ -491,7 +518,7 @@
             this.txtEmployeeCode.Location = new System.Drawing.Point(133, 35);
             this.txtEmployeeCode.Name = "txtEmployeeCode";
             this.txtEmployeeCode.Size = new System.Drawing.Size(206, 25);
-            this.txtEmployeeCode.TabIndex = 220;
+            this.txtEmployeeCode.TabIndex = 1;
             this.txtEmployeeCode.Enter += new System.EventHandler(this.txtEmployeeCode_Enter);
             this.txtEmployeeCode.Leave += new System.EventHandler(this.txtEmployeeCode_Leave);
             // 
@@ -591,33 +618,6 @@
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
             this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label13.Location = new System.Drawing.Point(648, 75);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 17);
-            this.label13.TabIndex = 280;
-            this.label13.Text = "*";
-            // 
-            // grpGender
-            // 
-            this.grpGender.BackColor = System.Drawing.Color.Transparent;
-            this.grpGender.Controls.Add(this.radMale);
-            this.grpGender.Controls.Add(this.radFemale);
-            this.grpGender.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpGender.Location = new System.Drawing.Point(438, 67);
-            this.grpGender.Margin = new System.Windows.Forms.Padding(2);
-            this.grpGender.Name = "grpGender";
-            this.grpGender.Padding = new System.Windows.Forms.Padding(2);
-            this.grpGender.Size = new System.Drawing.Size(206, 49);
-            this.grpGender.TabIndex = 281;
-            this.grpGender.TabStop = false;
-            this.grpGender.Text = "Gender";
-            // 
             // Employee_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,11 +650,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicEmployee)).EndInit();
             this.grpEmployee.ResumeLayout(false);
             this.grpEmployee.PerformLayout();
+            this.grpGender.ResumeLayout(false);
+            this.grpGender.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.grpGender.ResumeLayout(false);
-            this.grpGender.PerformLayout();
             this.ResumeLayout(false);
 
         }
