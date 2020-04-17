@@ -63,6 +63,7 @@ namespace IMS
                 Application.SetCompatibleTextRenderingDefault(false);
                 //Application.Run(new SplashWindow());
                 Application.Run(new frmHome());
+                //Application.Run(new Other_Forms.Form1());
             }
         }
     }

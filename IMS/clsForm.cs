@@ -8,15 +8,35 @@ namespace IMS
 {
     public class clsFormRights
     {
-
-
         public enum Forms
         {
-            Masters = 1,
-            DepartmentMaster = 2,
-            StoreMaster = 3,
-            ShopeMaster = 4
-
+            Color_Master = 1,
+            Customer_Master = 2,
+            Product_Master = 3,
+            Brand_Master = 4,
+            Category_Master = 5,
+            Country_Master = 6,
+            Employee_Details = 7,
+            Size_Master = 8,
+            Size_Type_Master = 9,
+            Store_Master = 10,
+            Supplier_Details = 11,
+            Material_Details = 12,
+            Currency_Value_Settings = 13,
+            Employee_Commission_Setting = 14,
+            frmOtherSetting = 15,
+            Sales_Bill_Details = 16,
+            Sales_Invoice = 17,
+            frmSalesInvoice = 18,
+            frmSalesReport = 19,
+            Delivering_Purchase_Bill = 20,
+            frmDiffPurchaseReceived = 21,
+            frmDiffPurchaseReceviedDetails = 22,
+            Posting_Delivery = 23,
+            Purchase_Bill_Details = 24,
+            Purchase_Invoice = 25,
+            frmBarCode = 26,
+            DefaultStoreSetting = 27
         }
         public enum Operation
         {
@@ -25,7 +45,6 @@ namespace IMS
             Update = 3,
             Delete = 4,
             Other=5
-
         }
 
         public static bool HasFormRight(Forms formName, Operation operation)
@@ -34,8 +53,6 @@ namespace IMS
             int Operation = (int)operation;
 
             return CoreApp.clsUtility.HasFormRights(fID, Operation);
-
-
         }
     }
 }
