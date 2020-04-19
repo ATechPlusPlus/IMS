@@ -91,7 +91,8 @@ namespace IMS.Masters
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew);
             grpColorDetails.Enabled = true;
             txtColorName.Focus();
         }
@@ -107,7 +108,8 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.ColorMaster", true) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
                         clsUtility.ShowInfoMessage("Color Name : '" + txtColorName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
@@ -130,7 +132,8 @@ namespace IMS.Masters
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
             grpColorDetails.Enabled = true;
             txtColorName.Focus();
             txtColorName.SelectionStart = txtColorName.MaxLength;
@@ -149,7 +152,8 @@ namespace IMS.Masters
 
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.ColorMaster", "ColorID = " + ID + "") > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
 
                         clsUtility.ShowInfoMessage("'" + txtColorName.Text + "' Color is Updated", clsUtility.strProjectTitle);
                         LoadData();
@@ -183,7 +187,8 @@ namespace IMS.Masters
                     ClearAll();
                     LoadData();
                     grpColorDetails.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
                 }
                 else
                 {
@@ -200,7 +205,8 @@ namespace IMS.Masters
             {
                 ClearAll();
                 LoadData();
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
                 grpColorDetails.Enabled = false;
             }
         }
@@ -222,7 +228,8 @@ namespace IMS.Masters
                 try
                 {
                     ID = Convert.ToInt32(dgvColorMaster.SelectedRows[0].Cells["ColorID"].Value);
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
 
                     txtColorName.Text = dgvColorMaster.SelectedRows[0].Cells["ColorName"].Value.ToString();
                     cmbActiveStatus.SelectedItem = dgvColorMaster.SelectedRows[0].Cells["ActiveStatus"].Value.ToString();
@@ -246,7 +253,8 @@ namespace IMS.Masters
             clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
 
             LoadData();
 

@@ -99,7 +99,8 @@ namespace IMS.Masters
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew);
             grpCustomer.Enabled = true;
             txtCustomerName.Focus();
         }
@@ -117,7 +118,8 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.CustomerMaster", true) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
                         clsUtility.ShowInfoMessage("Customer Name : '" + txtCustomerName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
@@ -139,7 +141,8 @@ namespace IMS.Masters
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
             grpCustomer.Enabled = true;
             txtCustomerName.Focus();
             txtCustomerName.SelectionStart = txtCustomerName.MaxLength;
@@ -160,7 +163,8 @@ namespace IMS.Masters
 
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CustomerMaster", "CustomerID = " + ID + "") > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
 
                         clsUtility.ShowInfoMessage("'" + txtCustomerName.Text + "' Customer is Updated", clsUtility.strProjectTitle);
                         LoadData();
@@ -192,7 +196,8 @@ namespace IMS.Masters
                     ClearAll();
                     LoadData();
                     grpCustomer.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
                 }
                 else
                 {
@@ -209,7 +214,8 @@ namespace IMS.Masters
             {
                 ClearAll();
                 LoadData();
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
                 grpCustomer.Enabled = false;
             }
         }
@@ -230,7 +236,8 @@ namespace IMS.Masters
             {
                 try
                 {
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
                     ID = Convert.ToInt32(dgvCustomerMaster.SelectedRows[0].Cells["CustomerID"].Value);
                     txtCustomerName.Text = dgvCustomerMaster.SelectedRows[0].Cells["Name"].Value.ToString();
                     txtCustomerAddress.Text = dgvCustomerMaster.SelectedRows[0].Cells["Address"].Value.ToString();
@@ -264,7 +271,8 @@ namespace IMS.Masters
             clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
 
             LoadData();
             grpCustomer.Enabled = false;

@@ -110,7 +110,8 @@ namespace IMS.Masters
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew);
             grpSizeTypeDetails.Enabled = true;
             txtSizeTypeName.Focus();
         }
@@ -130,7 +131,8 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.SizeTypeMaster", true) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
                         clsUtility.ShowInfoMessage("Size Type Name : '" + txtSizeTypeName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
@@ -152,7 +154,8 @@ namespace IMS.Masters
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
             grpSizeTypeDetails.Enabled = true;
             txtSizeTypeName.Focus();
             txtSizeTypeName.SelectionStart = txtSizeTypeName.MaxLength;
@@ -175,7 +178,8 @@ namespace IMS.Masters
 
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID = " + ID) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
 
                         clsUtility.ShowInfoMessage("'" + txtSizeTypeName.Text + "' Size Type is Updated", clsUtility.strProjectTitle);
                         LoadData();
@@ -207,7 +211,8 @@ namespace IMS.Masters
                     ClearAll();
                     LoadData();
                     grpSizeTypeDetails.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
                 }
                 else
                 {
@@ -224,7 +229,8 @@ namespace IMS.Masters
             {
                 ClearAll();
                 LoadData();
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
                 grpSizeTypeDetails.Enabled = false;
             }
         }
@@ -246,7 +252,8 @@ namespace IMS.Masters
                 try
                 {
                     ID = Convert.ToInt32(dgvSizeTypeMaster.SelectedRows[0].Cells["SizeTypeID"].Value);
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
 
                     txtSizeTypeName.Text = dgvSizeTypeMaster.SelectedRows[0].Cells["SizeTypeName"].Value.ToString();
                     cmbDepartment.SelectedValue = dgvSizeTypeMaster.SelectedRows[0].Cells["CategoryID"].Value.ToString();
@@ -280,7 +287,8 @@ namespace IMS.Masters
             clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
 
             LoadData();
             FillDepartmentData();

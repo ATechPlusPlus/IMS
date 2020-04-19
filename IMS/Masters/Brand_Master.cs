@@ -117,7 +117,8 @@ namespace IMS.Masters
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew);
             grpBrand.Enabled = true;
             txtBrandName.Focus();
         }
@@ -134,7 +135,8 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.BrandMaster", true) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
                         clsUtility.ShowInfoMessage("Brand Name : '" + txtBrandName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
@@ -157,7 +159,8 @@ namespace IMS.Masters
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
             grpBrand.Enabled = true;
             txtBrandName.Focus();
             txtBrandName.SelectionStart = txtBrandName.MaxLength;
@@ -177,7 +180,8 @@ namespace IMS.Masters
 
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.BrandMaster", "BrandID = " + ID) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
 
                         clsUtility.ShowInfoMessage("'" + txtBrandName.Text + "' Brand is Updated", clsUtility.strProjectTitle);
                         LoadData();
@@ -209,7 +213,8 @@ namespace IMS.Masters
                     ClearAll();
                     LoadData();
                     grpBrand.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
                 }
                 else
                 {
@@ -226,7 +231,8 @@ namespace IMS.Masters
             {
                 ClearAll();
                 LoadData();
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
                 grpBrand.Enabled = false;
             }
         }
@@ -248,7 +254,8 @@ namespace IMS.Masters
                 try
                 {
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["BrandID"].Value);
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
 
                     txtBrandName.Text = dataGridView1.SelectedRows[0].Cells["BrandName"].Value.ToString();
                     cmbSupplier.SelectedValue = dataGridView1.SelectedRows[0].Cells["SupplierID"].Value.ToString();
@@ -279,10 +286,11 @@ namespace IMS.Masters
             btnDelete.BackgroundImage = B_Leave;
             btnCancel.BackgroundImage = B_Leave;
 
-            clsUtility.IsAdmin = true;//removed
+            //clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             LoadData();
             FillSupplierData();

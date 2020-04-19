@@ -97,7 +97,8 @@ namespace IMS.Masters
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
             grpCategory.Enabled = true;
             txtCategoryName.Focus();
         }
@@ -114,7 +115,8 @@ namespace IMS.Masters
                     ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
                     if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.CategoryMaster", true) > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
                         clsUtility.ShowInfoMessage("Category Name : '" + txtCategoryName.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
                         ClearAll();
                         LoadData();
@@ -137,7 +139,8 @@ namespace IMS.Masters
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
             grpCategory.Enabled = true;
             txtCategoryName.Focus();
             txtCategoryName.SelectionStart = txtCategoryName.MaxLength;
@@ -157,7 +160,8 @@ namespace IMS.Masters
 
                     if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID = " + ID + "") > 0)
                     {
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
 
                         clsUtility.ShowInfoMessage("'" + txtCategoryName.Text + "' Category is Updated", clsUtility.strProjectTitle);
                         LoadData();
@@ -191,7 +195,8 @@ namespace IMS.Masters
                     ClearAll();
                     LoadData();
                     grpCategory.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
                 }
                 else
                 {
@@ -208,7 +213,8 @@ namespace IMS.Masters
             {
                 ClearAll();
                 LoadData();
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
                 grpCategory.Enabled = false;
             }
         }
@@ -230,7 +236,8 @@ namespace IMS.Masters
                 try
                 {
                     ID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["CategoryID"].Value);
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
 
                     txtCategoryName.Text = dataGridView1.SelectedRows[0].Cells["CategoryName"].Value.ToString();
                     txtCategoryDescription.Text = dataGridView1.SelectedRows[0].Cells["CategoryDescription"].Value.ToString();
@@ -277,10 +284,11 @@ namespace IMS.Masters
             btnDelete.BackgroundImage = B_Leave;
             btnCancel.BackgroundImage = B_Leave;
 
-            clsUtility.IsAdmin = true;//removed
+            //clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             LoadData();
         }

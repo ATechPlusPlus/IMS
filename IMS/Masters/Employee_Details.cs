@@ -48,7 +48,8 @@ namespace IMS.Masters
             btnCancel.BackgroundImage = B_Leave;
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
             FillStoreDetails();
             LoadData();
         }
@@ -66,7 +67,8 @@ namespace IMS.Masters
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearAll();
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterNew);
             grpEmployee.Enabled = true;
             txtEmployeeCode.Focus();
         }
@@ -224,7 +226,8 @@ namespace IMS.Masters
 
             if (EmployeeID > 0)
             {
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
                 clsUtility.ShowInfoMessage("Employee has been added Successfully.", clsUtility.strProjectTitle);
 
                 if (txtUsername.Text.Trim().Length != 0 && txtPass.Text.Trim().Length != 0)
@@ -291,7 +294,8 @@ namespace IMS.Masters
             {
                 ClearAll();
                 LoadData();
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
                 grpEmployee.Enabled = false;
             }
         }
@@ -313,7 +317,8 @@ namespace IMS.Masters
                 try
                 {
                     ClearAll();
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
                     EmployeeID = Convert.ToInt32(dgvEmployee.SelectedRows[0].Cells["EmpID"].Value);
                     txtEmployeeCode.Text = dgvEmployee.SelectedRows[0].Cells["EmployeeCode"].Value.ToString();
                     txtName.Text = dgvEmployee.SelectedRows[0].Cells["Name"].Value.ToString();
@@ -359,7 +364,8 @@ namespace IMS.Masters
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
             grpEmployee.Enabled = true;
             txtEmployeeCode.Focus();
         }
@@ -406,7 +412,8 @@ namespace IMS.Masters
 
             if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.EmployeeDetails", "EMPID = " + EmployeeID + "") > 0)
             {
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
                 clsUtility.ShowInfoMessage("Employee Record has been updated.", clsUtility.strProjectTitle);
 
                 if (txtUsername.Text.Trim().Length != 0 && txtPass.Text.Trim().Length != 0)
@@ -436,7 +443,8 @@ namespace IMS.Masters
             //ObjDAL.UpdateColumnData("IsBlock", SqlDbType.Bit, false);
             if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.UserManagement", "EmployeeID = " + EmployeeID + "") > 0)
             {
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
                 clsUtility.ShowInfoMessage("User Login Record has been updated.", clsUtility.strProjectTitle);
                 LoadData();
                 ClearAll();
@@ -461,7 +469,8 @@ namespace IMS.Masters
                     ClearAll();
                     LoadData();
                     grpEmployee.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
                 }
                 else
                 {

@@ -36,7 +36,8 @@ namespace IMS
             Purchase_Bill_Details = 24,
             Purchase_Invoice = 25,
             frmBarCode = 26,
-            DefaultStoreSetting = 27
+            DefaultStoreSetting = 27,
+            frmDatabaseMaintenance = 28
         }
         public enum Operation
         {
@@ -44,7 +45,14 @@ namespace IMS
             Save = 2,
             Update = 3,
             Delete = 4,
-            Other=5
+            Other = 5
+        }
+
+        public static bool HasFormRight(Forms formName)
+        {
+            int fID = (int)formName;
+
+            return CoreApp.clsUtility.HasFormRights(fID);
         }
 
         public static bool HasFormRight(Forms formName, Operation operation)
