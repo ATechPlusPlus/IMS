@@ -215,7 +215,7 @@ namespace IMS.Masters
             btnCancel.BackgroundImage = B_Leave;
             btnAddMore.BackgroundImage = B_Leave;
 
-            clsUtility.IsAdmin = true;//removed
+            //clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
             //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);

@@ -36,7 +36,7 @@ namespace IMS.Masters
 
         private void Employee_Details_Load(object sender, EventArgs e)
         {
-            clsUtility.IsAdmin = true;
+            //clsUtility.IsAdmin = true;
             dtpDOB.ShowCheckBox = true;
             dtpDOB.Checked = false;
 

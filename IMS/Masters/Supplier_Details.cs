@@ -391,7 +391,7 @@ namespace IMS.Masters
 
         private void Supplier_Details_Load(object sender, EventArgs e)
         {
-            clsUtility.IsAdmin = true;//removed
+            //clsUtility.IsAdmin = true;//removed
 
             btnAdd.BackgroundImage = B_Leave;
             btnSave.BackgroundImage = B_Leave;

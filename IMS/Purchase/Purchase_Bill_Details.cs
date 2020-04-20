@@ -249,8 +249,9 @@ namespace IMS.Purchase
             btnSave.BackgroundImage = B_Leave;
             btnCancel.BackgroundImage = B_Leave;
 
-            clsUtility.IsAdmin = true;//removed
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            //clsUtility.IsAdmin = true;//removed
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
             FillSupplierData();
             FillBrandData();
             InitItemTable();
