@@ -61,27 +61,34 @@ namespace IMS.Purchase
 
         private void btnPost_Click(object sender, EventArgs e)
         {
-            if (validateform())
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Posting_Delivery, clsFormRights.Operation.Save))
             {
-                bool b = clsUtility.ShowQuestionMessage("Are you sure want to post for " + txtSupplierBillNo.Text + " ?", clsUtility.strProjectTitle);
-                if (b)
+                if (validateform())
                 {
-                    string para = txtPurchaseInvoiceID.Text + "," + cmbStore.SelectedValue + "," + txtTotalQTY.Text + "," + cmbEntryType.SelectedIndex + "," + txtSupplierBillNo.Text + "," + clsUtility.LoginID;
-
-                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Insert_PurchaseInvoice_BulkPrint_Color_Size " + para);
-                    if (ObjUtil.ValidateTable(dt))
+                    bool b = clsUtility.ShowQuestionMessage("Are you sure want to post for " + txtSupplierBillNo.Text + " ?", clsUtility.strProjectTitle);
+                    if (b)
                     {
-                        int flag = Convert.ToInt32(dt.Rows[0]["Flag"]);
-                        string Msg = dt.Rows[0]["Msg"].ToString();
+                        string para = txtPurchaseInvoiceID.Text + "," + cmbStore.SelectedValue + "," + txtTotalQTY.Text + "," + cmbEntryType.SelectedIndex + "," + txtSupplierBillNo.Text + "," + clsUtility.LoginID;
 
-                        clsUtility.ShowInfoMessage(Msg, clsUtility.strProjectTitle);
-                        ClearAll();
-                    }
-                    else
-                    {
-                        clsUtility.ShowInfoMessage("Posting Delivery Entry for '" + txtSupplierBillNo.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Insert_PurchaseInvoice_BulkPrint_Color_Size " + para);
+                        if (ObjUtil.ValidateTable(dt))
+                        {
+                            int flag = Convert.ToInt32(dt.Rows[0]["Flag"]);
+                            string Msg = dt.Rows[0]["Msg"].ToString();
+
+                            clsUtility.ShowInfoMessage(Msg, clsUtility.strProjectTitle);
+                            ClearAll();
+                        }
+                        else
+                        {
+                            clsUtility.ShowInfoMessage("Posting Delivery Entry for '" + txtSupplierBillNo.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        }
                     }
                 }
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 

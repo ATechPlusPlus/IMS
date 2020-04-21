@@ -165,132 +165,160 @@ namespace IMS.Purchase
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (Validateform())
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice,clsFormRights.Operation.Save))
             {
-                if (DuplicateUser(0))
+                if (Validateform())
                 {
-                    ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
-                    ObjDAL.SetColumnData("ShipmentNo", SqlDbType.NVarChar, txtShipmentNo.Text.Trim());
-                    ObjDAL.SetColumnData("BillValue", SqlDbType.Decimal, txtBillValue.Text.Trim());
-                    ObjDAL.SetColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
-                    ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
-                    ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
-                    ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0);
-                    ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0);
-                    ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
-
-                    ObjDAL.SetColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
-                    ObjDAL.SetColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0);
-                    ObjDAL.SetColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
-
-                    ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                    if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoice", true) > 0)
+                    if (DuplicateUser(0))
                     {
-                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
-                        ClearAll();
-                        LoadData();
-                        grpPurchaseInvoice.Enabled = false;
-                        grpForeignCurrency.Enabled = false;
-                        grpLocalCurrency.Enabled = false;
+                        ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
+                        ObjDAL.SetColumnData("ShipmentNo", SqlDbType.NVarChar, txtShipmentNo.Text.Trim());
+                        ObjDAL.SetColumnData("BillValue", SqlDbType.Decimal, txtBillValue.Text.Trim());
+                        ObjDAL.SetColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
+                        ObjDAL.SetColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
+                        ObjDAL.SetColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
+                        ObjDAL.SetColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0);
+                        ObjDAL.SetColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0);
+                        ObjDAL.SetColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
+
+                        ObjDAL.SetColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
+                        ObjDAL.SetColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0);
+                        ObjDAL.SetColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
+
+                        ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
+                        if (ObjDAL.InsertData(clsUtility.DBName + ".dbo.PurchaseInvoice", true) > 0)
+                        {
+                            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
+                            clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is Saved Successfully..", clsUtility.strProjectTitle);
+                            ClearAll();
+                            LoadData();
+                            grpPurchaseInvoice.Enabled = false;
+                            grpForeignCurrency.Enabled = false;
+                            grpLocalCurrency.Enabled = false;
+                        }
+                        else
+                        {
+                            clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        }
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Saved Successfully..", clsUtility.strProjectTitle);
+                        clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
+                        cmbSupplier.Focus();
                     }
+                    ObjDAL.ResetData();
                 }
-                else
-                {
-                    clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
-                    cmbSupplier.Focus();
-                }
-                ObjDAL.ResetData();
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
-            grpPurchaseInvoice.Enabled = true;
-            txtSupplierBillNo.Focus();
-            txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Update))
+            {
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
+                grpPurchaseInvoice.Enabled = true;
+                txtSupplierBillNo.Focus();
+                txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
 
-            grpForeignCurrency.Enabled = true;
-            grpLocalCurrency.Enabled = true;
+                grpForeignCurrency.Enabled = true;
+                grpLocalCurrency.Enabled = true;
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (Validateform())
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Update))
             {
-                if (DuplicateUser(ID))
+                if (Validateform())
                 {
-                    ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.VarChar, txtSupplierBillNo.Text.Trim());
-                    ObjDAL.UpdateColumnData("ShipmentNo", SqlDbType.VarChar, txtShipmentNo.Text.Trim());
-                    ObjDAL.UpdateColumnData("BillValue", SqlDbType.Decimal, txtBillValue.Text.Trim());
-                    ObjDAL.UpdateColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
-                    ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
-                    ObjDAL.UpdateColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
-                    ObjDAL.UpdateColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0);
-                    ObjDAL.UpdateColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0);
-                    ObjDAL.UpdateColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
-
-                    ObjDAL.UpdateColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
-                    ObjDAL.UpdateColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0);
-                    ObjDAL.UpdateColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
-
-                    ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
-                    ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
-
-                    if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID = " + ID + "") > 0)
+                    if (DuplicateUser(ID))
                     {
-                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
+                        ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.VarChar, txtSupplierBillNo.Text.Trim());
+                        ObjDAL.UpdateColumnData("ShipmentNo", SqlDbType.VarChar, txtShipmentNo.Text.Trim());
+                        ObjDAL.UpdateColumnData("BillValue", SqlDbType.Decimal, txtBillValue.Text.Trim());
+                        ObjDAL.UpdateColumnData("TotalQTY", SqlDbType.Int, txtTotalQTY.Text.Trim());
+                        ObjDAL.UpdateColumnData("SupplierID", SqlDbType.Int, cmbSupplier.SelectedValue);
+                        ObjDAL.UpdateColumnData("BillDate", SqlDbType.Date, dtpBillDate.Value.ToString("yyyy-MM-dd"));
+                        ObjDAL.UpdateColumnData("Discount", SqlDbType.Decimal, txtForeignDiscount.Text.Length > 0 ? Convert.ToDecimal(txtForeignDiscount.Text) : 0);
+                        ObjDAL.UpdateColumnData("ForeignExp", SqlDbType.Decimal, txtForeignExp.Text.Length > 0 ? Convert.ToDecimal(txtForeignExp.Text) : 0);
+                        ObjDAL.UpdateColumnData("GrandTotal", SqlDbType.Decimal, txtNetValue.Text.Trim());
 
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
-                        LoadData();
-                        ClearAll();
-                        grpPurchaseInvoice.Enabled = false;
+                        ObjDAL.UpdateColumnData("LocalValue", SqlDbType.Decimal, txtLocalValue.Text.Trim());
+                        ObjDAL.UpdateColumnData("LocalExp", SqlDbType.Decimal, txtLocalExp.Text.Length > 0 ? Convert.ToDecimal(txtLocalExp.Text) : 0);
+                        ObjDAL.UpdateColumnData("LocalBillValue", SqlDbType.Decimal, txtLocalBillValue.Text.Trim());
 
-                        grpPurchaseInvoice.Enabled = false;
-                        grpForeignCurrency.Enabled = false;
-                        grpLocalCurrency.Enabled = false;
+                        ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test
+                        ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
+
+                        if (ObjDAL.UpdateData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID = " + ID + "") > 0)
+                        {
+                            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate, clsUtility.IsAdmin);
+                            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterUpdate);
+
+                            clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
+                            LoadData();
+                            ClearAll();
+                            grpPurchaseInvoice.Enabled = false;
+
+                            grpPurchaseInvoice.Enabled = false;
+                            grpForeignCurrency.Enabled = false;
+                            grpLocalCurrency.Enabled = false;
+                        }
+                        else
+                        {
+                            clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
+                        }
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is not Updated", clsUtility.strProjectTitle);
+                        clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
+                        cmbSupplier.Focus();
                     }
+                    ObjDAL.ResetData();
                 }
-                else
-                {
-                    clsUtility.ShowErrorMessage("Purchase Invoice for '" + cmbSupplier.Text + "' is already exist..", clsUtility.strProjectTitle);
-                    cmbSupplier.Focus();
-                }
-                ObjDAL.ResetData();
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Are you sure want to delete Supplier Bill No. '" + txtSupplierBillNo.Text + "'", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (d == DialogResult.Yes)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Delete))
             {
-                if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID=" + ID + "") > 0)
+                DialogResult d = MessageBox.Show("Are you sure want to delete Supplier Bill No. '" + txtSupplierBillNo.Text + "'", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (d == DialogResult.Yes)
                 {
-                    clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is deleted", clsUtility.strProjectTitle);
-                    ClearAll();
-                    LoadData();
-                    grpPurchaseInvoice.Enabled = false;
-                    //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
+                    if (ObjDAL.DeleteData(clsUtility.DBName + ".dbo.PurchaseInvoice", "PurchaseInvoiceID=" + ID + "") > 0)
+                    {
+                        clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is deleted", clsUtility.strProjectTitle);
+                        ClearAll();
+                        LoadData();
+                        grpPurchaseInvoice.Enabled = false;
+                        //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
+                    }
+                    else
+                    {
+                        clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is not deleted", clsUtility.strProjectTitle);
+                        ObjDAL.ResetData();
+                    }
                 }
-                else
-                {
-                    clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is not deleted", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
-                }
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 

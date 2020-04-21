@@ -273,14 +273,14 @@
             // SalesInvoice_ToolStrip
             // 
             this.SalesInvoice_ToolStrip.Name = "SalesInvoice_ToolStrip";
-            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(178, 24);
+            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(180, 24);
             this.SalesInvoice_ToolStrip.Text = "Sales";
             this.SalesInvoice_ToolStrip.Click += new System.EventHandler(this.SalesInvoice_ToolStrip_Click);
             // 
             // SalesBillDetails_ToolStrip
             // 
             this.SalesBillDetails_ToolStrip.Name = "SalesBillDetails_ToolStrip";
-            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(178, 24);
+            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
             this.SalesBillDetails_ToolStrip.Text = "Sales Bill Details";
             this.SalesBillDetails_ToolStrip.Click += new System.EventHandler(this.SalesBillDetails_ToolStrip_Click);
             // 
@@ -340,7 +340,7 @@
             // SalesReport_ToolStrip
             // 
             this.SalesReport_ToolStrip.Name = "SalesReport_ToolStrip";
-            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(156, 24);
+            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(180, 24);
             this.SalesReport_ToolStrip.Text = "Sales Report";
             this.SalesReport_ToolStrip.ToolTipText = "Monthly Sales Report";
             this.SalesReport_ToolStrip.Click += new System.EventHandler(this.SalesReport_ToolStrip_Click);

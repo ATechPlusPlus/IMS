@@ -97,7 +97,8 @@ namespace IMS.Purchase
             //clsUtility.IsAdmin = true;//removed
 
             ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
+            //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning, clsUtility.IsAdmin);
 
             FillStoreData();
             FillSizeTypeData();
@@ -505,121 +506,150 @@ namespace IMS.Purchase
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (Validateform())
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Save))
             {
-                if (DuplicateUser(0))
+                if (Validateform())
                 {
-                    int DeliveryPurchaseBillID = 0;
-                    ObjDAL.SetColumnData("PurchaseInvoiceID", SqlDbType.Int, pPurchaseInvoiceID);
-                    ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
-                    ObjDAL.SetColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
-                    ObjDAL.SetColumnData("ModelNo", SqlDbType.NVarChar, listBoxModelNo.SelectedItem);
-                    ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
-                    ObjDAL.SetColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
-                    ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                    DeliveryPurchaseBillID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", true);
-                    if (DeliveryPurchaseBillID > 0)
+                    if (DuplicateUser(0))
                     {
-                        int DeliveryPurchaseBillID2 = DataSavedDeliveryPurchaseBill2(DeliveryPurchaseBillID);
-                        int DeliveryPurchaseBillID3 = DataSavedDeliveryPurchaseBill3(DeliveryPurchaseBillID, DeliveryPurchaseBillID2);
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        clsUtility.ShowInfoMessage(clsUtility.MsgDataSaved, clsUtility.strProjectTitle);
-                        Clear_ColorSize();
-                        //LoadData();
-                        LoadModelData();
-                        txtSupplierBillNo.Enabled = false;
-                        btnSearch.Enabled = false;
-                        //grpPurchaseBillDetail.Enabled = false;
+                        int DeliveryPurchaseBillID = 0;
+                        ObjDAL.SetColumnData("PurchaseInvoiceID", SqlDbType.Int, pPurchaseInvoiceID);
+                        ObjDAL.SetColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
+                        ObjDAL.SetColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
+                        ObjDAL.SetColumnData("ModelNo", SqlDbType.NVarChar, listBoxModelNo.SelectedItem);
+                        ObjDAL.SetColumnData("ProductID", SqlDbType.Int, ProductID);
+                        ObjDAL.SetColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
+                        ObjDAL.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
+                        DeliveryPurchaseBillID = ObjDAL.InsertData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", true);
+                        if (DeliveryPurchaseBillID > 0)
+                        {
+                            int DeliveryPurchaseBillID2 = DataSavedDeliveryPurchaseBill2(DeliveryPurchaseBillID);
+                            int DeliveryPurchaseBillID3 = DataSavedDeliveryPurchaseBill3(DeliveryPurchaseBillID, DeliveryPurchaseBillID2);
+                            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                            clsUtility.ShowInfoMessage(clsUtility.MsgDataSaved, clsUtility.strProjectTitle);
+                            Clear_ColorSize();
+                            //LoadData();
+                            LoadModelData();
+                            txtSupplierBillNo.Enabled = false;
+                            btnSearch.Enabled = false;
+                            //grpPurchaseBillDetail.Enabled = false;
+                        }
+                        else
+                        {
+                            clsUtility.ShowInfoMessage(clsUtility.MsgDatanotSaved, clsUtility.strProjectTitle);
+                            ObjDAL.ResetData();
+                        }
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage(clsUtility.MsgDatanotSaved, clsUtility.strProjectTitle);
+                        clsUtility.ShowErrorMessage("Purchase Invoice '" + txtSupplierBillNo.Text + "' is already exist..", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
+                        txtSupplierBillNo.Focus();
                     }
                 }
-                else
-                {
-                    clsUtility.ShowErrorMessage("Purchase Invoice '" + txtSupplierBillNo.Text + "' is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
-                    txtSupplierBillNo.Focus();
-                }
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
-            grpPurchaseBillDetail.Enabled = true;
-            txtSupplierBillNo.Focus();
-            txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
-            dgvQtycolor.ReadOnly = false;
-            dgvQtycolor.Enabled = true;
-            //dgvQtycolor.AllowUserToAddRows = true;
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Update))
+            {
+                //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
+                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
+                grpPurchaseBillDetail.Enabled = true;
+                txtSupplierBillNo.Focus();
+                txtSupplierBillNo.SelectionStart = txtSupplierBillNo.MaxLength;
+                dgvQtycolor.ReadOnly = false;
+                dgvQtycolor.Enabled = true;
+                //dgvQtycolor.AllowUserToAddRows = true;
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (Validateform())
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Update))
             {
-                if (DuplicateUser(ID))
+                if (Validateform())
                 {
-                    int DeliveryPurchaseBillID = 0;
-                    ObjDAL.UpdateColumnData("ProductID", SqlDbType.Int, ProductID);
-                    ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
-                    ObjDAL.UpdateColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
-                    ObjDAL.UpdateColumnData("ModelNo", SqlDbType.NVarChar, listBoxModelNo.SelectedItem);
-                    ObjDAL.UpdateColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
-                    ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
-                    ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
-                    DeliveryPurchaseBillID = ObjDAL.UpdateData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", "DeliveryPurchaseID1=" + ID);
-                    if (DeliveryPurchaseBillID > 0)
+                    if (DuplicateUser(ID))
                     {
-                        int DeliveryPurchaseBillID2 = DataUpdateDeliveryPurchaseBill2(ID);
-                        int DeliveryPurchaseBillID3 = DataUpdateDeliveryPurchaseBill3(ID, ID);
-                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
-                        clsUtility.ShowInfoMessage(clsUtility.MsgDataUpdated, clsUtility.strProjectTitle);
-                        Clear_ColorSize();
-                        //LoadData();
-                        LoadModelData();
-                        txtSupplierBillNo.Enabled = false;
-                        btnSearch.Enabled = false;
-                        //grpPurchaseBillDetail.Enabled = false;
+                        int DeliveryPurchaseBillID = 0;
+                        ObjDAL.UpdateColumnData("ProductID", SqlDbType.Int, ProductID);
+                        ObjDAL.UpdateColumnData("SupplierBillNo", SqlDbType.NVarChar, txtSupplierBillNo.Text.Trim());
+                        ObjDAL.UpdateColumnData("SizeTypeID", SqlDbType.Int, cmbSizeType.SelectedValue);
+                        ObjDAL.UpdateColumnData("ModelNo", SqlDbType.NVarChar, listBoxModelNo.SelectedItem);
+                        ObjDAL.UpdateColumnData("StoreID", SqlDbType.Int, cmbStore.SelectedValue);
+                        ObjDAL.UpdateColumnData("UpdatedBy", SqlDbType.Int, clsUtility.LoginID); //if LoginID=0 then Test Admin else user
+                        ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
+                        DeliveryPurchaseBillID = ObjDAL.UpdateData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill1", "DeliveryPurchaseID1=" + ID);
+                        if (DeliveryPurchaseBillID > 0)
+                        {
+                            int DeliveryPurchaseBillID2 = DataUpdateDeliveryPurchaseBill2(ID);
+                            int DeliveryPurchaseBillID3 = DataUpdateDeliveryPurchaseBill3(ID, ID);
+                            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
+                            clsUtility.ShowInfoMessage(clsUtility.MsgDataUpdated, clsUtility.strProjectTitle);
+                            Clear_ColorSize();
+                            //LoadData();
+                            LoadModelData();
+                            txtSupplierBillNo.Enabled = false;
+                            btnSearch.Enabled = false;
+                            //grpPurchaseBillDetail.Enabled = false;
+                        }
+                        else
+                        {
+                            clsUtility.ShowInfoMessage(clsUtility.MsgDatanotSaved, clsUtility.strProjectTitle);
+                            ObjDAL.ResetData();
+                        }
                     }
                     else
                     {
-                        clsUtility.ShowInfoMessage(clsUtility.MsgDatanotSaved, clsUtility.strProjectTitle);
+                        clsUtility.ShowErrorMessage("Purchase Invoice '" + txtSupplierBillNo.Text + "' is already exist..", clsUtility.strProjectTitle);
                         ObjDAL.ResetData();
+                        txtSupplierBillNo.Focus();
                     }
                 }
-                else
-                {
-                    clsUtility.ShowErrorMessage("Purchase Invoice '" + txtSupplierBillNo.Text + "' is already exist..", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
-                    txtSupplierBillNo.Focus();
-                }
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            bool d = clsUtility.ShowQuestionMessage("Are you sure want to delete Supplier Bill No. '" + txtSupplierBillNo.Text + "'", clsUtility.strProjectTitle);
-            if (d)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Delete))
             {
-                DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Delete_PurchaseInvoice_Color_Size " + ID);
-                if (ObjUtil.ValidateTable(dt))
+                bool d = clsUtility.ShowQuestionMessage("Are you sure want to delete Supplier Bill No. '" + txtSupplierBillNo.Text + "'", clsUtility.strProjectTitle);
+                if (d)
                 {
-                    clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is deleted", clsUtility.strProjectTitle);
-                    ClearAll();
-                    //LoadData();
-                    LoadModelData();
-                    grpPurchaseBillDetail.Enabled = false;
-                    ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    DataTable dt = ObjDAL.ExecuteSelectStatement("EXEC " + clsUtility.DBName + ".dbo.Delete_PurchaseInvoice_Color_Size " + ID);
+                    if (ObjUtil.ValidateTable(dt))
+                    {
+                        clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is deleted", clsUtility.strProjectTitle);
+                        ClearAll();
+                        //LoadData();
+                        LoadModelData();
+                        grpPurchaseBillDetail.Enabled = false;
+                        ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete, clsUtility.IsAdmin);
+                    }
+                    else
+                    {
+                        clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is not deleted", clsUtility.strProjectTitle);
+                        ObjDAL.ResetData();
+                    }
                 }
-                else
-                {
-                    clsUtility.ShowInfoMessage("Supplier Bill No. '" + txtSupplierBillNo.Text + "' is not deleted", clsUtility.strProjectTitle);
-                    ObjDAL.ResetData();
-                }
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
 
@@ -849,7 +879,7 @@ namespace IMS.Purchase
 
         private void dgvQtycolor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex >= 3 && e.FormattedValue.ToString()!="")
+            if (e.ColumnIndex >= 3 && e.FormattedValue.ToString() != "")
             {
                 dgvQtycolor.Rows[e.RowIndex].ErrorText = "";
                 int newInteger = 0;

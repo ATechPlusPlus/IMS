@@ -176,9 +176,16 @@ namespace IMS.Purchase
 
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            Purchase.frmDiffPurchaseReceviedDetails Obj = new frmDiffPurchaseReceviedDetails();
-            Obj.PurchaseInvoiceID = txtPurchaseInvoiceID.Text.Length > 0 ? Convert.ToInt32(this.txtPurchaseInvoiceID.Text) : 0;
-            Obj.Show();
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDiffPurchaseReceived, clsFormRights.Operation.View))
+            {
+                Purchase.frmDiffPurchaseReceviedDetails Obj = new frmDiffPurchaseReceviedDetails();
+                Obj.PurchaseInvoiceID = txtPurchaseInvoiceID.Text.Length > 0 ? Convert.ToInt32(this.txtPurchaseInvoiceID.Text) : 0;
+                Obj.Show();
+            }
+            else
+            {
+                clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
+            }
         }
     }
 }
