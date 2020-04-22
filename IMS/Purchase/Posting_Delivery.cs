@@ -61,7 +61,7 @@ namespace IMS.Purchase
 
         private void btnPost_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Posting_Delivery, clsFormRights.Operation.Save))
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Posting_Delivery, clsFormRights.Operation.Save) || clsUtility.IsAdmin == true)
             {
                 if (validateform())
                 {
