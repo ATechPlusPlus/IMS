@@ -101,7 +101,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(985, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1117, 42);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,14 +121,14 @@
             // userCreationToolStripMenuItem1
             // 
             this.userCreationToolStripMenuItem1.Name = "userCreationToolStripMenuItem1";
-            this.userCreationToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.userCreationToolStripMenuItem1.Size = new System.Drawing.Size(163, 24);
             this.userCreationToolStripMenuItem1.Text = "User Creation";
             this.userCreationToolStripMenuItem1.Click += new System.EventHandler(this.userCreationToolStripMenuItem1_Click);
             // 
             // userRightsManagementToolStripMenuItem
             // 
             this.userRightsManagementToolStripMenuItem.Name = "userRightsManagementToolStripMenuItem";
-            this.userRightsManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.userRightsManagementToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.userRightsManagementToolStripMenuItem.Text = "User Rights";
             this.userRightsManagementToolStripMenuItem.Click += new System.EventHandler(this.userRightsManagementToolStripMenuItem_Click);
             // 
@@ -441,7 +441,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 484);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(985, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1117, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -454,7 +454,7 @@
             // lblVersion
             // 
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(888, 17);
+            this.lblVersion.Size = new System.Drawing.Size(1020, 17);
             this.lblVersion.Spring = true;
             this.lblVersion.Text = "Version : ";
             // 
@@ -467,7 +467,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(358, 194);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(304, 146);
+            this.pictureBox2.Size = new System.Drawing.Size(436, 146);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 24;
             this.pictureBox2.TabStop = false;
@@ -478,7 +478,7 @@
             this.picLogOut.BackColor = System.Drawing.Color.Transparent;
             this.picLogOut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picLogOut.Image = ((System.Drawing.Image)(resources.GetObject("picLogOut.Image")));
-            this.picLogOut.Location = new System.Drawing.Point(907, 59);
+            this.picLogOut.Location = new System.Drawing.Point(1039, 59);
             this.picLogOut.Name = "picLogOut";
             this.picLogOut.Size = new System.Drawing.Size(48, 60);
             this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -493,7 +493,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(905, 122);
+            this.label1.Location = new System.Drawing.Point(1037, 122);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 18);
             this.label1.TabIndex = 26;
@@ -506,7 +506,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::IMS.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(985, 506);
+            this.ClientSize = new System.Drawing.Size(1117, 506);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picLogOut);
             this.Controls.Add(this.pictureBox2);

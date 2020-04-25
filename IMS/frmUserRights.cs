@@ -36,7 +36,7 @@ namespace IMS
 
                 InitRightTable();
                 LoadRightGrid();
-            loadUser();
+                 loadUser();
 
         }
         private void loadUser()
@@ -425,7 +425,10 @@ namespace IMS
                 dgvUserRIghts.EndEdit();
 
                 bool IsRightChecked = false;
-                    
+                if (dgvUserRIghts.Columns[e.ColumnIndex].Name== "FormName")
+                {
+                    return;
+                }
                 if (dgvUserRIghts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != DBNull.Value &&
                    Convert.ToBoolean(dgvUserRIghts.Rows[e.RowIndex].Cells[e.ColumnIndex].Value))
                 {
@@ -587,6 +590,9 @@ namespace IMS
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
                     //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
 
+
+                    dtUserRights.Clear();
+                    LoadRightGrid();
 
                     string strQ = "select *  from " + clsUtility.DBName + ".[dbo].[UserManagement] u1 join  " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
                                 " on u1.UserID = ur.UserID where u1.UserID = " + UserID;

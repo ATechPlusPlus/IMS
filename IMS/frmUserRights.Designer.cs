@@ -39,9 +39,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvUserRIghts = new System.Windows.Forms.DataGridView();
-            this.grpUserGridview = new System.Windows.Forms.GroupBox();
-            this.dgvUser = new System.Windows.Forms.DataGridView();
-            this.grpRights = new System.Windows.Forms.GroupBox();
             this.FormID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.View = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -50,6 +47,9 @@
             this.Delete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Other = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ParentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpUserGridview = new System.Windows.Forms.GroupBox();
+            this.dgvUser = new System.Windows.Forms.DataGridView();
+            this.grpRights = new System.Windows.Forms.GroupBox();
             this.grpUserName = new System.Windows.Forms.GroupBox();
             this.lblCategoryName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -209,46 +209,6 @@
             this.dgvUserRIghts.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvUserRIghts_CurrentCellDirtyStateChanged);
             this.dgvUserRIghts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
-            // grpUserGridview
-            // 
-            this.grpUserGridview.BackColor = System.Drawing.Color.Transparent;
-            this.grpUserGridview.Controls.Add(this.dgvUser);
-            this.grpUserGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpUserGridview.Location = new System.Drawing.Point(12, 288);
-            this.grpUserGridview.Name = "grpUserGridview";
-            this.grpUserGridview.Size = new System.Drawing.Size(225, 305);
-            this.grpUserGridview.TabIndex = 193;
-            this.grpUserGridview.TabStop = false;
-            this.grpUserGridview.Text = "Users";
-            // 
-            // dgvUser
-            // 
-            this.dgvUser.AllowUserToAddRows = false;
-            this.dgvUser.AllowUserToDeleteRows = false;
-            this.dgvUser.BackgroundColor = System.Drawing.Color.White;
-            this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUser.Location = new System.Drawing.Point(5, 24);
-            this.dgvUser.Name = "dgvUser";
-            this.dgvUser.ReadOnly = true;
-            this.dgvUser.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvUser.Size = new System.Drawing.Size(210, 275);
-            this.dgvUser.TabIndex = 0;
-            this.dgvUser.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellDoubleClick);
-            this.dgvUser.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvUser_DataBindingComplete);
-            // 
-            // grpRights
-            // 
-            this.grpRights.BackColor = System.Drawing.Color.Transparent;
-            this.grpRights.Controls.Add(this.dgvUserRIghts);
-            this.grpRights.Enabled = false;
-            this.grpRights.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpRights.Location = new System.Drawing.Point(243, 118);
-            this.grpRights.Name = "grpRights";
-            this.grpRights.Size = new System.Drawing.Size(613, 470);
-            this.grpRights.TabIndex = 194;
-            this.grpRights.TabStop = false;
-            this.grpRights.Text = "Form Rights";
-            // 
             // FormID
             // 
             this.FormID.DataPropertyName = "FormID";
@@ -305,6 +265,47 @@
             this.ParentID.HeaderText = "ParentID";
             this.ParentID.Name = "ParentID";
             this.ParentID.Visible = false;
+            // 
+            // grpUserGridview
+            // 
+            this.grpUserGridview.BackColor = System.Drawing.Color.Transparent;
+            this.grpUserGridview.Controls.Add(this.dgvUser);
+            this.grpUserGridview.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpUserGridview.Location = new System.Drawing.Point(12, 288);
+            this.grpUserGridview.Name = "grpUserGridview";
+            this.grpUserGridview.Size = new System.Drawing.Size(225, 305);
+            this.grpUserGridview.TabIndex = 193;
+            this.grpUserGridview.TabStop = false;
+            this.grpUserGridview.Text = "Users";
+            // 
+            // dgvUser
+            // 
+            this.dgvUser.AllowUserToAddRows = false;
+            this.dgvUser.AllowUserToDeleteRows = false;
+            this.dgvUser.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUser.Location = new System.Drawing.Point(5, 24);
+            this.dgvUser.Name = "dgvUser";
+            this.dgvUser.ReadOnly = true;
+            this.dgvUser.RowHeadersVisible = false;
+            this.dgvUser.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvUser.Size = new System.Drawing.Size(210, 275);
+            this.dgvUser.TabIndex = 0;
+            this.dgvUser.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellDoubleClick);
+            this.dgvUser.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvUser_DataBindingComplete);
+            // 
+            // grpRights
+            // 
+            this.grpRights.BackColor = System.Drawing.Color.Transparent;
+            this.grpRights.Controls.Add(this.dgvUserRIghts);
+            this.grpRights.Enabled = false;
+            this.grpRights.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpRights.Location = new System.Drawing.Point(243, 118);
+            this.grpRights.Name = "grpRights";
+            this.grpRights.Size = new System.Drawing.Size(613, 470);
+            this.grpRights.TabIndex = 194;
+            this.grpRights.TabStop = false;
+            this.grpRights.Text = "Form Rights";
             // 
             // grpUserName
             // 

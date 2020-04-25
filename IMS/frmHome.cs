@@ -363,9 +363,9 @@ namespace IMS
 
         private void BarcodeStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.DefaultStoreSetting) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.BarCode_Designer) || clsUtility.IsAdmin == true)
             {
-                Barcode.DefaultStoreSetting frmHome = new IMS.Barcode.DefaultStoreSetting();
+                Barcode.frmBarCodeDesigner frmHome = new IMS.Barcode.frmBarCodeDesigner();
                 frmHome.Show();
             }
             else

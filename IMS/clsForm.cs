@@ -36,8 +36,9 @@ namespace IMS
             Purchase_Bill_Details = 24,
             Purchase_Invoice = 25,
             frmBarCode = 26,
-            DefaultStoreSetting = 27,
+            BarCode_Designer = 27,
             frmDatabaseMaintenance = 28
+       
         }
         public enum Operation
         {

@@ -10,9 +10,9 @@ using CoreApp;
 
 namespace IMS.Barcode
 {
-    public partial class DefaultStoreSetting : Form
+    public partial class frmBarCodeDesigner : Form
     {
-        public DefaultStoreSetting()
+        public frmBarCodeDesigner()
         {
             InitializeComponent();
         }

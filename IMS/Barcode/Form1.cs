@@ -248,7 +248,7 @@ namespace IMS.Barcode
                 DrawControlBorder(SelectedControl);
             timer1.Start();
         }
-        public DefaultStoreSetting ObjHome;
+        public frmBarCodeDesigner ObjHome;
         public void RemoveTimerTickEvent()
         {
         }

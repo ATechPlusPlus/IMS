@@ -1,6 +1,6 @@
 ﻿namespace IMS.Barcode
 {
-    partial class DefaultStoreSetting
+    partial class frmBarCodeDesigner
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefaultStoreSetting));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarCodeDesigner));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
