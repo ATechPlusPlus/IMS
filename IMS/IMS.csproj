@@ -175,6 +175,12 @@
     <Compile Include="frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserRights.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserRights.Designer.cs">
+      <DependentUpon>frmUserRights.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Color_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserRights.resx">
+      <DependentUpon>frmUserRights.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Color_Master.resx">
       <DependentUpon>Color_Master.cs</DependentUpon>

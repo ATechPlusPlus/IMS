@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.userCreationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userCreationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.userRightsManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mobilePartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CategoryMaster_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.countryMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,13 +107,30 @@
             // 
             // userCreationToolStripMenuItem
             // 
+            this.userCreationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userCreationToolStripMenuItem1,
+            this.userRightsManagementToolStripMenuItem});
             this.userCreationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("userCreationToolStripMenuItem.Image")));
             this.userCreationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.userCreationToolStripMenuItem.Name = "userCreationToolStripMenuItem";
-            this.userCreationToolStripMenuItem.Size = new System.Drawing.Size(138, 36);
-            this.userCreationToolStripMenuItem.Text = "User Creation";
+            this.userCreationToolStripMenuItem.Size = new System.Drawing.Size(164, 36);
+            this.userCreationToolStripMenuItem.Text = "User Management";
             this.userCreationToolStripMenuItem.ToolTipText = "User Creation";
             this.userCreationToolStripMenuItem.Click += new System.EventHandler(this.userCreationToolStripMenuItem_Click);
+            // 
+            // userCreationToolStripMenuItem1
+            // 
+            this.userCreationToolStripMenuItem1.Name = "userCreationToolStripMenuItem1";
+            this.userCreationToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.userCreationToolStripMenuItem1.Text = "User Creation";
+            this.userCreationToolStripMenuItem1.Click += new System.EventHandler(this.userCreationToolStripMenuItem1_Click);
+            // 
+            // userRightsManagementToolStripMenuItem
+            // 
+            this.userRightsManagementToolStripMenuItem.Name = "userRightsManagementToolStripMenuItem";
+            this.userRightsManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.userRightsManagementToolStripMenuItem.Text = "User Rights";
+            this.userRightsManagementToolStripMenuItem.Click += new System.EventHandler(this.userRightsManagementToolStripMenuItem_Click);
             // 
             // mobilePartsToolStripMenuItem
             // 
@@ -273,14 +292,14 @@
             // SalesInvoice_ToolStrip
             // 
             this.SalesInvoice_ToolStrip.Name = "SalesInvoice_ToolStrip";
-            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesInvoice_ToolStrip.Size = new System.Drawing.Size(178, 24);
             this.SalesInvoice_ToolStrip.Text = "Sales";
             this.SalesInvoice_ToolStrip.Click += new System.EventHandler(this.SalesInvoice_ToolStrip_Click);
             // 
             // SalesBillDetails_ToolStrip
             // 
             this.SalesBillDetails_ToolStrip.Name = "SalesBillDetails_ToolStrip";
-            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesBillDetails_ToolStrip.Size = new System.Drawing.Size(178, 24);
             this.SalesBillDetails_ToolStrip.Text = "Sales Bill Details";
             this.SalesBillDetails_ToolStrip.Click += new System.EventHandler(this.SalesBillDetails_ToolStrip_Click);
             // 
@@ -340,7 +359,7 @@
             // SalesReport_ToolStrip
             // 
             this.SalesReport_ToolStrip.Name = "SalesReport_ToolStrip";
-            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(180, 24);
+            this.SalesReport_ToolStrip.Size = new System.Drawing.Size(156, 24);
             this.SalesReport_ToolStrip.Text = "Sales Report";
             this.SalesReport_ToolStrip.ToolTipText = "Monthly Sales Report";
             this.SalesReport_ToolStrip.Click += new System.EventHandler(this.SalesReport_ToolStrip_Click);
@@ -561,6 +580,8 @@
         private System.Windows.Forms.ToolStripMenuItem barCodePrintingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem postingDeliveryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem diffBwPurchaseReceivedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userCreationToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem userRightsManagementToolStripMenuItem;
     }
 }
 

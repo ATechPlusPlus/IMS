@@ -29,17 +29,7 @@ namespace IMS
 
         private void userCreationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!ObjUserManag.IsHandleCreated)
-            {
-                ObjUserManag = null;
-                ObjUserManag = new UserManagement.frmUserManagement();
-                ObjUserManag.LoginStatus(clsUtility.LoginID, clsUtility.IsAdmin);
-                ObjUserManag.Show();
-                ObjUserManag.BringToFront();
-            }
-            ObjUserManag.LoginStatus(clsUtility.LoginID, clsUtility.IsAdmin);
-            ObjUserManag.Show();
-            ObjUserManag.BringToFront();
+           
         }
 
         private void otherArtsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -434,6 +424,27 @@ namespace IMS
             {
                 clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
+        }
+
+        private void userCreationToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!ObjUserManag.IsHandleCreated)
+            {
+                ObjUserManag = null;
+                ObjUserManag = new UserManagement.frmUserManagement();
+                ObjUserManag.LoginStatus(clsUtility.LoginID, clsUtility.IsAdmin);
+                ObjUserManag.Show();
+                ObjUserManag.BringToFront();
+            }
+            ObjUserManag.LoginStatus(clsUtility.LoginID, clsUtility.IsAdmin);
+            ObjUserManag.Show();
+            ObjUserManag.BringToFront();
+        }
+
+        private void userRightsManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserRights frmUserRights = new frmUserRights();
+            frmUserRights.ShowDialog();
         }
     }
 }
