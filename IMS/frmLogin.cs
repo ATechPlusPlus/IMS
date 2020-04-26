@@ -93,7 +93,7 @@ namespace IMS
                     frmHome Obj = new frmHome();
                     Obj.Login_History_ID = a;
                     Obj.BringToFront();
-                    this.Close();
+                 //   this.Close();
                     Obj.ShowDialog();
                 }
                 else

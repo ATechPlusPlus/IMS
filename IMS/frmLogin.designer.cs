@@ -75,9 +75,9 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogin.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(119, 344);
+            this.btnLogin.Location = new System.Drawing.Point(155, 341);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(109, 38);
+            this.btnLogin.Size = new System.Drawing.Size(97, 33);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             this.linkForgotPassword.AutoSize = true;
             this.linkForgotPassword.BackColor = System.Drawing.Color.Transparent;
             this.linkForgotPassword.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkForgotPassword.Location = new System.Drawing.Point(115, 398);
+            this.linkForgotPassword.Location = new System.Drawing.Point(151, 398);
             this.linkForgotPassword.Name = "linkForgotPassword";
             this.linkForgotPassword.Size = new System.Drawing.Size(114, 19);
             this.linkForgotPassword.TabIndex = 3;
