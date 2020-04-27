@@ -11,9 +11,9 @@ using CoreApp;
 
 namespace IMS.Report
 {
-    public partial class frmSalesInvoice : Form
+    public partial class frmSalesInvoiceReport : Form
     {
-        public frmSalesInvoice()
+        public frmSalesInvoiceReport()
         {
             InitializeComponent();
         }
@@ -24,19 +24,18 @@ namespace IMS.Report
         public bool IsDirectPrint = false;
         private void frmSalesInvoice_Load(object sender, EventArgs e)
         {
-            string query = "select p1.ProductName,s1.QTY,s1.Rate, (s1.Qty*s1.Rate) as Total,ps.barcodeNo as BarNumber from " + clsUtility.DBName + ".[dbo].[SalesDetails] s1 join " + clsUtility.DBName + ".dbo.ProductMaster p1 " +
-               " on s1.ProductID = p1.ProductID "+
-               "  join "+ clsUtility.DBName + ".dbo.ProductStockMaster ps"+
-               "  on ps.colorID=s1.ColorID and ps.SizeID=s1.SizeID "+
-               " where s1.InvoiceID = " + InvoiceID;
+            string query = "SELECT p1.ProductName,s1.QTY,s1.Rate, (s1.Qty*s1.Rate) AS Total,ps.barcodeNo as BarNumber FROM " + clsUtility.DBName + ".[dbo].[SalesDetails] s1 JOIN " + clsUtility.DBName + ".dbo.ProductMaster p1 " +
+               " ON s1.ProductID = p1.ProductID "+
+               "  JOIN "+ clsUtility.DBName + ".dbo.ProductStockMaster ps"+
+               "  ON ps.colorID=s1.ColorID and ps.SizeID=s1.SizeID "+
+               " WHERE s1.InvoiceID = " + InvoiceID;
 
             DataTable dtSalesDetails = ObjCon.ExecuteSelectStatement(query);
 
-
-            string strQueryHeader_Footer = "select s1.InvoiceNumber,s1.InvoiceDate, c1.Name as CustName,e1.Name as empName,st1.StoreName as StoreName,s1.SubTotal,s1.Discount,s1.Tax,s1.GrandTotal,s1.PaymentMode,s1.PaymentAutoID,c1.PhoneNo as CustomerMobile from " + clsUtility.DBName + ".dbo.SalesInvoiceDetails s1 left join " +
-                                            " " + clsUtility.DBName + ".dbo.EmployeeDetails e1 on s1.SalesMan = e1.EmpID left join" +
-                                            " " + clsUtility.DBName + ".[dbo].[CustomerMaster] c1 on s1.CustomerID = c1.CustomerID left join" +
-                                            " " + clsUtility.DBName + ".dbo.StoreMaster st1 on st1.StoreID = s1.ShopeID where s1.Id=" + InvoiceID;
+            string strQueryHeader_Footer = "SELECT s1.InvoiceNumber,s1.InvoiceDate, c1.Name AS CustName,e1.Name AS empName,st1.StoreName AS StoreName,s1.SubTotal,s1.Discount,s1.Tax,s1.GrandTotal,s1.PaymentMode,s1.PaymentAutoID,c1.PhoneNo AS CustomerMobile FROM " + clsUtility.DBName + ".dbo.SalesInvoiceDetails s1 left JOIN " +
+                                            " " + clsUtility.DBName + ".dbo.EmployeeDetails e1 ON s1.SalesMan = e1.EmpID left JOIN" +
+                                            " " + clsUtility.DBName + ".[dbo].[CustomerMaster] c1 ON s1.CustomerID = c1.CustomerID left join" +
+                                            " " + clsUtility.DBName + ".dbo.StoreMaster st1 ON st1.StoreID = s1.ShopeID WHERE s1.Id=" + InvoiceID;
 
             DataTable dtSalesHeader_Footer = ObjCon.ExecuteSelectStatement(strQueryHeader_Footer);
 
@@ -47,7 +46,7 @@ namespace IMS.Report
 
             string strcomName = "";
             string strAddress = "";
-            DataTable dtCompinfo = ObjCon.ExecuteSelectStatement("Select CompanyName,[Address] from " + clsUtility.DBName + ".dbo.CompanyMaster");
+            DataTable dtCompinfo = ObjCon.ExecuteSelectStatement("SELECT CompanyName,[Address] FROM " + clsUtility.DBName + ".dbo.CompanyMaster WITH(NOLOCK)");
 
             if (dtCompinfo != null && dtCompinfo.Rows.Count > 0)
             {
@@ -59,9 +58,7 @@ namespace IMS.Report
                 strcomName = "Default Store/Shop Name";
                 strAddress = "Default Address Line. Road No, Block No, Pin Code and State.";
             }
-
-
-            DataTable dtFooterNote = ObjCon.ExecuteSelectStatement("Select InvoiceFooterNote from " + clsUtility.DBName + ".dbo.DefaultStoreSetting");
+            DataTable dtFooterNote = ObjCon.ExecuteSelectStatement("SELECT InvoiceFooterNote FROM " + clsUtility.DBName + ".dbo.DefaultStoreSetting WITH(NOLOCK)");
             string footerNoteDefault = "Once payment made will not be refunded under any circumstances. ";
             if (dtFooterNote != null && dtFooterNote.Rows.Count > 0)
             {
@@ -69,7 +66,6 @@ namespace IMS.Report
                 {
                     footerNoteDefault = dtFooterNote.Rows[0]["InvoiceFooterNote"].ToString();
                 }
-             
             }
             else
             {
@@ -103,10 +99,6 @@ namespace IMS.Report
 
                 this.Close();
             }
-
-           
-           
-           
         }
     }
 }

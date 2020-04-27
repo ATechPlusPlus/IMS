@@ -789,7 +789,7 @@ namespace IMS.Sales
                 Button button = (Button)sender;
                 if (button.Name=="btnPrint")
                 {
-                    Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+                    Report.frmSalesInvoiceReport frmSalesInvoice = new Report.frmSalesInvoiceReport();
                     frmSalesInvoice.InvoiceID = InvoiceID;
                     frmSalesInvoice.IsDirectPrint = true;
                     frmSalesInvoice.Show();
@@ -797,7 +797,7 @@ namespace IMS.Sales
                 else
                 {
                     
-                    Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+                    Report.frmSalesInvoiceReport frmSalesInvoice = new Report.frmSalesInvoiceReport();
                     frmSalesInvoice.InvoiceID = InvoiceID;
                     frmSalesInvoice.IsDirectPrint = false;
                     frmSalesInvoice.Show();

@@ -157,7 +157,7 @@ namespace IMS.Purchase
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Bill_Details, clsFormRights.Operation.Save) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Bill_Details, clsFormRights.Operation.Save) || clsUtility.IsAdmin)
             {
                 DataTable dtPurchaseInvoiceBill = (DataTable)dataGridView1.DataSource;
                 if (ObjUtil.ValidateTable(dtPurchaseInvoiceBill))
@@ -531,7 +531,7 @@ namespace IMS.Purchase
 
         private void linkAddPurchaseBillItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Bill_Details, clsFormRights.Operation.Save) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Bill_Details, clsFormRights.Operation.Save) || clsUtility.IsAdmin)
             {
                 if (Validateform())
                 {

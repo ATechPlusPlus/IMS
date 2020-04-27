@@ -176,7 +176,7 @@ namespace IMS.Purchase
 
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDiffPurchaseReceived, clsFormRights.Operation.View) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDiffPurchaseReceived, clsFormRights.Operation.View) || clsUtility.IsAdmin)
             {
                 Purchase.frmDiffPurchaseReceviedDetails Obj = new frmDiffPurchaseReceviedDetails();
                 Obj.PurchaseInvoiceID = txtPurchaseInvoiceID.Text.Length > 0 ? Convert.ToInt32(this.txtPurchaseInvoiceID.Text) : 0;

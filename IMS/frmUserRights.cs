@@ -12,46 +12,44 @@ namespace IMS
 {
     public partial class frmUserRights : Form
     {
-        CoreApp.clsConnection_DAL ObjCon = new CoreApp.clsConnection_DAL(true);
         public frmUserRights()
         {
             InitializeComponent();
         }
-       
+        clsConnection_DAL ObjCon = new clsConnection_DAL(true);
+        clsUtility ObjUtil = new clsUtility();
 
         DataTable dtUserRights = new DataTable();
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
         private void frmUserRights_Load(object sender, EventArgs e)
         {
-              btnAdd.BackgroundImage = B_Leave;
-                btnSave.BackgroundImage = B_Leave;
-                btnEdit.BackgroundImage = B_Leave;
-                btnUpdate.BackgroundImage = B_Leave;
-                btnDelete.BackgroundImage = B_Leave;
-                btnCancel.BackgroundImage = B_Leave;
+            btnAdd.BackgroundImage = B_Leave;
+            btnSave.BackgroundImage = B_Leave;
+            btnEdit.BackgroundImage = B_Leave;
+            btnUpdate.BackgroundImage = B_Leave;
+            btnDelete.BackgroundImage = B_Leave;
+            btnCancel.BackgroundImage = B_Leave;
 
-                ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
-                ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
+            ObjUtil.RegisterCommandButtons(btnAdd, btnSave, btnEdit, btnUpdate, btnDelete, btnCancel);
+            ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.Beginning);
 
-                InitRightTable();
-                LoadRightGrid();
-                 loadUser();
-
+            InitRightTable();
+            LoadRightGrid();
+            loadUser();
         }
         private void loadUser()
         {
-            string str = "select distinct  u1.UserID , u1.UserName from [IMS].[dbo].[UserManagement] u1 join [IMS].[dbo].[tblUserRights] ur " +
-                        "on u1.UserID = ur.UserID";
+            string str = "SELECT DISTINCT  u1.UserID , u1.UserName FROM " + clsUtility.DBName + ".[dbo].[UserManagement] u1 JOIN " + clsUtility.DBName + ".[dbo].[tblUserRights] ur ON u1.UserID = ur.UserID";
 
-          DataTable dtuser=  ObjCon.ExecuteSelectStatement(str);
+            DataTable dtuser = ObjCon.ExecuteSelectStatement(str);
             dgvUser.DataSource = dtuser;
             dgvUser.Columns["UserID"].Visible = false;
         }
 
         private void InitRightTable()
         {
-            if (dtUserRights.Columns.Count==0)
+            if (dtUserRights.Columns.Count == 0)
             {
                 dtUserRights.Columns.Add("FormID");
                 dtUserRights.Columns.Add("FormName");
@@ -62,51 +60,39 @@ namespace IMS
                 dtUserRights.Columns.Add("Other");
                 dtUserRights.Columns.Add("ParentID");
             }
-          
         }
-        private void  LoadRightGrid()
+        private void LoadRightGrid()
         {
             try
             {
-
-                DataTable dtAllFormsDetails = ObjCon.ExecuteSelectStatement("select *  FROM " + CoreApp.clsUtility.DBName + ".[dbo].[tblFormRightDetails]");
+                DataTable dtAllFormsDetails = ObjCon.ExecuteSelectStatement("SELECT *  FROM " + clsUtility.DBName + ".[dbo].[tblFormRightDetails]");
                 // get only parent 
                 DataRow[] ParentRows = dtAllFormsDetails.Select("ParentID=0");
                 if (ParentRows.Length > 0)
                 {
-
                     for (int i = 0; i < ParentRows.Length; i++)
                     {
                         AddRowRightsTable(ParentRows[i]["FormID"].ToString(), ParentRows[i]["FormName"].ToString(), false, false, false, false, false, 0);
-
                         int ParentID = Convert.ToInt32(ParentRows[i]["FormID"]);
-
-
-
                         // get the child
                         DataRow[] dataRowChild = dtAllFormsDetails.Select("ParentID=" + ParentID);
-
                         for (int j = 0; j < dataRowChild.Length; j++)
                         {
                             AddRowRightsTable(dataRowChild[j]["FormID"].ToString(), dataRowChild[j]["FormName"].ToString(), false, false, false, false, false, ParentID);
                         }
-
-
                     }
-
                 }
                 dgvUserRIghts.DataSource = dtUserRights;
                 dgvUserRIghts.ClearSelection();
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.ToString());
+                clsUtility.ShowInfoMessage(ex.ToString(), clsUtility.strProjectTitle);
             }
         }
-        private void AddRowRightsTable(string fID, string fname, bool IsView, bool IsSave, bool IsUpdate, bool IsDelete, bool IsOther,int ParentID )
+        private void AddRowRightsTable(string fID, string fname, bool IsView, bool IsSave, bool IsUpdate, bool IsDelete, bool IsOther, int ParentID)
         {
-            DataRow dRow=  dtUserRights.NewRow();
+            DataRow dRow = dtUserRights.NewRow();
             dRow["FormID"] = fID;
             dRow["FormName"] = fname;
             dRow["View"] = IsView;
@@ -115,24 +101,19 @@ namespace IMS
             dRow["Delete"] = IsDelete;
             dRow["Other"] = IsOther;
             dRow["ParentID"] = ParentID.ToString();
-            
-
-
             dtUserRights.Rows.Add(dRow);
         }
-        CoreApp.clsUtility ObjUtil = new CoreApp.clsUtility();
+
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             //ObjUtil.SetDataGridProperty(dgvUserRIghts, DataGridViewAutoSizeColumnsMode.Fill);
-
             for (int i = 0; i < dgvUserRIghts.Rows.Count; i++)
             {
-                if (dgvUserRIghts.Rows[i].Cells["ParentID"].Value.ToString()=="0")
+                if (dgvUserRIghts.Rows[i].Cells["ParentID"].Value.ToString() == "0")
                 {
                     dgvUserRIghts.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(0, 64, 128);
                     dgvUserRIghts.Rows[i].DefaultCellStyle.ForeColor = Color.White;
-                    dgvUserRIghts.Rows[i].DefaultCellStyle.Font = new Font("Times New Roman",11.2f, FontStyle.Bold);
-
+                    dgvUserRIghts.Rows[i].DefaultCellStyle.Font = new Font("Times New Roman", 11.2f, FontStyle.Bold);
                 }
                 else
                 {
@@ -140,7 +121,6 @@ namespace IMS
                     dgvUserRIghts.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
                     dgvUserRIghts.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black;
                 }
-                
             }
         }
 
@@ -152,29 +132,22 @@ namespace IMS
                 {
                     return;
                 }
-                if (txtName.Text.Trim().Length == 0)
+                if (ObjUtil.IsControlTextEmpty(txtName))
                 {
                     txtUserID.Clear();
                     ObjUtil.CloseAutoExtender();
                     return;
-
                 }
-                DataTable dt = ObjCon.ExecuteSelectStatement("select UserName,UserID from " + clsUtility.DBName + ".dbo.UserManagement  where IsAdmin=0 and UserName like '"+txtName.Text+"%'");
-                if (dt != null && dt.Rows.Count > 0)
+                DataTable dt = ObjCon.ExecuteSelectStatement("SELECT USERNAME,USERID FROM " + clsUtility.DBName + ".dbo.UserManagement WHERE IsAdmin=0 AND UserName LIKE '" + txtName.Text + "%'");
+                if (ObjUtil.ValidateTable(dt))
                 {
-
-
                     ObjUtil.SetControlData(txtName, "UserName");
                     ObjUtil.SetControlData(txtUserID, "UserID");
-
-
                     ObjUtil.ShowDataPopup(dt, txtName, this, grpUserName);
-
                     if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
                     {
-                        // if there is only one column                
+                        // if there is only one column
                         ObjUtil.GetDataPopup().AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
                         if (ObjUtil.GetDataPopup().ColumnCount > 0)
                         {
                             ObjUtil.GetDataPopup().Columns["UserID"].Visible = false;
@@ -192,7 +165,6 @@ namespace IMS
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -201,16 +173,11 @@ namespace IMS
             bool b = clsUtility.ShowQuestionMessage(clsUtility.MsgActionCancel, clsUtility.strProjectTitle);
             if (b)
             {
-             
                 ClearAll();
                 grpUserName.Enabled = false;
                 grpRights.Enabled = false;
-                    
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel);
                 //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterCancel, clsUtility.IsAdmin);
-            
-
-
             }
         }
         private void ClearAll()
@@ -234,7 +201,7 @@ namespace IMS
         }
         private bool ValidateRights()
         {
-            if (txtUserID.Text.Trim().Length==0)
+            if (ObjUtil.IsControlTextEmpty(txtUserID))
             {
                 clsUtility.ShowInfoMessage("Enter Valid User Name.", clsUtility.strProjectTitle);
                 txtName.Focus();
@@ -248,23 +215,20 @@ namespace IMS
                 return false;
             }
 
-
-            int count= ObjCon.ExecuteScalarInt("select count(*) from  [IMS].[dbo].[tblUserRights] where UserID="+txtUserID.Text);
-            if (count>0)
+            int count = ObjCon.ExecuteScalarInt("SELECT COUNT(1) FROM " + clsUtility.DBName + ".[dbo].[tblUserRights] WHERE UserID=" + txtUserID.Text);
+            if (count > 0)
             {
-                clsUtility.ShowInfoMessage("Rights for the user : "+txtName.Text+" already exists. Please select new user or select existing user and update.", clsUtility.strProjectTitle);
+                clsUtility.ShowInfoMessage("Rights for the user : " + txtName.Text + " already exists. Please select new user or select existing user and update.", clsUtility.strProjectTitle);
                 txtName.Focus();
                 return false;
             }
             return true;
-
         }
         private bool AnyRightCheck()
         {
-            
             foreach (DataGridViewRow row in dgvUserRIghts.Rows)
             {
-                if (row.Cells["View"].Value!=DBNull.Value && Convert.ToBoolean(row.Cells["View"].Value))
+                if (row.Cells["View"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["View"].Value))
                 {
                     return true;
                 }
@@ -272,15 +236,15 @@ namespace IMS
                 {
                     return true;
                 }
-                 if (row.Cells["Update"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Update"].Value))
+                if (row.Cells["Update"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Update"].Value))
                 {
                     return true;
                 }
-                 if (row.Cells["Delete"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Delete"].Value))
+                if (row.Cells["Delete"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Delete"].Value))
                 {
                     return true;
                 }
-                 if (row.Cells["Other"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Other"].Value))
+                if (row.Cells["Other"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Other"].Value))
                 {
                     return true;
                 }
@@ -290,42 +254,38 @@ namespace IMS
         private void btnSave_Click(object sender, EventArgs e)
         {
             dgvUserRIghts.EndEdit();
-
             if (ValidateRights())
             {
                 SaveRightsData(false);
-
             }
         }
         private void SaveRightsData(bool isEditMode)
         {
             if (isEditMode)
             {
-                ObjCon.ExecuteNonQuery("delete "+clsUtility.DBName + ".[dbo].[tblUserRights] where UserID="+txtUserID.Text);
+                ObjCon.ExecuteNonQuery("DELETE " + clsUtility.DBName + ".[dbo].[tblUserRights] WHERE UserID=" + txtUserID.Text);
             }
-
 
             foreach (DataGridViewRow row in dgvUserRIghts.Rows)
             {
                 bool RightFoud = false;
-
                 if (row.Cells["View"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["View"].Value))
                 {
                     RightFoud = true;
                 }
-               else  if (row.Cells["Save"].Value != DBNull.Value &&  Convert.ToBoolean(row.Cells["Save"].Value))
+                else if (row.Cells["Save"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Save"].Value))
                 {
                     RightFoud = true;
                 }
-                else if (row.Cells["Update"].Value != DBNull.Value &&  Convert.ToBoolean(row.Cells["Update"].Value))
+                else if (row.Cells["Update"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Update"].Value))
                 {
                     RightFoud = true;
                 }
-                else if (row.Cells["Delete"].Value != DBNull.Value &&  Convert.ToBoolean(row.Cells["Delete"].Value))
+                else if (row.Cells["Delete"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Delete"].Value))
                 {
                     RightFoud = true;
                 }
-                else if (row.Cells["Other"].Value != DBNull.Value &&  Convert.ToBoolean(row.Cells["Other"].Value))
+                else if (row.Cells["Other"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Other"].Value))
                 {
                     RightFoud = true;
                 }
@@ -333,7 +293,6 @@ namespace IMS
                 if (RightFoud)
                 {
                     RightFoud = false;
-                        
                     bool IsView = false;
                     bool IsSave = false;
                     bool IsUpdate = false;
@@ -344,24 +303,22 @@ namespace IMS
                     {
                         IsView = true;
                     }
-                     if (row.Cells["Save"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Save"].Value))
+                    if (row.Cells["Save"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Save"].Value))
                     {
                         IsSave = true;
                     }
-                     if (row.Cells["Update"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Update"].Value))
+                    if (row.Cells["Update"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Update"].Value))
                     {
                         IsUpdate = true;
                     }
-                     if (row.Cells["Delete"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Delete"].Value))
+                    if (row.Cells["Delete"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Delete"].Value))
                     {
                         IsDelete = true;
                     }
-                     if (row.Cells["Other"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Other"].Value))
+                    if (row.Cells["Other"].Value != DBNull.Value && Convert.ToBoolean(row.Cells["Other"].Value))
                     {
                         IsOther = true;
                     }
-
-
                     ObjCon.SetColumnData("UserID", SqlDbType.Int, txtUserID.Text);
                     ObjCon.SetColumnData("FormID", SqlDbType.Int, row.Cells["FormID"].Value.ToString());
                     ObjCon.SetColumnData("IsView", SqlDbType.Bit, IsView);
@@ -370,14 +327,9 @@ namespace IMS
                     ObjCon.SetColumnData("IsDelete", SqlDbType.Bit, IsDelete);
                     ObjCon.SetColumnData("IsOther", SqlDbType.Bit, IsOther);
                     ObjCon.SetColumnData("CreatedBy", SqlDbType.Int, clsUtility.LoginID);
-                    ObjCon.SetColumnData("CreatedOn", SqlDbType.Date,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     ObjCon.InsertData(clsUtility.DBName + ".dbo.tblUserRights", false);
-
                 }
-              
             }
-
-          
             //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave, clsUtility.IsAdmin);
             if (isEditMode)
             {
@@ -390,13 +342,9 @@ namespace IMS
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterSave);
                 clsUtility.ShowInfoMessage("User rights has been Saved Successfully.", clsUtility.strProjectTitle);
             }
-           
             ClearAll();
-
             grpUserName.Enabled = false;
             grpRights.Enabled = false;
-         
-
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -407,25 +355,13 @@ namespace IMS
             grpUserName.Enabled = false;
         }
 
-        private void dgvUserRIghts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            
-          
-        }
-
-        private void dgvUserRIghts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
         private void dgvUserRIghts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
                 dgvUserRIghts.EndEdit();
-
                 bool IsRightChecked = false;
-                if (dgvUserRIghts.Columns[e.ColumnIndex].Name== "FormName")
+                if (dgvUserRIghts.Columns[e.ColumnIndex].Name == "FormName")
                 {
                     return;
                 }
@@ -434,21 +370,16 @@ namespace IMS
                 {
                     IsRightChecked = true;
                 }
-              
-
-
                 if (IsRightChecked)
                 {
                     // if its parent
                     if (dgvUserRIghts.Rows[e.RowIndex].Cells["ParentID"].Value.ToString() == "0")
                     {
                         string formID = dgvUserRIghts.Rows[e.RowIndex].Cells["FormID"].Value.ToString();
-
                         // get the child
                         IEnumerable<DataGridViewRow> rows = dgvUserRIghts.Rows
                           .Cast<DataGridViewRow>()
                           .Where(r => r.Cells["ParentID"].Value.ToString().Equals(formID));
-
                         foreach (var item in rows)
                         {
                             item.Cells[e.ColumnIndex].Value = true;
@@ -459,14 +390,12 @@ namespace IMS
                     {
                         // get the parent ID
                         string formID = dgvUserRIghts.Rows[e.RowIndex].Cells["ParentID"].Value.ToString();
-
                         // get all child
                         IEnumerable<DataGridViewRow> rows = dgvUserRIghts.Rows
                           .Cast<DataGridViewRow>()
                           .Where(r => r.Cells["ParentID"].Value.ToString().Equals(formID));
 
                         bool IsAllChecked = false;
-
                         foreach (var item in rows)
                         {
                             if (item.Cells[e.ColumnIndex].Value != DBNull.Value && Convert.ToBoolean(item.Cells[e.ColumnIndex].Value))
@@ -478,11 +407,8 @@ namespace IMS
                                 // if found a single unchecked.
                                 IsAllChecked = false;
                                 break;
-
                             }
-
                         }
-
                         // check the parent
                         if (IsAllChecked)
                         {
@@ -495,10 +421,7 @@ namespace IMS
                             }
                             dgvUserRIghts.EndEdit();
                         }
-
                     }
-
-
                 }
                 else
                 {
@@ -506,12 +429,10 @@ namespace IMS
                     if (dgvUserRIghts.Rows[e.RowIndex].Cells["ParentID"].Value.ToString() == "0")
                     {
                         string formID = dgvUserRIghts.Rows[e.RowIndex].Cells["FormID"].Value.ToString();
-
                         // get the child
                         IEnumerable<DataGridViewRow> rows = dgvUserRIghts.Rows
                           .Cast<DataGridViewRow>()
                           .Where(r => r.Cells["ParentID"].Value.ToString().Equals(formID));
-
                         foreach (var item in rows)
                         {
                             item.Cells[e.ColumnIndex].Value = false;
@@ -522,14 +443,12 @@ namespace IMS
                     {
                         // get the parent ID
                         string formID = dgvUserRIghts.Rows[e.RowIndex].Cells["ParentID"].Value.ToString();
-
                         // get all child
                         IEnumerable<DataGridViewRow> rows = dgvUserRIghts.Rows
                           .Cast<DataGridViewRow>()
                           .Where(r => r.Cells["ParentID"].Value.ToString().Equals(formID));
 
                         bool IsAllChecked = false;
-
                         foreach (var item in rows)
                         {
                             if (item.Cells[e.ColumnIndex].Value != DBNull.Value && Convert.ToBoolean(item.Cells[e.ColumnIndex].Value))
@@ -541,11 +460,8 @@ namespace IMS
                                 // if found a single unchecked.
                                 IsAllChecked = false;
                                 break;
-
                             }
-
                         }
-
                         // check the parent
                         if (IsAllChecked == false)
                         {
@@ -559,10 +475,7 @@ namespace IMS
                             dgvUserRIghts.EndEdit();
                         }
                     }
-
                 }
-
-
             }
         }
 
@@ -576,6 +489,7 @@ namespace IMS
 
         private void dgvUser_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            ObjUtil.SetRowNumber(dgvUser);
             ObjUtil.SetDataGridProperty(dgvUser, DataGridViewAutoSizeColumnsMode.Fill);
         }
         bool isEdit = false;
@@ -586,19 +500,15 @@ namespace IMS
                 try
                 {
                     int UserID = Convert.ToInt32(dgvUser.SelectedRows[0].Cells["UserID"].Value);
-
                     ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick);
                     //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterGridClick, clsUtility.IsAdmin);
-
-
                     dtUserRights.Clear();
                     LoadRightGrid();
 
-                    string strQ = "select *  from " + clsUtility.DBName + ".[dbo].[UserManagement] u1 join  " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
-                                " on u1.UserID = ur.UserID where u1.UserID = " + UserID;
-
-                    DataTable dt= ObjCon.ExecuteSelectStatement(strQ);
-                    if (dt.Rows.Count>0)
+                    string strQ = "SELECT * FROM " + clsUtility.DBName + ".[dbo].[UserManagement] u1 JOIN  " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
+                                " ON u1.UserID = ur.UserID WHERE u1.UserID = " + UserID;
+                    DataTable dt = ObjCon.ExecuteSelectStatement(strQ);
+                    if (ObjUtil.ValidateTable(dt))
                     {
                         isEdit = true;
                         txtUserID.Text = UserID.ToString();
@@ -607,16 +517,14 @@ namespace IMS
                     }
 
                     // Bind Grid
-
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         string formID = dt.Rows[i]["FormID"].ToString();
+                        DataGridViewRow row = dgvUserRIghts.Rows
+                       .Cast<DataGridViewRow>()
+                       .Where(r => r.Cells["FormID"].Value.ToString().Equals(formID)).First();
 
-                         DataGridViewRow row = dgvUserRIghts.Rows
-                        .Cast<DataGridViewRow>()
-                        .Where(r => r.Cells["FormID"].Value.ToString().Equals(formID)).First();
-
-                        if (row!=null)
+                        if (row != null)
                         {
                             if (Convert.ToBoolean(dt.Rows[i]["IsView"]))
                             {
@@ -625,10 +533,8 @@ namespace IMS
                             else
                             {
                                 row.Cells["View"].Value = false;
-
                             }
 
-                          
                             if (Convert.ToBoolean(dt.Rows[i]["IsSave"]))
                             {
                                 row.Cells["Save"].Value = true;
@@ -636,7 +542,6 @@ namespace IMS
                             else
                             {
                                 row.Cells["Save"].Value = false;
-
                             }
 
                             if (Convert.ToBoolean(dt.Rows[i]["IsUpdate"]))
@@ -646,7 +551,6 @@ namespace IMS
                             else
                             {
                                 row.Cells["Update"].Value = false;
-
                             }
 
                             if (Convert.ToBoolean(dt.Rows[i]["IsDelete"]))
@@ -656,9 +560,7 @@ namespace IMS
                             else
                             {
                                 row.Cells["Delete"].Value = false;
-
                             }
-
 
                             if (Convert.ToBoolean(dt.Rows[i]["IsOther"]))
                             {
@@ -667,20 +569,10 @@ namespace IMS
                             else
                             {
                                 row.Cells["Other"].Value = false;
-
                             }
-
                         }
-                      
-
-
-
                         dgvUserRIghts.EndEdit();
-
                     }
-                 
-
-                 
                 }
                 catch { }
             }
@@ -688,32 +580,36 @@ namespace IMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-        
-
             if (!AnyRightCheck())
             {
                 clsUtility.ShowInfoMessage("Please select any rights from rights grid.", clsUtility.strProjectTitle);
                 grpRights.Focus();
                 return;
             }
-
             SaveRightsData(true);
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Are you sure want to delete user rights for User :  '" +txtName.Text + "'  ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult d = MessageBox.Show("Are you sure want to delete user rights for User :  '" + txtName.Text + "'  ", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (d == DialogResult.Yes)
             {
-                ObjCon.ExecuteNonQuery("delete " + clsUtility.DBName + ".[dbo].[tblUserRights] where UserID=" + txtUserID.Text);
+                ObjCon.ExecuteNonQuery("DELETE " + clsUtility.DBName + ".[dbo].[tblUserRights] WHERE UserID=" + txtUserID.Text);
                 clsUtility.ShowInfoMessage("Rights has been deleted.", clsUtility.strProjectTitle);
                 ClearAll();
-             
-            
-              
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterDelete);
             }
+        }
+        private void btnAdd_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackgroundImage = B_Enter;
+        }
+
+        private void btnAdd_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackgroundImage = B_Leave;
         }
     }
 }

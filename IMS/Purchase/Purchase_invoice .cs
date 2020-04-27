@@ -165,7 +165,7 @@ namespace IMS.Purchase
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Save) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Save) || clsUtility.IsAdmin)
             {
                 if (Validateform())
                 {
@@ -218,7 +218,7 @@ namespace IMS.Purchase
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Update) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Update) || clsUtility.IsAdmin)
             {
                 //ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit, clsUtility.IsAdmin);
                 ObjUtil.SetCommandButtonStatus(clsCommon.ButtonStatus.AfterEdit);
@@ -237,7 +237,7 @@ namespace IMS.Purchase
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Update) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Update) || clsUtility.IsAdmin)
             {
                 if (Validateform())
                 {
@@ -295,7 +295,7 @@ namespace IMS.Purchase
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Delete) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice, clsFormRights.Operation.Delete) || clsUtility.IsAdmin)
             {
                 DialogResult d = MessageBox.Show("Are you sure want to delete Supplier Bill No. '" + txtSupplierBillNo.Text + "'", clsUtility.strProjectTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (d == DialogResult.Yes)

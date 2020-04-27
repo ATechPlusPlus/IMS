@@ -34,7 +34,7 @@ namespace IMS
 
         private void otherArtsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDatabaseMaintenance) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDatabaseMaintenance) || clsUtility.IsAdmin)
             {
                 DB_backupRestore.cs.frmDatabaseMaintenance Obj = new DB_backupRestore.cs.frmDatabaseMaintenance();
                 Obj.ShowDialog();
@@ -103,7 +103,7 @@ namespace IMS
 
         private void CategoryMaster_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Category_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Category_Master) || clsUtility.IsAdmin)
             {
                 Masters.Category_Master Obj = new Masters.Category_Master();
                 Obj.Show();
@@ -116,7 +116,7 @@ namespace IMS
 
         private void StoreDetails_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Store_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Store_Master) || clsUtility.IsAdmin)
             {
                 Masters.Store_Master Obj = new Masters.Store_Master();
                 Obj.Show();
@@ -129,7 +129,7 @@ namespace IMS
 
         private void SupplierDetails_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Supplier_Details) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Supplier_Details) || clsUtility.IsAdmin)
             {
                 Masters.Supplier_Details Obj = new Masters.Supplier_Details();
                 Obj.Show();
@@ -142,7 +142,7 @@ namespace IMS
 
         private void EmployeeDetails_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Employee_Details) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Employee_Details) || clsUtility.IsAdmin)
             {
                 Masters.Employee_Details Obj = new Masters.Employee_Details();
                 Obj.Show();
@@ -155,7 +155,7 @@ namespace IMS
 
         private void PurchaseInvoice_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Invoice) || clsUtility.IsAdmin)
             {
                 Purchase.Purchase_Invoice Obj = new Purchase.Purchase_Invoice();
                 Obj.Show();
@@ -168,7 +168,7 @@ namespace IMS
 
         private void PurchaseBillDetails_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Bill_Details) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Purchase_Bill_Details) || clsUtility.IsAdmin)
             {
                 Purchase.Purchase_Bill_Details Obj = new Purchase.Purchase_Bill_Details();
                 Obj.Show();
@@ -181,7 +181,7 @@ namespace IMS
 
         private void SalesInvoice_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Sales_Invoice) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Sales_Invoice) || clsUtility.IsAdmin)
             {
                 Sales.Sales_Invoice Obj = new Sales.Sales_Invoice();
                 Obj.Show();
@@ -194,7 +194,7 @@ namespace IMS
 
         private void SalesBillDetails_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Sales_Bill_Details) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Sales_Bill_Details) || clsUtility.IsAdmin)
             {
                 Sales.Sales_Bill_Details Obj = new Sales.Sales_Bill_Details();
                 Obj.Show();
@@ -207,7 +207,7 @@ namespace IMS
 
         private void MaterialDetails_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Material_Details) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Material_Details) || clsUtility.IsAdmin)
             {
                 StockManagement.Material_Details Obj = new StockManagement.Material_Details();
                 Obj.Show();
@@ -220,7 +220,7 @@ namespace IMS
 
         private void CurrencyValueSetting_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Currency_Value_Settings) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Currency_Value_Settings) || clsUtility.IsAdmin)
             {
                 Settings.Currency_Value_Settings Obj = new Settings.Currency_Value_Settings();
                 Obj.Show();
@@ -233,7 +233,7 @@ namespace IMS
 
         private void countryMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Country_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Country_Master) || clsUtility.IsAdmin)
             {
                 Masters.Country_Master Obj = new Masters.Country_Master();
                 Obj.Show();
@@ -246,7 +246,7 @@ namespace IMS
 
         private void brandMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Brand_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Brand_Master) || clsUtility.IsAdmin)
             {
                 Masters.Brand_Master Obj = new Masters.Brand_Master();
                 Obj.Show();
@@ -259,7 +259,7 @@ namespace IMS
 
         private void productMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Product_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Product_Master) || clsUtility.IsAdmin)
             {
                 Masters.Product_Master Obj = new Masters.Product_Master();
                 Obj.Show();
@@ -272,7 +272,7 @@ namespace IMS
 
         private void defaultStoreSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmOtherSetting) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmOtherSetting) || clsUtility.IsAdmin)
             {
                 frmOtherSetting frmOtherSetting = new frmOtherSetting();
                 frmOtherSetting.ShowDialog();
@@ -285,7 +285,7 @@ namespace IMS
 
         private void CustomerMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Customer_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Customer_Master) || clsUtility.IsAdmin)
             {
                 Masters.Customer_Master Obj = new Masters.Customer_Master();
                 Obj.Show();
@@ -298,7 +298,7 @@ namespace IMS
 
         private void ColorMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Color_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Color_Master) || clsUtility.IsAdmin)
             {
                 Masters.Color_Master Obj = new Masters.Color_Master();
                 Obj.Show();
@@ -311,7 +311,7 @@ namespace IMS
 
         private void SizeTypeMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Size_Type_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Size_Type_Master) || clsUtility.IsAdmin)
             {
                 Masters.Size_Type_Master Obj = new Masters.Size_Type_Master();
                 Obj.Show();
@@ -324,7 +324,7 @@ namespace IMS
 
         private void deliveringPurchaseBillToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill) || clsUtility.IsAdmin)
             {
                 Purchase.Delivering_Purchase_Bill Obj = new Purchase.Delivering_Purchase_Bill();
                 Obj.Show();
@@ -337,7 +337,7 @@ namespace IMS
 
         private void sizeMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Size_Master) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Size_Master) || clsUtility.IsAdmin)
             {
                 Masters.Size_Master Obj = new Masters.Size_Master();
                 Obj.Show();
@@ -350,9 +350,9 @@ namespace IMS
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmSalesInvoice) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Sales_Invoice) || clsUtility.IsAdmin)
             {
-                Report.frmSalesInvoice frmSalesInvoice = new Report.frmSalesInvoice();
+                Report.frmSalesInvoiceReport frmSalesInvoice = new Report.frmSalesInvoiceReport();
                 frmSalesInvoice.Show();
             }
             else
@@ -363,7 +363,7 @@ namespace IMS
 
         private void BarcodeStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.BarCode_Designer) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.BarCode_Designer) || clsUtility.IsAdmin)
             {
                 Barcode.frmBarCodeDesigner frmHome = new IMS.Barcode.frmBarCodeDesigner();
                 frmHome.Show();
@@ -376,7 +376,7 @@ namespace IMS
 
         private void barCodePrintingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmBarCode) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmBarCode) || clsUtility.IsAdmin)
             {
                 Barcode.frmBarCode frmBarCode = new Barcode.frmBarCode();
                 frmBarCode.Show();
@@ -389,7 +389,7 @@ namespace IMS
 
         private void postingDeliveryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.Posting_Delivery) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.Posting_Delivery) || clsUtility.IsAdmin)
             {
                 Purchase.Posting_Delivery obj = new Purchase.Posting_Delivery();
                 obj.Show();
@@ -402,7 +402,7 @@ namespace IMS
 
         private void diffBwPurchaseReceivedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDiffPurchaseReceived) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmDiffPurchaseReceived) || clsUtility.IsAdmin)
             {
                 Purchase.frmDiffPurchaseReceived Obj = new Purchase.frmDiffPurchaseReceived();
                 Obj.Show();
@@ -415,7 +415,7 @@ namespace IMS
 
         private void SalesReport_ToolStrip_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmSalesReport) || clsUtility.IsAdmin == true)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmSalesReport) || clsUtility.IsAdmin)
             {
                 Report.frmSalesReport frmSalesReport = new Report.frmSalesReport();
                 frmSalesReport.Show();

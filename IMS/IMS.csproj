@@ -319,11 +319,11 @@
       <DependentUpon>ds_SalesInvoiceReport.xsd</DependentUpon>
     </Compile>
     <Compile Include="Report\ReportPrinting.cs" />
-    <Compile Include="Report\Report_Forms\frmSalesInvoice.cs">
+    <Compile Include="Report\Report_Forms\frmSalesInvoiceReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Report\Report_Forms\frmSalesInvoice.Designer.cs">
-      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
+    <Compile Include="Report\Report_Forms\frmSalesInvoiceReport.Designer.cs">
+      <DependentUpon>frmSalesInvoiceReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Report_Forms\frmSalesReport.cs">
       <SubType>Form</SubType>
@@ -465,8 +465,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RDLC_Files\SalesInoviceReport.rdlc" />
     <EmbeddedResource Include="Report\RDLC_Files\Sales_Invoice.rdlc" />
-    <EmbeddedResource Include="Report\Report_Forms\frmSalesInvoice.resx">
-      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="Report\Report_Forms\frmSalesInvoiceReport.resx">
+      <DependentUpon>frmSalesInvoiceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report_Forms\frmSalesReport.resx">
       <DependentUpon>frmSalesReport.cs</DependentUpon>

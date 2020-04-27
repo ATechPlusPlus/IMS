@@ -246,7 +246,6 @@
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.Size = new System.Drawing.Size(251, 25);
             this.txtInvoiceNumber.TabIndex = 0;
-            this.txtInvoiceNumber.TextChanged += new System.EventHandler(this.txtInvoiceNumber_TextChanged);
             // 
             // groupBox2
             // 
