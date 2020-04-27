@@ -10,24 +10,23 @@ namespace IMS
     {
         public enum Forms
         {
-            Color_Master = 36,
-            Customer_Master = 37,
-            Product_Master = 38,
-            Brand_Master = 10,
-            Category_Master = 11,
+            Brand_Master = 8,
+            Category_Master = 9,
+            Color_Master = 10,
+            Customer_Master = 11,
             Country_Master = 12,
-            Employee_Details = 13,
-            Size_Master = 14,
-            Size_Type_Master = 15,
-            Store_Master = 16,
-            Supplier_Details = 17,
-            Material_Details = 18,
-            Currency_Value_Settings = 19,
-            Employee_Commission_Setting = 20,
-            frmOtherSetting = 21,
-            Sales_Bill_Details = 22,
-            Sales_Invoice = 23,
-            //frmSalesInvoice = 18,
+            Product_Master = 13,
+            Employee_Details = 14,
+            Size_Master = 15,
+            Size_Type_Master = 16,
+            Store_Master = 17,
+            Supplier_Details = 18,
+            Material_Details = 19,
+            Currency_Value_Settings = 20,
+            Employee_Commission_Setting = 21,
+            frmOtherSetting = 22,
+            Sales_Bill_Details = 23,
+            Sales_Invoice = 24,
             frmSalesReport = 25,
             Delivering_Purchase_Bill = 26,
             frmDiffPurchaseReceived = 27,
@@ -36,8 +35,8 @@ namespace IMS
             Purchase_Bill_Details = 30,
             Purchase_Invoice = 31,
             frmBarCode = 32,
-            BarCode_Designer = 33,
-            frmDatabaseMaintenance = 7
+            frmBarCodeDesigner = 33,
+            //frmDatabaseMaintenance = 7
         }
         public enum Operation
         {
