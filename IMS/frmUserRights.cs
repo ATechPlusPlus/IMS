@@ -40,12 +40,24 @@ namespace IMS
         }
         private void loadUser()
         {
-            string str = "select distinct  u1.UserID , u1.UserName from [IMS].[dbo].[UserManagement] u1 join [IMS].[dbo].[tblUserRights] ur " +
-                        "on u1.UserID = ur.UserID";
+            if (clsUtility.IsAdmin)
+            {
+                string str = "SELECT DISTINCT u1.UserID , u1.UserName FROM " + clsUtility.DBName + ".[dbo].[UserManagement] u1 JOIN " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
+                          "ON u1.UserID = ur.UserID";
 
-          DataTable dtuser=  ObjCon.ExecuteSelectStatement(str);
-            dgvUser.DataSource = dtuser;
-            dgvUser.Columns["UserID"].Visible = false;
+                DataTable dtuser = ObjCon.ExecuteSelectStatement(str);
+                dgvUser.DataSource = dtuser;
+                dgvUser.Columns["UserID"].Visible = false;
+            }
+            else
+            {
+                string str = "SELECT DISTINCT u1.UserID , u1.UserName FROM " + clsUtility.DBName + ".[dbo].[UserManagement] u1 join " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
+                       "ON u1.UserID = ur.UserID WHERE u1.UserID=" + clsUtility.LoginID;
+
+                DataTable dtuser = ObjCon.ExecuteSelectStatement(str);
+                dgvUser.DataSource = dtuser;
+                dgvUser.Columns["UserID"].Visible = false;
+            }
         }
 
         private void InitRightTable()
