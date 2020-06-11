@@ -51,7 +51,7 @@ namespace IMS
             }
             else
             {
-                string str = "SELECT DISTINCT u1.UserID , u1.UserName FROM " + clsUtility.DBName + ".[dbo].[UserManagement] u1 join " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
+                string str = "SELECT DISTINCT u1.UserID , u1.UserName FROM " + clsUtility.DBName + ".[dbo].[UserManagement] u1 JOIN " + clsUtility.DBName + ".[dbo].[tblUserRights] ur " +
                        "ON u1.UserID = ur.UserID WHERE u1.UserID=" + clsUtility.LoginID;
 
                 DataTable dtuser = ObjCon.ExecuteSelectStatement(str);
@@ -78,7 +78,7 @@ namespace IMS
         {
             try
             {
-                DataTable dtAllFormsDetails = ObjCon.ExecuteSelectStatement("SELECT *  FROM " + clsUtility.DBName + ".[dbo].[tblFormRightDetails]");
+                DataTable dtAllFormsDetails = ObjCon.ExecuteSelectStatement("SELECT *  FROM " + clsUtility.DBName + ".[dbo].[tblFormRightDetails] WITH(NOLOCK)");
                 // get only parent 
                 DataRow[] ParentRows = dtAllFormsDetails.Select("ParentID=0");
                 if (ParentRows.Length > 0)
@@ -136,7 +136,6 @@ namespace IMS
                 }
             }
         }
-
         private void txtCategoryName_TextChanged(object sender, EventArgs e)
         {
             try
@@ -151,7 +150,7 @@ namespace IMS
                     ObjUtil.CloseAutoExtender();
                     return;
                 }
-                DataTable dt = ObjCon.ExecuteSelectStatement("SELECT USERNAME,USERID FROM " + clsUtility.DBName + ".dbo.UserManagement WHERE IsAdmin=0 AND UserName LIKE '" + txtName.Text + "%'");
+                DataTable dt = ObjCon.ExecuteSelectStatement("SELECT USERNAME,USERID FROM " + clsUtility.DBName + ".dbo.UserManagement WITH(NOLOCK) WHERE IsAdmin=0 AND UserName LIKE '" + txtName.Text + "%'");
                 if (ObjUtil.ValidateTable(dt))
                 {
                     ObjUtil.SetControlData(txtName, "UserName");
@@ -180,7 +179,6 @@ namespace IMS
             {
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             bool b = clsUtility.ShowQuestionMessage(clsUtility.MsgActionCancel, clsUtility.strProjectTitle);
@@ -228,7 +226,7 @@ namespace IMS
                 return false;
             }
 
-            int count = ObjCon.ExecuteScalarInt("SELECT COUNT(1) FROM " + clsUtility.DBName + ".[dbo].[tblUserRights] WHERE UserID=" + txtUserID.Text);
+            int count = ObjCon.ExecuteScalarInt("SELECT COUNT(1) FROM " + clsUtility.DBName + ".[dbo].[tblUserRights] WITH(NOLOCK) WHERE UserID=" + txtUserID.Text);
             if (count > 0)
             {
                 clsUtility.ShowInfoMessage("Rights for the user : " + txtName.Text + " already exists. Please select new user or select existing user and update.", clsUtility.strProjectTitle);
@@ -367,7 +365,6 @@ namespace IMS
             grpRights.Enabled = true;
             grpUserName.Enabled = false;
         }
-
         private void dgvUserRIghts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
@@ -491,7 +488,6 @@ namespace IMS
                 }
             }
         }
-
         private void dgvUserRIghts_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (dgvUserRIghts.IsCurrentCellDirty)
@@ -590,7 +586,6 @@ namespace IMS
                 catch { }
             }
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (!AnyRightCheck())

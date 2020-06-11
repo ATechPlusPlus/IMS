@@ -33,7 +33,6 @@ namespace IMS.Purchase
 
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
-
         private void FillBrandData()
         {
             DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.BrandMaster", "BrandID,BrandName", "ISNULL(ActiveStatus,1)=1", "BrandName ASC");
@@ -53,7 +52,6 @@ namespace IMS.Purchase
 
             cmbCountry.SelectedIndex = -1;
         }
-
         private void FillSizeTypeData()
         {
             DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeTypeMaster", "SizeTypeID,SizeTypeName", "ISNULL(ActiveStatus,1)=1", "SizeTypeName ASC");
@@ -73,7 +71,6 @@ namespace IMS.Purchase
 
             cmbStore.SelectedIndex = -1;
         }
-
         private void FillCategoryData()
         {
             DataTable dt = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.CategoryMaster", "CategoryID,CategoryName", "ISNULL(ActiveStatus,1)=1", "CategoryName ASC");
@@ -83,7 +80,6 @@ namespace IMS.Purchase
 
             cmbDepartment.SelectedIndex = -1;
         }
-
         private void Delivering_Purchase_Bill_Load(object sender, EventArgs e)
         {
             btnAdd.BackgroundImage = B_Leave;
@@ -107,7 +103,6 @@ namespace IMS.Purchase
             FillCategoryData();
             //InitItemTable();
         }
-
         private void InitItemTable()
         {
             dtPurchaseQTYColor.Columns.Clear();
@@ -117,29 +112,24 @@ namespace IMS.Purchase
             dtPurchaseQTYColor.AcceptChanges();
             dgvQtycolor.DataSource = dtPurchaseQTYColor;
         }
-
         private void btnAdd_MouseEnter(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             btn.BackgroundImage = B_Enter;
         }
-
         private void btnAdd_MouseLeave(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             btn.BackgroundImage = B_Leave;
         }
-
         private void txtSupplierBillNo_Enter(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender);
         }
-
         private void txtSupplierBillNo_Leave(object sender, EventArgs e)
         {
             ObjUtil.SetTextHighlightColor(sender, Color.White);
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (ObjUtil.IsControlTextEmpty(txtSupplierBillNo))
@@ -152,7 +142,6 @@ namespace IMS.Purchase
             cmbStore.Enabled = true;
             LoadData();
         }
-
         private void listBoxModelNo_KeyDown(object sender, KeyEventArgs e)
         {
             DataRow[] dRow = dtPurchaseInvoice.Select("ModelNo= '" + listBoxModelNo.SelectedItem + "'");
@@ -257,7 +246,6 @@ namespace IMS.Purchase
             else
                 cmbSizeType.Enabled = false;
         }
-
         private void dgvQtycolor_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             int pTotalEnteredQTY = 0;
@@ -321,7 +309,6 @@ namespace IMS.Purchase
             dgvQtycolor.DataSource = null;
             //dataGridView1.DataSource = null;
         }
-
         private void Clear_ColorSize()
         {
             //txtPurchaseInvoiceID.Clear();
@@ -386,7 +373,6 @@ namespace IMS.Purchase
             }
             return true;
         }
-
         private bool DuplicateUser(int i)
         {
             string listbox = listBoxModelNo.SelectedItem.ToString();
@@ -458,7 +444,6 @@ namespace IMS.Purchase
             }
             return a;
         }
-
         private int DataUpdateDeliveryPurchaseBill2(int ID)
         {
             dtSize = ObjDAL.GetDataCol(clsUtility.DBName + ".dbo.SizeMaster", "SizeID,Size,SizeTypeID", "ISNULL(ActiveStatus,1) = 1 AND SizeTypeID = " + cmbSizeType.SelectedValue, null);
@@ -476,7 +461,6 @@ namespace IMS.Purchase
             ObjDAL.UpdateColumnData("UpdatedOn", SqlDbType.DateTime, DateTime.Now);
             return ObjDAL.UpdateData(clsUtility.DBName + ".dbo.DeliveryPurchaseBill2", "DeliveryPurchaseID1=" + ID);
         }
-
         private int DataUpdateDeliveryPurchaseBill3(int ID1, int ID2)
         {
             int a = 0;
@@ -495,7 +479,6 @@ namespace IMS.Purchase
             }
             return a;
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             txtSupplierBillNo.Enabled = true;
@@ -506,7 +489,6 @@ namespace IMS.Purchase
             grpPurchaseBillDetail.Enabled = true;
             txtSupplierBillNo.Focus();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Save) || clsUtility.IsAdmin)
@@ -557,7 +539,6 @@ namespace IMS.Purchase
                 clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Update) || clsUtility.IsAdmin)
@@ -576,7 +557,6 @@ namespace IMS.Purchase
                 clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Update) || clsUtility.IsAdmin)
@@ -627,7 +607,6 @@ namespace IMS.Purchase
                 clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (clsFormRights.HasFormRight(clsFormRights.Forms.Delivering_Purchase_Bill, clsFormRights.Operation.Delete) || clsUtility.IsAdmin)
@@ -658,7 +637,6 @@ namespace IMS.Purchase
                 clsUtility.ShowInfoMessage("You have no rights to perform this task", clsUtility.strProjectTitle);
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             bool b = clsUtility.ShowQuestionMessage(clsUtility.MsgActionCancel, clsUtility.strProjectTitle);
@@ -671,7 +649,6 @@ namespace IMS.Purchase
                 grpPurchaseBillDetail.Enabled = false;
             }
         }
-
         private void dgvQtycolor_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             //ObjUtil.SetDataGridProperty(dgvQtycolor, DataGridViewAutoSizeColumnsMode.ColumnHeader);
@@ -694,7 +671,6 @@ namespace IMS.Purchase
             dgvQtycolor.AllowUserToResizeRows = false;
             dgvQtycolor.AllowUserToDeleteRows = false;
         }
-
         private void dgvQtycolor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -710,7 +686,6 @@ namespace IMS.Purchase
                 clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
             }
         }
-
         private void LoadData()
         {
             if (!ObjUtil.IsControlTextEmpty(txtPurchaseInvoiceID))
@@ -738,7 +713,6 @@ namespace IMS.Purchase
                 }
             }
         }
-
         private void LoadModelData()
         {
             if (!ObjUtil.IsControlTextEmpty(txtPurchaseInvoiceID))
@@ -762,7 +736,6 @@ namespace IMS.Purchase
                 }
             }
         }
-
         private void txtSupplierBillNo_TextChanged(object sender, EventArgs e)
         {
             try
@@ -807,7 +780,6 @@ namespace IMS.Purchase
                 clsUtility.ShowErrorMessage(ex.ToString(), clsUtility.strProjectTitle);
             }
         }
-
         private void Delivering_Purchase_Bill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
@@ -822,7 +794,6 @@ namespace IMS.Purchase
                 LoadModelData();
             }
         }
-
         private void Delivering_Purchase_Bill_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
@@ -836,7 +807,6 @@ namespace IMS.Purchase
                 LoadModelData();
             }
         }
-
         private void dgvQtycolor_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             OldColorName = dgvQtycolor.Rows[e.RowIndex].Cells["Color"].Value.ToString();
@@ -846,12 +816,10 @@ namespace IMS.Purchase
                     Convert.ToInt32(dgvQtycolor.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) : 0;
             }
         }
-
         private void dgvQtycolor_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
         {
             dgvQtycolor.Columns[e.Column.Index].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
-
         private void btnStorePopup_Click(object sender, EventArgs e)
         {
             int a = 0;
@@ -867,7 +835,6 @@ namespace IMS.Purchase
                 cmbStore.SelectedValue = a;
             }
         }
-
         private void btnSizeTypePopup_Click(object sender, EventArgs e)
         {
             int a = 0;
@@ -883,7 +850,6 @@ namespace IMS.Purchase
                 cmbSizeType.SelectedValue = a;
             }
         }
-
         private void dgvQtycolor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (e.ColumnIndex >= 3 && e.FormattedValue.ToString() != "")

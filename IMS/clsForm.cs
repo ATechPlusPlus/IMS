@@ -36,7 +36,7 @@ namespace IMS
             Purchase_Invoice = 31,
             frmBarCode = 32,
             frmBarCodeDesigner = 33,
-            //frmDatabaseMaintenance = 7
+            frmDatabaseMaintenance = 7///commented
         }
         public enum Operation
         {

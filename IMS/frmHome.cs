@@ -363,10 +363,10 @@ namespace IMS
 
         private void BarcodeStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (clsFormRights.HasFormRight(clsFormRights.Forms.BarCode_Designer) || clsUtility.IsAdmin)
+            if (clsFormRights.HasFormRight(clsFormRights.Forms.frmBarCodeDesigner) || clsUtility.IsAdmin)
             {
-                Barcode.frmBarCodeDesigner frmHome = new IMS.Barcode.frmBarCodeDesigner();
-                frmHome.Show();
+                Barcode.frmBarCodeDesigner frmBarCode = new IMS.Barcode.frmBarCodeDesigner();
+                frmBarCode.Show();
             }
             else
             {
