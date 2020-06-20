@@ -83,6 +83,7 @@ namespace IMS
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
+        
         {
             Isexit = false;
             if (ValidateClientSide())
