@@ -24,12 +24,12 @@ namespace IMS.Barcode
         Control tgSelectedControl;
         Control SelectedControl;
         Direction direction;
-        Point newLocation;
-        Size newSize;
+        //Point newLocation;
+        //Size newSize;
 
         string strTemplate;
         const int DRAG_HANDLE_SIZE = 7;
-        int mouseX, mouseY;
+        //int mouseX, mouseY;
         bool Dragging = false;
         bool isLoad = false;
 

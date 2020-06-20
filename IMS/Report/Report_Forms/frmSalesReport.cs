@@ -17,8 +17,9 @@ namespace IMS.Report
         {
             InitializeComponent();
         }
-        CoreApp.clsConnection_DAL ObjDAL = new CoreApp.clsConnection_DAL(true);
-        CoreApp.clsUtility ObjUtil = new CoreApp.clsUtility();
+        clsConnection_DAL ObjDAL = new CoreApp.clsConnection_DAL(true);
+        clsUtility ObjUtil = new clsUtility();
+
         Image B_Leave = IMS.Properties.Resources.B_click;
         Image B_Enter = IMS.Properties.Resources.B_on;
 
@@ -37,30 +38,26 @@ namespace IMS.Report
         {
             string strCondition = "";
 
-            if (txtInvoiceNumber.Text.Trim().Length!=0)
+            if (ObjUtil.IsControlTextEmpty(txtInvoiceNumber))
             {
                 strCondition= "InvoiceNumber='" + txtInvoiceNumber.Text + "' AND ";
             }
 
-            if (txtEmpID.Text.Trim().Length!=0)
+            if (ObjUtil.IsControlTextEmpty(txtEmpID))
             {
                 strCondition += "SalesMan=" + txtEmpID.Text+" AND ";
             }
 
-            if (cmbShop.SelectedIndex!=-1)
+            if (ObjUtil.IsControlTextEmpty(cmbShop))
             {
                 strCondition += "ShopeID=" + cmbShop.SelectedValue.ToString()+" AND ";
             }
-
-
             strCondition += "InvoiceDate between '"+dtpFromDate.Value.ToString("yyyy-MM-dd")+"' AND '"+ dtpToDate.Value.ToString("yyyy-MM-dd") + "'";
             return strCondition;
         }
         private void frmSalesReport_Load(object sender, EventArgs e)
         {
             FillStoreData();
-           
-
             btnGenerateReport.BackgroundImage = B_Leave;
             btnClear.BackgroundImage = B_Leave;
         }
@@ -93,13 +90,10 @@ namespace IMS.Report
                     return;
                 }
                 DataTable dt = ObjDAL.ExecuteSelectStatement("select Empid,Name from " + clsUtility.DBName + ".dbo.employeeDetails where Name Like '" + txtSalesMan.Text + "%'");
-                if (dt != null && dt.Rows.Count > 0)
+                if (ObjUtil.ValidateTable(dt))
                 {
-
-
                     ObjUtil.SetControlData(txtSalesMan, "Name");
                     ObjUtil.SetControlData(txtEmpID, "Empid");
-
 
                     ObjUtil.ShowDataPopup(dt, txtSalesMan, this, groupBox1);
 
@@ -124,7 +118,6 @@ namespace IMS.Report
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -132,11 +125,11 @@ namespace IMS.Report
         {
             //string strQuery = "select * from "+ clsUtility.DBName + ".dbo.View_SalesBillDetails";
 
-            string strQuery = "select * from "+clsUtility.DBName+".dbo.View_SalesBillDetails v1 join " +
-                       clsUtility.DBName+".dbo.View_SalesDetails v2 on v1.id = v2.InvoiceID Where " + GenerateCondition(); ;
+            string strQuery = "SELECT * FROM "+clsUtility.DBName+".dbo.View_SalesBillDetails v1 JOIN " +
+                       clsUtility.DBName+".dbo.View_SalesDetails v2 ON v1.id = v2.InvoiceID WHERE " + GenerateCondition(); ;
             
             DataTable dtSalesDetails = ObjDAL.ExecuteSelectStatement(strQuery);
-            if (dtSalesDetails.Rows.Count>0)
+            if (ObjUtil.ValidateTable(dtSalesDetails))
             {
                 reportViewer1.LocalReport.DataSources.Clear();
 
@@ -150,17 +143,7 @@ namespace IMS.Report
             {
                 clsUtility.ShowInfoMessage("No Datafound for the given filter.", clsUtility.strProjectTitle);
                 reportViewer1.LocalReport.DataSources.Clear();
-                
             }
-            
-
-           
-
-        }
-
-        private void txtInvoiceNumber_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
