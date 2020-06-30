@@ -153,8 +153,8 @@ namespace IMS
                 DataTable dt = ObjCon.ExecuteSelectStatement("SELECT USERNAME,USERID FROM " + clsUtility.DBName + ".dbo.UserManagement WITH(NOLOCK) WHERE IsAdmin=0 AND UserName LIKE '" + txtName.Text + "%'");
                 if (ObjUtil.ValidateTable(dt))
                 {
-                    ObjUtil.SetControlData(txtName, "UserName");
-                    ObjUtil.SetControlData(txtUserID, "UserID");
+                    ObjUtil.SetControlData(txtName, "USERNAME");
+                    ObjUtil.SetControlData(txtUserID, "USERID");
                     ObjUtil.ShowDataPopup(dt, txtName, this, grpUserName);
                     if (ObjUtil.GetDataPopup() != null && ObjUtil.GetDataPopup().DataSource != null)
                     {
